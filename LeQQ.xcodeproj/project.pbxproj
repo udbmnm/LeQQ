@@ -14,6 +14,7 @@
 		C11B80981638F0190087D5C0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80971638F0190087D5C0 /* libz.dylib */; };
 		C11B809F1638F2790087D5C0 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B809E1638F2790087D5C0 /* libxml2.dylib */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
+		C1630E181642A61000345BE7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E171642A61000345BE7 /* MBProgressHUD.m */; };
 		C1773C3216393C1000A2A89A /* FMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1773C3116393C1000A2A89A /* FMDBHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
@@ -86,6 +87,8 @@
 		C11B809E1638F2790087D5C0 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
+		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C1630E171642A61000345BE7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -253,6 +256,15 @@
 			path = Storage;
 			sourceTree = SOURCE_ROOT;
 		};
+		C1630E151642A61000345BE7 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C1630E161642A61000345BE7 /* MBProgressHUD.h */,
+				C1630E171642A61000345BE7 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		C19D2883163A27D0009C698E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +340,6 @@
 			isa = PBXGroup;
 			children = (
 				C1C4A98316415DED00CFF0DC /* LeQQEncription */,
-				C1C4A97F16415A4B00CFF0DC /* LeQQJsonPaser */,
 				C1C4A98016415AC600CFF0DC /* LLQQLogin.h */,
 				C1C4A98116415AC600CFF0DC /* LLQQLogin.m */,
 			);
@@ -365,13 +376,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		C1C4A97F16415A4B00CFF0DC /* LeQQJsonPaser */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LeQQJsonPaser;
-			sourceTree = "<group>";
-		};
 		C1C4A98316415DED00CFF0DC /* LeQQEncription */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +388,7 @@
 		C1C4A98716418CFD00CFF0DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C1630E151642A61000345BE7 /* MBProgressHUD */,
 				C1C4AE1C16418EBE00CFF0DC /* RegexKitLite-4.0 */,
 				C1C4A98816418CFD00CFF0DC /* asi-http-request */,
 				C1C4AA2416418CFE00CFF0DC /* fmdb */,
@@ -670,8 +675,9 @@
 		C1A2FECD1638CE550003905B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LL;
 				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = GUET/Wondershare;
+				ORGANIZATIONNAME = "ganxiangle@gmail.com";
 			};
 			buildConfigurationList = C1A2FED01638CE550003905B /* Build configuration list for PBXProject "LeQQ" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -763,6 +769,7 @@
 				C1C4ADDB16418CFF00CFF0DC /* DDXMLNode.m in Sources */,
 				C1C4AE3316418EBE00CFF0DC /* RegexKitLite.m in Sources */,
 				C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */,
+				C1630E181642A61000345BE7 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

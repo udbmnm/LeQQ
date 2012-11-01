@@ -35,4 +35,9 @@
     NSString *documentPath = [paths objectAtIndex:0];
     return documentPath;
 }
+
++ (NSString *)getDirPathForVerifyCode
+{
+    return [[self getPathOfTmp] stringByAppendingPathComponent:@"VerifyCode"];
+}
 @end

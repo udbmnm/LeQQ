@@ -12,4 +12,6 @@
 + (id)shareInstance;
 - (id)init;
 + (NSString *)getPathOfTmp;
++ (NSString *)getPathOfDocuments;
++ (NSString *)getDirPathForVerifyCode;
 @end

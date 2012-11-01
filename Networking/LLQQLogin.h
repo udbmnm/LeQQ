@@ -21,12 +21,31 @@ typedef enum
 
 @protocol LLQQLoginDelegate <NSObject>
 @required
-- (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info;
+/*
+ * When one progress in LLQQLogin completed, this methd will notify the receiver.
+ * the progress 2 may not be exist, since sometimes you not need to input the verify code.
+ * When error, the progress of logining is break, else the 5 progress will be run one by one.
+ * 
+ * 'progress' will be current login progress, when the progress is 2, the info is the UIImage instance 
+ * showing the verify code, the receiver must collect the user input and then return the verifycode
+ * in the delegate method.
+ * 
+ * When error, retcode is NO, else YES is return. 
+ * When error, info is the type NSError/NSString indicating the error.
+ *
+ * When the progress is 5, the 'info' is a dictionary, keys are the 
+ * @"uin", @"cip", @"user", @"password", @"status", @"verifyCode", @"verifyCodeKey", @"ptwebqq",
+ * @"clientid", @"psessionid", @"vfwebqq"
+ * 
+ */
+- (id)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info;
 @end
 
 
 @interface LLQQLogin : NSObject
 {
+    long _uin;
+    long _cip;
     NSString *_user;
     NSString *_password;
     NSString *_status;
@@ -34,6 +53,12 @@ typedef enum
     id<LLQQLoginDelegate> _delegate;
     NSString *_verifyCode;
     NSString *_verifyCodeKey;
+    
+    NSString *_ptwebqq;
+    NSString *_clientid;
+    NSString *_psessionid;
+    NSString *_vfwebqq;
+    
 }
 
 - (id)initWithUser:(NSString *)user 
@@ -44,34 +69,4 @@ typedef enum
 
 - (void)startAsynchronous;
 
-
-/* 
- * Theck the verify code, if fail, return NSError,
- * if success, return the verify code, 
- * or return nil, you must request an image presenting the verify 
- * code.
- */
-//- (void)checkTheVerifyCode;
-
-/* 
- * request the image for verify code
- */
-//- (void)getTheVerifyCodeImage;
-
-//- (BOOL)login;
-
-//- (BOOL)setStatus;
-
-
-/* 
- * the passport includes the 
- * ptwebqq
- * skey
- * clientid
- * cip
- * uin
- * psessionid
- * vfwebqq
- */
-//- (NSDictionary *)getPassportDic;
 @end

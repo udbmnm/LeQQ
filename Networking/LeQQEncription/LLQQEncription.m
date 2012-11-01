@@ -11,6 +11,6 @@
 @implementation LLQQEncription
 + (NSString *)hashPasswordForLogin:(NSString *)password v1:(NSString *)verifyCode v2:(NSString *)verifyCodeHex
 {
-    return nil;
+    return @"";
 }
 @end
