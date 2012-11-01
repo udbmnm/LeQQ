@@ -23,9 +23,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //test ASI framwork usage
-    AirTest *testAir = [[[AirTest alloc] init] autorelease];
-    [testAir airInfoGettingWithJsonTest];
-    [testAir airInfoGettingWithXMLTest];
+    //AirTest *testAir = [[[AirTest alloc] init] autorelease];
+    //[testAir airInfoGettingWithJsonTest];
+    //[testAir airInfoGettingWithXMLTest];
     LLQQLogin *loginTool = [[LLQQLogin alloc] initWithUser:@"425982977" password:@"4171739690" status:@"online" delegate:(id<LLQQLoginDelegate>) self];
     
     [loginTool startAsynchronous];
