@@ -9,6 +9,7 @@
 #import "LLQQLogin.h"
 #import "LLDebug.h"
 #import "ASIHTTPRequest.h"
+#import "RegexKitLite.h"
 
 @implementation LLQQLogin
 
@@ -23,6 +24,8 @@
         _status = [status copy];
         _delegate = delegate;
         _currentProgress = LLQQLOGIN_PROGRESS_NOT_START;
+        _verifyCode = nil;
+        _verifyCodeKey = nil;
     }
     return self;
 }
@@ -32,6 +35,8 @@
     [_user release];
     [_password release];
     [_status release];
+    [_verifyCode release];
+    [_verifyCodeKey release];
     [super dealloc];
 }
 
@@ -75,15 +80,30 @@
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];
-        [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_CHECK_VERIFY_CODE failOrSuccess:NO info:error];
+        [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:error];
     }];
     
     [request setCompletionBlock:^(void){
-        [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_CHECK_VERIFY_CODE failOrSuccess:YES info:nil];  
+        [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];  
         NSString *response = [request responseString];
         NSLog(@"---->\n%@", response);
+        NSString *regexString = @"ptui_checkVC('(\\d+)','(.+)','(.+)'";
+        NSString *vCode = [response stringByMatching:regexString capture:1L];
+        NSString *vCodeKey = [response stringByMatching:regexString capture:2L];
         
-        [self stepProgressOneByOne];
+        if (vCodeKey && vCode) {
+            _verifyCodeKey = [vCodeKey retain];
+            if ([vCode rangeOfString:@"!"].location == 0) {
+                _verifyCode = [vCode retain];
+                /* not to get the image for verify code, so skip the progress */
+                _currentProgress = LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE;
+            }
+            
+            [self stepProgressOneByOne];
+        } else {
+            [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:@"Server Error: verify code error."];
+        }        
+
     }];
     
     [request startAsynchronous];

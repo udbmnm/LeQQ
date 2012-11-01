@@ -32,6 +32,8 @@ typedef enum
     NSString *_status;
     LLQQLoginProgress _currentProgress;
     id<LLQQLoginDelegate> _delegate;
+    NSString *_verifyCode;
+    NSString *_verifyCodeKey;
 }
 
 - (id)initWithUser:(NSString *)user 
