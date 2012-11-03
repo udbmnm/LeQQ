@@ -60,6 +60,7 @@
 		C11D75BD1644E4E800898942 /* mvideo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11D758F1644E4E800898942 /* mvideo@2x.png */; };
 		C11D75BE1644E4E800898942 /* mvideoh.png in Resources */ = {isa = PBXBuildFile; fileRef = C11D75901644E4E800898942 /* mvideoh.png */; };
 		C11D75BF1644E4E800898942 /* mvideoh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11D75911644E4E800898942 /* mvideoh@2x.png */; };
+		C11D76441645086B00898942 /* LLGuetGirlsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D76431645086B00898942 /* LLGuetGirlsDownloader.m */; };
 		C123AA741643842200E03E6A /* LLQQEncription.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA731643842200E03E6A /* LLQQEncription.m */; };
 		C123AA771643848000E03E6A /* LLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA761643847F00E03E6A /* LLTabBarController.m */; };
 		C123ACD51643984000E03E6A /* Galuca_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C123AA7D1643983F00E03E6A /* Galuca_0001.png */; };
@@ -781,6 +782,8 @@
 		C11D758F1644E4E800898942 /* mvideo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mvideo@2x.png"; sourceTree = "<group>"; };
 		C11D75901644E4E800898942 /* mvideoh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mvideoh.png; sourceTree = "<group>"; };
 		C11D75911644E4E800898942 /* mvideoh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mvideoh@2x.png"; sourceTree = "<group>"; };
+		C11D76431645086B00898942 /* LLGuetGirlsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLGuetGirlsDownloader.m; sourceTree = "<group>"; };
+		C11D76451645182400898942 /* LLGuetGirlsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLGuetGirlsDownloader.h; sourceTree = "<group>"; };
 		C123AA721643842200E03E6A /* LLQQEncription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQEncription.h; sourceTree = "<group>"; };
 		C123AA731643842200E03E6A /* LLQQEncription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQEncription.m; sourceTree = "<group>"; };
 		C123AA751643847F00E03E6A /* LLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTabBarController.h; sourceTree = "<group>"; };
@@ -1542,6 +1545,8 @@
 				C11B7F881638EB590087D5C0 /* AirTest.m */,
 				C1773C3016393C1000A2A89A /* FMDBHelper.h */,
 				C1773C3116393C1000A2A89A /* FMDBHelper.m */,
+				C11D76451645182400898942 /* LLGuetGirlsDownloader.h */,
+				C11D76431645086B00898942 /* LLGuetGirlsDownloader.m */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -3406,6 +3411,7 @@
 				C123AA741643842200E03E6A /* LLQQEncription.m in Sources */,
 				C123AA771643848000E03E6A /* LLTabBarController.m in Sources */,
 				C11D75921644E4E800898942 /* LLBomtomCompassMenu.m in Sources */,
+				C11D76441645086B00898942 /* LLGuetGirlsDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

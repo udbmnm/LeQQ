@@ -12,6 +12,7 @@
 #import "LLTabBarController.h"
 #import "LLDebug.h"
 #import "LLBomtomCompassMenu.h"
+#import "LLGuetGirlsDownloader.h"
 
 @implementation AppDelegate
 
@@ -32,6 +33,8 @@
     //LLQQLogin *loginTool = [[LLQQLogin alloc] initWithUser:@"425982977" password:@"4171739690" status:@"online" delegate:(id<LLQQLoginDelegate>) self];
     
     //[loginTool startAsynchronous];
+    LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
+    [downloader downloadAllGuetGirls];
     
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
     UIViewController *con1 = [[UIViewController alloc] init];

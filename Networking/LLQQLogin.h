@@ -3,7 +3,7 @@
 //  LeQQ
 //
 //  Created by Xiangle le on 12-10-31.
-//  Copyright (c) 2012年 GUET/Wondershare. All rights reserved.
+//  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
