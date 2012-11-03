@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LLBomtomCompassMenu.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, LLBomtomCompassMenuDelegate>
+{
+    LLBomtomCompassMenu *_menu;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

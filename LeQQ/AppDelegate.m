@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "AirTest.h"
 #import "LLQQLogin.h"
+#import "LLTabBarController.h"
+#import "LLDebug.h"
+#import "LLBomtomCompassMenu.h"
 
 @implementation AppDelegate
 
@@ -26,10 +29,81 @@
     //AirTest *testAir = [[[AirTest alloc] init] autorelease];
     //[testAir airInfoGettingWithJsonTest];
     //[testAir airInfoGettingWithXMLTest];
-    LLQQLogin *loginTool = [[LLQQLogin alloc] initWithUser:@"425982977" password:@"4171739690" status:@"online" delegate:(id<LLQQLoginDelegate>) self];
+    //LLQQLogin *loginTool = [[LLQQLogin alloc] initWithUser:@"425982977" password:@"4171739690" status:@"online" delegate:(id<LLQQLoginDelegate>) self];
     
-    [loginTool startAsynchronous];
+    //[loginTool startAsynchronous];
+    
+    LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
+    UIViewController *con1 = [[UIViewController alloc] init];
+    UIViewController *con2 = [[UIViewController alloc] init];
+    UIViewController *con3 = [[UIViewController alloc] init];
+    UIViewController *con4 = [[UIViewController alloc] init];
+    UIViewController *con5 = [[UIViewController alloc] init];
+
+    [tabbarController addViewController:con1
+                               tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"con1"];
+    [con1.view setBackgroundColor:[UIColor whiteColor]];
+    
+    [tabbarController addViewController:con2 
+                               tabImage:[UIImage imageNamed:@"Galuca_0002"] title:@"con2"];
+    [con2.view setBackgroundColor:[UIColor blueColor]];
+
+    [tabbarController addViewController:con3
+                               tabImage:[UIImage imageNamed:@"Galuca_0156"] title:@"con3"];
+    [con3.view setBackgroundColor:[UIColor yellowColor]];
+
+    [tabbarController addViewController:con4 
+                               tabImage:[UIImage imageNamed:@"Galuca_0004"] title:@"con4"];
+    [con4.view setBackgroundColor:[UIColor redColor]];
+
+    [tabbarController addViewController:con5
+                               tabImage:[UIImage imageNamed:@"Galuca_0005"] title:@"con5"];
+    [con5.view setBackgroundColor:[UIColor brownColor]];    
+    
+    [tabbarController setDelegate:self];
+    
+    _menu = [[self createBomtomMenuAboveView:tabbarController.tabBar] retain];
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    [self.window setRootViewController:tabbarController];
+    self.window.hidden = NO;
+    
     return NO;
+}
+
+- (LLBomtomCompassMenu*)createBomtomMenuAboveView:(UIView *)view
+{
+    LLBomtomCompassMenu *menu = [[LLBomtomCompassMenu alloc] initAboveOfView:view];
+    [_menu setDelegate:self];
+    
+    [menu addButtonsToFirstRoundWithImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"mcartoon"], [NSNull null], [UIImage imageNamed:@"menter"], [NSNull null], [UIImage imageNamed:@"mmovie"], nil]];
+    
+    [menu addButtonsToSecondRoundWithImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"mmusic"], 
+                                             [UIImage imageNamed:@"mmyi"], [UIImage imageNamed:@"mmyi"],
+                                             [UIImage imageNamed:@"mmyi"], [UIImage imageNamed:@"mmyi"],
+                                             [UIImage imageNamed:@"mmyi"], [UIImage imageNamed:@"mmyi"], nil] bindingToInnerMenuItemByTag:kLLBomtomCompassMenuInnerBtnTag_1];
+    
+    [menu addButtonsToSecondRoundWithImages:[NSArray arrayWithObjects:[UIImage imageNamed:@"mcartoon"], 
+                                             [UIImage imageNamed:@"mcartoon"], [UIImage imageNamed:@"mmyi"],
+                                             [UIImage imageNamed:@"mcartoon"], [NSNull null],
+                                             [UIImage imageNamed:@"mcartoon"], [UIImage imageNamed:@"mcartoon"], nil] bindingToInnerMenuItemByTag:kLLBomtomCompassMenuInnerBtnTag_3];
+    
+    [menu addButtonToCenterWithImage:[UIImage imageNamed:@"mvideo"] highlightedImage:nil];
+    
+    return [menu autorelease];
+}
+
+- (void)LLBomtomCompassMenu:(LLBomtomCompassMenu *)menu outterMenuButtonDidClicked:(LLBomtomCompassMenuButtonTag)outterTag withInnerMenuButton:(LLBomtomCompassMenuButtonTag)innerBtnTag
+{
+    DEBUG_LOG_WITH_FORMAT(@"Outter Menu %d, Inner Menu %d", outterTag, innerBtnTag);
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    if ([viewController.tabBarItem.title isEqualToString:@"con3"]){
+        DEBUG_LOG_WITH_FORMAT(@"%@ is selected", viewController.tabBarItem.title);
+        [_menu showOrHideMenu];
+    }
 }
 
 - (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info

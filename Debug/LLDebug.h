@@ -16,10 +16,8 @@
 
 
 
-#define DEBUG_WITH_MSG(msg) NSLog(@"[%@ %@ %d]: %@", __FILE__, __FUNC__, __LINE__, msg)
-
-
-
+#define DEBUG_LOG_WITH_MSG(msg) NSLog(@"[File:%s] [Func:%s] [Line:%d]:\n--> %@", __FILE__, __FUNC__, __LINE__, msg)
+# define DEBUG_LOG_WITH_FORMAT(format, ...) NSLog((@"[File:%s] [Func:%s] [Line:%d]:\n-->" format), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);    
 
 
 
