@@ -31,34 +31,26 @@
 
 - (void)downloadAllGuetGirls
 {
-    
-    NSString *aUrl = @"http://news.guet.edu.cn/BeautyAPI/image/X93Y.png";
-    [self downloadAGirlFromUrl:[NSURL URLWithString:aUrl]];
-    // return;
-    
-    
     static NSString *path = @"http://news.guet.edu.cn/BeautyAPI/image";
     
     char characters[] = "0123456789abcdefghijklmnopqrstuvwxyz";
     
-    //for (int i = 0; i < sizeof(characters)/sizeof(char); i++) 
+    for (int i = 0; i < sizeof(characters)/sizeof(char); i++) 
         for (int j = 0; j < sizeof(characters)/sizeof(char); j++) 
             for (int k = 0; k < sizeof(characters)/sizeof(char); k++) {
-
-                for (int l = 0; l < sizeof(characters)/sizeof(char); l++) {
+                for (int l = 0; l < 2; l++) {
+                //for (int l = 0; l < sizeof(characters)/sizeof(char); l++) {
                     
-                    //char A = characters[i];
+                    char A = characters[i];
                     char B = characters[j];
                     char C = characters[k];
-                    char D = characters[l];
+                    char D = ((char *)"ay")[l];
                     NSString *imgFileName = [NSString stringWithFormat:@"%c%c%c%c.png", 
-                                             '1' , B, C, D];
+                                             A , B, C, D];
                     NSURL *imgUrl = [[NSURL URLWithString:path] URLByAppendingPathComponent:imgFileName];
                     
                     [self downloadAGirlFromUrl:imgUrl];
-                }    
-                //if ([_queue operationCount] >= 10)
-                    //[NSThread sleepForTimeInterval:4];
+                }
             }
 }
 

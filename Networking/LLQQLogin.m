@@ -8,11 +8,9 @@
 
 #import "LLQQLogin.h"
 #import "LLDebug.h"
-#import "ASIHTTPRequest.h"
-#import "ASIFormDataRequest.h"
-#import "RegexKitLite.h"
 #import "LLQQEncription.h"
-#import "SBJson.h"
+#import "LLQQLoginInfo.h"
+
 
 @implementation LLQQLogin
 
@@ -220,21 +218,21 @@
 - (void)getPassportDic
 {
     _currentProgress = LLQQLOGIN_PROGRESS_COMPLETED;
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc] 
-                                 initWithObjectsAndKeys:
-                                 [NSNumber numberWithLong:_uin], @"uin", 
-                                 [NSNumber numberWithLong:_cip], @"cip",
-                                 _user, @"user",
-                                 _password, @"password",
-                                 _status, @"status",
-                                 _verifyCode, @"verifyCode",
-                                 _verifyCodeKey, @"verifyCodeKey",
-                                 _ptwebqq, @"ptwebqq",
-                                 _clientid, @"clientid",
-                                 _psessionid, @"psessionid",
-                                 _vfwebqq, @"vfwebqq", nil];
     
-    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:dic];                                 
+    LLQQLoginInfo *info = [[LLQQLoginInfo alloc] init];
+    info.uin = _uin;
+    info.cip = _cip;
+    info.user = _user;
+    info.password = _password;
+    info.status = _status;
+    info.verifyCode = _verifyCode;
+    info.verifyCodeKey = _verifyCodeKey;
+    info.ptwebqq = _ptwebqq;
+    info.clientid = _clientid;
+    info.psessionid = _psessionid;
+    info.vfwebqq = _vfwebqq;
+    
+    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[info autorelease]];                                 
     
 }
 

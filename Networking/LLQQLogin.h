@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define LLQQLOGIN_STATUS_ONLINE @"online"
+
+
+
 typedef enum 
 {
     LLQQLOGIN_PROGRESS_NOT_START = 0,
@@ -24,9 +28,9 @@ typedef enum
 /*
  * When one progress in LLQQLogin completed, this methd will notify the receiver.
  * the progress 2 may not be exist, since sometimes you not need to input the verify code.
- * When error, the progress of logining is break, else the 5 progress will be run one by one.
+ * When error, the progress of logining is paused, else the 5 progress will be run one by one.
  * 
- * 'progress' will be current login progress, when the progress is 2, the info is the UIImage instance 
+ * When the progress is 2, the info is the UIImage instance 
  * showing the verify code, the receiver must collect the user input and then return the verifycode
  * in the delegate method.
  * 

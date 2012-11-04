@@ -13,6 +13,7 @@
 #import "LLDebug.h"
 #import "LLBomtomCompassMenu.h"
 #import "LLGuetGirlsDownloader.h"
+#import "LLQQLoginController.h"
 
 @implementation AppDelegate
 
@@ -26,15 +27,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //test ASI framwork usage
-    //AirTest *testAir = [[[AirTest alloc] init] autorelease];
-    //[testAir airInfoGettingWithJsonTest];
-    //[testAir airInfoGettingWithXMLTest];
-    //LLQQLogin *loginTool = [[LLQQLogin alloc] initWithUser:@"425982977" password:@"4171739690" status:@"online" delegate:(id<LLQQLoginDelegate>) self];
     
-    //[loginTool startAsynchronous];
-    LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
-    [downloader downloadAllGuetGirls];
+    //LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
+    //[downloader downloadAllGuetGirls];
+    
+    return YES;
     
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
     UIViewController *con1 = [[UIViewController alloc] init];
@@ -43,7 +40,7 @@
     UIViewController *con4 = [[UIViewController alloc] init];
     UIViewController *con5 = [[UIViewController alloc] init];
 
-    [tabbarController addViewController:con1
+    [tabbarController addViewController:[[LLQQLoginController alloc] init]
                                tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"con1"];
     [con1.view setBackgroundColor:[UIColor whiteColor]];
     
@@ -103,10 +100,16 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    if ([viewController.tabBarItem.title isEqualToString:@"con3"]){
+    static NSInteger selectedIndex = 0;
+    
+    if (tabBarController.selectedIndex == selectedIndex &&
+        [viewController.tabBarItem.title isEqualToString:@"con3"]){
+        
         DEBUG_LOG_WITH_FORMAT(@"%@ is selected", viewController.tabBarItem.title);
         [_menu showOrHideMenu];
     }
+    
+    selectedIndex = tabBarController.selectedIndex;    
 }
 
 - (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info

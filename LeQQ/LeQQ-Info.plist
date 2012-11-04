@@ -10,7 +10,7 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>qqlogo</string>
+		<string>QQlogo</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>org.lequiet.${PRODUCT_NAME:rfc1034identifier}</string>
