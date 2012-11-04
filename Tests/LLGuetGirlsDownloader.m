@@ -8,7 +8,6 @@
 
 #import "LLGuetGirlsDownloader.h"
 #import "LLQQPathManager.h"
-#import "ASIHTTPRequest.h"
 
 @implementation LLGuetGirlsDownloader
 

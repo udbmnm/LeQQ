@@ -7,11 +7,8 @@
 //
 
 #import "AirTest.h"
-#import "SBJson.h"
-#import "ASIHTTPRequest.h"
 #import "FMDBHelper.h"
 #import "LLDebug.h"
-#import "DDXML.h"
 
 @interface LLWeatherInfo : NSObject<FMDBHelperProtocal, LLObjectPrinter>
 {

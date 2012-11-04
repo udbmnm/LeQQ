@@ -11,4 +11,11 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <QuickDialog.h>
+    #import <MBProgressHUD.h>
+    #import <RegexKitLite.h>
+    #import <ASIFormDataRequest.h>
+    #import <FMDatabase.h>
+    #import <SBJson.h>
+    #import <DDXML.h>
 #endif

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FMDatabase.h"
 
 /*
  * the protocal provides the infomation about 
