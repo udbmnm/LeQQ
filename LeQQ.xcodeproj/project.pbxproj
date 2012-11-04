@@ -789,6 +789,7 @@
 		C1A2FEE51638CE550003905B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1A2FEE31638CE550003905B /* InfoPlist.strings */; };
 		C1A2FEE71638CE550003905B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEE61638CE550003905B /* main.m */; };
 		C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEEA1638CE550003905B /* AppDelegate.m */; };
+		C1A9069916466CE8001D5720 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1C4A97E164159F600CFF0DC /* qqlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4A97D164159F600CFF0DC /* qqlogo.png */; };
 		C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4A98116415AC600CFF0DC /* LLQQLogin.m */; };
 		C1C4ACC416418CFF00CFF0DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8516418CFE00CFF0DC /* InfoPlist.strings */; };
@@ -4179,6 +4180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1A9069916466CE8001D5720 /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4609,6 +4611,7 @@
 				C11D617716465129003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D6202164655A2003BF26B /* Build configuration list for PBXNativeTarget "MBProgressHUD" */ = {
 			isa = XCConfigurationList;
@@ -4617,6 +4620,7 @@
 				C11D6204164655A2003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D62151646573C003BF26B /* Build configuration list for PBXNativeTarget "RegexKitLite-4.0" */ = {
 			isa = XCConfigurationList;
@@ -4625,6 +4629,7 @@
 				C11D62171646573C003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D622C16465951003BF26B /* Build configuration list for PBXNativeTarget "asi-http-request" */ = {
 			isa = XCConfigurationList;
@@ -4633,6 +4638,7 @@
 				C11D622E16465951003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D627116465BFF003BF26B /* Build configuration list for PBXNativeTarget "fmdb" */ = {
 			isa = XCConfigurationList;
@@ -4641,6 +4647,7 @@
 				C11D627316465BFF003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D628D16465E78003BF26B /* Build configuration list for PBXNativeTarget "json-framwork" */ = {
 			isa = XCConfigurationList;
@@ -4649,6 +4656,7 @@
 				C11D628F16465E78003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C11D62C7164662D2003BF26B /* Build configuration list for PBXNativeTarget "KissXML" */ = {
 			isa = XCConfigurationList;
@@ -4657,6 +4665,7 @@
 				C11D62C9164662D2003BF26B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1A2FED01638CE550003905B /* Build configuration list for PBXProject "LeQQ" */ = {
 			isa = XCConfigurationList;
