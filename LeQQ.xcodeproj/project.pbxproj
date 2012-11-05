@@ -1365,21 +1365,14 @@
 		C11D6165164650F3003BF26B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C11D6167164650F8003BF26B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C11D616D16465129003BF26B /* libQuickDialog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQuickDialog.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D617116465129003BF26B /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C11D61FA164655A2003BF26B /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D61FE164655A2003BF26B /* MBProgressHUD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		C11D620D1646573C003BF26B /* libRegexKitLite-4.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRegexKitLite-4.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D62111646573C003BF26B /* RegexKitLite-4.0-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RegexKitLite-4.0-Prefix.pch"; sourceTree = "<group>"; };
 		C11D621D1646590B003BF26B /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		C11D621E1646590B003BF26B /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		C11D622416465951003BF26B /* libasi-http-request.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libasi-http-request.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D622816465951003BF26B /* asi-http-request-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "asi-http-request-Prefix.pch"; sourceTree = "<group>"; };
 		C11D626916465BFF003BF26B /* libfmdb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfmdb.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D626D16465BFF003BF26B /* fmdb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fmdb-Prefix.pch"; sourceTree = "<group>"; };
 		C11D628516465E77003BF26B /* libjson-framwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libjson-framwork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D628916465E78003BF26B /* json-framwork-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "json-framwork-Prefix.pch"; sourceTree = "<group>"; };
 		C11D62BF164662D1003BF26B /* libKissXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKissXML.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11D62C3164662D2003BF26B /* KissXML-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KissXML-Prefix.pch"; sourceTree = "<group>"; };
 		C11D755D1644E46700898942 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C11D75621644E4E800898942 /* LLBomtomCompassMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLBomtomCompassMenu.h; sourceTree = "<group>"; };
 		C11D75631644E4E800898942 /* LLBomtomCompassMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLBomtomCompassMenu.m; sourceTree = "<group>"; };
@@ -2034,6 +2027,7 @@
 		C123ACD21643983F00E03E6A /* Galuca_0299@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0299@2x.png"; sourceTree = "<group>"; };
 		C123ACD31643983F00E03E6A /* Galuca_0300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galuca_0300.png; sourceTree = "<group>"; };
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
+		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2776,54 +2770,6 @@
 			path = quickdialog;
 			sourceTree = "<group>";
 		};
-		C11D616F16465129003BF26B /* QuickDialog */ = {
-			isa = PBXGroup;
-			children = (
-				C11D617016465129003BF26B /* Supporting Files */,
-			);
-			path = QuickDialog;
-			sourceTree = "<group>";
-		};
-		C11D617016465129003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D617116465129003BF26B /* QuickDialog-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C11D61FC164655A2003BF26B /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				C11D61FD164655A2003BF26B /* Supporting Files */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		C11D61FD164655A2003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D61FE164655A2003BF26B /* MBProgressHUD-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C11D620F1646573C003BF26B /* RegexKitLite-4.0 */ = {
-			isa = PBXGroup;
-			children = (
-				C11D62101646573C003BF26B /* Supporting Files */,
-			);
-			path = "RegexKitLite-4.0";
-			sourceTree = "<group>";
-		};
-		C11D62101646573C003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D62111646573C003BF26B /* RegexKitLite-4.0-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		C11D621C1646590B003BF26B /* RegexKitLite-4.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2831,70 +2777,6 @@
 				C11D621E1646590B003BF26B /* RegexKitLite.m */,
 			);
 			path = "RegexKitLite-4.0";
-			sourceTree = "<group>";
-		};
-		C11D622616465951003BF26B /* asi-http-request */ = {
-			isa = PBXGroup;
-			children = (
-				C11D622716465951003BF26B /* Supporting Files */,
-			);
-			path = "asi-http-request";
-			sourceTree = "<group>";
-		};
-		C11D622716465951003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D622816465951003BF26B /* asi-http-request-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C11D626B16465BFF003BF26B /* fmdb */ = {
-			isa = PBXGroup;
-			children = (
-				C11D626C16465BFF003BF26B /* Supporting Files */,
-			);
-			path = fmdb;
-			sourceTree = "<group>";
-		};
-		C11D626C16465BFF003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D626D16465BFF003BF26B /* fmdb-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C11D628716465E78003BF26B /* json-framwork */ = {
-			isa = PBXGroup;
-			children = (
-				C11D628816465E78003BF26B /* Supporting Files */,
-			);
-			path = "json-framwork";
-			sourceTree = "<group>";
-		};
-		C11D628816465E78003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D628916465E78003BF26B /* json-framwork-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C11D62C1164662D1003BF26B /* KissXML */ = {
-			isa = PBXGroup;
-			children = (
-				C11D62C2164662D2003BF26B /* Supporting Files */,
-			);
-			path = KissXML;
-			sourceTree = "<group>";
-		};
-		C11D62C2164662D2003BF26B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C11D62C3164662D2003BF26B /* KissXML-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C11D75601644E4E800898942 /* LLBomtomCompassMenu */ = {
@@ -3648,13 +3530,6 @@
 		C1A2FED91638CE550003905B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C11D62C1164662D1003BF26B /* KissXML */,
-				C11D628716465E78003BF26B /* json-framwork */,
-				C11D626B16465BFF003BF26B /* fmdb */,
-				C11D622616465951003BF26B /* asi-http-request */,
-				C11D620F1646573C003BF26B /* RegexKitLite-4.0 */,
-				C11D61FC164655A2003BF26B /* MBProgressHUD */,
-				C11D616F16465129003BF26B /* QuickDialog */,
 				C1C4AE3416418F4300CFF0DC /* libicucore.dylib */,
 				C1773C34163978D800A2A89A /* libsqlite3.dylib */,
 				C11B809E1638F2790087D5C0 /* libxml2.dylib */,
@@ -3697,6 +3572,7 @@
 				C1A2FEE31638CE550003905B /* InfoPlist.strings */,
 				C1A2FEE61638CE550003905B /* main.m */,
 				C1A2FEE81638CE550003905B /* LeQQ-Prefix.pch */,
+				C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -5922,7 +5798,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/QuickDialog.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickDialog/QuickDialog-Prefix.pch";
+				GCC_PREFIX_HEADER = "LeQQ/QuickDialog-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5935,7 +5811,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/QuickDialog.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "QuickDialog/QuickDialog-Prefix.pch";
+				GCC_PREFIX_HEADER = "LeQQ/QuickDialog-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5946,8 +5822,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/MBProgressHUD.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MBProgressHUD/MBProgressHUD-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5958,8 +5834,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/MBProgressHUD.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MBProgressHUD/MBProgressHUD-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5970,8 +5846,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/RegexKitLite_4_0.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexKitLite-4.0/RegexKitLite-4.0-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5982,8 +5858,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/RegexKitLite_4_0.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RegexKitLite-4.0/RegexKitLite-4.0-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -5994,8 +5870,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/asi_http_request.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "asi-http-request/asi-http-request-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6007,8 +5883,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/asi_http_request.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "asi-http-request/asi-http-request-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6020,8 +5896,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/fmdb.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "fmdb/fmdb-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -6032,8 +5908,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/fmdb.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "fmdb/fmdb-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -6045,8 +5921,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/json_framwork.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json-framwork/json-framwork-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -6058,8 +5934,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/json_framwork.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "json-framwork/json-framwork-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -6071,8 +5947,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/KissXML.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KissXML/KissXML-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6086,8 +5962,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/KissXML.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "KissXML/KissXML-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
