@@ -3,7 +3,7 @@
 //  LeQQ
 //
 //  Created by Xiangle le on 12-10-25.
-//  Copyright (c) 2012年 GUET/Wondershare. All rights reserved.
+//  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -30,9 +30,7 @@
     
     //LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
     //[downloader downloadAllGuetGirls];
-    
-    return YES;
-    
+        
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
     UIViewController *con1 = [[UIViewController alloc] init];
     UIViewController *con2 = [[UIViewController alloc] init];

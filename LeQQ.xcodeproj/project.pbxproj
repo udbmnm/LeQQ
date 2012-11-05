@@ -3624,8 +3624,6 @@
 		C1A2FECB1638CE550003905B = {
 			isa = PBXGroup;
 			children = (
-				C11D6167164650F8003BF26B /* MapKit.framework */,
-				C11D6165164650F3003BF26B /* CoreLocation.framework */,
 				C1A2FEE01638CE550003905B /* LeQQ */,
 				C1A2FED91638CE550003905B /* Frameworks */,
 				C1A2FED71638CE550003905B /* Products */,
@@ -3661,6 +3659,8 @@
 				C1773C34163978D800A2A89A /* libsqlite3.dylib */,
 				C11B809E1638F2790087D5C0 /* libxml2.dylib */,
 				C11B80971638F0190087D5C0 /* libz.dylib */,
+				C11D6167164650F8003BF26B /* MapKit.framework */,
+				C11D6165164650F3003BF26B /* CoreLocation.framework */,
 				C11D755D1644E46700898942 /* QuartzCore.framework */,
 				C11B80951638EFF80087D5C0 /* MobileCoreServices.framework */,
 				C11B80931638EFE90087D5C0 /* SystemConfiguration.framework */,

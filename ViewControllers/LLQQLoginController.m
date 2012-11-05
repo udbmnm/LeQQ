@@ -45,7 +45,7 @@
     
     QButtonElement *loginBtnElement = [[QButtonElement alloc] initWithTitle:@"登录"];
     loginBtnElement.key = @"loginKey";
-    loginBtnElement.controllerAction = @"loginButtonClicked";    
+    loginBtnElement.controllerAction = @"loginButtonClicked:";    
     [loginBtnSection addElement:loginBtnElement];
     [loginBtnElement release];
     
@@ -62,6 +62,7 @@
         _password = nil;
         _verifyCode = nil;
         _info = nil;
+        _hub = nil;
     }
     return self;    
 }
@@ -72,14 +73,21 @@
     [_password release];
     [_verifyCode release];
     [_info release];
+    [_hub release];
     [super dealloc];
 }
 
 /* callback of the login button */
 - (void)loginButtonClicked:(QElement *)element
 {
-    _userName = [self.root valueForKey:KEY_USERNAME];
-    _password = [self.root valueForKey:KEY_PASSWORD];
+    _userName = [(QEntryElement *)[self.root elementWithKey:KEY_USERNAME] textValue];
+    _password = [(QEntryElement *)[self.root elementWithKey:KEY_PASSWORD] textValue]; 
+    
+    if (_hub == nil) {
+        _hub = [[MBProgressHUD alloc] initWithView:self.view];
+    }
+    
+    [_hub show:YES];
     
     LLQQLogin *qqLoginSession = [[LLQQLogin alloc] initWithUser:_userName 
                                                        password:_password 
@@ -112,7 +120,8 @@
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:     
             _info = [(LLQQLoginInfo *)info retain];
-            [LLNotificationCenter post:kNotificationTypeLoginSuccess info:_info];
+            [LLNotificationCenter post:kNotificationTypeLoginSuccess 
+                                  info:[NSDictionary dictionaryWithObject:_info forKey:@"loginInfo"]];
             break;
         default:
             break;
@@ -128,7 +137,8 @@
  */
 - (void)loginErrorWithMsg:(NSString *)errMsg
 {
-  
+    [_hub hide:YES];
+    
 }
 
 /* 

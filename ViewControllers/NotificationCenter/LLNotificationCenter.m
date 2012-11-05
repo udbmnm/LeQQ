@@ -17,7 +17,7 @@
     static NSString *typeToStringMaps[] = 
     {
         /* 0 */nil, 
-        /* 1 */@"USER LOGIN COMPLETED" /* userinfo: { "loginInfo": object } */
+        /* 1 */@"USER LOGIN COMPLETED" /* userinfo: { "loginInfo": (LLQQLoginInfo*)object } */
         /* 2 */
         /* 3 */
         /* 4 */

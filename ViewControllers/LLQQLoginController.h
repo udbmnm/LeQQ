@@ -17,6 +17,7 @@
     NSString *_password;
     NSString *_verifyCode;
     LLQQLoginInfo *_info;
+    MBProgressHUD *_hub;
 }
 
 - (id)init;
