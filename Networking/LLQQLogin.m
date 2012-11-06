@@ -1,4 +1,4 @@
-//
+ //
 //  LLQQLogin.m
 //  LeQQ
 //
@@ -13,6 +13,14 @@
 
 
 @implementation LLQQLogin
+
+- (id)init
+{
+    if (self = [super init]) {
+        [self initWithUser:nil password:nil status:nil delegate:nil];
+    }
+    return self;
+}
 
 - (id)initWithUser:(NSString *)user 
           password:(NSString *)password 
@@ -131,10 +139,11 @@
     
     [request setCompletionBlock:^(void) {
         UIImage *image = [UIImage imageWithData:[request responseData]];        
-        /* pass the image to the receiver, and get the verify code input by user back */
-        _verifyCode = [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:image];
-        [_verifyCode retain];
-        [self stepProgressOneByOne];
+        /* 
+         * pass the image to the receiver,the user has the responsibility to pass the verify code back 
+         * vi the -(void)restartWithVerityCode:(NSString*)code 
+         */
+        [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:image];
     }];
     
     [request startAsynchronous];
@@ -152,7 +161,7 @@
     
     urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(password)" withString:enPassword];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"$(VCode)" withString:_verifyCode];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"$(VCode)" withString:[_verifyCode uppercaseString]];
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
@@ -170,8 +179,6 @@
         if (NO == [retcode isEqualToString:@"0"]) {
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:info];
         } else {
-        
-        
             NSArray *cookies = [request responseCookies];
             DEBUG_LOG_WITH_FORMAT(@"cookies: %@", cookies);
                 
@@ -250,5 +257,9 @@
      [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] longValue]/100.0 ];
 }
 
-
+- (void)restartWithVerifyCode:(NSString *)code
+{
+    _verifyCode = [code copy];
+    [self stepProgressOneByOne];
+}
 @end

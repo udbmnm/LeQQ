@@ -793,6 +793,7 @@
 		C1A2FEE51638CE550003905B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1A2FEE31638CE550003905B /* InfoPlist.strings */; };
 		C1A2FEE71638CE550003905B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEE61638CE550003905B /* main.m */; };
 		C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEEA1638CE550003905B /* AppDelegate.m */; };
+		C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */; };
 		C1A9069916466CE8001D5720 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1A906A916468C70001D5720 /* LLQQLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A906A816468C70001D5720 /* LLQQLoginController.m */; };
 		C1A9082E1646978D001D5720 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A906AC1646978D001D5720 /* 0.png */; };
@@ -2048,6 +2049,8 @@
 		C1A2FEE81638CE550003905B /* LeQQ-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LeQQ-Prefix.pch"; sourceTree = "<group>"; };
 		C1A2FEE91638CE550003905B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C1A2FEEA1638CE550003905B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C1A32F9D16491C7A00B23798 /* LLAuthenticodeAlertInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAuthenticodeAlertInputView.h; sourceTree = "<group>"; };
+		C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAuthenticodeAlertInputView.m; sourceTree = "<group>"; };
 		C1A906A716468C70001D5720 /* LLQQLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLoginController.h; sourceTree = "<group>"; };
 		C1A906A816468C70001D5720 /* LLQQLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLoginController.m; sourceTree = "<group>"; };
 		C1A906AC1646978D001D5720 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -3558,6 +3561,7 @@
 				C1C4A98716418CFD00CFF0DC /* Libs */,
 				C1C4A97B164159F600CFF0DC /* Resource */,
 				C1C4A9791641599C00CFF0DC /* Model */,
+				C1A32F9C16491C7A00B23798 /* View */,
 				C15C8AC4164364FF000646CD /* ViewControllers */,
 				C19D2883163A27D0009C698E /* Debug */,
 				C11B7F861638EB590087D5C0 /* Tests */,
@@ -3579,6 +3583,15 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		C1A32F9C16491C7A00B23798 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1A32F9D16491C7A00B23798 /* LLAuthenticodeAlertInputView.h */,
+				C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */,
+			);
+			path = View;
+			sourceTree = SOURCE_ROOT;
 		};
 		C1A906AA1646978D001D5720 /* QQImages */ = {
 			isa = PBXGroup;
@@ -5733,6 +5746,7 @@
 				C1A906A916468C70001D5720 /* LLQQLoginController.m in Sources */,
 				C11C09881646C27A00846C8E /* LLQQLoginInfo.m in Sources */,
 				C11C098D1646CD3D00846C8E /* LLNotificationCenter.m in Sources */,
+				C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

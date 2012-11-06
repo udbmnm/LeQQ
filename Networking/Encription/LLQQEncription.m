@@ -42,9 +42,8 @@
         strncpy(aPair, cStr + i, 2);
         long number = strtol(aPair, NULL, 16); 
         unichar aChar = (char)(number & 0xFF);
-        //char aCString[2] = { aChar, 0 };
         result = [result stringByAppendingString:[NSString stringWithCharacters:&aChar length:1]];
-        //result = [result stringByAppendingString:[NSString stringWithCString:aCString encoding:NSASCIIStringEncoding]];
+
     }
     return result;
 }
@@ -55,25 +54,8 @@
 {
     NSString *I = [[password md5] hexchar2bin];
     NSString *HH = [I stringByAppendingString:[[verifyCodeHex stringByReplacingOccurrencesOfString:@"\\x" withString:@""] hexchar2bin]];
-    
-    NSLog(@"verifycodeHEX:%@", verifyCodeHex);
-    NSLog(@"Password's md5 is %@\n", [password md5]);
-    
-    NSLog(@"I is:\n");
-    for (int i = 0; i < I.length; i++ ) {
-        NSLog(@"%2X ", [I characterAtIndex:i]);
-    }
-    
-    NSLog(@"HH is:\n");
-    for (int i = 0; i < HH.length; i++ ) {
-        NSLog(@"%2X ", [HH characterAtIndex:i]);
-    }
-    
-    NSLog(@"length of verifycodeHex is %d, length of I is %d， length of HH is %d", [verifyCodeHex length], [I length], [HH length]);
-
     NSString *H = [HH md5];
     NSString *G = [[H stringByAppendingString:[verifyCode uppercaseString]] md5];
-    //"232F2A5E5008489E5B2B76A6DBD06DE8"
     return G;
 }
 @end

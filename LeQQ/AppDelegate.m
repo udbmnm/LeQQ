@@ -14,7 +14,6 @@
 #import "LLBomtomCompassMenu.h"
 #import "LLGuetGirlsDownloader.h"
 #import "LLQQLoginController.h"
-#import "LLQQEncription.h"
 
 @implementation AppDelegate
 
@@ -28,10 +27,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *enPassword = [LLQQEncription hashPasswordForLogin:@"4171739690" v1:@"!QS8" v2:@"\\x00\\x00\\x00\\x00\\x19\\x63\\xfc\\x01"];
+    //NSString *enPassword = [LLQQEncription hashPasswordForLogin:@"4171739690" v1:@"!QS8" v2:@"\\x00\\x00\\x00\\x00\\x19\\x63\\xfc\\x01"];
     
     //LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
     //[downloader downloadAllGuetGirls];
+    
+    //LLAuthenticodeAlertInputView *alertView = [[LLAuthenticodeAlertInputView alloc] initWithTitle:@"input secret" AuthenticodeImage:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitle:@"done"];
+    //[alertView show];
         
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
     UIViewController *con1 = [[UIViewController alloc] init];

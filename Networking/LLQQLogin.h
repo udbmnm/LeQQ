@@ -30,9 +30,9 @@ typedef enum
  * the progress 2 may not be exist, since sometimes you not need to input the verify code.
  * When error, the progress of logining is paused, else the 5 progress will be run one by one.
  * 
- * When the progress is 2, the info is the UIImage instance 
- * showing the verify code, the receiver must collect the user input and then return the verifycode
- * in the delegate method.
+ * When the progress is 2, the info is the UIImage instance, which 
+ * showing the verify code, the receiver must collect the user input and then call the -(void)restartWithVerityCode
+ * to notify that the whole login progress can continue..
  * 
  * When error, retcode is NO, else YES is return. 
  * When error, info is the type NSError/NSString indicating the error.
@@ -42,7 +42,7 @@ typedef enum
  * @"clientid", @"psessionid", @"vfwebqq"
  * 
  */
-- (id)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info;
+- (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info;
 @end
 
 
@@ -72,5 +72,6 @@ typedef enum
 
 
 - (void)startAsynchronous;
+- (void)restartWithVerifyCode:(NSString *)code;
 
 @end

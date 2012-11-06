@@ -8,6 +8,7 @@
 
 #import "LLQQLoginController.h"
 #import "LLNotificationCenter.h"
+#import "LLAuthenticodeAlertInputView.h"
 
 #define KEY_USERNAME @"userName"
 #define KEY_PASSWORD @"password"
@@ -63,6 +64,7 @@
         _verifyCode = nil;
         _info = nil;
         _hub = nil;
+        _qqLoginSession = nil;
     }
     return self;    
 }
@@ -74,6 +76,7 @@
     [_verifyCode release];
     [_info release];
     [_hub release];
+    [_qqLoginSession release];
     [super dealloc];
 }
 
@@ -83,25 +86,33 @@
     _userName = [(QEntryElement *)[self.root elementWithKey:KEY_USERNAME] textValue];
     _password = [(QEntryElement *)[self.root elementWithKey:KEY_PASSWORD] textValue]; 
     
+    /* user name or password format error, pop up a msg and go back */
+    if ([self checkUserNameAndPasswordFormat] == NO) {
+        return;
+    }
+    
     if (_hub == nil) {
         _hub = [[MBProgressHUD alloc] initWithView:self.view];
     }
     
     [_hub show:YES];
     
-    LLQQLogin *qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
+    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
                                                        password:@"4171739690" //_password 
                                                          status:LLQQLOGIN_STATUS_ONLINE 
                                                        delegate:self];
-    [qqLoginSession startAsynchronous];
-    [qqLoginSession release];
+    [_qqLoginSession startAsynchronous];
 }
 
-- (id)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info
+- (BOOL)checkUserNameAndPasswordFormat
+{
+    return YES;
+}
+
+- (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info
 {
     if (retcode == NO) {
         [self loginErrorWithMsg:[info isKindOfClass:[NSError class]] ? [NSString stringWithFormat:@"%@", info] : (NSString *)info];
-        return nil;
     }
     
     switch (progress) {
@@ -110,8 +121,7 @@
         case LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE:   
         {
             UIImage *img = (UIImage *)info;
-            NSString *verifyCode = [self showModelViewForVerifyCodeInput:img];
-            return verifyCode;
+            [self showModelViewForVerifyCodeInput:img];
         }
             break;
         case LLQQLOGIN_PROGRESS_LOGIN:            
@@ -127,8 +137,6 @@
             break;
     }
     
-    
-    return nil;
 }
 
 /* 
@@ -139,16 +147,33 @@
 {
     [_hub hide:YES];
     
+    
+    
+    
+    
 }
 
 /* 
  * Show a View which will show user the verify code in the image 
- * and get back user input for TEXT of verify code.
  */
-- (NSString *)showModelViewForVerifyCodeInput:(UIImage *)img
+- (void)showModelViewForVerifyCodeInput:(UIImage *)img
 {
-    
-    return @"111";
+    LLAuthenticodeAlertInputView *alertInput = [[LLAuthenticodeAlertInputView alloc] 
+                                                initWithTitle:@"请输入验证码"
+                                                authenticodeImage:img 
+                                                delegate:self
+                                                cancelButtonTitle:@"取消"
+                                                otherButtonTitle:@"登录"];
+    [alertInput show];
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;  // after animation
+{
+    if ([alertView isKindOfClass:[LLAuthenticodeAlertInputView class]]) {
+        if (buttonIndex != -1) {
+            [_qqLoginSession restartWithVerifyCode:[(LLAuthenticodeAlertInputView*)alertView getVerifyCode]];
+        }
+    }
+    
+}
 @end
