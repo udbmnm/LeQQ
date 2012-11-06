@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@interface NSString (NSStringMD5)
+- (NSString *) md5;
+@end
+
+@interface NSString(QQEncriptionAdditions)
+- (NSString *) hexchar2bin;
+@end
+
+
 @interface LLQQEncription : NSObject
 
 /* 

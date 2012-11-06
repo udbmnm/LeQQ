@@ -782,6 +782,8 @@
 		C123AF2A1643984000E03E6A /* Galuca_0299@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C123ACD21643983F00E03E6A /* Galuca_0299@2x.png */; };
 		C123AF2B1643984000E03E6A /* Galuca_0300.png in Resources */ = {isa = PBXBuildFile; fileRef = C123ACD31643983F00E03E6A /* Galuca_0300.png */; };
 		C123AF2C1643984000E03E6A /* Galuca_0300@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */; };
+		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
+		C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
 		C1773C3216393C1000A2A89A /* FMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1773C3116393C1000A2A89A /* FMDBHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
@@ -1180,7 +1182,6 @@
 		C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4A98116415AC600CFF0DC /* LLQQLogin.m */; };
 		C1C4ACC416418CFF00CFF0DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8516418CFE00CFF0DC /* InfoPlist.strings */; };
 		C1C4ACC516418CFF00CFF0DC /* SBJson-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8716418CFE00CFF0DC /* SBJson-Info.plist */; };
-		C1C4AE3516418F4300CFF0DC /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -2028,6 +2029,7 @@
 		C123ACD31643983F00E03E6A /* Galuca_0300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galuca_0300.png; sourceTree = "<group>"; };
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
+		C156C9841647827A00C0ECD4 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2600,6 +2602,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */,
 				C11D62D81646651D003BF26B /* libKissXML.a in Frameworks */,
 				C11D62AB16465F44003BF26B /* libjson-framwork.a in Frameworks */,
 				C11D628016465C74003BF26B /* libfmdb.a in Frameworks */,
@@ -2610,7 +2613,6 @@
 				C11D6168164650F8003BF26B /* MapKit.framework in Frameworks */,
 				C11D6166164650F3003BF26B /* CoreLocation.framework in Frameworks */,
 				C11D755E1644E46700898942 /* QuartzCore.framework in Frameworks */,
-				C1C4AE3516418F4300CFF0DC /* libicucore.dylib in Frameworks */,
 				C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */,
 				C11B809F1638F2790087D5C0 /* libxml2.dylib in Frameworks */,
 				C11B80981638F0190087D5C0 /* libz.dylib in Frameworks */,
@@ -3506,6 +3508,7 @@
 		C1A2FECB1638CE550003905B = {
 			isa = PBXGroup;
 			children = (
+				C156C9841647827A00C0ECD4 /* libicucore.A.dylib */,
 				C1A2FEE01638CE550003905B /* LeQQ */,
 				C1A2FED91638CE550003905B /* Frameworks */,
 				C1A2FED71638CE550003905B /* Products */,
@@ -5716,6 +5719,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */,
 				C1A2FEE71638CE550003905B /* main.m in Sources */,
 				C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */,
 				C11B7F891638EB590087D5C0 /* AirTest.m in Sources */,
@@ -5851,6 +5855,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -6033,6 +6038,7 @@
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6055,6 +6061,7 @@
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

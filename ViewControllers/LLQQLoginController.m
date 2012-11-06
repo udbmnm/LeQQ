@@ -89,8 +89,8 @@
     
     [_hub show:YES];
     
-    LLQQLogin *qqLoginSession = [[LLQQLogin alloc] initWithUser:_userName 
-                                                       password:_password 
+    LLQQLogin *qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
+                                                       password:@"4171739690" //_password 
                                                          status:LLQQLOGIN_STATUS_ONLINE 
                                                        delegate:self];
     [qqLoginSession startAsynchronous];
