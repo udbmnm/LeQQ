@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LLModelObject.h"
 
-@interface LLQQLoginInfo : NSObject
+@interface LLQQLoginInfo : LLModelObject
 {
     long uin;
     long cip; 

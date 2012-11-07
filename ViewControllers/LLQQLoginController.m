@@ -88,6 +88,7 @@
     
     /* user name or password format error, pop up a msg and go back */
     if ([self checkUserNameAndPasswordFormat] == NO) {
+        [self loginErrorWithMsg:@"用户或密码格式不正确"];
         return;
     }
     
@@ -95,12 +96,14 @@
         _hub = [[MBProgressHUD alloc] initWithView:self.view];
     }
     
+    [self.view addSubview:_hub];
+    [_hub setLabelText:@"正在登录..."];
     [_hub show:YES];
     
-    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
-                                                       password:@"4171739690" //_password 
-                                                         status:LLQQLOGIN_STATUS_ONLINE 
-                                                       delegate:self];
+    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"  //_userName 
+                                             password:@"4171739690" //_password 
+                                               status:LLQQLOGIN_STATUS_ONLINE 
+                                             delegate:self];
     [_qqLoginSession startAsynchronous];
 }
 
@@ -112,7 +115,11 @@
 - (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info
 {
     if (retcode == NO) {
+        /* hide and remove the loading indicator hub */
+        [_hub hide:YES];
+        [_hub removeFromSuperViewOnHide];
         [self loginErrorWithMsg:[info isKindOfClass:[NSError class]] ? [NSString stringWithFormat:@"%@", info] : (NSString *)info];
+        return;
     }
     
     switch (progress) {
@@ -120,6 +127,7 @@
             break;
         case LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE:   
         {
+            [_hub hide:YES];
             UIImage *img = (UIImage *)info;
             [self showModelViewForVerifyCodeInput:img];
         }
@@ -145,11 +153,6 @@
  */
 - (void)loginErrorWithMsg:(NSString *)errMsg
 {
-    [_hub hide:YES];
-    
-    
-    
-    
     
 }
 
@@ -171,6 +174,9 @@
 {
     if ([alertView isKindOfClass:[LLAuthenticodeAlertInputView class]]) {
         if (buttonIndex != -1) {
+            /* when showing verifycode input view, the hub is hide and remove from super view */
+            [self.view addSubview:_hub];
+            [_hub show:YES];
             [_qqLoginSession restartWithVerifyCode:[(LLAuthenticodeAlertInputView*)alertView getVerifyCode]];
         }
     }

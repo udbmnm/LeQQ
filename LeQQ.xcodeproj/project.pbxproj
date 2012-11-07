@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C11B7F891638EB590087D5C0 /* AirTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C11B7F881638EB590087D5C0 /* AirTest.m */; };
 		C11B80921638EFDA0087D5C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80911638EFDA0087D5C0 /* CFNetwork.framework */; };
 		C11B80941638EFE90087D5C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80931638EFE90087D5C0 /* SystemConfiguration.framework */; };
 		C11B80961638EFF80087D5C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80951638EFF80087D5C0 /* MobileCoreServices.framework */; };
@@ -785,7 +784,8 @@
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
-		C1773C3216393C1000A2A89A /* FMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1773C3116393C1000A2A89A /* FMDBHelper.m */; };
+		C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */; };
+		C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5D164AA62600C6E48F /* LLModelObject.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
 		C1A2FEDD1638CE550003905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
@@ -2035,6 +2035,11 @@
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C1630E171642A61000345BE7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C1646E5A164AA62600C6E48F /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
+		C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
+		C1646E5C164AA62600C6E48F /* LLModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLModelObject.h; sourceTree = "<group>"; };
+		C1646E5D164AA62600C6E48F /* LLModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLModelObject.m; sourceTree = "<group>"; };
+		C1646E60164AA6BC00C6E48F /* LLObjectConversionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLObjectConversionProtocol.h; sourceTree = "<group>"; };
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -3500,6 +3505,18 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		C1646E59164AA62600C6E48F /* LLModelObject */ = {
+			isa = PBXGroup;
+			children = (
+				C1646E60164AA6BC00C6E48F /* LLObjectConversionProtocol.h */,
+				C1646E5A164AA62600C6E48F /* LLFMDBHelper.h */,
+				C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */,
+				C1646E5C164AA62600C6E48F /* LLModelObject.h */,
+				C1646E5D164AA62600C6E48F /* LLModelObject.m */,
+			);
+			path = LLModelObject;
+			sourceTree = "<group>";
+		};
 		C19D2883163A27D0009C698E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -4021,6 +4038,7 @@
 		C1C4A9791641599C00CFF0DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1646E59164AA62600C6E48F /* LLModelObject */,
 				C11C09861646C27A00846C8E /* LLQQLoginInfo.h */,
 				C11C09871646C27A00846C8E /* LLQQLoginInfo.m */,
 			);
@@ -5735,8 +5753,6 @@
 				C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */,
 				C1A2FEE71638CE550003905B /* main.m in Sources */,
 				C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */,
-				C11B7F891638EB590087D5C0 /* AirTest.m in Sources */,
-				C1773C3216393C1000A2A89A /* FMDBHelper.m in Sources */,
 				C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */,
 				C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */,
 				C123AA741643842200E03E6A /* LLQQEncription.m in Sources */,
@@ -5747,6 +5763,8 @@
 				C11C09881646C27A00846C8E /* LLQQLoginInfo.m in Sources */,
 				C11C098D1646CD3D00846C8E /* LLNotificationCenter.m in Sources */,
 				C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */,
+				C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */,
+				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

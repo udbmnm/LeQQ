@@ -17,7 +17,7 @@
 
 - (id)initWithTitle:(NSString *)title 
   authenticodeImage:(UIImage *)img
-           delegate:(id /*<UIAlertViewDelegate>*/)delegate 
+           delegate:(id<UIAlertViewDelegate>)delegate 
   cancelButtonTitle:(NSString *)cancelButtonTitle 
    otherButtonTitle:(NSString *)otherButtonTitles;
 

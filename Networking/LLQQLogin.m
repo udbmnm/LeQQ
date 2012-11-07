@@ -106,7 +106,7 @@
         
         NSString *response = [[request responseString] retain];
         DEBUG_LOG_WITH_FORMAT(@"---->\n%@", response);
-        NSString *regexString = @"ptui_checkVC\\('(\\d+)','(.+)','(.+)\\)";
+        NSString *regexString = @"ptui_checkVC\\('(\\d+)','(.+)','(.+)'\\)";
         NSString *vCode = [response stringByMatching:regexString capture:2L];
         NSString *vCodeKey = [response stringByMatching:regexString capture:3L];
         
@@ -157,12 +157,12 @@
     static NSString *loginURL = @"http%3A%2F%2Fweb3.qq.com%2Floginproxy.html%3Flogin2qq%3D1%26webqq_type%3D10";
     
     NSString *urlString = nil;
-    NSString *enPassword = [LLQQEncription hashPasswordForLogin:_password v1:_verifyCode v2:_verifyCodeKey];
+    NSString *enPassword = [LLQQEncription hashPasswordForLogin:_password v1:[_verifyCode uppercaseString] v2:_verifyCodeKey];
     
-    urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"$(password)" withString:enPassword];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"$(VCode)" withString:[_verifyCode uppercaseString]];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
+    urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(account)"  withString:_user];
+    urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(password)" withString:enPassword];
+    urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(VCode)"    withString:[_verifyCode uppercaseString]];
+    urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request setFailedBlock:^(void){
