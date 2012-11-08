@@ -192,11 +192,11 @@
 		C11FAD18164C14C800312A83 /* typingMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD02164C14C800312A83 /* typingMine@2x.png */; };
 		C11FAD19164C14C800312A83 /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD03164C14C800312A83 /* typingSomeone.png */; };
 		C11FAD1A164C14C800312A83 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD04164C14C800312A83 /* typingSomeone@2x.png */; };
-		C11FAD1B164C14C800312A83 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD07164C14C800312A83 /* NSBubbleData.m */; };
-		C11FAD1C164C14C800312A83 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD09164C14C800312A83 /* UIBubbleHeaderTableViewCell.m */; };
-		C11FAD1D164C14C800312A83 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0B164C14C800312A83 /* UIBubbleTableView.m */; };
-		C11FAD1E164C14C800312A83 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0D164C14C800312A83 /* UIBubbleTableViewCell.m */; };
-		C11FAD1F164C14C800312A83 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD10164C14C800312A83 /* UIBubbleTypingTableViewCell.m */; };
+		C11FAD21164C150E00312A83 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD07164C14C800312A83 /* NSBubbleData.m */; };
+		C11FAD23164C150E00312A83 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD09164C14C800312A83 /* UIBubbleHeaderTableViewCell.m */; };
+		C11FAD25164C150E00312A83 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0B164C14C800312A83 /* UIBubbleTableView.m */; };
+		C11FAD27164C150E00312A83 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0D164C14C800312A83 /* UIBubbleTableViewCell.m */; };
+		C11FAD2A164C150E00312A83 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD10164C14C800312A83 /* UIBubbleTypingTableViewCell.m */; };
 		C123AA741643842200E03E6A /* LLQQEncription.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA731643842200E03E6A /* LLQQEncription.m */; };
 		C123AA771643848000E03E6A /* LLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA761643847F00E03E6A /* LLTabBarController.m */; };
 		C123ACD51643984000E03E6A /* Galuca_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C123AA7D1643983F00E03E6A /* Galuca_0001.png */; };
@@ -5891,6 +5891,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C11FAD21164C150E00312A83 /* NSBubbleData.m in Sources */,
+				C11FAD23164C150E00312A83 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				C11FAD25164C150E00312A83 /* UIBubbleTableView.m in Sources */,
+				C11FAD27164C150E00312A83 /* UIBubbleTableViewCell.m in Sources */,
+				C11FAD2A164C150E00312A83 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5913,11 +5918,6 @@
 				C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */,
 				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
-				C11FAD1B164C14C800312A83 /* NSBubbleData.m in Sources */,
-				C11FAD1C164C14C800312A83 /* UIBubbleHeaderTableViewCell.m in Sources */,
-				C11FAD1D164C14C800312A83 /* UIBubbleTableView.m in Sources */,
-				C11FAD1E164C14C800312A83 /* UIBubbleTableViewCell.m in Sources */,
-				C11FAD1F164C14C800312A83 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6172,7 +6172,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/BubbleTableView.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6185,7 +6185,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				DSTROOT = /tmp/BubbleTableView.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
