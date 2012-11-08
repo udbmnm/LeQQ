@@ -38,6 +38,7 @@
     //[alertView show];
         
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
+    tabbarController.view.backgroundColor = [UIColor whiteColor];
 
     
     [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]

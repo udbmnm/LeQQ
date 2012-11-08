@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _bubbleView = [[UIBubbleTableView alloc] init];
+    _bubbleView = [[UIBubbleTableView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:_bubbleView];
     [_bubbleView setBubbleDataSource:self];
     

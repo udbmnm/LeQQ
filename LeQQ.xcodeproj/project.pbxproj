@@ -179,24 +179,24 @@
 		C11D75BE1644E4E800898942 /* mvideoh.png in Resources */ = {isa = PBXBuildFile; fileRef = C11D75901644E4E800898942 /* mvideoh.png */; };
 		C11D75BF1644E4E800898942 /* mvideoh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11D75911644E4E800898942 /* mvideoh@2x.png */; };
 		C11D76441645086B00898942 /* LLGuetGirlsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D76431645086B00898942 /* LLGuetGirlsDownloader.m */; };
-		C11FAC9E164C033F00312A83 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC88164C033F00312A83 /* bubbleMine.png */; };
-		C11FAC9F164C033F00312A83 /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC89164C033F00312A83 /* bubbleMine@2x.png */; };
-		C11FACA0164C033F00312A83 /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8A164C033F00312A83 /* bubbleSomeone.png */; };
-		C11FACA1164C033F00312A83 /* bubbleSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8B164C033F00312A83 /* bubbleSomeone@2x.png */; };
-		C11FACA2164C033F00312A83 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8C164C033F00312A83 /* missingAvatar.png */; };
-		C11FACA3164C033F00312A83 /* missingAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8D164C033F00312A83 /* missingAvatar@2x.png */; };
-		C11FACA4164C033F00312A83 /* typingMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8E164C033F00312A83 /* typingMine.png */; };
-		C11FACA5164C033F00312A83 /* typingMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC8F164C033F00312A83 /* typingMine@2x.png */; };
-		C11FACA6164C033F00312A83 /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC90164C033F00312A83 /* typingSomeone.png */; };
-		C11FACA7164C033F00312A83 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAC91164C033F00312A83 /* typingSomeone@2x.png */; };
 		C11FACB3164C066600312A83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
-		C11FACBE164C068D00312A83 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAC94164C033F00312A83 /* NSBubbleData.m */; };
-		C11FACC0164C068D00312A83 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAC96164C033F00312A83 /* UIBubbleHeaderTableViewCell.m */; };
-		C11FACC2164C068D00312A83 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAC98164C033F00312A83 /* UIBubbleTableView.m */; };
-		C11FACC4164C068D00312A83 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAC9A164C033F00312A83 /* UIBubbleTableViewCell.m */; };
-		C11FACC7164C068D00312A83 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAC9D164C033F00312A83 /* UIBubbleTypingTableViewCell.m */; };
 		C11FACCA164C078E00312A83 /* libBubbleTableView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11FACB2164C066600312A83 /* libBubbleTableView.a */; };
 		C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FACCC164C08BE00312A83 /* LLQQChattingViewController.m */; };
+		C11FAD11164C14C800312A83 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FACFB164C14C800312A83 /* bubbleMine.png */; };
+		C11FAD12164C14C800312A83 /* bubbleMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FACFC164C14C800312A83 /* bubbleMine@2x.png */; };
+		C11FAD13164C14C800312A83 /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FACFD164C14C800312A83 /* bubbleSomeone.png */; };
+		C11FAD14164C14C800312A83 /* bubbleSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FACFE164C14C800312A83 /* bubbleSomeone@2x.png */; };
+		C11FAD15164C14C800312A83 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FACFF164C14C800312A83 /* missingAvatar.png */; };
+		C11FAD16164C14C800312A83 /* missingAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD00164C14C800312A83 /* missingAvatar@2x.png */; };
+		C11FAD17164C14C800312A83 /* typingMine.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD01164C14C800312A83 /* typingMine.png */; };
+		C11FAD18164C14C800312A83 /* typingMine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD02164C14C800312A83 /* typingMine@2x.png */; };
+		C11FAD19164C14C800312A83 /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD03164C14C800312A83 /* typingSomeone.png */; };
+		C11FAD1A164C14C800312A83 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C11FAD04164C14C800312A83 /* typingSomeone@2x.png */; };
+		C11FAD1B164C14C800312A83 /* NSBubbleData.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD07164C14C800312A83 /* NSBubbleData.m */; };
+		C11FAD1C164C14C800312A83 /* UIBubbleHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD09164C14C800312A83 /* UIBubbleHeaderTableViewCell.m */; };
+		C11FAD1D164C14C800312A83 /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0B164C14C800312A83 /* UIBubbleTableView.m */; };
+		C11FAD1E164C14C800312A83 /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD0D164C14C800312A83 /* UIBubbleTableViewCell.m */; };
+		C11FAD1F164C14C800312A83 /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C11FAD10164C14C800312A83 /* UIBubbleTypingTableViewCell.m */; };
 		C123AA741643842200E03E6A /* LLQQEncription.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA731643842200E03E6A /* LLQQEncription.m */; };
 		C123AA771643848000E03E6A /* LLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C123AA761643847F00E03E6A /* LLTabBarController.m */; };
 		C123ACD51643984000E03E6A /* Galuca_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C123AA7D1643983F00E03E6A /* Galuca_0001.png */; };
@@ -800,7 +800,6 @@
 		C123AF2B1643984000E03E6A /* Galuca_0300.png in Resources */ = {isa = PBXBuildFile; fileRef = C123ACD31643983F00E03E6A /* Galuca_0300.png */; };
 		C123AF2C1643984000E03E6A /* Galuca_0300@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
-		C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
 		C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */; };
 		C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5D164AA62600C6E48F /* LLModelObject.m */; };
@@ -1450,30 +1449,30 @@
 		C11D75911644E4E800898942 /* mvideoh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mvideoh@2x.png"; sourceTree = "<group>"; };
 		C11D76431645086B00898942 /* LLGuetGirlsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLGuetGirlsDownloader.m; sourceTree = "<group>"; };
 		C11D76451645182400898942 /* LLGuetGirlsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLGuetGirlsDownloader.h; sourceTree = "<group>"; };
-		C11FAC88164C033F00312A83 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
-		C11FAC89164C033F00312A83 /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
-		C11FAC8A164C033F00312A83 /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
-		C11FAC8B164C033F00312A83 /* bubbleSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleSomeone@2x.png"; sourceTree = "<group>"; };
-		C11FAC8C164C033F00312A83 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
-		C11FAC8D164C033F00312A83 /* missingAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missingAvatar@2x.png"; sourceTree = "<group>"; };
-		C11FAC8E164C033F00312A83 /* typingMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = typingMine.png; sourceTree = "<group>"; };
-		C11FAC8F164C033F00312A83 /* typingMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingMine@2x.png"; sourceTree = "<group>"; };
-		C11FAC90164C033F00312A83 /* typingSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = typingSomeone.png; sourceTree = "<group>"; };
-		C11FAC91164C033F00312A83 /* typingSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingSomeone@2x.png"; sourceTree = "<group>"; };
-		C11FAC93164C033F00312A83 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
-		C11FAC94164C033F00312A83 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
-		C11FAC95164C033F00312A83 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
-		C11FAC96164C033F00312A83 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
-		C11FAC97164C033F00312A83 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
-		C11FAC98164C033F00312A83 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
-		C11FAC99164C033F00312A83 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
-		C11FAC9A164C033F00312A83 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
-		C11FAC9B164C033F00312A83 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
-		C11FAC9C164C033F00312A83 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
-		C11FAC9D164C033F00312A83 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		C11FACB2164C066600312A83 /* libBubbleTableView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBubbleTableView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11FACCB164C08BE00312A83 /* LLQQChattingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQChattingViewController.h; sourceTree = "<group>"; };
 		C11FACCC164C08BE00312A83 /* LLQQChattingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQChattingViewController.m; sourceTree = "<group>"; };
+		C11FACFB164C14C800312A83 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
+		C11FACFC164C14C800312A83 /* bubbleMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleMine@2x.png"; sourceTree = "<group>"; };
+		C11FACFD164C14C800312A83 /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
+		C11FACFE164C14C800312A83 /* bubbleSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleSomeone@2x.png"; sourceTree = "<group>"; };
+		C11FACFF164C14C800312A83 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
+		C11FAD00164C14C800312A83 /* missingAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missingAvatar@2x.png"; sourceTree = "<group>"; };
+		C11FAD01164C14C800312A83 /* typingMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = typingMine.png; sourceTree = "<group>"; };
+		C11FAD02164C14C800312A83 /* typingMine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingMine@2x.png"; sourceTree = "<group>"; };
+		C11FAD03164C14C800312A83 /* typingSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = typingSomeone.png; sourceTree = "<group>"; };
+		C11FAD04164C14C800312A83 /* typingSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingSomeone@2x.png"; sourceTree = "<group>"; };
+		C11FAD06164C14C800312A83 /* NSBubbleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSBubbleData.h; sourceTree = "<group>"; };
+		C11FAD07164C14C800312A83 /* NSBubbleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSBubbleData.m; sourceTree = "<group>"; };
+		C11FAD08164C14C800312A83 /* UIBubbleHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleHeaderTableViewCell.h; sourceTree = "<group>"; };
+		C11FAD09164C14C800312A83 /* UIBubbleHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleHeaderTableViewCell.m; sourceTree = "<group>"; };
+		C11FAD0A164C14C800312A83 /* UIBubbleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableView.h; sourceTree = "<group>"; };
+		C11FAD0B164C14C800312A83 /* UIBubbleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableView.m; sourceTree = "<group>"; };
+		C11FAD0C164C14C800312A83 /* UIBubbleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewCell.h; sourceTree = "<group>"; };
+		C11FAD0D164C14C800312A83 /* UIBubbleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTableViewCell.m; sourceTree = "<group>"; };
+		C11FAD0E164C14C800312A83 /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
+		C11FAD0F164C14C800312A83 /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
+		C11FAD10164C14C800312A83 /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
 		C123AA721643842200E03E6A /* LLQQEncription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQEncription.h; sourceTree = "<group>"; };
 		C123AA731643842200E03E6A /* LLQQEncription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQEncription.m; sourceTree = "<group>"; };
 		C123AA751643847F00E03E6A /* LLTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTabBarController.h; sourceTree = "<group>"; };
@@ -2920,43 +2919,43 @@
 		C11FAC86164C033F00312A83 /* UIBubbleTableView */ = {
 			isa = PBXGroup;
 			children = (
-				C11FAC87164C033F00312A83 /* images */,
-				C11FAC92164C033F00312A83 /* src */,
+				C11FACFA164C14C800312A83 /* images */,
+				C11FAD05164C14C800312A83 /* src */,
 			);
 			path = UIBubbleTableView;
 			sourceTree = "<group>";
 		};
-		C11FAC87164C033F00312A83 /* images */ = {
+		C11FACFA164C14C800312A83 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				C11FAC88164C033F00312A83 /* bubbleMine.png */,
-				C11FAC89164C033F00312A83 /* bubbleMine@2x.png */,
-				C11FAC8A164C033F00312A83 /* bubbleSomeone.png */,
-				C11FAC8B164C033F00312A83 /* bubbleSomeone@2x.png */,
-				C11FAC8C164C033F00312A83 /* missingAvatar.png */,
-				C11FAC8D164C033F00312A83 /* missingAvatar@2x.png */,
-				C11FAC8E164C033F00312A83 /* typingMine.png */,
-				C11FAC8F164C033F00312A83 /* typingMine@2x.png */,
-				C11FAC90164C033F00312A83 /* typingSomeone.png */,
-				C11FAC91164C033F00312A83 /* typingSomeone@2x.png */,
+				C11FACFB164C14C800312A83 /* bubbleMine.png */,
+				C11FACFC164C14C800312A83 /* bubbleMine@2x.png */,
+				C11FACFD164C14C800312A83 /* bubbleSomeone.png */,
+				C11FACFE164C14C800312A83 /* bubbleSomeone@2x.png */,
+				C11FACFF164C14C800312A83 /* missingAvatar.png */,
+				C11FAD00164C14C800312A83 /* missingAvatar@2x.png */,
+				C11FAD01164C14C800312A83 /* typingMine.png */,
+				C11FAD02164C14C800312A83 /* typingMine@2x.png */,
+				C11FAD03164C14C800312A83 /* typingSomeone.png */,
+				C11FAD04164C14C800312A83 /* typingSomeone@2x.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
 		};
-		C11FAC92164C033F00312A83 /* src */ = {
+		C11FAD05164C14C800312A83 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				C11FAC93164C033F00312A83 /* NSBubbleData.h */,
-				C11FAC94164C033F00312A83 /* NSBubbleData.m */,
-				C11FAC95164C033F00312A83 /* UIBubbleHeaderTableViewCell.h */,
-				C11FAC96164C033F00312A83 /* UIBubbleHeaderTableViewCell.m */,
-				C11FAC97164C033F00312A83 /* UIBubbleTableView.h */,
-				C11FAC98164C033F00312A83 /* UIBubbleTableView.m */,
-				C11FAC99164C033F00312A83 /* UIBubbleTableViewCell.h */,
-				C11FAC9A164C033F00312A83 /* UIBubbleTableViewCell.m */,
-				C11FAC9B164C033F00312A83 /* UIBubbleTableViewDataSource.h */,
-				C11FAC9C164C033F00312A83 /* UIBubbleTypingTableViewCell.h */,
-				C11FAC9D164C033F00312A83 /* UIBubbleTypingTableViewCell.m */,
+				C11FAD06164C14C800312A83 /* NSBubbleData.h */,
+				C11FAD07164C14C800312A83 /* NSBubbleData.m */,
+				C11FAD08164C14C800312A83 /* UIBubbleHeaderTableViewCell.h */,
+				C11FAD09164C14C800312A83 /* UIBubbleHeaderTableViewCell.m */,
+				C11FAD0A164C14C800312A83 /* UIBubbleTableView.h */,
+				C11FAD0B164C14C800312A83 /* UIBubbleTableView.m */,
+				C11FAD0C164C14C800312A83 /* UIBubbleTableViewCell.h */,
+				C11FAD0D164C14C800312A83 /* UIBubbleTableViewCell.m */,
+				C11FAD0E164C14C800312A83 /* UIBubbleTableViewDataSource.h */,
+				C11FAD0F164C14C800312A83 /* UIBubbleTypingTableViewCell.h */,
+				C11FAD10164C14C800312A83 /* UIBubbleTypingTableViewCell.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -5721,16 +5720,16 @@
 				C1A909AB1646978D001D5720 /* conversations40x40@2x.png in Resources */,
 				C1A909AC1646978D001D5720 /* Discuss40X40.png in Resources */,
 				C1A909AD1646978D001D5720 /* Discuss40X40@2x.png in Resources */,
-				C11FAC9E164C033F00312A83 /* bubbleMine.png in Resources */,
-				C11FAC9F164C033F00312A83 /* bubbleMine@2x.png in Resources */,
-				C11FACA0164C033F00312A83 /* bubbleSomeone.png in Resources */,
-				C11FACA1164C033F00312A83 /* bubbleSomeone@2x.png in Resources */,
-				C11FACA2164C033F00312A83 /* missingAvatar.png in Resources */,
-				C11FACA3164C033F00312A83 /* missingAvatar@2x.png in Resources */,
-				C11FACA4164C033F00312A83 /* typingMine.png in Resources */,
-				C11FACA5164C033F00312A83 /* typingMine@2x.png in Resources */,
-				C11FACA6164C033F00312A83 /* typingSomeone.png in Resources */,
-				C11FACA7164C033F00312A83 /* typingSomeone@2x.png in Resources */,
+				C11FAD11164C14C800312A83 /* bubbleMine.png in Resources */,
+				C11FAD12164C14C800312A83 /* bubbleMine@2x.png in Resources */,
+				C11FAD13164C14C800312A83 /* bubbleSomeone.png in Resources */,
+				C11FAD14164C14C800312A83 /* bubbleSomeone@2x.png in Resources */,
+				C11FAD15164C14C800312A83 /* missingAvatar.png in Resources */,
+				C11FAD16164C14C800312A83 /* missingAvatar@2x.png in Resources */,
+				C11FAD17164C14C800312A83 /* typingMine.png in Resources */,
+				C11FAD18164C14C800312A83 /* typingMine@2x.png in Resources */,
+				C11FAD19164C14C800312A83 /* typingSomeone.png in Resources */,
+				C11FAD1A164C14C800312A83 /* typingSomeone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5892,11 +5891,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C11FACBE164C068D00312A83 /* NSBubbleData.m in Sources */,
-				C11FACC0164C068D00312A83 /* UIBubbleHeaderTableViewCell.m in Sources */,
-				C11FACC2164C068D00312A83 /* UIBubbleTableView.m in Sources */,
-				C11FACC4164C068D00312A83 /* UIBubbleTableViewCell.m in Sources */,
-				C11FACC7164C068D00312A83 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5904,7 +5898,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C156C98816478D5000C0ECD4 /* RegexKitLite.m in Sources */,
 				C1A2FEE71638CE550003905B /* main.m in Sources */,
 				C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */,
 				C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */,
@@ -5920,6 +5913,11 @@
 				C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */,
 				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
+				C11FAD1B164C14C800312A83 /* NSBubbleData.m in Sources */,
+				C11FAD1C164C14C800312A83 /* UIBubbleHeaderTableViewCell.m in Sources */,
+				C11FAD1D164C14C800312A83 /* UIBubbleTableView.m in Sources */,
+				C11FAD1E164C14C800312A83 /* UIBubbleTableViewCell.m in Sources */,
+				C11FAD1F164C14C800312A83 /* UIBubbleTypingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
