@@ -47,6 +47,15 @@
         _currentSelectedInnerMenuButtonTag = kLLBomtomCompassMenuNULL;
         _isInAnimation = NO;
         [self initView];
+        
+        /* hide the menu first */
+        _isMenuShow = NO;
+        if (_isMenuShow) {
+            self.frame = [self getShowFrame];
+        } else {
+            self.frame = [self getHideFrame];
+        }        
+        
     }
     return self;
 }
