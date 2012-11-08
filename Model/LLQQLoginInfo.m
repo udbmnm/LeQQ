@@ -9,7 +9,7 @@
 #import "LLQQLoginInfo.h"
 
 @implementation LLQQLoginInfo
-@synthesize user, password, uin, cip, status, verifyCode, ptwebqq, vfwebqq, clientid, psessionid, verifyCodeKey;
+@synthesize user, password, uin, cip, status, verifyCode, skey, ptwebqq, vfwebqq, clientid, psessionid, verifyCodeKey;
 
 
 -(id)init
@@ -21,6 +21,7 @@
         cip = 0;
         status = nil;
         verifyCodeKey = nil;
+        skey = nil;
         ptwebqq = nil;
         vfwebqq = nil;
         clientid = nil;
@@ -37,6 +38,7 @@
     self.status = nil;
     self.verifyCode = nil;
     self.verifyCodeKey = nil;
+    self.skey = nil;
     self.ptwebqq = nil;
     self.psessionid = nil;
     self.vfwebqq = nil;

@@ -15,6 +15,7 @@
 #import "LLGuetGirlsDownloader.h"
 #import "LLQQLoginController.h"
 #import "LLQQEncription.h"
+#import "LLQQChattingViewController.h"
 
 @implementation AppDelegate
 
@@ -37,31 +38,22 @@
     //[alertView show];
         
     LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
-    UIViewController *con1 = [[UIViewController alloc] init];
-    UIViewController *con2 = [[UIViewController alloc] init];
-    UIViewController *con3 = [[UIViewController alloc] init];
-    UIViewController *con4 = [[UIViewController alloc] init];
-    UIViewController *con5 = [[UIViewController alloc] init];
 
-    [tabbarController addViewController:[[LLQQLoginController alloc] init]
-                               tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"con1"];
-    [con1.view setBackgroundColor:[UIColor whiteColor]];
     
-    [tabbarController addViewController:con2 
-                               tabImage:[UIImage imageNamed:@"Galuca_0002"] title:@"con2"];
-    [con2.view setBackgroundColor:[UIColor blueColor]];
+    [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]
+                               tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"登录"];
 
-    [tabbarController addViewController:con3
+    [tabbarController addViewController:[[[LLQQChattingViewController alloc] init] autorelease] 
+                               tabImage:[UIImage imageNamed:@"Galuca_0002"]  title:@"聊天"];
+
+    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0156"] title:@"con3"];
-    [con3.view setBackgroundColor:[UIColor yellowColor]];
 
-    [tabbarController addViewController:con4 
+    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0004"] title:@"con4"];
-    [con4.view setBackgroundColor:[UIColor redColor]];
 
-    [tabbarController addViewController:con5
+    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0005"] title:@"con5"];
-    [con5.view setBackgroundColor:[UIColor brownColor]];    
     
     [tabbarController setDelegate:self];
     

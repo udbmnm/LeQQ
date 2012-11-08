@@ -18,4 +18,5 @@
     #import <FMDatabase.h>
     #import <SBJson.h>
     #import <DDXML.h>
+    #import <UIBubbleTableView.h> 
 #endif

@@ -36,11 +36,13 @@
         _verifyCode = nil;
         _verifyCodeKey = nil;
         _ptwebqq = nil;
-        _clientid = nil;
+        _clientid = @"73937879";
         _uin = 0;
         _cip = 0;
         _psessionid = nil;
         _vfwebqq = nil;
+        _skey = nil;
+        _cookies = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -56,6 +58,8 @@
     [_clientid release];
     [_psessionid release];
     [_vfwebqq release];
+    [_skey release];
+    [_cookies release];
     [super dealloc];
 }
 
@@ -93,8 +97,12 @@
     NSString *urlString = [[urlPattern stringByReplacingOccurrencesOfString:@"$(account)" withString:_user]
                            stringByReplacingOccurrencesOfString:@"$(now)" withString:now];                                      
     
+    [ASIHTTPRequest setDefaultUserAgentString:@"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Ubuntu/12.04"];
+    [ASIHTTPRequest setSessionCookies:nil];
+    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
     [request setTimeOutSeconds: 2.0];
+    [request useCookiePersistence];
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];
@@ -110,7 +118,9 @@
         NSString *vCode = [response stringByMatching:regexString capture:2L];
         NSString *vCodeKey = [response stringByMatching:regexString capture:3L];
         
+        [_cookies addObjectsFromArray:[request responseCookies]];
             _verifyCodeKey = [vCodeKey retain];
+        
             if ([vCode rangeOfString:@"!"].location == 0) {
                 _verifyCode = [vCode retain];
                 /* not to get the image for verify code, so skip the progress */
@@ -165,6 +175,8 @@
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [request useCookiePersistence];
+    
     [request setFailedBlock:^(void){
         NSError *error = [request error];
         [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:error];
@@ -180,10 +192,17 @@
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:info];
         } else {
             NSArray *cookies = [request responseCookies];
-            DEBUG_LOG_WITH_FORMAT(@"cookies: %@", cookies);
+            [_cookies addObjectsFromArray:cookies];
+            for (NSHTTPCookie *cookie in cookies) {
+                if ([cookie.name isEqualToString:@"skey"]) {
+                    _skey = [cookie.value copy];
+                } else if ([cookie.name isEqualToString:@"ptwebqq"]) {
+                    _ptwebqq = [cookie.value copy];
+                }
+            }
                 
-        /****------ get something from cookies ----------------*/
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];
+            [self stepProgressOneByOne];
         }
     }];
     
@@ -196,13 +215,25 @@
     
     static NSString *urlString = @"http://d.web2.qq.com/channel/login2";
     
-    NSString *content = @"{ \"status\": $(status), \"ptwebqq\": $(ptwebqq), \"passwd_sig\":\"\", \"clientid\":$(clientid)}";
+    NSString *content = @"{\"status\":\"$(status)\",\"ptwebqq\":\"$(ptwebqq)\",\"passwd_sig\":\"\",\"clientid\":\"$(clientid)\",\"psessionid\":null}";
     content = [content stringByReplacingOccurrencesOfString:@"$(status)" withString:_status];
     content = [content stringByReplacingOccurrencesOfString:@"$(ptwebqq)" withString:_ptwebqq];
-    content = [content stringByReplacingOccurrencesOfString:@"$(clientid)" withString:_clientid];    
+    content = [content stringByReplacingOccurrencesOfString:@"$(clientid)" withString:_clientid];  
     
+    NSLog(@"content is %@", content);
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    //NSString *contentEncoded = [content stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //NSString *wholeContent = [@"r=" stringByAppendingString:contentEncoded];
+    //NSMutableData *wholeData = [NSMutableData dataWithData:[wholeContent dataUsingEncoding:NSUTF8StringEncoding]];
     [request setPostValue:content forKey:@"r"];
+    [request setPostValue:_clientid forKey:@"clientid"];
+    [request setPostValue:@"null" forKey:@"psessionid"];
+    
+    [request setShouldAttemptPersistentConnection:YES];    
+    [request addRequestHeader:@"Cache-Control" value:@"no-cache"];
+    [request addRequestHeader:@"Accept" value:@"text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2"];
+    [request setRequestCookies:_cookies];
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];
@@ -210,9 +241,12 @@
     }];
     
     [request setCompletionBlock:^(void) {
+        if (request.responseStatusCode != 200) {
+        }
+             
         NSString *response = [request responseString];
         NSDictionary *dic = [response JSONValue];
-        if (dic && [dic objectForKey:@"retcode"]) {
+        if (dic && [[dic objectForKey:@"retcode"] isEqualToString:@"0"]) {
             NSDictionary *resultDic = [dic objectForKey:@"result"];
             
             long cip = [[resultDic objectForKey:@"cip"] longValue];
@@ -221,9 +255,12 @@
             NSString *psessionid = [resultDic objectForKey:@"psessionid"];
             NSString *vfwebqq = [resultDic objectForKey:@"vfwebqq"];
             
-            [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];            
+            [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];   
+            [self stepProgressOneByOne];
         } else {
-            [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:@"Json format error"];
+            [_delegate LLQQLoginProgressNoti:_currentProgress 
+                               failOrSuccess:NO 
+                                        info:[@"Error code:" stringByAppendingString:[dic objectForKey:@"retcode"]]];
         }        
     }];
     

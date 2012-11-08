@@ -18,7 +18,7 @@
     NSString *status;
     NSString *verifyCode;
     NSString *verifyCodeKey;
-    
+    NSString *skey;
     NSString *ptwebqq;
     NSString *clientid;
     NSString *psessionid;
@@ -33,6 +33,7 @@
 @property (nonatomic, copy) NSString *verifyCode;
 @property (nonatomic, copy) NSString *verifyCodeKey;
 @property (nonatomic, copy) NSString *ptwebqq;
+@property (nonatomic, copy) NSString *skey;;
 @property (nonatomic, copy) NSString *clientid;
 @property (nonatomic, copy) NSString *psessionid;
 @property (nonatomic, copy) NSString *vfwebqq;
