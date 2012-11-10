@@ -806,6 +806,8 @@
 		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C17390F0164E4B5400185583 /* libiToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C17390E3164E4B2500185583 /* libiToast.a */; };
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
+		C17390F2164E4EC600185583 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
+		C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
 		C1A2FEDD1638CE550003905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
@@ -2088,7 +2090,6 @@
 		C123ACD31643983F00E03E6A /* Galuca_0300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Galuca_0300.png; sourceTree = "<group>"; };
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
-		C156C9841647827A00C0ECD4 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -2101,6 +2102,8 @@
 		C17390DA164E4AFD00185583 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		C17390DB164E4AFD00185583 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		C17390E3164E4B2500185583 /* libiToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"; sourceTree = "<group>"; };
+		C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+ASIHTTPRequest_LLHelper.m"; sourceTree = "<group>"; };
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -3642,13 +3645,6 @@
 			path = LLModelObject;
 			sourceTree = "<group>";
 		};
-		C17390D7164E49DA00185583 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
-			sourceTree = SOURCE_ROOT;
-		};
 		C17390D9164E4AFD00185583 /* toast-notifications-ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -3656,6 +3652,16 @@
 				C17390DB164E4AFD00185583 /* iToast.m */,
 			);
 			path = "toast-notifications-ios";
+			sourceTree = "<group>";
+		};
+		C17390F4164E785F00185583 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */,
+				C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */,
+			);
+			name = Helper;
+			path = ../Helper;
 			sourceTree = "<group>";
 		};
 		C19D2883163A27D0009C698E /* Debug */ = {
@@ -3669,7 +3675,6 @@
 		C1A2FECB1638CE550003905B = {
 			isa = PBXGroup;
 			children = (
-				C156C9841647827A00C0ECD4 /* libicucore.A.dylib */,
 				C1A2FEE01638CE550003905B /* LeQQ */,
 				C1A2FED91638CE550003905B /* Frameworks */,
 				C1A2FED71638CE550003905B /* Products */,
@@ -3719,7 +3724,7 @@
 				C1C4A9771641587B00CFF0DC /* Networking */,
 				C1630E04164259C400345BE7 /* Storage */,
 				C1C4A98716418CFD00CFF0DC /* Libs */,
-				C17390D7164E49DA00185583 /* Helper */,
+				C17390F4164E785F00185583 /* Helper */,
 				C1C4A97B164159F600CFF0DC /* Resource */,
 				C1C4A9791641599C00CFF0DC /* Model */,
 				C1A32F9C16491C7A00B23798 /* View */,
@@ -5978,6 +5983,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17390F2164E4EC600185583 /* RegexKitLite.m in Sources */,
 				C1A2FEE71638CE550003905B /* main.m in Sources */,
 				C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */,
 				C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */,
@@ -5993,6 +5999,7 @@
 				C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */,
 				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
+				C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

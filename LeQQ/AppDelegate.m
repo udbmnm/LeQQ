@@ -16,6 +16,7 @@
 #import "LLQQLoginController.h"
 #import "LLQQEncription.h"
 #import "LLQQChattingViewController.h"
+#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
 
 @implementation AppDelegate
 
@@ -63,6 +64,9 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     [self.window setRootViewController:tabbarController];
     self.window.hidden = NO;
+    
+    /* setup ASI */
+    [ASIHTTPRequest setDefaults];    
     
     return NO;
 }

@@ -10,6 +10,7 @@
 #import "LLDebug.h"
 #import "LLQQEncription.h"
 #import "LLQQLoginInfo.h"
+#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
 
 
 @implementation LLQQLogin
@@ -42,7 +43,7 @@
         _psessionid = nil;
         _vfwebqq = nil;
         _skey = nil;
-        _cookies = [[NSMutableArray alloc] init];
+        _cookies = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -87,6 +88,13 @@
     }
 }
 
+- (void)updateCookies:(NSArray *)cookies
+{
+    for (NSHTTPCookie* cookie in cookies) {
+        [_cookies setObject:cookie forKey:[cookie name]];
+    }
+}
+
 - (void)checkTheVerifyCode
 {
     _currentProgress = LLQQLOGIN_PROGRESS_CHECK_VERIFY_CODE;
@@ -97,12 +105,8 @@
     NSString *urlString = [[urlPattern stringByReplacingOccurrencesOfString:@"$(account)" withString:_user]
                            stringByReplacingOccurrencesOfString:@"$(now)" withString:now];                                      
     
-    [ASIHTTPRequest setDefaultUserAgentString:@"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19 (KHTML, like Gecko) Ubuntu/12.04"];
-    [ASIHTTPRequest setSessionCookies:nil];
-    
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request setTimeOutSeconds: 2.0];
-    [request useCookiePersistence];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    [request setUseCookiePersistence:NO];
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];
@@ -113,12 +117,12 @@
         [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];  
         
         NSString *response = [[request responseString] retain];
-        DEBUG_LOG_WITH_FORMAT(@"---->\n%@", response);
         NSString *regexString = @"ptui_checkVC\\('(\\d+)','(.+)','(.+)'\\)";
         NSString *vCode = [response stringByMatching:regexString capture:2L];
         NSString *vCodeKey = [response stringByMatching:regexString capture:3L];
         
-        [_cookies addObjectsFromArray:[request responseCookies]];
+        [self updateCookies: [request responseCookies]];
+
             _verifyCodeKey = [vCodeKey retain];
         
             if ([vCode rangeOfString:@"!"].location == 0) {
@@ -133,6 +137,7 @@
     [request startAsynchronous];
 }
 
+
 - (void)getTheVerifyCodeImage
 {
     _currentProgress = LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE;
@@ -141,13 +146,17 @@
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(now)" withString:[self randomFloatValue]];
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
     
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    [request setUseCookiePersistence:NO];
+    [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
+    
     [request setFailedBlock:^(void){
         NSError *error = [request error];
         [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:error];
     }];
     
     [request setCompletionBlock:^(void) {
+        [self updateCookies:[request responseCookies]];
         UIImage *image = [UIImage imageWithData:[request responseData]];        
         /* 
          * pass the image to the receiver,the user has the responsibility to pass the verify code back 
@@ -174,9 +183,10 @@
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(VCode)"    withString:[_verifyCode uppercaseString]];
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
     
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [request useCookiePersistence];
-    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    [request setUseCookiePersistence:NO];
+    [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
+
     [request setFailedBlock:^(void){
         NSError *error = [request error];
         [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:error];
@@ -191,9 +201,9 @@
         if (NO == [retcode isEqualToString:@"0"]) {
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:info];
         } else {
-            NSArray *cookies = [request responseCookies];
-            [_cookies addObjectsFromArray:cookies];
-            for (NSHTTPCookie *cookie in cookies) {
+            [self updateCookies:[request responseCookies]];
+
+            for (NSHTTPCookie *cookie in [request responseCookies]) {
                 if ([cookie.name isEqualToString:@"skey"]) {
                     _skey = [cookie.value copy];
                 } else if ([cookie.name isEqualToString:@"ptwebqq"]) {
@@ -221,19 +231,15 @@
     content = [content stringByReplacingOccurrencesOfString:@"$(clientid)" withString:_clientid];  
     
     NSLog(@"content is %@", content);
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:urlString]];
-    
-    //NSString *contentEncoded = [content stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //NSString *wholeContent = [@"r=" stringByAppendingString:contentEncoded];
-    //NSMutableData *wholeData = [NSMutableData dataWithData:[wholeContent dataUsingEncoding:NSUTF8StringEncoding]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request setUseCookiePersistence:NO];
+    [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
     [request setPostValue:content forKey:@"r"];
     [request setPostValue:_clientid forKey:@"clientid"];
     [request setPostValue:@"null" forKey:@"psessionid"];
     
-    [request setShouldAttemptPersistentConnection:YES];    
-    [request addRequestHeader:@"Cache-Control" value:@"no-cache"];
-    [request addRequestHeader:@"Accept" value:@"text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2"];
-    [request setRequestCookies:_cookies];
+    //[request setShouldAttemptPersistentConnection:YES];    
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/proxy.html?v=20110331002&callback=1&id=3"];
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];

@@ -48,7 +48,7 @@ typedef enum
 
 @interface LLQQLogin : NSObject
 {
-    NSMutableArray *_cookies;  /*save the all cookies of type NSHTTPCookie */
+    NSMutableDictionary *_cookies;  /*save the all cookies of type NSHTTPCookie */
     long _uin;
     long _cip;
     NSString *_user;
