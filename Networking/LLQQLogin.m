@@ -106,7 +106,7 @@
                            stringByReplacingOccurrencesOfString:@"$(now)" withString:now];                                      
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    [request setUseCookiePersistence:NO];
+    //[request setUseCookiePersistence:NO];
     
     [request setFailedBlock:^(void) {
         NSError *error = [request error];
@@ -121,7 +121,7 @@
         NSString *vCode = [response stringByMatching:regexString capture:2L];
         NSString *vCodeKey = [response stringByMatching:regexString capture:3L];
         
-        [self updateCookies: [request responseCookies]];
+        //[self updateCookies: [request responseCookies]];
 
             _verifyCodeKey = [vCodeKey retain];
         
@@ -147,7 +147,7 @@
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    [request setUseCookiePersistence:NO];
+    //[request setUseCookiePersistence:NO];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
     
     [request setFailedBlock:^(void){
@@ -156,7 +156,7 @@
     }];
     
     [request setCompletionBlock:^(void) {
-        [self updateCookies:[request responseCookies]];
+        //[self updateCookies:[request responseCookies]];
         UIImage *image = [UIImage imageWithData:[request responseData]];        
         /* 
          * pass the image to the receiver,the user has the responsibility to pass the verify code back 
@@ -184,7 +184,7 @@
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    [request setUseCookiePersistence:NO];
+    //[request setUseCookiePersistence:NO];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
 
     [request setFailedBlock:^(void){
@@ -201,7 +201,7 @@
         if (NO == [retcode isEqualToString:@"0"]) {
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:NO info:info];
         } else {
-            [self updateCookies:[request responseCookies]];
+            //[self updateCookies:[request responseCookies]];
 
             for (NSHTTPCookie *cookie in [request responseCookies]) {
                 if ([cookie.name isEqualToString:@"skey"]) {
@@ -232,7 +232,7 @@
     
     NSLog(@"content is %@", content);
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
-    [request setUseCookiePersistence:NO];
+    //[request setUseCookiePersistence:NO];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
     [request setPostValue:content forKey:@"r"];
     [request setPostValue:_clientid forKey:@"clientid"];
