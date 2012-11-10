@@ -153,7 +153,7 @@
  */
 - (void)loginErrorWithMsg:(NSString *)errMsg
 {
-    
+    [[[[iToast makeText:errMsg] setGravity:iToastGravityTop] setDuration:iToastDurationShort] show];
 }
 
 /* 

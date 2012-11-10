@@ -803,6 +803,9 @@
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
 		C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */; };
 		C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5D164AA62600C6E48F /* LLModelObject.m */; };
+		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
+		C17390F0164E4B5400185583 /* libiToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C17390E3164E4B2500185583 /* libiToast.a */; };
+		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
 		C1A2FEDD1638CE550003905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
@@ -1258,6 +1261,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C11FACB1164C066600312A83;
 			remoteInfo = BubbleTableView;
+		};
+		C17390EE164E4B4E00185583 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C17390E2164E4B2500185583;
+			remoteInfo = iToast;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -2088,6 +2098,9 @@
 		C1646E5C164AA62600C6E48F /* LLModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLModelObject.h; sourceTree = "<group>"; };
 		C1646E5D164AA62600C6E48F /* LLModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLModelObject.m; sourceTree = "<group>"; };
 		C1646E60164AA6BC00C6E48F /* LLObjectConversionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLObjectConversionProtocol.h; sourceTree = "<group>"; };
+		C17390DA164E4AFD00185583 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		C17390DB164E4AFD00185583 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
+		C17390E3164E4B2500185583 /* libiToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -2662,10 +2675,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C17390E0164E4B2500185583 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A2FED31638CE550003905B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17390F0164E4B5400185583 /* libiToast.a in Frameworks */,
 				C11FACCA164C078E00312A83 /* libBubbleTableView.a in Frameworks */,
 				C11D62D81646651D003BF26B /* libKissXML.a in Frameworks */,
 				C11D62AB16465F44003BF26B /* libjson-framwork.a in Frameworks */,
@@ -3620,6 +3642,22 @@
 			path = LLModelObject;
 			sourceTree = "<group>";
 		};
+		C17390D7164E49DA00185583 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = SOURCE_ROOT;
+		};
+		C17390D9164E4AFD00185583 /* toast-notifications-ios */ = {
+			isa = PBXGroup;
+			children = (
+				C17390DA164E4AFD00185583 /* iToast.h */,
+				C17390DB164E4AFD00185583 /* iToast.m */,
+			);
+			path = "toast-notifications-ios";
+			sourceTree = "<group>";
+		};
 		C19D2883163A27D0009C698E /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -3650,6 +3688,7 @@
 				C11D628516465E77003BF26B /* libjson-framwork.a */,
 				C11D62BF164662D1003BF26B /* libKissXML.a */,
 				C11FACB2164C066600312A83 /* libBubbleTableView.a */,
+				C17390E3164E4B2500185583 /* libiToast.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3680,6 +3719,7 @@
 				C1C4A9771641587B00CFF0DC /* Networking */,
 				C1630E04164259C400345BE7 /* Storage */,
 				C1C4A98716418CFD00CFF0DC /* Libs */,
+				C17390D7164E49DA00185583 /* Helper */,
 				C1C4A97B164159F600CFF0DC /* Resource */,
 				C1C4A9791641599C00CFF0DC /* Model */,
 				C1A32F9C16491C7A00B23798 /* View */,
@@ -4169,6 +4209,7 @@
 		C1C4A98716418CFD00CFF0DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C17390D9164E4AFD00185583 /* toast-notifications-ios */,
 				C11FAC86164C033F00312A83 /* UIBubbleTableView */,
 				C11D621C1646590B003BF26B /* RegexKitLite-4.0 */,
 				C11D60B9164650A9003BF26B /* quickdialog */,
@@ -4483,6 +4524,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C17390E1164E4B2500185583 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -4622,6 +4670,23 @@
 			productReference = C11FACB2164C066600312A83 /* libBubbleTableView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		C17390E2164E4B2500185583 /* iToast */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C17390EB164E4B2500185583 /* Build configuration list for PBXNativeTarget "iToast" */;
+			buildPhases = (
+				C17390DF164E4B2500185583 /* Sources */,
+				C17390E0164E4B2500185583 /* Frameworks */,
+				C17390E1164E4B2500185583 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iToast;
+			productName = iToast;
+			productReference = C17390E3164E4B2500185583 /* libiToast.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		C1A2FED51638CE550003905B /* LeQQ */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C1A2FEEE1638CE550003905B /* Build configuration list for PBXNativeTarget "LeQQ" */;
@@ -4633,6 +4698,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C17390EF164E4B4E00185583 /* PBXTargetDependency */,
 				C11FACC9164C078100312A83 /* PBXTargetDependency */,
 				C11D62D716466517003BF26B /* PBXTargetDependency */,
 				C11D62AA16465F3D003BF26B /* PBXTargetDependency */,
@@ -4679,6 +4745,7 @@
 				C11D628416465E77003BF26B /* json-framwork */,
 				C11D62BE164662D1003BF26B /* KissXML */,
 				C11FACB1164C066600312A83 /* BubbleTableView */,
+				C17390E2164E4B2500185583 /* iToast */,
 			);
 		};
 /* End PBXProject section */
@@ -5899,6 +5966,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C17390DF164E4B2500185583 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C17390F1164E4BE900185583 /* iToast.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C1A2FED21638CE550003905B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5963,6 +6038,11 @@
 			isa = PBXTargetDependency;
 			target = C11FACB1164C066600312A83 /* BubbleTableView */;
 			targetProxy = C11FACC8164C078100312A83 /* PBXContainerItemProxy */;
+		};
+		C17390EF164E4B4E00185583 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C17390E2164E4B2500185583 /* iToast */;
+			targetProxy = C17390EE164E4B4E00185583 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -6193,6 +6273,30 @@
 			};
 			name = Release;
 		};
+		C17390EC164E4B2500185583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iToast.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C17390ED164E4B2500185583 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iToast.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C1A2FEEC1638CE550003905B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6251,6 +6355,7 @@
 					"Libs/json-framework/Classes/**",
 					"Libs/KissXML/KissXML/**",
 					"Libs/UIBubbleTableView/src/**",
+					"Libs/toast-notifications-ios/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
@@ -6275,6 +6380,7 @@
 					"Libs/json-framework/Classes/**",
 					"Libs/KissXML/KissXML/**",
 					"Libs/UIBubbleTableView/src/**",
+					"Libs/toast-notifications-ios/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
@@ -6358,6 +6464,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C17390EB164E4B2500185583 /* Build configuration list for PBXNativeTarget "iToast" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C17390EC164E4B2500185583 /* Debug */,
+				C17390ED164E4B2500185583 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		C1A2FED01638CE550003905B /* Build configuration list for PBXProject "LeQQ" */ = {
 			isa = XCConfigurationList;

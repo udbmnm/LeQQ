@@ -44,6 +44,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>iToast.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>json-framwork.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -93,6 +98,11 @@
 			<true/>
 		</dict>
 		<key>C11FACB1164C066600312A83</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C17390E2164E4B2500185583</key>
 		<dict>
 			<key>primary</key>
 			<true/>

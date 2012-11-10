@@ -18,5 +18,6 @@
     #import <FMDatabase.h>
     #import <SBJson.h>
     #import <DDXML.h>
-    #import <UIBubbleTableView.h> 
+    #import <UIBubbleTableView.h>   
+    #import <iToast.h>
 #endif
