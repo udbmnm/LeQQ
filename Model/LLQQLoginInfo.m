@@ -9,7 +9,7 @@
 #import "LLQQLoginInfo.h"
 
 @implementation LLQQLoginInfo
-@synthesize user, password, uin, cip, status, verifyCode, skey, ptwebqq, vfwebqq, clientid, psessionid, verifyCodeKey;
+@synthesize user, password, uin, cip, index, port, status, verifyCode, skey, ptwebqq, vfwebqq, clientid, psessionid, verifyCodeKey;
 
 
 -(id)init

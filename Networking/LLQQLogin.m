@@ -40,6 +40,8 @@
         _clientid = @"73937879";
         _uin = 0;
         _cip = 0;
+        _index = 0;
+        _port = 0;
         _psessionid = nil;
         _vfwebqq = nil;
         _skey = nil;
@@ -83,6 +85,8 @@
             break;
         case LLQQLOGIN_PROGRESS_LOGIN:
             [self setStatus];
+        case LLQQLOGIN_PROGRESS_SET_STATUS:
+            [self getLoginInfomation];
         default:
             break;
     }
@@ -252,15 +256,17 @@
              
         NSString *response = [request responseString];
         NSDictionary *dic = [response JSONValue];
-        if (dic && [[dic objectForKey:@"retcode"] isEqualToString:@"0"]) {
+        if (dic && [[dic objectForKey:@"retcode"] longValue] == 0) {
             NSDictionary *resultDic = [dic objectForKey:@"result"];
             
-            long cip = [[resultDic objectForKey:@"cip"] longValue];
-            NSString *status = [resultDic objectForKey:@"status"];
-            long uin = [[resultDic objectForKey:@"uin"] longValue];
-            NSString *psessionid = [resultDic objectForKey:@"psessionid"];
-            NSString *vfwebqq = [resultDic objectForKey:@"vfwebqq"];
-            
+            _cip = [[resultDic objectForKey:@"cip"] longValue];
+            _status = [[resultDic objectForKey:@"status"] retain];
+            _uin = [[resultDic objectForKey:@"uin"] longValue];
+            _psessionid = [[resultDic objectForKey:@"psessionid"] retain];
+            _vfwebqq = [[resultDic objectForKey:@"vfwebqq"] retain];
+            _port = [[resultDic objectForKey:@"port"] longValue];
+            _index = [[resultDic objectForKey:@"index"] longValue];
+                         
             [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];   
             [self stepProgressOneByOne];
         } else {
@@ -273,7 +279,7 @@
     [request startAsynchronous];
 }
 
-- (void)getPassportDic
+- (void)getLoginInfomation
 {
     _currentProgress = LLQQLOGIN_PROGRESS_COMPLETED;
     
@@ -281,6 +287,8 @@
     info.uin = _uin;
     info.cip = _cip;
     info.user = _user;
+    info.port = _port;
+    info.index = _index;
     info.password = _password;
     info.status = _status;
     info.verifyCode = _verifyCode;

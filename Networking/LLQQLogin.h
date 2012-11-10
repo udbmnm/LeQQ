@@ -51,6 +51,8 @@ typedef enum
     NSMutableDictionary *_cookies;  /*save the all cookies of type NSHTTPCookie */
     long _uin;
     long _cip;
+    long _index;
+    long _port;
     NSString *_user;
     NSString *_password;
     NSString *_status;

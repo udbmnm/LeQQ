@@ -13,6 +13,8 @@
 {
     long uin;
     long cip; 
+    long index;
+    long port;
     NSString *user;
     NSString *password;
     NSString *status;
@@ -27,6 +29,8 @@
 
 @property (nonatomic, assign) long uin;
 @property (nonatomic, assign) long cip;
+@property (nonatomic, assign) long index;
+@property (nonatomic, assign) long port;
 @property (nonatomic, copy) NSString *user;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *status;

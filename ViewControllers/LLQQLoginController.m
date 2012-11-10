@@ -88,7 +88,7 @@
     
     /* user name or password format error, pop up a msg and go back */
     if ([self checkUserNameAndPasswordFormat] == NO) {
-        [self loginErrorWithMsg:@"用户或密码格式不正确"];
+        [self toastMsgNotify:@"用户或密码格式不正确"];
         return;
     }
     
@@ -100,8 +100,8 @@
     [_hub setLabelText:@"正在登录..."];
     [_hub show:YES];
     
-    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"  //_userName 
-                                             password:@"4171739690" //_password 
+    _qqLoginSession = [[LLQQLogin alloc] initWithUser:_userName 
+                                             password:_password 
                                                status:LLQQLOGIN_STATUS_ONLINE 
                                              delegate:self];
     [_qqLoginSession startAsynchronous];
@@ -109,6 +109,10 @@
 
 - (BOOL)checkUserNameAndPasswordFormat
 {
+    if (_userName.length < 4 || _password.length < 1) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -118,7 +122,7 @@
         /* hide and remove the loading indicator hub */
         [_hub hide:YES];
         [_hub removeFromSuperViewOnHide];
-        [self loginErrorWithMsg:[info isKindOfClass:[NSError class]] ? [NSString stringWithFormat:@"%@", info] : (NSString *)info];
+        [self toastMsgNotify:[info isKindOfClass:[NSError class]] ? [NSString stringWithFormat:@"%@", info] : (NSString *)info];
         return;
     }
     
@@ -140,6 +144,9 @@
             _info = [(LLQQLoginInfo *)info retain];
             [LLNotificationCenter post:kNotificationTypeLoginSuccess 
                                   info:[NSDictionary dictionaryWithObject:_info forKey:@"loginInfo"]];
+            _hub.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
+            _hub.mode = MBProgressHUDModeCustomView;
+            _hub.labelText = @"Completed";
             break;
         default:
             break;
@@ -151,7 +158,7 @@
  * login fail, show user the error infomation and 
  * remove the loading indicator view.
  */
-- (void)loginErrorWithMsg:(NSString *)errMsg
+- (void)toastMsgNotify:(NSString *)errMsg
 {
     [[[[iToast makeText:errMsg] setGravity:iToastGravityTop] setDuration:iToastDurationShort] show];
 }
@@ -179,7 +186,6 @@
             [_hub show:YES];
             [_qqLoginSession restartWithVerifyCode:[(LLAuthenticodeAlertInputView*)alertView getVerifyCode]];
         }
-    }
-    
+    }    
 }
 @end
