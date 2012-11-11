@@ -9,12 +9,13 @@
 #import "LLQQUserDetail.h"
 
 @implementation LLQQUserDetail
-@synthesize allow, nickname, categoryIndex, city, stat, blood, email, phone, animal, gender, mobile, college,
+@synthesize uin, allow, nickname, categoryIndex, city, stat, blood, email, phone, animal, gender, mobile, college,
 country, birthDay, homepage, personal,province,reg_time,vip_info,clientType,occupation,constellation;
 
 - (id)init
 {
     if (self = [super init]) {
+        uin = 0;
         birthDay = nil;
         occupation = nil;
         phone = nil;

@@ -9,7 +9,7 @@
 #import "LLQQLogin.h"
 #import "LLDebug.h"
 #import "LLQQEncription.h"
-#import "LLQQLoginInfo.h"
+#import "LLQQMoonBox.h"
 #import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
 
 
@@ -285,22 +285,22 @@
 {
     _currentProgress = LLQQLOGIN_PROGRESS_COMPLETED;
     
-    LLQQLoginInfo *info = [[LLQQLoginInfo alloc] init];
-    info.uin = _uin;
-    info.cip = _cip;
-    info.user = _user;
-    info.port = _port;
-    info.index = _index;
-    info.password = _password;
-    info.status = _status;
-    info.verifyCode = _verifyCode;
-    info.verifyCodeKey = _verifyCodeKey;
-    info.ptwebqq = _ptwebqq;
-    info.clientid = _clientid;
-    info.psessionid = _psessionid;
-    info.vfwebqq = _vfwebqq;
+    LLQQMoonBox *box = [[LLQQMoonBox alloc] init];
+    box.uin = _uin;
+    box.cip = _cip;
+    box.user = _user;
+    box.port = _port;
+    box.index = _index;
+    box.password = _password;
+    box.status = _status;
+    box.verifyCode = _verifyCode;
+    box.verifyCodeKey = _verifyCodeKey;
+    box.ptwebqq = _ptwebqq;
+    box.clientid = _clientid;
+    box.psessionid = _psessionid;
+    box.vfwebqq = _vfwebqq;
     
-    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[info autorelease]];
+    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[box autorelease]];
         
 }
 

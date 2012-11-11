@@ -10,8 +10,6 @@
 
 #define LLQQLOGIN_STATUS_ONLINE @"online"
 
-
-
 typedef enum 
 {
     LLQQLOGIN_PROGRESS_NOT_START = 0,

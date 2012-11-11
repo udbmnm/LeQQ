@@ -8,7 +8,7 @@
 
 #import "QuickDialogController.h"
 #import "LLQQLogin.h"
-#import "LLQQLoginInfo.h"
+#import "LLQQMoonBox.h"
 #import "LLQQLogout.h"
 
 
@@ -21,7 +21,7 @@
     LLQQLogin *_qqLoginSession;
     LLQQLogout *_qqLogoutSession;
     
-    LLQQLoginInfo *_info;
+    LLQQMoonBox *_box;
     BOOL _isLogin;
 }
 

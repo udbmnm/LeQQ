@@ -45,11 +45,12 @@
     [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"登录"];
 
-    [tabbarController addViewController:[[[LLQQChattingViewController alloc] init] autorelease] 
-                               tabImage:[UIImage imageNamed:@"Galuca_0002"]  title:@"聊天"];
 
     [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0156"] title:@"con3"];
+    
+    [tabbarController addViewController:[[[LLQQChattingViewController alloc] init] autorelease] 
+                               tabImage:[UIImage imageNamed:@"Galuca_0002"]  title:@"聊天"];
 
     [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0004"] title:@"con4"];

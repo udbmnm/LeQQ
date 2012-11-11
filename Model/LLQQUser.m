@@ -9,27 +9,32 @@
 #import "LLQQUser.h"
 
 @implementation LLQQUser
-@synthesize qqNum, categoryIndex, nickname, signature, userDetail;
+@synthesize uin, qqNum, categoryIndex, nickname, signature, qqLevel, nextLeveRemainDays, userDetail, status, faceImg;
 
 -(id)init
 {
     if (self = [super init]) {
+        uin = 0;
         qqNum = 0;
         categoryIndex = -1;
-        nickname = nil;
+        status = nil;
+        faceImg = nil;        
         signature = nil;
-        userDetail = nil;
-        
+        nickname = nil;
+        qqLevel = -1;
+        nextLeveRemainDays = -1;        
+        userDetail = nil;        
     }
     return self;
 }
 
 -(void)dealloc
 {
+    self.status = nil;
+    self.faceImg = nil;
     self.nickname = nil;
     self.signature = nil;
     self.userDetail = nil;
     [super dealloc];
 }
-
 @end

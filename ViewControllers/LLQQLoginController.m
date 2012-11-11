@@ -86,7 +86,7 @@
         _qqLoginSession = nil;
         _qqLogoutSession = nil;
         _isLogin = NO;
-        _info = nil;
+        _box = nil;
     }
     return self;    
 }
@@ -99,7 +99,7 @@
     [_hub release];
     [_qqLoginSession release];
     [_qqLogoutSession release];
-    [_info release];
+    [_box release];
     [super dealloc];
 }
 
@@ -145,8 +145,8 @@
         _qqLogoutSession = nil;
     }
     
-    _qqLogoutSession = [[LLQQLogout alloc] initWithClientID:_info.clientid
-                                                 psessionid:_info.psessionid
+    _qqLogoutSession = [[LLQQLogout alloc] initWithClientID:_box.clientid
+                                                 psessionid:_box.psessionid
                                                    delegate:self];
     [_qqLogoutSession startAsynchronous];
     
@@ -198,9 +198,9 @@
         case LLQQLOGIN_PROGRESS_SET_STATUS:            
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:  
-            _info = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.
+            _box = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.
             [LLNotificationCenter post:kNotificationTypeLoginSuccess 
-                                  info:[NSDictionary dictionaryWithObject:info forKey:@"loginInfo"]];
+                                  info:[NSDictionary dictionaryWithObject:info forKey:@"MoonBox"]];
             
             _hub.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
             _hub.mode = MBProgressHUDModeCustomView;
