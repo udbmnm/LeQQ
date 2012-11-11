@@ -9,10 +9,13 @@
 #import "LLQQLoginController.h"
 #import "LLAuthenticodeAlertInputView.h"
 #import "LLNotificationCenter.h"
+#import "LLQQLogout.h"
+#import "LLDebug.h"
 
 #define KEY_USERNAME @"userName"
 #define KEY_PASSWORD @"password"
 #define KEY_VERIFYCODE @"verifyCode"
+
 
 @interface LLQQLoginController ()
 
@@ -29,11 +32,14 @@
     QSection *inputSection = [[QSection alloc] initWithTitle:@"登录"];
     
     QEntryElement *userNameTextElement = [[QEntryElement alloc] initWithTitle:@"QQ号"
-                                                                        Value:nil Placeholder:@"input you QQ number"];
+                                                                        Value:nil 
+                                                                  Placeholder:@"input you QQ number"];
     userNameTextElement.key = KEY_USERNAME;
     userNameTextElement.keyboardType = UIKeyboardTypeNumberPad;
     
-    QEntryElement *passwordElement = [[QEntryElement alloc] initWithTitle:@"密码" Value:nil Placeholder:@"password"];
+    QEntryElement *passwordElement = [[QEntryElement alloc] initWithTitle:@"密码"
+                                                                    Value:nil 
+                                                              Placeholder:@"password"];
     passwordElement.key = KEY_PASSWORD;
     passwordElement.secureTextEntry = YES;
 
@@ -42,18 +48,32 @@
     [userNameTextElement release];
     [passwordElement release];
     
+#ifdef DEBUG_AUTOINPUT_USER_PASSWORD
+    userNameTextElement.textValue = @"425982977";
+    passwordElement.textValue = @"4171739690";    
+#endif
+    
     QSection *loginBtnSection = [[QSection alloc] init];    
     
     QButtonElement *loginBtnElement = [[QButtonElement alloc] initWithTitle:@"登录"];
     loginBtnElement.key = @"loginKey";
     loginBtnElement.controllerAction = @"loginButtonClicked:";    
     [loginBtnSection addElement:loginBtnElement];
-    [loginBtnElement release];
+    [loginBtnElement release];    
+    
+    QSection *logoutBtnSection = [[QSection alloc] init];    
+    QButtonElement *logoutBtnElement = [[QButtonElement alloc] initWithTitle:@"注销"];
+    logoutBtnElement.key = @"logoutKey";
+    logoutBtnElement.controllerAction = @"logoutButtonClicked:";
+    [logoutBtnSection addElement:logoutBtnElement];
+    [logoutBtnElement release];
     
     [root addSection:inputSection];
     [root addSection:loginBtnSection];
+    [root addSection:logoutBtnSection];
     [inputSection release];
     [loginBtnSection release];
+    [logoutBtnSection release];
     
     self = [super initWithRoot:root];
     [root release];
@@ -64,6 +84,9 @@
         _verifyCode = nil;
         _hub = nil;
         _qqLoginSession = nil;
+        _qqLogoutSession = nil;
+        _isLogin = NO;
+        _info = nil;
     }
     return self;    
 }
@@ -75,6 +98,8 @@
     [_verifyCode release];
     [_hub release];
     [_qqLoginSession release];
+    [_qqLogoutSession release];
+    [_info release];
     [super dealloc];
 }
 
@@ -101,11 +126,40 @@
     
     if (_qqLoginSession) [_qqLoginSession release];
     
-    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
-                                             password:@"4171739690"//_password 
+    _qqLoginSession = [[LLQQLogin alloc] initWithUser:_userName 
+                                             password:_password 
                                                status:LLQQLOGIN_STATUS_ONLINE 
                                              delegate:self];
     [_qqLoginSession startAsynchronous];
+}
+
+- (void)logoutButtonClicked:(QElement *)element
+{
+    if (_isLogin == NO) {
+        [self toastMsgNotify:@"您还未登录"];
+        return;
+    }
+    
+    if (_qqLogoutSession) {
+        [_qqLogoutSession release];
+        _qqLogoutSession = nil;
+    }
+    
+    _qqLogoutSession = [[LLQQLogout alloc] initWithClientID:_info.clientid
+                                                 psessionid:_info.psessionid
+                                                   delegate:self];
+    [_qqLogoutSession startAsynchronous];
+    
+}
+
+- (void)LLQQLogoutNotifyFailOrSuccess:(BOOL)ret info:(id)info
+{
+    if (ret == NO) {
+        [self toastMsgNotify:[NSString stringWithFormat:@"注销失敗:%@", info]];
+    } else {
+        [self toastMsgNotify:@"注销成功"];
+    }
+    _isLogin = NO;  
 }
 
 - (BOOL)checkUserNameAndPasswordFormat
@@ -144,6 +198,7 @@
         case LLQQLOGIN_PROGRESS_SET_STATUS:            
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:  
+            _info = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.
             [LLNotificationCenter post:kNotificationTypeLoginSuccess 
                                   info:[NSDictionary dictionaryWithObject:info forKey:@"loginInfo"]];
             
@@ -152,11 +207,13 @@
             _hub.labelText = @"Completed";
             [_hub hide:YES afterDelay:0.4];
             [_hub removeFromSuperViewOnHide];
+            
+            _isLogin = YES;
+            
             break;
         default:
             break;
-    }
-    
+    }    
 }
 
 /* 

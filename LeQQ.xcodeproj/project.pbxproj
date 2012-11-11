@@ -803,6 +803,10 @@
 		C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */; };
 		C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
+		C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E5164FAACB003F3899 /* LLQQLogout.m */; };
+		C15D85EA164FC50F003F3899 /* LLQQCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E9164FC50F003F3899 /* LLQQCategory.m */; };
+		C15D85ED164FC74E003F3899 /* LLQQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85EC164FC74E003F3899 /* LLQQUser.m */; };
+		C15D85F0164FC9E8003F3899 /* LLQQUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85EF164FC9E8003F3899 /* LLQQUserDetail.m */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
 		C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */; };
 		C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5D164AA62600C6E48F /* LLModelObject.m */; };
@@ -1716,6 +1720,14 @@
 		C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
+		C15D85E4164FAACB003F3899 /* LLQQLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogout.h; sourceTree = "<group>"; };
+		C15D85E5164FAACB003F3899 /* LLQQLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogout.m; sourceTree = "<group>"; };
+		C15D85E8164FC50F003F3899 /* LLQQCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQCategory.h; sourceTree = "<group>"; };
+		C15D85E9164FC50F003F3899 /* LLQQCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQCategory.m; sourceTree = "<group>"; };
+		C15D85EB164FC74E003F3899 /* LLQQUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUser.h; sourceTree = "<group>"; };
+		C15D85EC164FC74E003F3899 /* LLQQUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUser.m; sourceTree = "<group>"; };
+		C15D85EE164FC9E8003F3899 /* LLQQUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUserDetail.h; sourceTree = "<group>"; };
+		C15D85EF164FC9E8003F3899 /* LLQQUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUserDetail.m; sourceTree = "<group>"; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -3053,6 +3065,8 @@
 				C123AA711643842200E03E6A /* Encription */,
 				C1C4A98016415AC600CFF0DC /* LLQQLogin.h */,
 				C1C4A98116415AC600CFF0DC /* LLQQLogin.m */,
+				C15D85E4164FAACB003F3899 /* LLQQLogout.h */,
+				C15D85E5164FAACB003F3899 /* LLQQLogout.m */,
 			);
 			path = Networking;
 			sourceTree = SOURCE_ROOT;
@@ -3063,6 +3077,12 @@
 				C1646E59164AA62600C6E48F /* LLModelObject */,
 				C11C09861646C27A00846C8E /* LLQQLoginInfo.h */,
 				C11C09871646C27A00846C8E /* LLQQLoginInfo.m */,
+				C15D85E8164FC50F003F3899 /* LLQQCategory.h */,
+				C15D85E9164FC50F003F3899 /* LLQQCategory.m */,
+				C15D85EB164FC74E003F3899 /* LLQQUser.h */,
+				C15D85EC164FC74E003F3899 /* LLQQUser.m */,
+				C15D85EE164FC9E8003F3899 /* LLQQUserDetail.h */,
+				C15D85EF164FC9E8003F3899 /* LLQQUserDetail.m */,
 			);
 			path = Model;
 			sourceTree = SOURCE_ROOT;
@@ -4496,6 +4516,10 @@
 				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
 				C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */,
+				C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */,
+				C15D85EA164FC50F003F3899 /* LLQQCategory.m in Sources */,
+				C15D85ED164FC74E003F3899 /* LLQQUser.m in Sources */,
+				C15D85F0164FC9E8003F3899 /* LLQQUserDetail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

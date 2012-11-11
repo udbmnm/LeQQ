@@ -9,15 +9,20 @@
 #import "QuickDialogController.h"
 #import "LLQQLogin.h"
 #import "LLQQLoginInfo.h"
+#import "LLQQLogout.h"
 
 
-@interface LLQQLoginController : QuickDialogController <LLQQLoginDelegate, UIAlertViewDelegate>
+@interface LLQQLoginController : QuickDialogController <LLQQLoginDelegate, LLQQLogoutDelegate, UIAlertViewDelegate>
 {
     NSString *_userName;
     NSString *_password;
     NSString *_verifyCode;
     MBProgressHUD *_hub;
     LLQQLogin *_qqLoginSession;
+    LLQQLogout *_qqLogoutSession;
+    
+    LLQQLoginInfo *_info;
+    BOOL _isLogin;
 }
 
 - (id)init;
