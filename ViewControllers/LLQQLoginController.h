@@ -16,7 +16,6 @@
     NSString *_userName;
     NSString *_password;
     NSString *_verifyCode;
-    LLQQLoginInfo *_info;
     MBProgressHUD *_hub;
     LLQQLogin *_qqLoginSession;
 }

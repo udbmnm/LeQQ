@@ -1,4 +1,4 @@
- //
+//
 //  LLQQLogin.m
 //  LeQQ
 //
@@ -85,8 +85,10 @@
             break;
         case LLQQLOGIN_PROGRESS_LOGIN:
             [self setStatus];
+            break;
         case LLQQLOGIN_PROGRESS_SET_STATUS:
             [self getLoginInfomation];
+            break;
         default:
             break;
     }
@@ -127,10 +129,10 @@
         
         //[self updateCookies: [request responseCookies]];
 
-            _verifyCodeKey = [vCodeKey retain];
+            _verifyCodeKey = [vCodeKey copy];
         
             if ([vCode rangeOfString:@"!"].location == 0) {
-                _verifyCode = [vCode retain];
+                _verifyCode = [vCode copy];
                 /* not to get the image for verify code, so skip the progress */
                 _currentProgress = LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE;
             }
@@ -260,10 +262,10 @@
             NSDictionary *resultDic = [dic objectForKey:@"result"];
             
             _cip = [[resultDic objectForKey:@"cip"] longValue];
-            _status = [[resultDic objectForKey:@"status"] retain];
+            _status = [[resultDic objectForKey:@"status"] copy];
             _uin = [[resultDic objectForKey:@"uin"] longValue];
-            _psessionid = [[resultDic objectForKey:@"psessionid"] retain];
-            _vfwebqq = [[resultDic objectForKey:@"vfwebqq"] retain];
+            _psessionid = [[resultDic objectForKey:@"psessionid"] copy];
+            _vfwebqq = [[resultDic objectForKey:@"vfwebqq"] copy];
             _port = [[resultDic objectForKey:@"port"] longValue];
             _index = [[resultDic objectForKey:@"index"] longValue];
                          
@@ -298,8 +300,8 @@
     info.psessionid = _psessionid;
     info.vfwebqq = _vfwebqq;
     
-    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[info autorelease]];                                 
-    
+    [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[info autorelease]];
+        
 }
 
 - (NSString *)randomFloatValue

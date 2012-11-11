@@ -7,8 +7,8 @@
 //
 
 #import "LLQQLoginController.h"
-#import "LLNotificationCenter.h"
 #import "LLAuthenticodeAlertInputView.h"
+#import "LLNotificationCenter.h"
 
 #define KEY_USERNAME @"userName"
 #define KEY_PASSWORD @"password"
@@ -62,7 +62,6 @@
         _userName = nil;
         _password = nil;
         _verifyCode = nil;
-        _info = nil;
         _hub = nil;
         _qqLoginSession = nil;
     }
@@ -74,7 +73,6 @@
     [_userName release];
     [_password release];
     [_verifyCode release];
-    [_info release];
     [_hub release];
     [_qqLoginSession release];
     [super dealloc];
@@ -97,11 +95,14 @@
     }
     
     [self.view addSubview:_hub];
+    [_hub setMode:MBProgressHUDModeIndeterminate];
     [_hub setLabelText:@"正在登录..."];
     [_hub show:YES];
     
-    _qqLoginSession = [[LLQQLogin alloc] initWithUser:_userName 
-                                             password:_password 
+    if (_qqLoginSession) [_qqLoginSession release];
+    
+    _qqLoginSession = [[LLQQLogin alloc] initWithUser:@"425982977"//_userName 
+                                             password:@"4171739690"//_password 
                                                status:LLQQLOGIN_STATUS_ONLINE 
                                              delegate:self];
     [_qqLoginSession startAsynchronous];
@@ -109,6 +110,7 @@
 
 - (BOOL)checkUserNameAndPasswordFormat
 {
+    return YES;
     if (_userName.length < 4 || _password.length < 1) {
         return NO;
     }
@@ -132,6 +134,7 @@
         case LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE:   
         {
             [_hub hide:YES];
+            [_hub removeFromSuperViewOnHide];
             UIImage *img = (UIImage *)info;
             [self showModelViewForVerifyCodeInput:img];
         }
@@ -140,13 +143,15 @@
             break;
         case LLQQLOGIN_PROGRESS_SET_STATUS:            
             break;
-        case LLQQLOGIN_PROGRESS_COMPLETED:     
-            _info = [(LLQQLoginInfo *)info retain];
+        case LLQQLOGIN_PROGRESS_COMPLETED:  
             [LLNotificationCenter post:kNotificationTypeLoginSuccess 
-                                  info:[NSDictionary dictionaryWithObject:_info forKey:@"loginInfo"]];
+                                  info:[NSDictionary dictionaryWithObject:info forKey:@"loginInfo"]];
+            
             _hub.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
             _hub.mode = MBProgressHUDModeCustomView;
             _hub.labelText = @"Completed";
+            [_hub hide:YES afterDelay:0.4];
+            [_hub removeFromSuperViewOnHide];
             break;
         default:
             break;
