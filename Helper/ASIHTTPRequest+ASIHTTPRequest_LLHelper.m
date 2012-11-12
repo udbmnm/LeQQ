@@ -23,6 +23,7 @@
     [request addRequestHeader:@"Accept-Language" value:@"en-US,en;q=0.5"];
     [request addRequestHeader:@"Accept-Encoding" value:@"gzip, deflate"];
     [request addRequestHeader:@"Accept" value:@"*/*"];
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/proxy.html?v=20110412001&callback=1&id=1"];
     return request;
 }
 
@@ -36,6 +37,7 @@
     [request addRequestHeader:@"Accept-Language" value:@"en-US,en;q=0.5"];
     [request addRequestHeader:@"Accept-Encoding" value:@"gzip, deflate"];
     [request addRequestHeader:@"Accept" value:@"*/*"];
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/proxy.html?v=20110412001&callback=1&id=1"];
     return request;
 }
 @end

@@ -15,6 +15,8 @@
 {
     if (self = [super init]) {
         _box = [box retain];
+        NSAssert(_box != nil, @"moon box must not be nil");
+
         _delegate = delegate;
     }
     return self;
@@ -37,6 +39,23 @@
     
     [request setCompletionBlock:^(void) {
         NSString *result = [request responseString];
+        NSLog(@"result is %@", result);
+        
+        NSDictionary *resDic = [result JSONValue];
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllFriends info:@"未知错误"];
+        }
+        
+        resDic = [resDic objectForKey:@"result"];
+        NSArray *friends = [resDic objectForKey:@"friends"];
+        NSArray *marknames = [resDic objectForKey:@"marknames"];
+        NSArray *categories = [resDic objectForKey:@"categories"];
+        NSArray *vipinfo = [resDic objectForKey:@"vipinfo"];
+        NSArray *info = [resDic objectForKey:@"info"];
+        
+        for (NSDictionary *aCategory in categories) {
+            
+        }
         
         /* ..... */
         

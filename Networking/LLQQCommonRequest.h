@@ -28,7 +28,7 @@ typedef enum
 }
 
 /* the box contains all infomation that used to request Tencent server */
-- (id)initWithBox:(LLQQMoonBox *)box delegate:(id)delegate;
+- (id)initWithBox:(LLQQMoonBox *)box delegate:(id<LLQQCommonRequestDelegate>)delegate;
 
 /* returns an array of categories which contains all users */
 - (void)getAllFriends;

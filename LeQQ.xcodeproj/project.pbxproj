@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10934FD1650E36D00B28FB9 /* SDGroupCell.xib */; };
+		C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10934FE1650E36D00B28FB9 /* SDNestedTableView.xib */; };
+		C109350C1650E36D00B28FB9 /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10935051650E36D00B28FB9 /* SDSubCell.xib */; };
+		C10935131650E3FB00B28FB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
+		C109351E1650E43100B28FB9 /* SDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10934FC1650E36D00B28FB9 /* SDGroupCell.m */; };
+		C10935221650E43100B28FB9 /* SDNestedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935001650E36D00B28FB9 /* SDNestedTableViewController.m */; };
+		C10935241650E43100B28FB9 /* SDSelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935021650E36D00B28FB9 /* SDSelectableCell.m */; };
+		C10935261650E43100B28FB9 /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935041650E36D00B28FB9 /* SDSubCell.m */; };
+		C109352A1650E45300B28FB9 /* libSDNestedTable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C10935121650E3FB00B28FB9 /* libSDNestedTable.a */; };
 		C11B80921638EFDA0087D5C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80911638EFDA0087D5C0 /* CFNetwork.framework */; };
 		C11B80941638EFE90087D5C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80931638EFE90087D5C0 /* SystemConfiguration.framework */; };
 		C11B80961638EFF80087D5C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80951638EFF80087D5C0 /* MobileCoreServices.framework */; };
@@ -801,6 +810,7 @@
 		C13978F0164E917300CF10A9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */; };
 		C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */; };
+		C1534FB51650E93B00643074 /* LLGlobalCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C1534FB41650E93B00643074 /* LLGlobalCache.m */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E5164FAACB003F3899 /* LLQQLogout.m */; };
 		C15D85EA164FC50F003F3899 /* LLQQCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E9164FC50F003F3899 /* LLQQCategory.m */; };
@@ -838,6 +848,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C10935281650E44D00B28FB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C10935111650E3FB00B28FB9;
+			remoteInfo = SDNestedTable;
+		};
 		C11D61F3164652D9003BF26B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
@@ -904,6 +921,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C10934FB1650E36D00B28FB9 /* SDGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDGroupCell.h; sourceTree = "<group>"; };
+		C10934FC1650E36D00B28FB9 /* SDGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDGroupCell.m; sourceTree = "<group>"; };
+		C10934FD1650E36D00B28FB9 /* SDGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDGroupCell.xib; sourceTree = "<group>"; };
+		C10934FE1650E36D00B28FB9 /* SDNestedTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDNestedTableView.xib; sourceTree = "<group>"; };
+		C10934FF1650E36D00B28FB9 /* SDNestedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNestedTableViewController.h; sourceTree = "<group>"; };
+		C10935001650E36D00B28FB9 /* SDNestedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNestedTableViewController.m; sourceTree = "<group>"; };
+		C10935011650E36D00B28FB9 /* SDSelectableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSelectableCell.h; sourceTree = "<group>"; };
+		C10935021650E36D00B28FB9 /* SDSelectableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSelectableCell.m; sourceTree = "<group>"; };
+		C10935031650E36D00B28FB9 /* SDSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSubCell.h; sourceTree = "<group>"; };
+		C10935041650E36D00B28FB9 /* SDSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSubCell.m; sourceTree = "<group>"; };
+		C10935051650E36D00B28FB9 /* SDSubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDSubCell.xib; sourceTree = "<group>"; };
+		C10935121650E3FB00B28FB9 /* libSDNestedTable.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDNestedTable.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C11B7F871638EB590087D5C0 /* AirTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTest.h; sourceTree = "<group>"; };
 		C11B7F881638EB590087D5C0 /* AirTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirTest.m; sourceTree = "<group>"; };
 		C11B80911638EFDA0087D5C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1719,6 +1748,8 @@
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
 		C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		C1534FB31650E93B00643074 /* LLGlobalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLGlobalCache.h; sourceTree = "<group>"; };
+		C1534FB41650E93B00643074 /* LLGlobalCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLGlobalCache.m; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C15D85E4164FAACB003F3899 /* LLQQLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogout.h; sourceTree = "<group>"; };
 		C15D85E5164FAACB003F3899 /* LLQQLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogout.m; sourceTree = "<group>"; };
@@ -1881,6 +1912,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C109350F1650E3FB00B28FB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10935131650E3FB00B28FB9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C11D616A16465129003BF26B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1958,6 +1997,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C109352A1650E45300B28FB9 /* libSDNestedTable.a in Frameworks */,
 				C17390F0164E4B5400185583 /* libiToast.a in Frameworks */,
 				C11FACCA164C078E00312A83 /* libBubbleTableView.a in Frameworks */,
 				C11D62D81646651D003BF26B /* libKissXML.a in Frameworks */,
@@ -1986,6 +2026,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10934F91650E36D00B28FB9 /* ios-SDNestedTable */ = {
+			isa = PBXGroup;
+			children = (
+				C10934FA1650E36D00B28FB9 /* SDNestedTable */,
+			);
+			path = "ios-SDNestedTable";
+			sourceTree = "<group>";
+		};
+		C10934FA1650E36D00B28FB9 /* SDNestedTable */ = {
+			isa = PBXGroup;
+			children = (
+				C10934FB1650E36D00B28FB9 /* SDGroupCell.h */,
+				C10934FC1650E36D00B28FB9 /* SDGroupCell.m */,
+				C10934FD1650E36D00B28FB9 /* SDGroupCell.xib */,
+				C10934FE1650E36D00B28FB9 /* SDNestedTableView.xib */,
+				C10934FF1650E36D00B28FB9 /* SDNestedTableViewController.h */,
+				C10935001650E36D00B28FB9 /* SDNestedTableViewController.m */,
+				C10935011650E36D00B28FB9 /* SDSelectableCell.h */,
+				C10935021650E36D00B28FB9 /* SDSelectableCell.m */,
+				C10935031650E36D00B28FB9 /* SDSubCell.h */,
+				C10935041650E36D00B28FB9 /* SDSubCell.m */,
+				C10935051650E36D00B28FB9 /* SDSubCell.xib */,
+			);
+			path = SDNestedTable;
+			sourceTree = "<group>";
+		};
 		C11B7F861638EB590087D5C0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2940,6 +3006,8 @@
 				C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */,
 				C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */,
 				C15D85F7164FFCA2003F3899 /* LLCommon.h */,
+				C1534FB31650E93B00643074 /* LLGlobalCache.h */,
+				C1534FB41650E93B00643074 /* LLGlobalCache.m */,
 			);
 			name = Helper;
 			path = ../Helper;
@@ -2975,6 +3043,7 @@
 				C11D62BF164662D1003BF26B /* libKissXML.a */,
 				C11FACB2164C066600312A83 /* libBubbleTableView.a */,
 				C17390E3164E4B2500185583 /* libiToast.a */,
+				C10935121650E3FB00B28FB9 /* libSDNestedTable.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3119,6 +3188,7 @@
 		C1C4A98716418CFD00CFF0DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C10934F91650E36D00B28FB9 /* ios-SDNestedTable */,
 				C17390D9164E4AFD00185583 /* toast-notifications-ios */,
 				C11FAC86164C033F00312A83 /* UIBubbleTableView */,
 				C11D621C1646590B003BF26B /* RegexKitLite-4.0 */,
@@ -3378,6 +3448,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		C10935101650E3FB00B28FB9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C11D616B16465129003BF26B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3444,6 +3521,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		C10935111650E3FB00B28FB9 /* SDNestedTable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C109351A1650E3FB00B28FB9 /* Build configuration list for PBXNativeTarget "SDNestedTable" */;
+			buildPhases = (
+				C109350E1650E3FB00B28FB9 /* Sources */,
+				C109350F1650E3FB00B28FB9 /* Frameworks */,
+				C10935101650E3FB00B28FB9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDNestedTable;
+			productName = SDNestedTable;
+			productReference = C10935121650E3FB00B28FB9 /* libSDNestedTable.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		C11D616C16465129003BF26B /* QuickDialog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C11D617516465129003BF26B /* Build configuration list for PBXNativeTarget "QuickDialog" */;
@@ -3608,6 +3702,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C10935291650E44D00B28FB9 /* PBXTargetDependency */,
 				C17390EF164E4B4E00185583 /* PBXTargetDependency */,
 				C11FACC9164C078100312A83 /* PBXTargetDependency */,
 				C11D62D716466517003BF26B /* PBXTargetDependency */,
@@ -3656,6 +3751,7 @@
 				C11D62BE164662D1003BF26B /* KissXML */,
 				C11FACB1164C066600312A83 /* BubbleTableView */,
 				C17390E2164E4B2500185583 /* iToast */,
+				C10935111650E3FB00B28FB9 /* SDNestedTable */,
 			);
 		};
 /* End PBXProject section */
@@ -4331,12 +4427,26 @@
 				C11FAD1A164C14C800312A83 /* typingSomeone@2x.png in Resources */,
 				C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */,
 				C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */,
+				C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */,
+				C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */,
+				C109350C1650E36D00B28FB9 /* SDSubCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C109350E1650E3FB00B28FB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C109351E1650E43100B28FB9 /* SDGroupCell.m in Sources */,
+				C10935221650E43100B28FB9 /* SDNestedTableViewController.m in Sources */,
+				C10935241650E43100B28FB9 /* SDSelectableCell.m in Sources */,
+				C10935261650E43100B28FB9 /* SDSubCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C11D616916465129003BF26B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4534,12 +4644,18 @@
 				C15D85F3164FD20C003F3899 /* LLQQCommonRequest.m in Sources */,
 				C15D85F6164FD44D003F3899 /* LLQQMoonBox.m in Sources */,
 				C15D85FA164FFFB5003F3899 /* LLFriendsController.m in Sources */,
+				C1534FB51650E93B00643074 /* LLGlobalCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C10935291650E44D00B28FB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C10935111650E3FB00B28FB9 /* SDNestedTable */;
+			targetProxy = C10935281650E44D00B28FB9 /* PBXContainerItemProxy */;
+		};
 		C11D61F4164652D9003BF26B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C11D616C16465129003BF26B /* QuickDialog */;
@@ -4607,6 +4723,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C109351B1650E3FB00B28FB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SDNestedTable.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C109351C1650E3FB00B28FB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SDNestedTable.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		C11D617616465129003BF26B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -4915,6 +5055,7 @@
 					"Libs/KissXML/KissXML/**",
 					"Libs/UIBubbleTableView/src/**",
 					"Libs/toast-notifications-ios/**",
+					"Libs/ios-SDNestedTable/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = (
@@ -4943,6 +5084,7 @@
 					"Libs/KissXML/KissXML/**",
 					"Libs/UIBubbleTableView/src/**",
 					"Libs/toast-notifications-ios/**",
+					"Libs/ios-SDNestedTable/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = (
@@ -4958,6 +5100,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C109351A1650E3FB00B28FB9 /* Build configuration list for PBXNativeTarget "SDNestedTable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C109351B1650E3FB00B28FB9 /* Debug */,
+				C109351C1650E3FB00B28FB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C11D617516465129003BF26B /* Build configuration list for PBXNativeTarget "QuickDialog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

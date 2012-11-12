@@ -17,6 +17,7 @@
 #import "LLQQEncription.h"
 #import "LLQQChattingViewController.h"
 #import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
+#import "LLFriendsController.h"
 
 @implementation AppDelegate
 
@@ -42,12 +43,16 @@
     tabbarController.view.backgroundColor = [UIColor whiteColor];
 
     
+    
     [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"登录"];
 
+    LLFriendsController *friendsController = [[LLFriendsController alloc] init];
 
-    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
-                               tabImage:[UIImage imageNamed:@"Galuca_0156"] title:@"con3"];
+    [tabbarController addViewController:[[UINavigationController alloc] initWithRootViewController:friendsController]
+                               tabImage:[UIImage imageNamed:@"Galuca_0156"]
+                                  title:@"好友"];
+     [friendsController release];
     
     [tabbarController addViewController:[[[LLQQChattingViewController alloc] init] autorelease] 
                                tabImage:[UIImage imageNamed:@"Galuca_0002"]  title:@"聊天"];

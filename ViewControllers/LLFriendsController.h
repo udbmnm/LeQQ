@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LLQQCommonRequest.h"
 
-@interface LLFriendsController : UIViewController
+@interface LLFriendsController : UIViewController <LLQQCommonRequestDelegate>
+{
+    UISegmentedControl *_segment;
+    LLQQCommonRequest *_request;
+}
 
 @end
