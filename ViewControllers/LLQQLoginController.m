@@ -11,7 +11,8 @@
 #import "LLNotificationCenter.h"
 #import "LLQQLogout.h"
 #import "LLDebug.h"
-#import "LLGlobalCache.h"
+#import "LLQQGlobalCache.h"
+#import "LLObjectValidator.h"
 
 #define KEY_USERNAME @"userName"
 #define KEY_PASSWORD @"password"
@@ -111,7 +112,9 @@
     _password = [(QEntryElement *)[self.root elementWithKey:KEY_PASSWORD] textValue]; 
     
     /* user name or password format error, pop up a msg and go back */
-    if ([self checkUserNameAndPasswordFormat] == NO) {
+    if (!([LLObjectValidator isQQUserNameFormatLegal:_userName] && 
+          [LLObjectValidator isQQPasswordFormatLegal:_password]) ) {
+        
         [self toastMsgNotify:@"用户或密码格式不正确"];
         return;
     }
@@ -161,16 +164,6 @@
         [self toastMsgNotify:@"注销成功"];
     }
     _isLogin = NO;  
-}
-
-- (BOOL)checkUserNameAndPasswordFormat
-{
-    return YES;
-    if (_userName.length < 4 || _password.length < 1) {
-        return NO;
-    }
-    
-    return YES;
 }
 
 - (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info

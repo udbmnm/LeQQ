@@ -18,7 +18,7 @@ typedef enum
 
 @protocol LLQQCommonRequestDelegate <NSObject>
 /* 回调，不同的requestType有不同的info返回，要注意区分 */
-- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType info:(id)info;
+- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info;
 @end
 
 @interface LLQQCommonRequest : NSObject
@@ -30,7 +30,12 @@ typedef enum
 /* the box contains all infomation that used to request Tencent server */
 - (id)initWithBox:(LLQQMoonBox *)box delegate:(id<LLQQCommonRequestDelegate>)delegate;
 
-/* returns an array of categories which contains all users */
+/*
+ * returns a dictionary of categories which contains all users, 
+ * The dictionary: 
+ *     KEY:   string representation index of category
+ *     VALUE: (LLCatogory *)category
+ */
 - (void)getAllFriends;
 
 /* get user detail info by uin */

@@ -7,7 +7,7 @@
 //
 
 #import "LLFriendsController.h"
-#import "LLGlobalCache.h"
+#import "LLQQGlobalCache.h"
 
 @interface LLFriendsController ()
 
@@ -65,7 +65,7 @@
 }
 
 #pragma mark  LLQQCommonRequestDelegate
-- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType info:(id)info
+- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
 {
     
 }

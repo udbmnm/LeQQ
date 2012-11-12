@@ -14,27 +14,36 @@
     long uin;                 /*唯一标识*/
     long qqNum;               /*QQ号*/
     int categoryIndex;        /*所属分组的唯一标识*/
+    NSString *nickname;       /*昵称，用户设置的名称*/
+    NSString *markname;       /*备注名称*/
+    
     NSString *status;         /*当前些QQ用户的登录状态(在线、离开..)*/
     UIImage *faceImg;         /*头像*/
+    long face;                /* ? */
     
     NSString *signature;      /*个性签名*/
-    NSString *nickname;       /*昵称*/
-    int qqLevel;              /*qq等级*/
-    int nextLeveRemainDays;   /*距升级还有多少天*/    
+    long qqLevel;             /*qq等级*/
+    long nextLeveRemainDays;  /*距升级还有多少天*/  
+    BOOL isVIP;                 
+    long vipLevel;
     
     LLQQUserDetail *userDetail;
 }
 
-
 @property (nonatomic, assign) long uin;  
 @property (nonatomic, assign) long qqNum;  
 @property (nonatomic, assign) int categoryIndex;
-@property (nonatomic, copy) NSString *status;
+@property (nonatomic, copy)  NSString *nickname; 
+@property (nonatomic, copy)  NSString *markname; 
+@property (nonatomic, copy)  NSString *status;
 @property (nonatomic, retain) UIImage *faceImg; 
+@property (nonatomic, assign) long face;
 
 @property (nonatomic, copy) NSString *signature;
-@property (nonatomic, copy)  NSString *nickname; 
-@property (nonatomic, assign) int qqLevel;
-@property (nonatomic, assign) int nextLeveRemainDays;
+@property (nonatomic, assign) long qqLevel;
+@property (nonatomic, assign) long nextLeveRemainDays;
+@property (nonatomic, assign) BOOL isVIP;   
+@property (nonatomic, assign) long vipLevel;
+
 @property (nonatomic, retain) LLQQUserDetail *userDetail;
 @end

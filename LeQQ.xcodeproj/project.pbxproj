@@ -810,7 +810,6 @@
 		C13978F0164E917300CF10A9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */; };
 		C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */; };
-		C1534FB51650E93B00643074 /* LLGlobalCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C1534FB41650E93B00643074 /* LLGlobalCache.m */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E5164FAACB003F3899 /* LLQQLogout.m */; };
 		C15D85EA164FC50F003F3899 /* LLQQCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E9164FC50F003F3899 /* LLQQCategory.m */; };
@@ -820,13 +819,18 @@
 		C15D85F6164FD44D003F3899 /* LLQQMoonBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85F5164FD44D003F3899 /* LLQQMoonBox.m */; };
 		C15D85FA164FFFB5003F3899 /* LLFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85F9164FFFB5003F3899 /* LLFriendsController.m */; };
 		C1630E0B16425E9D00345BE7 /* LLQQPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */; };
-		C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */; };
 		C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C1646E5D164AA62600C6E48F /* LLModelObject.m */; };
 		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C17390F0164E4B5400185583 /* libiToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C17390E3164E4B2500185583 /* libiToast.a */; };
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
 		C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
+		C1A05A5616515278006F3942 /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5516515278006F3942 /* LLFMDBHelper.m */; };
+		C1A05A5916515FB2006F3942 /* LLQQGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5816515FB2006F3942 /* LLQQGroup.m */; };
+		C1A05A5C16516431006F3942 /* LLQQParameterGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */; };
+		C1A05A5F165168DB006F3942 /* LLObjectValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5E165168DB006F3942 /* LLObjectValidator.m */; };
+		C1A05A631651691C006F3942 /* LLQQGlobalCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A621651691C006F3942 /* LLQQGlobalCache.m */; };
+		C1A05A66165169DB006F3942 /* NSString+LLStringAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
 		C1A2FEDD1638CE550003905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C1A2FEDF1638CE550003905B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDE1638CE550003905B /* CoreGraphics.framework */; };
@@ -1748,8 +1752,6 @@
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
 		C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
-		C1534FB31650E93B00643074 /* LLGlobalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLGlobalCache.h; sourceTree = "<group>"; };
-		C1534FB41650E93B00643074 /* LLGlobalCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLGlobalCache.m; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C15D85E4164FAACB003F3899 /* LLQQLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogout.h; sourceTree = "<group>"; };
 		C15D85E5164FAACB003F3899 /* LLQQLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogout.m; sourceTree = "<group>"; };
@@ -1763,15 +1765,12 @@
 		C15D85F2164FD20C003F3899 /* LLQQCommonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQCommonRequest.m; sourceTree = "<group>"; };
 		C15D85F4164FD44C003F3899 /* LLQQMoonBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQMoonBox.h; sourceTree = "<group>"; };
 		C15D85F5164FD44D003F3899 /* LLQQMoonBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQMoonBox.m; sourceTree = "<group>"; };
-		C15D85F7164FFCA2003F3899 /* LLCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLCommon.h; sourceTree = "<group>"; };
 		C15D85F8164FFFB5003F3899 /* LLFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFriendsController.h; sourceTree = "<group>"; };
 		C15D85F9164FFFB5003F3899 /* LLFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFriendsController.m; sourceTree = "<group>"; };
 		C1630E0916425E9D00345BE7 /* LLQQPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQPathManager.h; sourceTree = "<group>"; };
 		C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQPathManager.m; sourceTree = "<group>"; };
 		C1630E161642A61000345BE7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C1630E171642A61000345BE7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		C1646E5A164AA62600C6E48F /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
-		C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
 		C1646E5C164AA62600C6E48F /* LLModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLModelObject.h; sourceTree = "<group>"; };
 		C1646E5D164AA62600C6E48F /* LLModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLModelObject.m; sourceTree = "<group>"; };
 		C1646E60164AA6BC00C6E48F /* LLObjectConversionProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLObjectConversionProtocol.h; sourceTree = "<group>"; };
@@ -1784,6 +1783,19 @@
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C195A73E163A6568003E3C92 /* LLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDebug.h; sourceTree = "<group>"; };
+		C1A05A5416515278006F3942 /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
+		C1A05A5516515278006F3942 /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
+		C1A05A5716515FB2006F3942 /* LLQQGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQGroup.h; sourceTree = "<group>"; };
+		C1A05A5816515FB2006F3942 /* LLQQGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQGroup.m; sourceTree = "<group>"; };
+		C1A05A5A16516431006F3942 /* LLQQParameterGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQParameterGenerator.h; sourceTree = "<group>"; };
+		C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQParameterGenerator.m; sourceTree = "<group>"; };
+		C1A05A5D165168DB006F3942 /* LLObjectValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLObjectValidator.h; sourceTree = "<group>"; };
+		C1A05A5E165168DB006F3942 /* LLObjectValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLObjectValidator.m; sourceTree = "<group>"; };
+		C1A05A601651691C006F3942 /* LLQQCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQCommon.h; sourceTree = "<group>"; };
+		C1A05A611651691C006F3942 /* LLQQGlobalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQGlobalCache.h; sourceTree = "<group>"; };
+		C1A05A621651691C006F3942 /* LLQQGlobalCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQGlobalCache.m; sourceTree = "<group>"; };
+		C1A05A64165169DB006F3942 /* NSString+LLStringAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LLStringAddtions.h"; sourceTree = "<group>"; };
+		C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LLStringAddtions.m"; sourceTree = "<group>"; };
 		C1A2FED61638CE550003905B /* LeQQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeQQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A2FEDA1638CE550003905B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C1A2FEDC1638CE550003905B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2963,6 +2975,8 @@
 		C1630E04164259C400345BE7 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				C1A05A5416515278006F3942 /* LLFMDBHelper.h */,
+				C1A05A5516515278006F3942 /* LLFMDBHelper.m */,
 				C1630E0916425E9D00345BE7 /* LLQQPathManager.h */,
 				C1630E0A16425E9D00345BE7 /* LLQQPathManager.m */,
 			);
@@ -2983,8 +2997,6 @@
 			isa = PBXGroup;
 			children = (
 				C1646E60164AA6BC00C6E48F /* LLObjectConversionProtocol.h */,
-				C1646E5A164AA62600C6E48F /* LLFMDBHelper.h */,
-				C1646E5B164AA62600C6E48F /* LLFMDBHelper.m */,
 				C1646E5C164AA62600C6E48F /* LLModelObject.h */,
 				C1646E5D164AA62600C6E48F /* LLModelObject.m */,
 			);
@@ -3003,11 +3015,17 @@
 		C17390F4164E785F00185583 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				C1A05A601651691C006F3942 /* LLQQCommon.h */,
+				C1A05A611651691C006F3942 /* LLQQGlobalCache.h */,
+				C1A05A621651691C006F3942 /* LLQQGlobalCache.m */,
 				C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */,
 				C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */,
-				C15D85F7164FFCA2003F3899 /* LLCommon.h */,
-				C1534FB31650E93B00643074 /* LLGlobalCache.h */,
-				C1534FB41650E93B00643074 /* LLGlobalCache.m */,
+				C1A05A5A16516431006F3942 /* LLQQParameterGenerator.h */,
+				C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */,
+				C1A05A5D165168DB006F3942 /* LLObjectValidator.h */,
+				C1A05A5E165168DB006F3942 /* LLObjectValidator.m */,
+				C1A05A64165169DB006F3942 /* NSString+LLStringAddtions.h */,
+				C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */,
 			);
 			name = Helper;
 			path = ../Helper;
@@ -3164,6 +3182,8 @@
 				C15D85EF164FC9E8003F3899 /* LLQQUserDetail.m */,
 				C15D85F4164FD44C003F3899 /* LLQQMoonBox.h */,
 				C15D85F5164FD44D003F3899 /* LLQQMoonBox.m */,
+				C1A05A5716515FB2006F3942 /* LLQQGroup.h */,
+				C1A05A5816515FB2006F3942 /* LLQQGroup.m */,
 			);
 			path = Model;
 			sourceTree = SOURCE_ROOT;
@@ -4633,7 +4653,6 @@
 				C1A906A916468C70001D5720 /* LLQQLoginController.m in Sources */,
 				C11C098D1646CD3D00846C8E /* LLNotificationCenter.m in Sources */,
 				C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */,
-				C1646E5E164AA62600C6E48F /* LLFMDBHelper.m in Sources */,
 				C1646E5F164AA62600C6E48F /* LLModelObject.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
 				C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */,
@@ -4644,7 +4663,12 @@
 				C15D85F3164FD20C003F3899 /* LLQQCommonRequest.m in Sources */,
 				C15D85F6164FD44D003F3899 /* LLQQMoonBox.m in Sources */,
 				C15D85FA164FFFB5003F3899 /* LLFriendsController.m in Sources */,
-				C1534FB51650E93B00643074 /* LLGlobalCache.m in Sources */,
+				C1A05A5616515278006F3942 /* LLFMDBHelper.m in Sources */,
+				C1A05A5916515FB2006F3942 /* LLQQGroup.m in Sources */,
+				C1A05A5C16516431006F3942 /* LLQQParameterGenerator.m in Sources */,
+				C1A05A5F165168DB006F3942 /* LLObjectValidator.m in Sources */,
+				C1A05A631651691C006F3942 /* LLQQGlobalCache.m in Sources */,
+				C1A05A66165169DB006F3942 /* NSString+LLStringAddtions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

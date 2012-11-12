@@ -9,7 +9,7 @@
 #import "LLQQUser.h"
 
 @implementation LLQQUser
-@synthesize uin, qqNum, categoryIndex, nickname, signature, qqLevel, nextLeveRemainDays, userDetail, status, faceImg;
+@synthesize uin, qqNum, categoryIndex, nickname, signature, qqLevel, nextLeveRemainDays, userDetail, status, faceImg, face, isVIP, vipLevel, markname;
 
 -(id)init
 {
@@ -17,12 +17,17 @@
         uin = 0;
         qqNum = 0;
         categoryIndex = -1;
+        nickname = nil;
+        markname = nil;
+        
         status = nil;
         faceImg = nil;        
+        face = 0;
         signature = nil;
-        nickname = nil;
         qqLevel = -1;
         nextLeveRemainDays = -1;        
+        isVIP = NO; 
+        vipLevel = 0;
         userDetail = nil;        
     }
     return self;
@@ -33,6 +38,7 @@
     self.status = nil;
     self.faceImg = nil;
     self.nickname = nil;
+    self.markname = nil;
     self.signature = nil;
     self.userDetail = nil;
     [super dealloc];

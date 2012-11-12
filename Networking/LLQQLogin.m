@@ -11,6 +11,8 @@
 #import "LLQQEncription.h"
 #import "LLQQMoonBox.h"
 #import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
+#import "LLQQParameterGenerator.h"
+#import "NSString+LLStringAddtions.h"
 
 
 @implementation LLQQLogin
@@ -37,7 +39,7 @@
         _verifyCode = nil;
         _verifyCodeKey = nil;
         _ptwebqq = nil;
-        _clientid = @"73937879";
+        _clientid = [LLQQParameterGenerator clientid];
         _uin = 0;
         _cip = 0;
         _index = 0;
@@ -105,12 +107,15 @@
 {
     _currentProgress = LLQQLOGIN_PROGRESS_CHECK_VERIFY_CODE;
     
-    static NSString *urlPattern = @"http://check.ptlogin2.qq.com/check?uin=$(account)&appid=1003903&r=$(now)";
+    static NSString *urlPattern = @"http://check.ptlogin2.qq.com/check?uin=$(account)&appid=1003903&r=$(r)";
     
-    NSString *now =[self randomFloatValue];
+    /*
     NSString *urlString = [[urlPattern stringByReplacingOccurrencesOfString:@"$(account)" withString:_user]
-                           stringByReplacingOccurrencesOfString:@"$(now)" withString:now];                                      
+                           stringByReplacingOccurrencesOfString:@"$(r)" withString:[LLQQParameterGenerator r]];                                      
+    */
     
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:[NSDictionary dictionaryWithObjectsAndKeys:_user, @"$(account)", [LLQQParameterGenerator r], @"$(r)", nil]];
+     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     //[request setUseCookiePersistence:NO];
     
@@ -147,11 +152,16 @@
 - (void)getTheVerifyCodeImage
 {
     _currentProgress = LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE;
-    static NSString *urlPattern = @"http://captcha.qq.com/getimage?aid=1003903&r=$(now)&uin=$(account)";
+    static NSString *urlPattern = @"http://captcha.qq.com/getimage?aid=1003903&r=$(r)&uin=$(account)";
     
-    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(now)" withString:[self randomFloatValue]];
+    /*
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(r)" withString:[LLQQParameterGenerator r]];
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
+    */
     
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:[NSDictionary dictionaryWithObjectsAndKeys:[LLQQParameterGenerator r], @"$(r)", _user, @"$(account)", nil]];
+    
+     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     //[request setUseCookiePersistence:NO];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
@@ -183,11 +193,14 @@
     
     NSString *urlString = nil;
     NSString *enPassword = [LLQQEncription hashPasswordForLogin:_password v1:[_verifyCode uppercaseString] v2:_verifyCodeKey];
-    
+    /*
     urlString = [urlPattern stringByReplacingOccurrencesOfString:@"$(account)"  withString:_user];
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(password)" withString:enPassword];
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(VCode)"    withString:[_verifyCode uppercaseString]];
     urlString = [urlString  stringByReplacingOccurrencesOfString:@"$(loginurl)" withString:loginURL];
+    */
+    
+    urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:[NSDictionary dictionaryWithObjectsAndKeys:_user, @"$(account)", enPassword, @"$(password)", [_verifyCode uppercaseString], @"$(VCode)", loginURL, @"$(loginurl)", nil]];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     //[request setUseCookiePersistence:NO];
@@ -232,11 +245,12 @@
     static NSString *urlString = @"http://d.web2.qq.com/channel/login2";
     
     NSString *content = @"{\"status\":\"$(status)\",\"ptwebqq\":\"$(ptwebqq)\",\"passwd_sig\":\"\",\"clientid\":\"$(clientid)\",\"psessionid\":null}";
-    content = [content stringByReplacingOccurrencesOfString:@"$(status)" withString:_status];
-    content = [content stringByReplacingOccurrencesOfString:@"$(ptwebqq)" withString:_ptwebqq];
-    content = [content stringByReplacingOccurrencesOfString:@"$(clientid)" withString:_clientid];  
     
-    NSLog(@"content is %@", content);
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:_status,  @"$(status)",
+                                                                             _ptwebqq, @"$(ptwebqq)",
+                                                                            _clientid, @"$(clientid)", nil];
+    content = [content stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];
+    
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
     //[request setUseCookiePersistence:NO];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[_cookies allValues]]];
@@ -302,12 +316,6 @@
     
     [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[box autorelease]];
         
-}
-
-- (NSString *)randomFloatValue
-{
-    return [NSString stringWithFormat:@"%.2f", 
-     [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] longValue]/100.0 ];
 }
 
 - (void)restartWithVerifyCode:(NSString *)code
