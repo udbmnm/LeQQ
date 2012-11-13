@@ -22,8 +22,8 @@ country, birthDay, homepage, personal,province,reg_time,vip_info,clientType,occu
         allow = -1;
         college = nil;
         reg_time = 0;       
-        constellation = nil;
-        blood = nil;
+        constellation = ConstellationTypeNull;
+        blood = BloodTypeNull;
         homepage = nil;
         stat = -1;
         vip_info = -1;
@@ -32,9 +32,9 @@ country, birthDay, homepage, personal,province,reg_time,vip_info,clientType,occu
         city = nil;                 /*城市*/
         personal = nil;             /*个人说明*/
         nickname = nil;             /*昵称*/
-        animal = nil;               /*生肖*/
+        animal = AnimalTypeNull;    /*生肖*/
         email = nil;                /*邮箱*/
-        gender = -1;                /*性别,男或女*/
+        gender = GenderNull;        /*性别,男或女*/
         mobile = nil;               /*电话*/
         clientType = nil;           /*optional*/
 
@@ -49,15 +49,12 @@ country, birthDay, homepage, personal,province,reg_time,vip_info,clientType,occu
     self.occupation = nil;
     self.phone = nil;
     self.college = nil;
-    self.constellation = nil;
-    self.blood = nil;
     self.homepage = nil;
     self.country = nil;
     self.province = nil;
     self.city = nil;
     self.personal = nil;
     self.nickname = nil;
-    self.animal = nil;
     self.email = nil;
     self.mobile = nil;
     self.clientType = nil;

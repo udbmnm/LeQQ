@@ -13,7 +13,8 @@
 typedef enum 
 {
     kQQRequestGetAllFriends = 101,  /* - (void)getAllFriends; */
-    kQQRequestGetUserDetail = 102
+    kQQRequestGetAllGroup   = 102,  /* - (void)getALLGroup;  */
+    kQQRequestGetUserDetail = 103   /* - (void)getUserDetail:(long)qqNum; */
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -34,15 +35,23 @@ typedef enum
  * returns a dictionary of categories which contains all users, 
  * The dictionary: 
  *     KEY:   string representation index of category
- *     VALUE: (LLCatogory *)category
+ *     VALUE: (LLQQCatogory *)category
  */
 - (void)getAllFriends;
+/*
+ * returns a dictionary of groups, 
+ * The dictionary: 
+ *     KEY:   string representation gid of the group
+ *     VALUE: (LLQQGroup*)group
+ */
+- (void)getALLGroup;
 
+//
 /* get user detail info by uin */
-//- (LLQQUserDetail *)getUserDetail:(long)uin;
+- (void)getUserDetail:(long)qqNum;
 
 /* get the sinature of user by uin */
-//- (NSString *)getUserSinature:(long)uin;
+- (void)getUserSinature:(long)uin;
 
 /* 
  * get a user's qq level info, returns an array of two 
@@ -62,7 +71,6 @@ typedef enum
 
 //- (NSArray *)getRecentFriends;
 
-//- (NSArray *)getALLGroup;
 
 //- (UIImage *)getGroupLogo:(long)code;
 

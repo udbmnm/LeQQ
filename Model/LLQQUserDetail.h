@@ -8,6 +8,53 @@
 
 #import "LLModelObject.h"
 
+typedef enum {
+    ConstellationTypeNull  = -1,
+    ConstellationTypeAquarius= 0,
+    ConstellationTypePisces  = 1,
+    ConstellationTypeAries   = 2,
+    ConstellationTypeTaurus  = 3,
+    ConstellationTypeGemini  = 4,
+    ConstellationTypeCancer  = 5,
+    ConstellationTypeLeo     = 6,
+    ConstellationTypeVirgo   = 7,
+    ConstellationTypeLibra   = 8,
+    ConstellationTypeScorpio = 9,
+    ConstellationTypeSagittarius = 10,
+    ConstellationTypeCapricorn   = 11
+}LLConstellationType;
+
+typedef enum {
+    BloodTypeNull = -1,
+    BloodTypeA = 0,
+    BloodTypeB = 1, 
+    BloodTypeO = 2,
+    BloodTypeAB = 3,
+    BloodTypeOther = 4
+}LLBloodType;
+
+typedef enum {
+    AnimalTypeNull = -1,
+    AnimalTypeRat = 0,
+    AnimalTypeCattle = 1,
+    AnimalTypeTiger = 2,
+    AnimalTypeHare = 3,
+    AnimalTypeDragon = 4,
+    AnimalTypeSnake = 5,
+    AnimalTypeHorse = 6,
+    AnimalTypeSheep = 7,
+    AnimalTypeMonkey = 8,
+    AnimalTypeCock = 9,
+    AnimalTypeDog = 10,
+    AnimalTypePig = 11
+}LLAnimalType;
+
+typedef enum {
+    GenderNull = 0,
+    GenderMale = 1,
+    GenderFemale = 2
+}LLGender;
+
 @interface LLQQUserDetail : LLModelObject
 {
     long uin;
@@ -18,8 +65,8 @@
     int allow;
     NSString *college;              /*大学*/
     long reg_time;                  /*注册时间*/
-    NSString *constellation;        /*星座*/
-    NSString *blood;                /*血型*/
+    LLConstellationType constellation;        /*星座*/
+    LLBloodType blood;              /*血型*/
     NSString *homepage;             /*个人主页*/
     int stat;                       
     int vip_info;
@@ -28,9 +75,9 @@
     NSString *city;                 /*城市*/
     NSString *personal;             /*个人说明*/
     NSString *nickname;             /*昵称*/
-    NSString *animal;               /*生肖*/
+    LLAnimalType animal;               /*生肖*/
     NSString *email;                /*邮箱*/
-    int gender;                     /*性别,男或女*/
+    LLGender gender;                     /*性别,男或女*/
     NSString *mobile;               /*电话*/
     NSString *clientType;          /*optional*/
     
@@ -43,8 +90,8 @@
 @property (nonatomic, assign) int allow;
 @property (nonatomic, copy)  NSString *college; 
 @property (nonatomic, assign) long reg_time;
-@property (nonatomic, copy)  NSString *constellation; 
-@property (nonatomic, copy)  NSString *blood; 
+@property (nonatomic, assign)  LLConstellationType constellation; 
+@property (nonatomic, assign)  LLBloodType blood; 
 @property (nonatomic, copy)  NSString *homepage; 
 @property (nonatomic, assign) int stat;
 @property (nonatomic, assign) int vip_info;
@@ -53,9 +100,9 @@
 @property (nonatomic, copy)  NSString *city; 
 @property (nonatomic, copy)  NSString *personal; 
 @property (nonatomic, copy)  NSString *nickname; 
-@property (nonatomic, copy)  NSString *animal; 
+@property (nonatomic, assign)  LLAnimalType animal; 
 @property (nonatomic, copy)  NSString *email; 
-@property (nonatomic, assign) int gender;
+@property (nonatomic, assign) LLGender gender;
 @property (nonatomic, copy)  NSString *mobile; 
 @property (nonatomic, copy)  NSString *clientType; 
 @property (nonatomic, assign) int categoryIndex;

@@ -9,6 +9,10 @@
 #import "LLQQCommonRequest.h"
 #import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
 #import "LLQQCategory.h"
+#import "LLQQGroup.h"
+#import "LLQQParameterGenerator.h"
+#import "NSString+LLStringAddtions.h"
+#import "LLQQUserDetail.h"
 
 @implementation LLQQCommonRequest
 
@@ -137,4 +141,111 @@
     [request startAsynchronous];    
 }
 
+- (void)getALLGroup
+{
+    static NSString *urlString = @"http://s.web2.qq.com/api/get_group_name_list_mask2";
+    static NSString *contentPattern = @"{\"vfwebqq\":\"$(vfwebqq)\"}";
+    
+    NSString *postContent = [contentPattern stringByReplacingOccurrencesOfString:@"$(vfwebqq)" withString:_box.vfwebqq];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request setPostValue:postContent forKey:@"r"];
+    
+    [request setCompletionBlock:^(void){
+        
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:NO info:[NSString stringWithFormat:@"retcode is %@", [resDic objectForKey:@"retcode"]]];
+            return ;
+        }
+        
+        NSDictionary *groups = [[NSMutableDictionary alloc] init];
+        
+        resDic = [resDic objectForKey:@"result"];
+        /* ... there is gmarklist, also */
+        NSArray *gnamelist = [resDic objectForKey:@"gnamelist"];
+        for (NSDictionary *aGroupDic in gnamelist) {
+            LLQQGroup *group = [[LLQQGroup alloc] init];
+            group.gid = [[aGroupDic objectForKey:@"gid"] longValue];
+            group.code = [[aGroupDic objectForKey:@"code"] longValue];
+            group.name = [aGroupDic objectForKey:@"name"];
+            /* the flag ?? */
+            [groups setValue:group forKey:[NSString stringWithFormat:@"%ld", group.gid]];
+            [group release];
+        }
+        
+     [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:YES info:[groups autorelease]];        
+        
+    }];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:NO info:[request error]];
+    }];
+    
+    [request startAsynchronous];    
+}
+
+- (void)getUserDetail:(long)qqNum
+{
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_friend_info2?tuin=$(qqnum)&verifysession=&code=&vfwebqq=$(vfwebqq)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"%ld", qqNum], @"$(qqnum)", 
+                                                                _box.vfwebqq, @"$(vfwebqq)", 
+                                                  [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request setCompletionBlock:^(void) {
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:NO info:[NSString stringWithFormat:@"%ld", retcode]];
+            return ;
+        }
+        
+        resDic = [resDic objectForKey:@"result"];
+        LLQQUserDetail *userDetail = [[LLQQUserDetail alloc] init];
+        /* the flag ? */
+        userDetail.uin = [[resDic objectForKey:@"uin"] longValue];
+        userDetail.occupation = [resDic objectForKey:@"occupation"];
+        userDetail.phone = [resDic objectForKey:@"phone"];
+        userDetail.allow = [[resDic objectForKey:@"allow"] intValue];
+        userDetail.college = [resDic objectForKey:@"college"];
+        userDetail.constellation = [[resDic objectForKey:@"constel"] intValue];
+        userDetail.blood = [[resDic objectForKey:@"blood"] intValue];
+        userDetail.homepage = [resDic objectForKey:@"homepage"];
+        userDetail.stat = [[resDic objectForKey:@"stat"] intValue];
+        userDetail.vip_info = [[resDic objectForKey:@"vip_info"] intValue];
+        userDetail.country = [resDic objectForKey:@"country"];
+        userDetail.city = [resDic objectForKey:@"city"];
+        userDetail.personal = [resDic objectForKey:@"personal"];
+        userDetail.nickname = [resDic objectForKey:@"nick"];
+        userDetail.animal = [[resDic objectForKey:@"shengxiao"] intValue];
+        userDetail.email = [resDic objectForKey:@"email"];
+        userDetail.province = [resDic objectForKey:@"province"];
+        userDetail.gender = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? GenderMale : GenderFemale;
+        userDetail.mobile = [resDic objectForKey:@"mobile"];
+                
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:YES info:[userDetail autorelease]];
+        
+    }];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:NO info:[request error]];
+    }];
+    
+    [request startAsynchronous];
+    
+}
+
+- (void)getUserSinature:(long)uin
+{
+    
+}
 @end
