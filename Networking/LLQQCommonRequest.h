@@ -12,9 +12,11 @@
 
 typedef enum 
 {
-    kQQRequestGetAllFriends = 101,  /* - (void)getAllFriends; */
-    kQQRequestGetAllGroup   = 102,  /* - (void)getALLGroup;  */
-    kQQRequestGetUserDetail = 103   /* - (void)getUserDetail:(long)qqNum; */
+    kQQRequestGetAllFriends = 101,   /* - (void)getAllFriends; */
+    kQQRequestGetAllGroup   = 102,   /* - (void)getALLGroup;  */
+    kQQRequestGetUserDetail = 103,   /* - (void)getUserDetail:(long)qqNum; */
+    kQQRequestGetUserSignature = 104,/* - (void)getUserSinature:(long)qqNum; */
+    kQQRequestGetQQLevel = 105       /* - (void)getQQLevel:(long)uin; */
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -37,6 +39,7 @@ typedef enum
  *     KEY:   string representation index of category
  *     VALUE: (LLQQCatogory *)category
  */
+
 - (void)getAllFriends;
 /*
  * returns a dictionary of groups, 
@@ -46,19 +49,27 @@ typedef enum
  */
 - (void)getALLGroup;
 
-//
-/* get user detail info by uin */
-- (void)getUserDetail:(long)qqNum;
+/* 
+ * get user detail info by uin 
+ * return the LLQQUserDetail object
+ */
+- (void)getUserDetail:(long)uin;
 
-/* get the sinature of user by uin */
-- (void)getUserSinature:(long)uin;
+/*
+ * get the sinature of user by uin 
+ * return the signature string
+ */
+- (void)getUserSignature:(long)uin;
 
 /* 
- * get a user's qq level info, returns an array of two 
- * numbers, 1st is the level, 2nd is the remain days to
- * the next level
+ * get a user's qq level info, returns 
+ * an dictionary:
+ *    KEY: level, VALUE: (NSNumber*)
+ *    KEY: days,  VALUE: (NSNumber*)
+ *    KEY: hours, VALUE: (NSNumber*)
+ *    KEY: remainDays, VALUE: (NSNumber*)
  */
-//- (NSArray *)getQQLevel:(long)uin;
+- (void)getQQLevel:(long)uin;
 
 //- (long)getQQNumber:(long)uin;
 

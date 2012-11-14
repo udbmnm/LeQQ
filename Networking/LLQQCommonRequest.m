@@ -187,12 +187,12 @@
     [request startAsynchronous];    
 }
 
-- (void)getUserDetail:(long)qqNum
+- (void)getUserDetail:(long)uin
 {
-    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_friend_info2?tuin=$(qqnum)&verifysession=&code=&vfwebqq=$(vfwebqq)&t=$(t)";
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_friend_info2?tuin=$(uin)&verifysession=&code=&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%ld", qqNum], @"$(qqnum)", 
+                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
                                                                 _box.vfwebqq, @"$(vfwebqq)", 
                                                   [LLQQParameterGenerator t], @"$(t)", nil];
     
@@ -244,8 +244,101 @@
     
 }
 
-- (void)getUserSinature:(long)uin
+/* 这个可以用批量的获取好友的签名（operation),因为返加的json包含uin，所以不用维护这个uin值*/
+- (void)getUserSignature:(long)uin
 {
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_single_long_nick2?tuin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
     
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
+                                   _box.vfwebqq, @"$(vfwebqq)", 
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature 
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is NOT 0: %ld", retcode]];
+            return ;
+        }
+        NSArray *signatures = [resDic objectForKey:@"result"];
+        
+        NSString *signatureString = nil;
+        for (NSDictionary *signatureDic in signatures) {
+            if ([[signatureDic objectForKey:@"uin"] longValue] == uin) {
+                signatureString = [signatureDic objectForKey:@"lnick"];
+                break;
+            }
+        }
+     
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:YES info:signatureString];        
+    }];
+    
+        
+    [request startAsynchronous];
+}
+
+- (void)getQQLevel:(long)uin
+{
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_qq_level2?tuin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
+                                   _box.vfwebqq, @"$(vfwebqq)", 
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetQQLevel 
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is NOT 0: %ld", retcode]];
+            return ;
+        }
+        
+        resDic = [resDic objectForKey:@"result"];
+        
+        if ([[resDic objectForKey:@"tuin"] longValue] != uin) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetQQLevel isOK:NO info:@"uin is NOT desired"];
+            return;
+        }
+        
+        long level = [[resDic objectForKey:@"level"] longValue];
+        long days =  [[resDic objectForKey:@"days"]  longValue];
+        long hours = [[resDic objectForKey:@"hours"] longValue];
+        long remainDays = [[resDic objectForKey:@"remainDays"] longValue];
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [NSNumber numberWithLong:level],      @"level", 
+                             [NSNumber numberWithLong:days],       @"days", 
+                             [NSNumber numberWithLong:hours],      @"hours",
+                             [NSNumber numberWithLong:remainDays], @"remainDays", 
+                             nil];                           
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetQQLevel isOK:YES info:dic];        
+        
+    }];
+    
+    [request startAsynchronous];
 }
 @end
