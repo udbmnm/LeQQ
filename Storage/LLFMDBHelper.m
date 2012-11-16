@@ -198,7 +198,7 @@ static NSString *DBNAME = @"happy.db";
     if ([_db hadError] == YES) {
         NSLog(@"ERROR: %@", [_db lastErrorMessage]);
         [_db close];
-        return NO;
+        return NO;                      
     }
     
     [_db close];

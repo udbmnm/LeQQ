@@ -26,8 +26,6 @@ static NSArray *_qqCategories = nil;
 {
     [_moonBox release];
     _moonBox = nil;
-    
-    
 }
 
 - (void)saveMoonBox:(LLQQMoonBox *)box

@@ -13,6 +13,8 @@
 #import "LLQQParameterGenerator.h"
 #import "NSString+LLStringAddtions.h"
 #import "LLQQUserDetail.h"
+#import "LLQQOnlineList.h"
+#import "LLQQUserStatus.h"
 
 @implementation LLQQCommonRequest
 
@@ -78,15 +80,7 @@
             user.categoryIndex = [[aFriendDic objectForKey:@"categories"] intValue];
             /*复杂度O(1) */
             LLQQCategory *category = [categoriesDic objectForKey:[NSString stringWithFormat:@"%d", user.categoryIndex]];
-            LLQQUser *existUser = [category.usersMap objectForKey:[NSString stringWithFormat:@"%ld", user.uin]];
-            
-            if (existUser == nil) {
-                [category.usersMap setObject:user forKey:[NSString stringWithFormat:@"%ld", user.uin]];
-            } else {
-                /*update existing user, NO overide */
-                existUser.categoryIndex = user.categoryIndex;
-            }
-        
+            [category addUser:user];        
             [user release];
         }
         
@@ -95,7 +89,7 @@
             
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
-                LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithFormat:@"%ld", uin]];
+                LLQQUser *user = [category getUser:uin];
                 if (user) {
                     user.face = [[aInfoDic objectForKey:@"face"] longValue];
                     user.nickname = [aInfoDic objectForKey:@"nick"];
@@ -108,7 +102,7 @@
             long uin = [[aVipInfoDic objectForKey:@"u"] longValue];
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
-                LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithFormat:@"%ld", uin]];
+                LLQQUser *user = [category getUser:uin];
                 if (user) {
                     user.isVIP = [[aVipInfoDic objectForKey:@"is_vip"] boolValue];
                     user.vipLevel = [[aVipInfoDic objectForKey:@"vip_level"] longValue];
@@ -121,7 +115,7 @@
             long uin = [[marknameDic objectForKey:@"uin"] longValue];
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
-                LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithFormat:@"%ld", uin]];
+                LLQQUser *user = [category getUser:uin];
                 if (user) {
                     user.markname = [marknameDic objectForKey:@"markname"];
                     break;
@@ -130,7 +124,7 @@
         }
         
         /* ..... */
-        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllFriends isOK:YES info:categoriesDic];
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllFriends isOK:YES info:[categoriesDic autorelease]];
         
     }];
     
@@ -141,7 +135,7 @@
     [request startAsynchronous];    
 }
 
-- (void)getALLGroup
+- (void)getAllGroups
 {
     static NSString *urlString = @"http://s.web2.qq.com/api/get_group_name_list_mask2";
     static NSString *contentPattern = @"{\"vfwebqq\":\"$(vfwebqq)\"}";
@@ -157,7 +151,10 @@
         NSDictionary *resDic = [response JSONValue];
         
         if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
-            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:NO info:[NSString stringWithFormat:@"retcode is %@", [resDic objectForKey:@"retcode"]]];
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroups
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
             return ;
         }
         
@@ -176,12 +173,12 @@
             [group release];
         }
         
-     [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:YES info:[groups autorelease]];        
+     [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroups isOK:YES info:[groups autorelease]];        
         
     }];
     
     [request setFailedBlock:^(void) {
-        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroup isOK:NO info:[request error]];
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroups isOK:NO info:[request error]];
     }];
     
     [request startAsynchronous];    
@@ -229,7 +226,7 @@
         userDetail.animal = [[resDic objectForKey:@"shengxiao"] intValue];
         userDetail.email = [resDic objectForKey:@"email"];
         userDetail.province = [resDic objectForKey:@"province"];
-        userDetail.gender = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? GenderMale : GenderFemale;
+        userDetail.gender = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? kGenderMale : kGenderFemale;
         userDetail.mobile = [resDic objectForKey:@"mobile"];
                 
         [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:YES info:[userDetail autorelease]];
@@ -302,7 +299,7 @@
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     
     [request setFailedBlock:^(void) {
-        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:NO info:[request error]];
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetQQLevel isOK:NO info:[request error]];
     }];
     
     [request setCompletionBlock:^(void) {
@@ -341,4 +338,180 @@
     
     [request startAsynchronous];
 }
+
+- (void)changeStatus:(LLQQUserStatusType)status;
+{
+    static NSString *urlPattern = @"http://d.web2.qq.com/channel/change_status2?newstatus=$(status)&clientid=$(clientid)&psessionid=$(psessionid)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSString stringFromQQStatus:status], @"$(status)", 
+                                   _box.psessionid, @"$(psessionid)",
+                                   _box.vfwebqq, @"$(clientid)", 
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestChangeStatus isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestChangeStatus
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is NOT 0: %ld", retcode]];
+            return ;
+        }
+        
+        //resDic = [resDic objectForKey:@"result"];
+        [_delegate LLQQCommonRequestNotify:kQQRequestChangeStatus isOK:YES info:nil];
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+- (void)getFaceOfUser:(long)uin
+{
+    static NSString *urlPattern = @"http://face8.qun.qq.com/cgi/svr/face/getface?cache=1&type=1&fid=0&uin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithLong:uin], @"$(uin)", 
+                                   _box.vfwebqq, @"$(vfwebqq)", 
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    [request addRequestHeader:@"Referer" value:@"http://web.qq.com/"];
+
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetFaceOfUser isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {    
+        NSDictionary *headersDic = [request responseHeaders];
+        
+        if (nil != [headersDic objectForKey:@"Content-Type"] && 
+            [@"image/jpeg" isEqualToString:[headersDic objectForKey:@"Content-Type"]]) {
+            
+            UIImage *faceImage = [UIImage imageWithData:[request responseData]];
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetFaceOfUser isOK:YES info:faceImage];
+        } else {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetFaceOfUser isOK:NO info:@"Not the image type"];
+        }
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+- (void)getAllOnlineFriends
+{
+    static NSString *urlPattern = @"http://d.web2.qq.com/channel/get_online_buddies2?clientid=$(clientid)&psessionid=$(psessionid)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   _box.clientid, @"$(clientid)", 
+                                   _box.psessionid, @"$(psessionid)", 
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllOnlineFriends isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {    
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllOnlineFriends
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is NOT 0: %ld", retcode]];
+            return;            
+        } 
+        
+        NSArray *userStatusArray = [resDic objectForKey:@"result"];
+        
+        LLQQOnlineList *onlineList = [[LLQQOnlineList alloc] init];
+        
+        for (NSDictionary *userStatusDic in userStatusArray) {
+            LLQQUserStatus *userStatus = [[LLQQUserStatus alloc] init];
+            userStatus.uin = [[userStatusDic objectForKey:@"uin"] longValue];
+            userStatus.status = [[userStatusDic objectForKey:@"status"] qqStatusValue];
+            userStatus.clientType = [[userStatusDic objectForKey:@"client_type"] longValue];        
+            [onlineList add:userStatus];
+            [userStatus release];
+        }
+        
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllOnlineFriends isOK:YES info:[onlineList autorelease]];
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+- (void)getRecentFriends
+{
+    static NSString *urlString = @"http://d.web2.qq.com/channel/get_recent_list2";
+    static NSString *contentPattern = @"{\"vfwebqq\":\"$(vfwebqq)\", \"clientid\":\"$(clientid)\", \"psessionid\":\"$(psessionid)\"}";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   _box.vfwebqq,    @"$(vfwebqq)", 
+                                   _box.clientid,   @"$(clientid)", 
+                                   _box.psessionid, @"$(psessionid)", nil];
+    
+    NSString *postContent = [contentPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request setPostValue:postContent forKey:@"r"];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetRecentFriends isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void){
+        
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetRecentFriends
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
+            return ;
+        }
+        
+        NSArray *recentsArray = [resDic objectForKey:@"result"];
+        NSMutableArray *recentUins = [[NSMutableArray alloc] init];
+        
+        for (NSDictionary *dic in recentsArray) {
+            /* what the type value means ?  0:user, 1:group 2:discus group*/
+            long type = [[dic objectForKey:@"type"] longValue]; /*何用？*/
+            long uin = [[dic objectForKey:@"uin"] longValue];
+            [recentUins addObject:[NSNumber numberWithLong:uin]];            
+        }
+        
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetRecentFriends isOK:YES info:[recentUins autorelease]];
+        
+    }];
+    
+    [request startAsynchronous];
+}
+
+- (void)getGroupMembers:(long)code
+{
+    
+}
+
+
+
 @end

@@ -14,8 +14,33 @@
 {
     NSString *finalString = self;
     for (NSString *key in [keysAndValues allKeys]) {
-        finalString = [finalString stringByReplacingOccurrencesOfString:key withString:[keysAndValues objectForKey:key]];
+        finalString = [finalString stringByReplacingOccurrencesOfString:key 
+                                                             withString:[keysAndValues objectForKey:key]];
     }
     return finalString;
 }
+
+- (LLQQUserStatusType)qqStatusValue
+{
+    if ([self isEqualToString:@"online"]) {
+        return kQQUserStatusOnline;
+    }
+    
+    return kQQUserStatusNull;
+}
+
++ (NSString *)stringFromQQStatus:(LLQQUserStatusType)status
+{
+    switch (status) {
+        case kQQUserStatusOnline:
+            return @"online";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return nil;
+}
+
 @end

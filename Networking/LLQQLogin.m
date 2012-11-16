@@ -127,7 +127,7 @@
     [request setCompletionBlock:^(void){
         [_delegate LLQQLoginProgressNoti:_currentProgress failOrSuccess:YES info:nil];  
         
-        NSString *response = [[request responseString] retain];
+        NSString *response = [request responseString];
         NSString *regexString = @"ptui_checkVC\\('(\\d+)','(.+)','(.+)'\\)";
         NSString *vCode = [response stringByMatching:regexString capture:2L];
         NSString *vCodeKey = [response stringByMatching:regexString capture:3L];
@@ -159,8 +159,7 @@
     urlString = [urlString stringByReplacingOccurrencesOfString:@"$(account)" withString:_user];
     */
     
-    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:[NSDictionary dictionaryWithObjectsAndKeys:[LLQQParameterGenerator r], @"$(r)", _user, @"$(account)", nil]];
-    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:[NSDictionary dictionaryWithObjectsAndKeys:[LLQQParameterGenerator r], @"$(r)", _user, @"$(account)", nil]];    
      
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     //[request setUseCookiePersistence:NO];
@@ -315,7 +314,6 @@
     box.vfwebqq = _vfwebqq;
     
     [_delegate LLQQLoginProgressNoti:LLQQLOGIN_PROGRESS_COMPLETED failOrSuccess:YES info:[box autorelease]];
-        
 }
 
 - (void)restartWithVerifyCode:(NSString *)code

@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "LLQQMoonBox.h"
 #import "LLQQUser.h"
+#import "LLQQCommon.h"
 
 typedef enum 
 {
-    kQQRequestGetAllFriends = 101,   /* - (void)getAllFriends; */
-    kQQRequestGetAllGroup   = 102,   /* - (void)getALLGroup;  */
-    kQQRequestGetUserDetail = 103,   /* - (void)getUserDetail:(long)qqNum; */
-    kQQRequestGetUserSignature = 104,/* - (void)getUserSinature:(long)qqNum; */
-    kQQRequestGetQQLevel = 105       /* - (void)getQQLevel:(long)uin; */
+    kQQRequestGetAllFriends = 101,      /* - (void)getAllFriends; */
+    kQQRequestGetAllGroups  = 102,      /* - (void)getALLGroup;  */
+    kQQRequestGetUserDetail = 103,      /* - (void)getUserDetail:(long)qqNum; */
+    kQQRequestGetUserSignature = 104,   /* - (void)getUserSinature:(long)qqNum; */
+    kQQRequestGetQQLevel = 105,         /* - (void)getQQLevel:(long)uin; */
+    kQQRequestChangeStatus = 106,       /* - (void)changeStatus:(LLQQUserStatus)status;*/
+    kQQRequestGetFaceOfUser = 107,      /* - (void)getFaceOfUser:(long)uin; */
+    kQQRequestGetAllOnlineFriends = 108,/* - (void)getAllOnlineFriends; */
+    kQQRequestGetRecentFriends = 109    /* - (void)getRecentFriends; */
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -47,7 +52,7 @@ typedef enum
  *     KEY:   string representation gid of the group
  *     VALUE: (LLQQGroup*)group
  */
-- (void)getALLGroup;
+- (void)getAllGroups;
 
 /* 
  * get user detail info by uin 
@@ -73,19 +78,32 @@ typedef enum
 
 //- (long)getQQNumber:(long)uin;
 
-//- (BOOL)changeStatus:(NSString *)status;
+/*
+ * change the login status:
+ * "online", "away" ... 
+ * if success, nil is return.
+ */
+- (void)changeStatus:(LLQQUserStatusType)status;
 
-//- (UIImage *)getFaceOfUser:(long)uin;
+/* 
+ * return a UIImage of user
+ */
+- (void)getFaceOfUser:(long)uin;
 
-/* return an array of {uin, status} */
-//- (NSArray *)getALLOnlineFriends;
+/* 
+ * return an Object of LLQQOnlineList
+ * which contains an array of 
+ * LLQQUserStatus
+ */
+- (void)getAllOnlineFriends;
 
-//- (NSArray *)getRecentFriends;
+- (void)getRecentFriends;
 
+
+- (void)getGroupMembers:(long)code;
 
 //- (UIImage *)getGroupLogo:(long)code;
 
-//- (NSArray *)getGroupMembers:(long)code;
 
 //- (long)getGroupNumber:(long)code;
 

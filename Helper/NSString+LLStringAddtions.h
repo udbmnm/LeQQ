@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LLQQCommon.h"
 
 @interface NSString (LLStringAddtions)
 
 - (NSString *)stringByReplacingOccurrencesOfKeysWithValues:(NSDictionary *)keysAndValues;
+- (LLQQUserStatusType)qqStatusValue;
++ (NSString *)stringFromQQStatus:(LLQQUserStatusType)status;
 @end

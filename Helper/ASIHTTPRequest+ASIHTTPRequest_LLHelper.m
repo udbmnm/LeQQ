@@ -26,7 +26,6 @@
     [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/proxy.html?v=20110412001&callback=1&id=1"];
     return request;
 }
-
 @end
 
 
