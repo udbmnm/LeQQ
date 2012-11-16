@@ -1,5 +1,5 @@
 //
-//  LLQQOnlineList.h
+//  LLQQOnlineUsersList.h
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-15.
@@ -9,7 +9,7 @@
 #import "LLQQUserStatus.h"
 #import "LLQQCategory.h"
 
-@interface LLQQOnlineList : NSObject
+@interface LLQQOnlineUsersList : NSObject
 {
     NSMutableArray *_onlineList;
 }

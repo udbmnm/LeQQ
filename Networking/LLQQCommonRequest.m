@@ -13,7 +13,7 @@
 #import "LLQQParameterGenerator.h"
 #import "NSString+LLStringAddtions.h"
 #import "LLQQUserDetail.h"
-#import "LLQQOnlineList.h"
+#import "LLQQOnlineUsersList.h"
 #import "LLQQUserStatus.h"
 
 @implementation LLQQCommonRequest
@@ -40,6 +40,7 @@
     static NSString *urlString = @"http://s.web2.qq.com/api/get_user_friends2";
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/"];
     NSString *postContent = @"{\"h\":\"hello\",\"vfwebqq\":\"$(vfwebqq)\"}";
     postContent = [postContent stringByReplacingOccurrencesOfString:@"$(vfwebqq)" withString:_box.vfwebqq];
     [request setPostValue:postContent forKey:@"r"];
@@ -143,6 +144,7 @@
     NSString *postContent = [contentPattern stringByReplacingOccurrencesOfString:@"$(vfwebqq)" withString:_box.vfwebqq];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/"];
     [request setPostValue:postContent forKey:@"r"];
     
     [request setCompletionBlock:^(void){
@@ -211,23 +213,23 @@
         /* the flag ? */
         userDetail.uin = [[resDic objectForKey:@"uin"] longValue];
         userDetail.occupation = [resDic objectForKey:@"occupation"];
-        userDetail.phone = [resDic objectForKey:@"phone"];
-        userDetail.allow = [[resDic objectForKey:@"allow"] intValue];
-        userDetail.college = [resDic objectForKey:@"college"];
+        userDetail.phone      = [resDic objectForKey:@"phone"];
+        userDetail.allow      = [[resDic objectForKey:@"allow"] intValue];
+        userDetail.college    = [resDic objectForKey:@"college"];
         userDetail.constellation = [[resDic objectForKey:@"constel"] intValue];
-        userDetail.blood = [[resDic objectForKey:@"blood"] intValue];
-        userDetail.homepage = [resDic objectForKey:@"homepage"];
-        userDetail.stat = [[resDic objectForKey:@"stat"] intValue];
-        userDetail.vip_info = [[resDic objectForKey:@"vip_info"] intValue];
-        userDetail.country = [resDic objectForKey:@"country"];
-        userDetail.city = [resDic objectForKey:@"city"];
-        userDetail.personal = [resDic objectForKey:@"personal"];
-        userDetail.nickname = [resDic objectForKey:@"nick"];
-        userDetail.animal = [[resDic objectForKey:@"shengxiao"] intValue];
-        userDetail.email = [resDic objectForKey:@"email"];
-        userDetail.province = [resDic objectForKey:@"province"];
-        userDetail.gender = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? kGenderMale : kGenderFemale;
-        userDetail.mobile = [resDic objectForKey:@"mobile"];
+        userDetail.blood      = [[resDic objectForKey:@"blood"] intValue];
+        userDetail.homepage   = [resDic objectForKey:@"homepage"];
+        userDetail.stat       = [[resDic objectForKey:@"stat"] intValue];
+        userDetail.vip_info   = [[resDic objectForKey:@"vip_info"] intValue];
+        userDetail.country    = [resDic objectForKey:@"country"];
+        userDetail.city       = [resDic objectForKey:@"city"];
+        userDetail.personal   = [resDic objectForKey:@"personal"];
+        userDetail.nickname   = [resDic objectForKey:@"nick"];
+        userDetail.animal     = [[resDic objectForKey:@"shengxiao"] intValue];
+        userDetail.email      = [resDic objectForKey:@"email"];
+        userDetail.province   = [resDic objectForKey:@"province"];
+        userDetail.gender     = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? kGenderMale : kGenderFemale;
+        userDetail.mobile     = [resDic objectForKey:@"mobile"];
                 
         [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:YES info:[userDetail autorelease]];
         
@@ -382,8 +384,8 @@
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSNumber numberWithLong:uin], @"$(uin)", 
-                                   _box.vfwebqq, @"$(vfwebqq)", 
-                                   [LLQQParameterGenerator t], @"$(t)", nil];
+                                   _box.vfwebqq,                  @"$(vfwebqq)", 
+                                   [LLQQParameterGenerator t],    @"$(t)", nil];
     
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
@@ -415,13 +417,14 @@
     static NSString *urlPattern = @"http://d.web2.qq.com/channel/get_online_buddies2?clientid=$(clientid)&psessionid=$(psessionid)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   _box.clientid, @"$(clientid)", 
-                                   _box.psessionid, @"$(psessionid)", 
+                                   _box.clientid,              @"$(clientid)", 
+                                   _box.psessionid,            @"$(psessionid)", 
                                    [LLQQParameterGenerator t], @"$(t)", nil];
     
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/"];
+
     [request setFailedBlock:^(void) {
         [_delegate LLQQCommonRequestNotify:kQQRequestGetAllOnlineFriends isOK:NO info:[request error]];
     }];
@@ -440,7 +443,7 @@
         
         NSArray *userStatusArray = [resDic objectForKey:@"result"];
         
-        LLQQOnlineList *onlineList = [[LLQQOnlineList alloc] init];
+        LLQQOnlineUsersList *onlineList = [[LLQQOnlineUsersList alloc] init];
         
         for (NSDictionary *userStatusDic in userStatusArray) {
             LLQQUserStatus *userStatus = [[LLQQUserStatus alloc] init];
@@ -471,6 +474,7 @@
     NSString *postContent = [contentPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/"];
     [request setPostValue:postContent forKey:@"r"];
     
     [request setFailedBlock:^(void) {
@@ -495,10 +499,10 @@
         
         for (NSDictionary *dic in recentsArray) {
             /* what the type value means ?  0:user, 1:group 2:discus group*/
-            long type = [[dic objectForKey:@"type"] longValue]; /*何用？*/
+            //long type = [[dic objectForKey:@"type"] longValue]; /*何用？*/
             long uin = [[dic objectForKey:@"uin"] longValue];
             [recentUins addObject:[NSNumber numberWithLong:uin]];            
-        }
+        } 
         
         [_delegate LLQQCommonRequestNotify:kQQRequestGetRecentFriends isOK:YES info:[recentUins autorelease]];
         
@@ -507,9 +511,30 @@
     [request startAsynchronous];
 }
 
-- (void)getGroupMembers:(long)code
+- (void)getGroupInfoAndMembers:(long)gcode
 {
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_group_info_ext2?gcode=$(gcode)&vfwebqq=$(vfwebqq)&t=$(t)";
     
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithLong:gcode],@"$(gcode)", 
+                                   _box.vfwebqq,                   @"$(vfwebqq)", 
+                                   [LLQQParameterGenerator t],     @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    [request addRequestHeader:@"Referer" value:@"/http://s.web2.qq.com/"];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetGroupInfoAndMembers isOK:NO info:[request error]];
+    }];
+    
+    [request setCompletionBlock:^(void) {    
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+    }];
+    
+    [request startAsynchronous];    
 }
 
 

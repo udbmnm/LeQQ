@@ -820,7 +820,7 @@
 		C1692FFC1655FAD3001A1DD1 /* LLQQMoonBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF01655FAD3001A1DD1 /* LLQQMoonBox.m */; };
 		C1692FFD1655FAD3001A1DD1 /* LLQQUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF21655FAD3001A1DD1 /* LLQQUser.m */; };
 		C1692FFE1655FAD3001A1DD1 /* LLQQUserDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF41655FAD3001A1DD1 /* LLQQUserDetail.m */; };
-		C1692FFF1655FAD3001A1DD1 /* LLQQOnlineList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF71655FAD3001A1DD1 /* LLQQOnlineList.m */; };
+		C1692FFF1655FAD3001A1DD1 /* LLQQOnlineUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */; };
 		C16930001655FAD3001A1DD1 /* LLQQUserStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF91655FAD3001A1DD1 /* LLQQUserStatus.m */; };
 		C16930051655FAEE001A1DD1 /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C16930031655FAEE001A1DD1 /* LLModelObject.m */; };
 		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
@@ -828,6 +828,7 @@
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
 		C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
+		C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */; };
 		C1A05A5616515278006F3942 /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5516515278006F3942 /* LLFMDBHelper.m */; };
 		C1A05A5C16516431006F3942 /* LLQQParameterGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */; };
 		C1A05A5F165168DB006F3942 /* LLObjectValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5E165168DB006F3942 /* LLObjectValidator.m */; };
@@ -1775,8 +1776,8 @@
 		C1692FF21655FAD3001A1DD1 /* LLQQUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUser.m; sourceTree = "<group>"; };
 		C1692FF31655FAD3001A1DD1 /* LLQQUserDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUserDetail.h; sourceTree = "<group>"; };
 		C1692FF41655FAD3001A1DD1 /* LLQQUserDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUserDetail.m; sourceTree = "<group>"; };
-		C1692FF61655FAD3001A1DD1 /* LLQQOnlineList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQOnlineList.h; sourceTree = "<group>"; };
-		C1692FF71655FAD3001A1DD1 /* LLQQOnlineList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQOnlineList.m; sourceTree = "<group>"; };
+		C1692FF61655FAD3001A1DD1 /* LLQQOnlineUsersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQOnlineUsersList.h; sourceTree = "<group>"; };
+		C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQOnlineUsersList.m; sourceTree = "<group>"; };
 		C1692FF81655FAD3001A1DD1 /* LLQQUserStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUserStatus.h; sourceTree = "<group>"; };
 		C1692FF91655FAD3001A1DD1 /* LLQQUserStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUserStatus.m; sourceTree = "<group>"; };
 		C16930021655FAEE001A1DD1 /* LLModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLModelObject.h; sourceTree = "<group>"; };
@@ -1790,6 +1791,8 @@
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQOnlineGroupUsersList.h; sourceTree = "<group>"; };
+		C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQOnlineGroupUsersList.m; sourceTree = "<group>"; };
 		C195A73E163A6568003E3C92 /* LLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDebug.h; sourceTree = "<group>"; };
 		C1A05A5416515278006F3942 /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
 		C1A05A5516515278006F3942 /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
@@ -3020,10 +3023,12 @@
 		C1692FF51655FAD3001A1DD1 /* Dynamic */ = {
 			isa = PBXGroup;
 			children = (
-				C1692FF61655FAD3001A1DD1 /* LLQQOnlineList.h */,
-				C1692FF71655FAD3001A1DD1 /* LLQQOnlineList.m */,
 				C1692FF81655FAD3001A1DD1 /* LLQQUserStatus.h */,
 				C1692FF91655FAD3001A1DD1 /* LLQQUserStatus.m */,
+				C1692FF61655FAD3001A1DD1 /* LLQQOnlineUsersList.h */,
+				C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */,
+				C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */,
+				C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */,
 			);
 			path = Dynamic;
 			sourceTree = "<group>";
@@ -4694,9 +4699,10 @@
 				C1692FFC1655FAD3001A1DD1 /* LLQQMoonBox.m in Sources */,
 				C1692FFD1655FAD3001A1DD1 /* LLQQUser.m in Sources */,
 				C1692FFE1655FAD3001A1DD1 /* LLQQUserDetail.m in Sources */,
-				C1692FFF1655FAD3001A1DD1 /* LLQQOnlineList.m in Sources */,
+				C1692FFF1655FAD3001A1DD1 /* LLQQOnlineUsersList.m in Sources */,
 				C16930001655FAD3001A1DD1 /* LLQQUserStatus.m in Sources */,
 				C16930051655FAEE001A1DD1 /* LLModelObject.m in Sources */,
+				C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

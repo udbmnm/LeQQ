@@ -1,5 +1,5 @@
 //
-//  LLQQOnlineList.m
+//  LLQQOnlineUsersList.m
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-15.
@@ -7,9 +7,9 @@
 //
 
 #import "LLQQUser.h"
-#import "LLQQOnlineList.h"
+#import "LLQQOnlineUsersList.h"
 
-@implementation LLQQOnlineList
+@implementation LLQQOnlineUsersList
 
 - (id)init
 {

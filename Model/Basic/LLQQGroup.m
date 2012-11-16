@@ -10,7 +10,7 @@
 
 @implementation LLQQGroup
 
-@synthesize name, gid, code, face, usersMap, groupNum;
+@synthesize name, gid, code, face, usersMap, groupNum, memo, level, ownerUin, createTime, fingermemo;
 
 - (id)init
 {
@@ -21,6 +21,13 @@
         groupNum = (long)-1;
         face = nil;
         usersMap = [[NSMutableDictionary alloc] init];
+        
+        memo = nil;
+        fingermemo = nil;
+        createTime = 0;
+        level = -1;
+        ownerUin = 0;
+        
     }
     return self;
 }
@@ -30,6 +37,8 @@
     self.name = nil;
     self.face = nil;
     self.usersMap = nil;
+    self.memo = nil;
+    self.fingermemo = nil;
     [super dealloc];
 }
 

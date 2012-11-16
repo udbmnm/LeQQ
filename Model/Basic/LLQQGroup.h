@@ -18,6 +18,13 @@
     
     UIImage *face;                      /*图标*/
     NSMutableDictionary *usersMap;      /* The users in the group */
+    
+    NSString *memo;
+    NSString *fingermemo;
+    NSTimeInterval createTime;
+    int level;
+    long ownerUin;
+    
 }
 
 @property (nonatomic, copy) NSString *name;
@@ -26,6 +33,11 @@
 @property (nonatomic, assign) long groupNum;
 @property (nonatomic, retain) UIImage *face;
 @property (nonatomic, retain) NSMutableDictionary *usersMap;
+@property (nonatomic, copy) NSString *memo;
+@property (nonatomic, copy) NSString *fingermemo;
+@property (nonatomic, assign) NSTimeInterval createTime;
+@property (nonatomic, assign) int level;
+@property (nonatomic, assign) long ownerUin;
 
 - (BOOL)addUser:(LLQQUser *)user;
 - (LLQQUser *)getUser:(long)uin;

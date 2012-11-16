@@ -13,15 +13,16 @@
 
 typedef enum 
 {
-    kQQRequestGetAllFriends = 101,      /* - (void)getAllFriends; */
-    kQQRequestGetAllGroups  = 102,      /* - (void)getALLGroup;  */
-    kQQRequestGetUserDetail = 103,      /* - (void)getUserDetail:(long)qqNum; */
-    kQQRequestGetUserSignature = 104,   /* - (void)getUserSinature:(long)qqNum; */
-    kQQRequestGetQQLevel = 105,         /* - (void)getQQLevel:(long)uin; */
-    kQQRequestChangeStatus = 106,       /* - (void)changeStatus:(LLQQUserStatus)status;*/
-    kQQRequestGetFaceOfUser = 107,      /* - (void)getFaceOfUser:(long)uin; */
-    kQQRequestGetAllOnlineFriends = 108,/* - (void)getAllOnlineFriends; */
-    kQQRequestGetRecentFriends = 109    /* - (void)getRecentFriends; */
+    kQQRequestGetAllFriends = 101,         /* - (void)getAllFriends; */
+    kQQRequestGetAllGroups  = 102,         /* - (void)getALLGroup;  */
+    kQQRequestGetUserDetail = 103,         /* - (void)getUserDetail:(long)qqNum; */
+    kQQRequestGetUserSignature = 104,      /* - (void)getUserSinature:(long)qqNum; */
+    kQQRequestGetQQLevel = 105,            /* - (void)getQQLevel:(long)uin; */
+    kQQRequestChangeStatus = 106,          /* - (void)changeStatus:(LLQQUserStatus)status;*/
+    kQQRequestGetFaceOfUser = 107,         /* - (void)getFaceOfUser:(long)uin; */
+    kQQRequestGetAllOnlineFriends = 108,   /* - (void)getAllOnlineFriends; */
+    kQQRequestGetRecentFriends = 109,      /* - (void)getRecentFriends; */
+    kQQRequestGetGroupInfoAndMembers = 110
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -91,7 +92,7 @@ typedef enum
 - (void)getFaceOfUser:(long)uin;
 
 /* 
- * return an Object of LLQQOnlineList
+ * return an Object of LLQQOnlineUsersList
  * which contains an array of 
  * LLQQUserStatus
  */
@@ -100,7 +101,7 @@ typedef enum
 - (void)getRecentFriends;
 
 
-- (void)getGroupMembers:(long)code;
+- (void)getGroupInfoAndMembers:(long)gcode;
 
 //- (UIImage *)getGroupLogo:(long)code;
 
