@@ -15,13 +15,13 @@ country, birthDay, homepage, personal,province,reg_time,vip_info,clientType,occu
 - (id)init
 {
     if (self = [super init]) {
-        uin = 0;
+        uin = -1;
         birthDay = nil;
         occupation = nil;
         phone = nil;
         allow = -1;
         college = nil;
-        reg_time = 0;       
+        reg_time = -1;       
         constellation = kConstellationTypeNull;
         blood = kBloodTypeNull;
         homepage = nil;

@@ -43,4 +43,19 @@
     return nil;
 }
 
+- (LLGender)genderValue
+{
+    if ([self isEqualToString:@"male"]) {
+        return kGenderMale;
+    } else if ([self isEqualToString:@"female"]) {
+        return kGenderFemale;
+    } else {
+        return kGenderNull;
+    }
+}
+
++ (NSString *)stringFromGenderValue:(LLGender)gender
+{
+    return gender == kGenderMale ? @"male" : (gender == kGenderFemale) ? @"female" : nil;    
+}
 @end

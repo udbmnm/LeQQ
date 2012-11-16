@@ -16,14 +16,14 @@
     NSString *birthDay;             /* 1988-11-06 式的字符串 */
     NSString *occupation;           /* 职业 */
     NSString *phone;      
-    int allow;
+    long allow;
     NSString *college;              /*大学*/
     long reg_time;                  /*注册时间*/
     LLConstellationType constellation;        /*星座*/
     LLBloodType blood;              /*血型*/
     NSString *homepage;             /*个人主页*/
-    int stat;                       
-    int vip_info;
+    long stat;                       
+    long vip_info;
     NSString *country;              /*国家*/
     NSString *province;             /*省*/
     NSString *city;                 /*城市*/
@@ -41,14 +41,14 @@
 @property (nonatomic, copy)  NSString *birthDay;
 @property (nonatomic, copy)  NSString *occupation; 
 @property (nonatomic, copy)  NSString *phone; 
-@property (nonatomic, assign) int allow;
+@property (nonatomic, assign) long allow;
 @property (nonatomic, copy)  NSString *college; 
 @property (nonatomic, assign) long reg_time;
 @property (nonatomic, assign)  LLConstellationType constellation; 
 @property (nonatomic, assign)  LLBloodType blood; 
 @property (nonatomic, copy)  NSString *homepage; 
-@property (nonatomic, assign) int stat;
-@property (nonatomic, assign) int vip_info;
+@property (nonatomic, assign) long stat;
+@property (nonatomic, assign) long vip_info;
 @property (nonatomic, copy)  NSString *country; 
 @property (nonatomic, copy)  NSString *province; 
 @property (nonatomic, copy)  NSString *city; 
@@ -59,5 +59,5 @@
 @property (nonatomic, assign) LLGender gender;
 @property (nonatomic, copy)  NSString *mobile; 
 @property (nonatomic, copy)  NSString *clientType; 
-@property (nonatomic, assign) int categoryIndex;
+@property (nonatomic, assign) long categoryIndex;
 @end

@@ -97,7 +97,12 @@ typedef enum
 
 - (void)getRecentFriends;
 
-
+/* 
+ * returns a dic:
+ *     KEY: @"group"  VALUE: (LLQQGroup*)
+ *     KEY: @"onlineList"  VALUE: (LLQQGroupOnlineList*)
+ *
+ */
 - (void)getGroupInfoAndMembers:(long)gcode;
 
 //- (UIImage *)getGroupLogo:(long)code;

@@ -17,8 +17,10 @@
     if (self = [super init]) {
         user = nil;
         password = nil;
-        uin = 0;
-        cip = 0;
+        uin = (long)-1;
+        cip = (long)-1;
+        index = (long)-1;
+        port = (long)-1;
         status = nil;
         verifyCodeKey = nil;
         skey = nil;

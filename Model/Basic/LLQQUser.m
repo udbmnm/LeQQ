@@ -9,25 +9,25 @@
 #import "LLQQUser.h"
 
 @implementation LLQQUser
-@synthesize uin, qqNum, categoryIndex, nickname, signature, qqLevel, nextLeveRemainDays, userDetail, faceImg, face, isVIP, vipLevel, markname;
+@synthesize uin, qqNum, categoryIndex, nickname, signature, qqLevel, nextLeveRemainDays, faceImg, face, isVIP, vipLevel, markname;
 
 -(id)init
 {
     if (self = [super init]) {
-        uin = 0;
-        qqNum = 0;
-        categoryIndex = -1;
+        uin = (long)-1;
+        qqNum = (long)-1;
+        categoryIndex = (long)-1;
         nickname = nil;
         markname = nil;
         
         faceImg = nil;        
-        face = 0;
+        face = (long)-1;
         signature = nil;
-        qqLevel = -1;
-        nextLeveRemainDays = -1;        
+        qqLevel = (long)-1;
+        nextLeveRemainDays = (long)-1;        
         isVIP = NO; 
-        vipLevel = 0;
-        userDetail = nil;        
+        vipLevel = (long)-1;
+        userDetail = nil;
     }
     return self;
 }
@@ -38,7 +38,8 @@
     self.nickname = nil;
     self.markname = nil;
     self.signature = nil;
-    self.userDetail = nil;
+    
+    [userDetail release];
     [super dealloc];
 }
 
@@ -48,5 +49,24 @@
     /* .... */
     
     return self;
+}
+
+- (LLQQUserDetail *)userDetail
+{
+    if (userDetail == nil) {
+        /* alloc when used */
+        userDetail = [[LLQQUserDetail alloc] init];
+    }
+    return userDetail;
+}
+- (void)setUserDetail:(LLQQUserDetail *)aUserDetail
+{
+    [aUserDetail retain];
+    
+    if (userDetail) {
+        [userDetail release];
+    }
+    
+    userDetail = aUserDetail;
 }
 @end

@@ -25,8 +25,8 @@
         memo = nil;
         fingermemo = nil;
         createTime = 0;
-        level = -1;
-        ownerUin = 0;
+        level = (long)-1;
+        ownerUin = (long)-1;
         
     }
     return self;

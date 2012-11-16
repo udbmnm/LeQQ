@@ -14,4 +14,7 @@
 - (NSString *)stringByReplacingOccurrencesOfKeysWithValues:(NSDictionary *)keysAndValues;
 - (LLQQUserStatusType)qqStatusValue;
 + (NSString *)stringFromQQStatus:(LLQQUserStatusType)status;
+
+- (LLGender) genderValue;
++ (NSString *)stringFromGenderValue:(LLGender)gender;
 @end

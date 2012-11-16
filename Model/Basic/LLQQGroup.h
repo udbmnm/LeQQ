@@ -22,7 +22,7 @@
     NSString *memo;
     NSString *fingermemo;
     NSTimeInterval createTime;
-    int level;
+    long level;
     long ownerUin;
     
 }
@@ -36,7 +36,7 @@
 @property (nonatomic, copy) NSString *memo;
 @property (nonatomic, copy) NSString *fingermemo;
 @property (nonatomic, assign) NSTimeInterval createTime;
-@property (nonatomic, assign) int level;
+@property (nonatomic, assign) long level;
 @property (nonatomic, assign) long ownerUin;
 
 - (BOOL)addUser:(LLQQUser *)user;

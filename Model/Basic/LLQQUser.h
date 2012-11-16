@@ -13,7 +13,7 @@
 {
     long uin;                 /*唯一标识*/
     long qqNum;               /*QQ号*/
-    int categoryIndex;        /*所属分组的唯一标识*/
+    long categoryIndex;        /*所属分组的唯一标识*/
     NSString *nickname;       /*昵称，用户设置的名称*/
     NSString *markname;       /*备注名称*/
     
@@ -31,7 +31,7 @@
 
 @property (nonatomic, assign) long uin;  
 @property (nonatomic, assign) long qqNum;  
-@property (nonatomic, assign) int categoryIndex;
+@property (nonatomic, assign) long categoryIndex;
 @property (nonatomic, copy)  NSString *nickname; 
 @property (nonatomic, copy)  NSString *markname; 
 @property (nonatomic, retain) UIImage *faceImg; 
@@ -43,7 +43,10 @@
 @property (nonatomic, assign) BOOL isVIP;   
 @property (nonatomic, assign) long vipLevel;
 
-@property (nonatomic, retain) LLQQUserDetail *userDetail;
+//@property (nonatomic, retain) LLQQUserDetail *userDetail;
 
 -(LLQQUser *)mergedWith:(LLQQUser *)anotherUser;
+- (LLQQUserDetail *)userDetail;
+- (void)setUserDetail:(LLQQUserDetail *)aUserDetail;
+
 @end

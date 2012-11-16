@@ -58,8 +58,8 @@
         
         for (NSDictionary *aCategoryDic in categories) {
             LLQQCategory *category = [[LLQQCategory alloc] init];
-            category.index = [[aCategoryDic objectForKey:@"index"] intValue];
-            category.sort =  [[aCategoryDic objectForKey:@"sort"] intValue];
+            category.index = [[aCategoryDic objectForKey:@"index"] longValue];
+            category.sort =  [[aCategoryDic objectForKey:@"sort"] longValue];
             category.name =  [aCategoryDic objectForKey:@"name"];
             /*复杂度O(1) */
             /* overide existing category */
@@ -70,7 +70,7 @@
         for (NSDictionary *aFriendDic in friends) {
             LLQQUser *user = [[LLQQUser alloc] init];
             user.uin = [[aFriendDic objectForKey:@"uin"] longValue];
-            user.categoryIndex = [[aFriendDic objectForKey:@"categories"] intValue];
+            user.categoryIndex = [[aFriendDic objectForKey:@"categories"] longValue];
             /*复杂度O(1) */
             LLQQCategory *category = [categoriesDic objectForKey:[NSString stringWithFormat:@"%d", user.categoryIndex]];
             [category addUser:user];        
@@ -206,18 +206,18 @@
         userDetail.uin = [[resDic objectForKey:@"uin"] longValue];
         userDetail.occupation = [resDic objectForKey:@"occupation"];
         userDetail.phone      = [resDic objectForKey:@"phone"];
-        userDetail.allow      = [[resDic objectForKey:@"allow"] intValue];
+        userDetail.allow      = [[resDic objectForKey:@"allow"] longValue];
         userDetail.college    = [resDic objectForKey:@"college"];
-        userDetail.constellation = [[resDic objectForKey:@"constel"] intValue];
-        userDetail.blood      = [[resDic objectForKey:@"blood"] intValue];
+        userDetail.constellation = [[resDic objectForKey:@"constel"] longValue];
+        userDetail.blood      = [[resDic objectForKey:@"blood"] longValue];
         userDetail.homepage   = [resDic objectForKey:@"homepage"];
-        userDetail.stat       = [[resDic objectForKey:@"stat"] intValue];
-        userDetail.vip_info   = [[resDic objectForKey:@"vip_info"] intValue];
+        userDetail.stat       = [[resDic objectForKey:@"stat"] longValue];
+        userDetail.vip_info   = [[resDic objectForKey:@"vip_info"] longValue];
         userDetail.country    = [resDic objectForKey:@"country"];
         userDetail.city       = [resDic objectForKey:@"city"];
         userDetail.personal   = [resDic objectForKey:@"personal"];
         userDetail.nickname   = [resDic objectForKey:@"nick"];
-        userDetail.animal     = [[resDic objectForKey:@"shengxiao"] intValue];
+        userDetail.animal     = [[resDic objectForKey:@"shengxiao"] longValue];
         userDetail.email      = [resDic objectForKey:@"email"];
         userDetail.province   = [resDic objectForKey:@"province"];
         userDetail.gender     = [[resDic objectForKey:@"gender"] isEqualToString:@"male"] ? kGenderMale : kGenderFemale;
@@ -534,8 +534,60 @@
         
         resDic = [resDic objectForKey:@"result"];
         
+        NSDictionary *groupInfoDic = [resDic objectForKey:@"ginfo"];
+        LLQQGroup *group = [[LLQQGroup alloc] init];
+        group.memo = [groupInfoDic objectForKey:@"memo"];
+        group.fingermemo = [groupInfoDic objectForKey:@"fingermemo"];
+        group.createTime = [[groupInfoDic objectForKey:@"createtime"] doubleValue];
+        group.level = [[groupInfoDic objectForKey:@"level"] longValue];
+        group.name = [groupInfoDic objectForKey:@"name"];
+        group.gid = [[groupInfoDic objectForKey:@"gid"] longValue];
+        group.ownerUin = [[groupInfoDic objectForKey:@"owner"] longValue];
+        NSArray *membersArray = [groupInfoDic objectForKey:@"members"];
+        for (NSDictionary *memberDic in membersArray) {
+            LLQQUser *user = [[LLQQUser alloc] init];
+            user.uin = [[memberDic objectForKey:@"muin"] longValue];
+            [group addUser:user];
+            [user release];
+        }
         
+        NSArray *vipinfoArray = [resDic objectForKey:@"vipinfo"];
+        for (NSDictionary *vipinfoDic in vipinfoArray) {
+            long uin = [[vipinfoDic objectForKey:@"u"] longValue];
+            LLQQUser *user = [group getUser:uin];
+            if (user) {
+                user.vipLevel = [[vipinfoDic objectForKey:@"vip_level"] longValue];
+                user.isVIP = [[vipinfoDic objectForKey:@"is_vip"] boolValue];
+            }
+        }
         
+        NSArray *minfoArray = [resDic objectForKey:@"minfo"];
+        for (NSDictionary *minfoDic in minfoArray) {
+            long uin = [[minfoDic objectForKey:@"uin"] longValue];
+            LLQQUser *user = [group getUser:uin];
+            if (user) {
+                user.nickname = [minfoDic objectForKey:@"nick"];
+                user.userDetail.gender = [[minfoDic objectForKey:@"gender"] genderValue];
+            }                                          
+        }
+        
+        LLQQOnlineGroupUsersList *onlineGroupUsersList = [[LLQQOnlineGroupUsersList alloc] init];
+        NSArray *statsArray = [resDic objectForKey:@"stats"];
+        for (NSDictionary *statDic in statsArray) {
+            LLQQUserStatus *state = [[LLQQUserStatus alloc] init];
+            state.uin = [[statDic objectForKey:@"uin"] longValue];
+            state.clientType = (LLQQClientType) [[statDic objectForKey:@"client_type"] longValue];
+            state.status = [[statDic objectForKey:@"stat"] longValue];
+            [onlineGroupUsersList add:state];
+            [state release];
+        }
+        
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:group, @"group", 
+                                                         onlineGroupUsersList, @"onlineList", nil];
+        
+        [group release];
+        [onlineGroupUsersList release];        
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetGroupInfoAndMembers isOK:YES info:info];
     }];
     
     [request startAsynchronous];    

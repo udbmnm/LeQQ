@@ -16,8 +16,20 @@ typedef enum {
 typedef enum
 {
     kQQClientTypeNull = 0,
-    kQQClientTypeNormal = 1
-    
+    kQQClientTypePC1 = 1,
+    kQQClientTypePC2 = 2,
+    kQQClientTypePC3 = 3,
+    kQQClientTypePC4 = 4,
+    kQQClientTypePC5 = 5,
+    kQQClientTypePC6 = 6,
+    kQQClientTypePC10 = 10,
+    kQQClientTypeIphone21 = 21,
+    kQQClientTypeIphone22 = 22,
+    kQQClientTypeIphone23 = 23,
+    kQQClientTypeIphone24 = 24,
+    kQQClientTypeWebQQ = 41,
+    kQQClientTypeQQForPad = 42,
+    kQQClientTypePC1E4 = 0x1e4    
 }LLQQClientType;
 
 typedef enum {
