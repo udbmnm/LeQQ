@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
+#import "LLQQCommon.h"
 
 @interface LLQQUserStatus : NSObject
 {

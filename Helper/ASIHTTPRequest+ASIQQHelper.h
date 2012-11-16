@@ -1,5 +1,5 @@
 //
-//  ASIHTTPRequest+ASIHTTPRequest_LLHelper.h
+//  ASIHTTPRequest+ASIQQHelper.h
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-10.
@@ -8,7 +8,7 @@
 
 #import <ASIFormDataRequest.h>
 
-@interface ASIHTTPRequest (ASIHTTPRequest_LLHelper)
+@interface ASIHTTPRequest (ASIQQHelper)
 + (void)setDefaults;
 + (ASIHTTPRequest*)requestWithURLString:(NSString *)urlString;
 @end

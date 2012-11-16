@@ -7,14 +7,6 @@
 //
 
 #import "LLQQCommonRequest.h"
-#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
-#import "LLQQCategory.h"
-#import "LLQQGroup.h"
-#import "LLQQParameterGenerator.h"
-#import "NSString+LLStringAddtions.h"
-#import "LLQQUserDetail.h"
-#import "LLQQOnlineUsersList.h"
-#import "LLQQUserStatus.h"
 
 @implementation LLQQCommonRequest
 
@@ -516,7 +508,7 @@
     static NSString *urlPattern = @"http://s.web2.qq.com/api/get_group_info_ext2?gcode=$(gcode)&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithLong:gcode],@"$(gcode)", 
+                                   [NSString stringWithFormat:@"%ld", gcode],@"$(gcode)", 
                                    _box.vfwebqq,                   @"$(vfwebqq)", 
                                    [LLQQParameterGenerator t],     @"$(t)", nil];
     
@@ -531,6 +523,18 @@
     [request setCompletionBlock:^(void) {    
         NSString *response = [request responseString];
         NSDictionary *resDic = [response JSONValue];
+        
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetGroupInfoAndMembers
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
+            return ;
+        }
+        
+        resDic = [resDic objectForKey:@"result"];
+        
+        
         
     }];
     

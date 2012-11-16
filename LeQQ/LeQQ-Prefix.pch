@@ -21,5 +21,8 @@
     #import <UIBubbleTableView.h>   
     #import <iToast.h>
     #import <SDNestedTableViewController.h>
-    #import "LLQQCommon.h"
+    #import "LLQQModel.h"
+    #import "LLQQHelper.h"
+    #import "LLDebug.h"
+
 #endif

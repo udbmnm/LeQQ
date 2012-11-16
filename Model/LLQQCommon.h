@@ -1,9 +1,9 @@
 //
-//  LLCommon.h
-//  LeQQ
+// LLCommon.h
+// LeQQ
 //
-//  Created by Xiangle le on 12-11-11.
-//  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
+// Created by Xiangle le on 12-11-11.
+// Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
 
@@ -13,7 +13,7 @@ typedef enum {
     
 }LLQQUserStatusType;
 
-typedef enum 
+typedef enum
 {
     kQQClientTypeNull = 0,
     kQQClientTypeNormal = 1
@@ -21,25 +21,25 @@ typedef enum
 }LLQQClientType;
 
 typedef enum {
-    kConstellationTypeNull  = -1,
+    kConstellationTypeNull = -1,
     kConstellationTypeAquarius= 0,
-    kConstellationTypePisces  = 1,
-    kConstellationTypeAries   = 2,
-    kConstellationTypeTaurus  = 3,
-    kConstellationTypeGemini  = 4,
-    kConstellationTypeCancer  = 5,
-    kConstellationTypeLeo     = 6,
-    kConstellationTypeVirgo   = 7,
-    kConstellationTypeLibra   = 8,
+    kConstellationTypePisces = 1,
+    kConstellationTypeAries = 2,
+    kConstellationTypeTaurus = 3,
+    kConstellationTypeGemini = 4,
+    kConstellationTypeCancer = 5,
+    kConstellationTypeLeo = 6,
+    kConstellationTypeVirgo = 7,
+    kConstellationTypeLibra = 8,
     kConstellationTypeScorpio = 9,
     kConstellationTypeSagittarius = 10,
-    kConstellationTypeCapricorn   = 11
+    kConstellationTypeCapricorn = 11
 }LLConstellationType;
 
 typedef enum {
     kBloodTypeNull = -1,
     kBloodTypeA = 0,
-    kBloodTypeB = 1, 
+    kBloodTypeB = 1,
     kBloodTypeO = 2,
     kBloodTypeAB = 3,
     kBloodTypeOther = 4

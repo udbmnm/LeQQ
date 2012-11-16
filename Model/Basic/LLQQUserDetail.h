@@ -7,6 +7,7 @@
 //
 
 #import "LLModelObject.h"
+#import "LLQQCommon.h"
 
 @interface LLQQUserDetail : LLModelObject
 {
@@ -28,11 +29,11 @@
     NSString *city;                 /*城市*/
     NSString *personal;             /*个人说明*/
     NSString *nickname;             /*昵称*/
-    LLAnimalType animal;               /*生肖*/
+    LLAnimalType animal;            /*生肖*/
     NSString *email;                /*邮箱*/
-    LLGender gender;                     /*性别,男或女*/
+    LLGender gender;                /*性别,男或女*/
     NSString *mobile;               /*电话*/
-    NSString *clientType;          /*optional*/
+    NSString *clientType;           /*optional*/
     
 }
 

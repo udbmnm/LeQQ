@@ -1,14 +1,14 @@
 //
-//  ASIHTTPRequest+ASIHTTPRequest_LLHelper.m
+//  ASIHTTPRequest+ASIQQHelper.m
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-10.
 //  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
-#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
+#import "ASIHTTPRequest+ASIQQHelper.h"
 
-@implementation ASIHTTPRequest (ASIHTTPRequest_LLHelper)
+@implementation ASIHTTPRequest (ASIQQHelper)
 + (void)setDefaults
 {
     [ASIHTTPRequest setDefaultUserAgentString:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:16.0) Gecko/20100101 Firefox/16.0"];

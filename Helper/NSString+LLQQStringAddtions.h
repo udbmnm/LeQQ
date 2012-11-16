@@ -1,5 +1,5 @@
 //
-//  NSString+LLStringAddtions.h
+//  NSString+LLQQStringAddtions.h
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LLQQCommon.h"
 
-@interface NSString (LLStringAddtions)
+@interface NSString (LLQQStringAddtions)
 
 - (NSString *)stringByReplacingOccurrencesOfKeysWithValues:(NSDictionary *)keysAndValues;
 - (LLQQUserStatusType)qqStatusValue;

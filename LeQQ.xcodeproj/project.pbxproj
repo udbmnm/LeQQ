@@ -826,14 +826,14 @@
 		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C17390F0164E4B5400185583 /* libiToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C17390E3164E4B2500185583 /* libiToast.a */; };
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
-		C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */; };
+		C17390F7164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
 		C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */; };
 		C1A05A5616515278006F3942 /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5516515278006F3942 /* LLFMDBHelper.m */; };
 		C1A05A5C16516431006F3942 /* LLQQParameterGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */; };
 		C1A05A5F165168DB006F3942 /* LLObjectValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5E165168DB006F3942 /* LLObjectValidator.m */; };
 		C1A05A631651691C006F3942 /* LLQQGlobalCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A621651691C006F3942 /* LLQQGlobalCache.m */; };
-		C1A05A66165169DB006F3942 /* NSString+LLStringAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */; };
+		C1A05A66165169DB006F3942 /* NSString+LLQQStringAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A65165169DB006F3942 /* NSString+LLQQStringAddtions.m */; };
 		C1A2FEDB1638CE550003905B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDA1638CE550003905B /* UIKit.framework */; };
 		C1A2FEDD1638CE550003905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C1A2FEDF1638CE550003905B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDE1638CE550003905B /* CoreGraphics.framework */; };
@@ -1786,25 +1786,27 @@
 		C17390DA164E4AFD00185583 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		C17390DB164E4AFD00185583 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		C17390E3164E4B2500185583 /* libiToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"; sourceTree = "<group>"; };
-		C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+ASIHTTPRequest_LLHelper.m"; sourceTree = "<group>"; };
+		C17390F5164E787600185583 /* ASIHTTPRequest+ASIQQHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+ASIQQHelper.h"; sourceTree = "<group>"; };
+		C17390F6164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+ASIQQHelper.m"; sourceTree = "<group>"; };
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQOnlineGroupUsersList.h; sourceTree = "<group>"; };
 		C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQOnlineGroupUsersList.m; sourceTree = "<group>"; };
 		C195A73E163A6568003E3C92 /* LLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDebug.h; sourceTree = "<group>"; };
+		C19AC4F416567DE0009AF912 /* LLQQHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLQQHelper.h; sourceTree = "<group>"; };
+		C19AC4F616567E24009AF912 /* LLQQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLQQModel.h; sourceTree = "<group>"; };
+		C19AC4FC1656820D009AF912 /* LLQQCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LLQQCommon.h; sourceTree = "<group>"; };
 		C1A05A5416515278006F3942 /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
 		C1A05A5516515278006F3942 /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
 		C1A05A5A16516431006F3942 /* LLQQParameterGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQParameterGenerator.h; sourceTree = "<group>"; };
 		C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQParameterGenerator.m; sourceTree = "<group>"; };
 		C1A05A5D165168DB006F3942 /* LLObjectValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLObjectValidator.h; sourceTree = "<group>"; };
 		C1A05A5E165168DB006F3942 /* LLObjectValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLObjectValidator.m; sourceTree = "<group>"; };
-		C1A05A601651691C006F3942 /* LLQQCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQCommon.h; sourceTree = "<group>"; };
 		C1A05A611651691C006F3942 /* LLQQGlobalCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQGlobalCache.h; sourceTree = "<group>"; };
 		C1A05A621651691C006F3942 /* LLQQGlobalCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQGlobalCache.m; sourceTree = "<group>"; };
-		C1A05A64165169DB006F3942 /* NSString+LLStringAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LLStringAddtions.h"; sourceTree = "<group>"; };
-		C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LLStringAddtions.m"; sourceTree = "<group>"; };
+		C1A05A64165169DB006F3942 /* NSString+LLQQStringAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LLQQStringAddtions.h"; sourceTree = "<group>"; };
+		C1A05A65165169DB006F3942 /* NSString+LLQQStringAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LLQQStringAddtions.m"; sourceTree = "<group>"; };
 		C1A2FED61638CE550003905B /* LeQQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeQQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A2FEDA1638CE550003905B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C1A2FEDC1638CE550003905B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -3055,17 +3057,17 @@
 		C17390F4164E785F00185583 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				C1A05A601651691C006F3942 /* LLQQCommon.h */,
+				C19AC4F416567DE0009AF912 /* LLQQHelper.h */,
 				C1A05A611651691C006F3942 /* LLQQGlobalCache.h */,
 				C1A05A621651691C006F3942 /* LLQQGlobalCache.m */,
-				C17390F5164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.h */,
-				C17390F6164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m */,
+				C17390F5164E787600185583 /* ASIHTTPRequest+ASIQQHelper.h */,
+				C17390F6164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m */,
 				C1A05A5A16516431006F3942 /* LLQQParameterGenerator.h */,
 				C1A05A5B16516431006F3942 /* LLQQParameterGenerator.m */,
 				C1A05A5D165168DB006F3942 /* LLObjectValidator.h */,
 				C1A05A5E165168DB006F3942 /* LLObjectValidator.m */,
-				C1A05A64165169DB006F3942 /* NSString+LLStringAddtions.h */,
-				C1A05A65165169DB006F3942 /* NSString+LLStringAddtions.m */,
+				C1A05A64165169DB006F3942 /* NSString+LLQQStringAddtions.h */,
+				C1A05A65165169DB006F3942 /* NSString+LLQQStringAddtions.m */,
 			);
 			name = Helper;
 			path = ../Helper;
@@ -3213,6 +3215,8 @@
 		C1C4A9791641599C00CFF0DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C19AC4F616567E24009AF912 /* LLQQModel.h */,
+				C19AC4FC1656820D009AF912 /* LLQQCommon.h */,
 				C1692FEA1655FAD3001A1DD1 /* Basic */,
 				C1692FF51655FAD3001A1DD1 /* Dynamic */,
 			);
@@ -4685,7 +4689,7 @@
 				C11C098D1646CD3D00846C8E /* LLNotificationCenter.m in Sources */,
 				C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
-				C17390F7164E787600185583 /* ASIHTTPRequest+ASIHTTPRequest_LLHelper.m in Sources */,
+				C17390F7164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m in Sources */,
 				C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */,
 				C15D85F3164FD20C003F3899 /* LLQQCommonRequest.m in Sources */,
 				C15D85FA164FFFB5003F3899 /* LLFriendsController.m in Sources */,
@@ -4693,7 +4697,7 @@
 				C1A05A5C16516431006F3942 /* LLQQParameterGenerator.m in Sources */,
 				C1A05A5F165168DB006F3942 /* LLObjectValidator.m in Sources */,
 				C1A05A631651691C006F3942 /* LLQQGlobalCache.m in Sources */,
-				C1A05A66165169DB006F3942 /* NSString+LLStringAddtions.m in Sources */,
+				C1A05A66165169DB006F3942 /* NSString+LLQQStringAddtions.m in Sources */,
 				C1692FFA1655FAD3001A1DD1 /* LLQQCategory.m in Sources */,
 				C1692FFB1655FAD3001A1DD1 /* LLQQGroup.m in Sources */,
 				C1692FFC1655FAD3001A1DD1 /* LLQQMoonBox.m in Sources */,

@@ -1,14 +1,14 @@
 //
-//  NSString+LLStringAddtions.m
+//  NSString+LLQQStringAddtions.m
 //  LeQQ
 //
 //  Created by Xiangle le on 12-11-13.
 //  Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
-#import "NSString+LLStringAddtions.h"
+#import "NSString+LLQQStringAddtions.h"
 
-@implementation NSString (LLStringAddtions)
+@implementation NSString (LLQQStringAddtions)
 
 - (NSString *)stringByReplacingOccurrencesOfKeysWithValues:(NSDictionary *)keysAndValues
 {

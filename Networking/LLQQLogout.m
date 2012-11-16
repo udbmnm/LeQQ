@@ -7,7 +7,6 @@
 //
 
 #import "LLQQLogout.h"
-#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
 
 @implementation LLQQLogout
 

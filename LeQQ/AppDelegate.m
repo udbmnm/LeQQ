@@ -16,7 +16,7 @@
 #import "LLQQLoginController.h"
 #import "LLQQEncription.h"
 #import "LLQQChattingViewController.h"
-#import "ASIHTTPRequest+ASIHTTPRequest_LLHelper.h"
+#import "ASIHTTPRequest+ASIQQHelper.h"
 #import "LLFriendsController.h"
 
 @implementation AppDelegate
