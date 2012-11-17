@@ -27,4 +27,9 @@
 {
     [_onlineList addObject:aUserStatus];
 }
+
+- (NSArray *)getArrayOfUserStatus
+{
+    return _onlineList;
+}
 @end

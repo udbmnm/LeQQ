@@ -9,6 +9,8 @@
 #import "LLQQUserStatus.h"
 #import "LLQQCategory.h"
 
+
+/* encapsulates all online users's status */
 @interface LLQQOnlineUsersList : NSObject
 {
     NSMutableArray *_onlineList;

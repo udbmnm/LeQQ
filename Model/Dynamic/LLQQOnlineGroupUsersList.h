@@ -14,5 +14,5 @@
     NSMutableArray *_onlineList;
 }
 - (void)add:(LLQQUserStatus*)aUserStatus;
-
+- (NSArray *)getArrayOfUserStatus;
 @end

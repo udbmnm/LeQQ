@@ -21,6 +21,9 @@
         // Custom initialization
         _segment = nil;
         _request = nil;
+        _usersTree = nil;
+        _categoriesDic = nil;
+        _onlineUsersList = nil;
     }
     return self;
 }
@@ -37,6 +40,7 @@
     
     _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
     [_request getAllFriends];
+    [_request getAllOnlineFriends];
     
     [super viewDidLoad];
 }
@@ -49,6 +53,15 @@
     
     [_request release];
     _request = nil;
+    
+    [_usersTree release];
+    _usersTree = nil;
+    
+    [_categoriesDic release];
+    _categoriesDic = nil;
+    
+    [_onlineUsersList release];
+    _onlineUsersList = nil;
     
     [super viewDidUnload];
 }
@@ -76,19 +89,30 @@
         } 
         [[[[iToast makeText:errorMsg] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
         return;
-    }
-    
+    }    
     
     switch (requestType) {
         case kQQRequestGetAllFriends:
         {
-            NSDictionary *categoriesDic = (NSDictionary *)info;
-            NSLog(@"%@", categoriesDic);
-        }
-        break;
+            _categoriesDic = [(NSDictionary *)info retain];
             
+           [[[[iToast makeText:@"All friends loaded"] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
+        }
+            break;
+        case kQQRequestGetAllOnlineFriends:
+        {
+            _onlineUsersList = [(LLQQOnlineUsersList*)info retain];
+            [[[[iToast makeText:@"online friends loaded"] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
+        }
+            break;
         default:
             break;
+    }
+    
+    if (_categoriesDic && _onlineUsersList) {
+        _usersTree = [[LLQQUsersTree alloc] initWithCategoriesDic:_categoriesDic
+                                                  onlineUsersList:_onlineUsersList];
+        [self.tableView reloadData];
     }
 }
 
@@ -106,7 +130,7 @@
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfItemsInSection:(NSInteger)section
 {
     if (section == 0)
-        return 4;
+        return _usersTree == nil? 0 : [_usersTree getCategoriesCount];
     else {
         return 0;
     }
@@ -114,17 +138,26 @@
 
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfSubItemsforItem:(SDGroupCell *)item atIndexPath:(NSIndexPath *)indexPath
 {
-    return 2;
+    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
+    return category.usersMap.count;
 }
 
 - (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
+    [item.titleLabel setText:category.name];
     return item;
 }
 
 - (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     /* 默认头像*/
+    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:item.cellIndexPath.row];
+    NSArray *userListInCategory = [_usersTree getUsersListOfCategory:category.index];
+    LLQQUser *user = (LLQQUser*)[userListInCategory objectAtIndex:indexPath.row];
+    
+    [[(LLQQUserCell *)subItem nameLabel] setText:user.nickname];
+    [[(LLQQUserCell *)subItem signatureLabel] setText:user.signature];
     return subItem;
 }
 @end

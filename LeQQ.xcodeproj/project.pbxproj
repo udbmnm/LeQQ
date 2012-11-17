@@ -26,7 +26,6 @@
 		C11660FE16574B4F0046B1A1 /* libEGOImageView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11660E916574AB60046B1A1 /* libEGOImageView.a */; };
 		C1166101165757180046B1A1 /* LLQQUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1166100165757180046B1A1 /* LLQQUserCell.m */; };
 		C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */ = {isa = PBXBuildFile; fileRef = C116610516577D830046B1A1 /* avatar_default_40_40.gif */; };
-		C1166115165791630046B1A1 /* LLQQUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1166114165791630046B1A1 /* LLQQUserCell.xib */; };
 		C11B80921638EFDA0087D5C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80911638EFDA0087D5C0 /* CFNetwork.framework */; };
 		C11B80941638EFE90087D5C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80931638EFE90087D5C0 /* SystemConfiguration.framework */; };
 		C11B80961638EFF80087D5C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80951638EFF80087D5C0 /* MobileCoreServices.framework */; };
@@ -863,6 +862,7 @@
 		C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4A98116415AC600CFF0DC /* LLQQLogin.m */; };
 		C1C4ACC416418CFF00CFF0DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8516418CFE00CFF0DC /* InfoPlist.strings */; };
 		C1C4ACC516418CFF00CFF0DC /* SBJson-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8716418CFE00CFF0DC /* SBJson-Info.plist */; };
+		C1ECD2A81657B816005D6CC4 /* LLQQUsersTree.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -979,7 +979,6 @@
 		C11660FF165757180046B1A1 /* LLQQUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUserCell.h; sourceTree = "<group>"; };
 		C1166100165757180046B1A1 /* LLQQUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUserCell.m; sourceTree = "<group>"; };
 		C116610516577D830046B1A1 /* avatar_default_40_40.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar_default_40_40.gif; sourceTree = "<group>"; };
-		C1166114165791630046B1A1 /* LLQQUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LLQQUserCell.xib; path = ../../../.Trash/LLQQUserCell.xib; sourceTree = "<group>"; };
 		C11B7F871638EB590087D5C0 /* AirTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTest.h; sourceTree = "<group>"; };
 		C11B7F881638EB590087D5C0 /* AirTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirTest.m; sourceTree = "<group>"; };
 		C11B80911638EFDA0087D5C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1972,6 +1971,8 @@
 		C1C4AC0616418CFE00CFF0DC /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		C1C4AC0816418CFE00CFF0DC /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		C1C4AE3416418F4300CFF0DC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUsersTree.h; sourceTree = "<group>"; };
+		C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUsersTree.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3129,6 +3130,8 @@
 				C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */,
 				C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */,
 				C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */,
+				C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */,
+				C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */,
 			);
 			path = Dynamic;
 			sourceTree = "<group>";
@@ -3267,7 +3270,6 @@
 				C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */,
 				C11660FF165757180046B1A1 /* LLQQUserCell.h */,
 				C1166100165757180046B1A1 /* LLQQUserCell.m */,
-				C1166114165791630046B1A1 /* LLQQUserCell.xib */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -4642,7 +4644,6 @@
 				C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */,
 				C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */,
 				C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */,
-				C1166115165791630046B1A1 /* LLQQUserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4885,6 +4886,7 @@
 				C16930051655FAEE001A1DD1 /* LLModelObject.m in Sources */,
 				C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */,
 				C1166101165757180046B1A1 /* LLQQUserCell.m in Sources */,
+				C1ECD2A81657B816005D6CC4 /* LLQQUsersTree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
