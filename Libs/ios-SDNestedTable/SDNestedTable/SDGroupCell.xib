@@ -43,10 +43,26 @@
 							<object class="IBUIView" id="505943474">
 								<reference key="NSNextResponder" ref="849007509"/>
 								<int key="NSvFlags">274</int>
+								<array class="NSMutableArray" key="NSSubviews">
+									<object class="IBUIView" id="994418418">
+										<reference key="NSNextResponder" ref="505943474"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrameSize">{320, 1}</string>
+										<reference key="NSSuperview" ref="505943474"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="175079623"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<object class="NSColor" key="IBUIBackgroundColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+										</object>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									</object>
+								</array>
 								<string key="NSFrameSize">{320, 40}</string>
 								<reference key="NSSuperview" ref="849007509"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="175079623"/>
+								<reference key="NSNextKeyView" ref="994418418"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
@@ -126,7 +142,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 								<bool key="IBUIBounces">NO</bool>
 								<bool key="IBUIAlwaysBounceVertical">YES</bool>
 								<bool key="IBUIScrollEnabled">NO</bool>
-								<int key="IBUISeparatorStyle">1</int>
 								<object class="NSColor" key="IBUISeparatorColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
@@ -233,13 +248,20 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
 						<reference key="object" ref="505943474"/>
-						<array class="NSMutableArray" key="children"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="994418418"/>
+						</array>
 						<reference key="parent" ref="244650526"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">31</int>
 						<reference key="object" ref="175079623"/>
 						<reference key="parent" ref="244650526"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">56</int>
+						<reference key="object" ref="994418418"/>
+						<reference key="parent" ref="505943474"/>
 					</object>
 				</array>
 			</object>
@@ -251,30 +273,34 @@ AAgACAAIAAEAAQABAAE</bytes>
 				<string key="22.CustomClassName">SDGroupCell</string>
 				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">55</int>
+			<int key="maxID">56</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">SDGroupCell</string>
 					<string key="superclassName">SDSelectableCell</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">subTable</string>
-						<string key="NS.object.0">UITableView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">subTable</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="headView">UIView</string>
+						<string key="subTable">UITableView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="headView">
+							<string key="name">headView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="subTable">
 							<string key="name">subTable</string>
 							<string key="candidateClassName">UITableView</string>
 						</object>
-					</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SDGroupCell.h</string>

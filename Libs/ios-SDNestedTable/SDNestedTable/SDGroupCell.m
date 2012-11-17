@@ -10,9 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SDNestedTableViewController.h"
 
+
+
 @implementation SDGroupCell
 
-@synthesize isExpanded, subTable, subCellsCount;
+@synthesize isExpanded, subTable, subCellsCount, headView;
 
 + (int) getHeight
 {
@@ -29,6 +31,7 @@
     subCellsCount = newsubCellsCount;
 }
 
+
 #pragma mark - Lifecycle
 
 - (id) initWithCoder:(NSCoder *)aDecoder
@@ -37,6 +40,7 @@
     {
         isExpanded = NO;
         subTable = nil;
+        
 
     }
     return self;
@@ -61,8 +65,9 @@
     
     if (cell == nil)
     {
-        NSArray *items = [[NSBundle mainBundle] loadNibNamed:@"SDSubCell" owner:self options:nil];
-        cell = [items objectAtIndex:0];
+        //NSArray *items = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(SubCellClass) owner:self options:nil];
+        //cell = [items objectAtIndex:0];
+        cell = [[[SubCellClass alloc] init] autorelease];
     }
     
     cell = [self.parentNestedTableController mainItem:self prepareSubItem:cell forRowAtIndexPath:indexPath];

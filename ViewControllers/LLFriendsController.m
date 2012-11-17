@@ -10,7 +10,6 @@
 #import "LLQQGlobalCache.h"
 
 @interface LLFriendsController ()
-
 @end
 
 @implementation LLFriendsController
@@ -31,6 +30,7 @@
     _segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群", @"最近联系", nil]];
     [_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
     [_segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
+    _segment.selectedSegmentIndex = 0;
 
     self.navigationItem.titleView = _segment;
     [_segment release];    
@@ -67,6 +67,64 @@
 #pragma mark  LLQQCommonRequestDelegate
 - (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
 {
+    if (success == NO) {
+        NSString *errorMsg = nil;
+        if ([info isKindOfClass:[NSError class]]) {
+            errorMsg = [NSString stringWithFormat:@"%@", info];
+        } else {
+            errorMsg = (NSString *)errorMsg;
+        } 
+        [[[[iToast makeText:errorMsg] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
+        return;
+    }
     
+    
+    switch (requestType) {
+        case kQQRequestGetAllFriends:
+        {
+            NSDictionary *categoriesDic = (NSDictionary *)info;
+            NSLog(@"%@", categoriesDic);
+        }
+        break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - SDNestedTableDelegate
+- (void) mainTable:(UITableView *)mainTable item:(SDGroupCell *)item didExpanded:(BOOL)isExpanded
+{
+    
+}
+
+- (void) mainItem:(SDGroupCell *)item subItemDidClicked:(SDSelectableCell *)subItem
+{
+    
+}
+
+- (NSInteger) mainTable:(UITableView *)mainTable numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 4;
+    else {
+        return 0;
+    }
+}
+
+- (NSInteger) mainTable:(UITableView *)mainTable numberOfSubItemsforItem:(SDGroupCell *)item atIndexPath:(NSIndexPath *)indexPath
+{
+    return 2;
+}
+
+- (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return item;
+}
+
+- (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /* 默认头像*/
+    return subItem;
 }
 @end

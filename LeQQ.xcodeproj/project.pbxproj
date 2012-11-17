@@ -9,13 +9,24 @@
 /* Begin PBXBuildFile section */
 		C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10934FD1650E36D00B28FB9 /* SDGroupCell.xib */; };
 		C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10934FE1650E36D00B28FB9 /* SDNestedTableView.xib */; };
-		C109350C1650E36D00B28FB9 /* SDSubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10935051650E36D00B28FB9 /* SDSubCell.xib */; };
 		C10935131650E3FB00B28FB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C109351E1650E43100B28FB9 /* SDGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10934FC1650E36D00B28FB9 /* SDGroupCell.m */; };
 		C10935221650E43100B28FB9 /* SDNestedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935001650E36D00B28FB9 /* SDNestedTableViewController.m */; };
 		C10935241650E43100B28FB9 /* SDSelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935021650E36D00B28FB9 /* SDSelectableCell.m */; };
 		C10935261650E43100B28FB9 /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935041650E36D00B28FB9 /* SDSubCell.m */; };
 		C109352A1650E45300B28FB9 /* libSDNestedTable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C10935121650E3FB00B28FB9 /* libSDNestedTable.a */; };
+		C11660CE165749850046B1A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
+		C11660D8165749B00046B1A1 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660B5165748780046B1A1 /* EGOCache.m */; };
+		C11660DB165749C50046B1A1 /* libEGOCache.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11660CD165749850046B1A1 /* libEGOCache.a */; };
+		C11660EA16574AB60046B1A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
+		C11660F516574AC20046B1A1 /* EGOImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660DD16574A890046B1A1 /* EGOImageButton.m */; };
+		C11660F716574AC20046B1A1 /* EGOImageLoadConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660DF16574A890046B1A1 /* EGOImageLoadConnection.m */; };
+		C11660F916574AC20046B1A1 /* EGOImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660E116574A890046B1A1 /* EGOImageLoader.m */; };
+		C11660FB16574AC20046B1A1 /* EGOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660C1165748780046B1A1 /* EGOImageView.m */; };
+		C11660FE16574B4F0046B1A1 /* libEGOImageView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11660E916574AB60046B1A1 /* libEGOImageView.a */; };
+		C1166101165757180046B1A1 /* LLQQUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1166100165757180046B1A1 /* LLQQUserCell.m */; };
+		C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */ = {isa = PBXBuildFile; fileRef = C116610516577D830046B1A1 /* avatar_default_40_40.gif */; };
+		C1166115165791630046B1A1 /* LLQQUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1166114165791630046B1A1 /* LLQQUserCell.xib */; };
 		C11B80921638EFDA0087D5C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80911638EFDA0087D5C0 /* CFNetwork.framework */; };
 		C11B80941638EFE90087D5C0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80931638EFE90087D5C0 /* SystemConfiguration.framework */; };
 		C11B80961638EFF80087D5C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C11B80951638EFF80087D5C0 /* MobileCoreServices.framework */; };
@@ -862,6 +873,20 @@
 			remoteGlobalIDString = C10935111650E3FB00B28FB9;
 			remoteInfo = SDNestedTable;
 		};
+		C11660D9165749BE0046B1A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C11660CC165749850046B1A1;
+			remoteInfo = EGOCache;
+		};
+		C11660FC16574B430046B1A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C11660E816574AB60046B1A1;
+			remoteInfo = EGOImageView;
+		};
 		C11D61F3164652D9003BF26B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C1A2FECD1638CE550003905B /* Project object */;
@@ -938,8 +963,23 @@
 		C10935021650E36D00B28FB9 /* SDSelectableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSelectableCell.m; sourceTree = "<group>"; };
 		C10935031650E36D00B28FB9 /* SDSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSubCell.h; sourceTree = "<group>"; };
 		C10935041650E36D00B28FB9 /* SDSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSubCell.m; sourceTree = "<group>"; };
-		C10935051650E36D00B28FB9 /* SDSubCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDSubCell.xib; sourceTree = "<group>"; };
 		C10935121650E3FB00B28FB9 /* libSDNestedTable.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDNestedTable.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C11660B4165748780046B1A1 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		C11660B5165748780046B1A1 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		C11660C0165748780046B1A1 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
+		C11660C1165748780046B1A1 /* EGOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageView.m; sourceTree = "<group>"; };
+		C11660CD165749850046B1A1 /* libEGOCache.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEGOCache.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C11660DC16574A890046B1A1 /* EGOImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageButton.h; sourceTree = "<group>"; };
+		C11660DD16574A890046B1A1 /* EGOImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageButton.m; sourceTree = "<group>"; };
+		C11660DE16574A890046B1A1 /* EGOImageLoadConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoadConnection.h; sourceTree = "<group>"; };
+		C11660DF16574A890046B1A1 /* EGOImageLoadConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoadConnection.m; sourceTree = "<group>"; };
+		C11660E016574A890046B1A1 /* EGOImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageLoader.h; sourceTree = "<group>"; };
+		C11660E116574A890046B1A1 /* EGOImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOImageLoader.m; sourceTree = "<group>"; };
+		C11660E916574AB60046B1A1 /* libEGOImageView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEGOImageView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C11660FF165757180046B1A1 /* LLQQUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUserCell.h; sourceTree = "<group>"; };
+		C1166100165757180046B1A1 /* LLQQUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUserCell.m; sourceTree = "<group>"; };
+		C116610516577D830046B1A1 /* avatar_default_40_40.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = avatar_default_40_40.gif; sourceTree = "<group>"; };
+		C1166114165791630046B1A1 /* LLQQUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LLQQUserCell.xib; path = ../../../.Trash/LLQQUserCell.xib; sourceTree = "<group>"; };
 		C11B7F871638EB590087D5C0 /* AirTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirTest.h; sourceTree = "<group>"; };
 		C11B7F881638EB590087D5C0 /* AirTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirTest.m; sourceTree = "<group>"; };
 		C11B80911638EFDA0087D5C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1796,7 +1836,7 @@
 		C195A73E163A6568003E3C92 /* LLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDebug.h; sourceTree = "<group>"; };
 		C19AC4F416567DE0009AF912 /* LLQQHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLQQHelper.h; sourceTree = "<group>"; };
 		C19AC4F616567E24009AF912 /* LLQQModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLQQModel.h; sourceTree = "<group>"; };
-		C19AC4FC1656820D009AF912 /* LLQQCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LLQQCommon.h; sourceTree = "<group>"; };
+		C19AC4FC1656820D009AF912 /* LLQQCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQCommon.h; sourceTree = "<group>"; };
 		C1A05A5416515278006F3942 /* LLFMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLFMDBHelper.h; sourceTree = "<group>"; };
 		C1A05A5516515278006F3942 /* LLFMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLFMDBHelper.m; sourceTree = "<group>"; };
 		C1A05A5A16516431006F3942 /* LLQQParameterGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQParameterGenerator.h; sourceTree = "<group>"; };
@@ -1943,6 +1983,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C11660CA165749850046B1A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C11660CE165749850046B1A1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C11660E616574AB60046B1A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C11660EA16574AB60046B1A1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C11D616A16465129003BF26B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2020,6 +2076,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C11660FE16574B4F0046B1A1 /* libEGOImageView.a in Frameworks */,
+				C11660DB165749C50046B1A1 /* libEGOCache.a in Frameworks */,
 				C109352A1650E45300B28FB9 /* libSDNestedTable.a in Frameworks */,
 				C17390F0164E4B5400185583 /* libiToast.a in Frameworks */,
 				C11FACCA164C078E00312A83 /* libBubbleTableView.a in Frameworks */,
@@ -2070,9 +2128,49 @@
 				C10935021650E36D00B28FB9 /* SDSelectableCell.m */,
 				C10935031650E36D00B28FB9 /* SDSubCell.h */,
 				C10935041650E36D00B28FB9 /* SDSubCell.m */,
-				C10935051650E36D00B28FB9 /* SDSubCell.xib */,
 			);
 			path = SDNestedTable;
+			sourceTree = "<group>";
+		};
+		C11660B3165748780046B1A1 /* EGOCache */ = {
+			isa = PBXGroup;
+			children = (
+				C11660B4165748780046B1A1 /* EGOCache.h */,
+				C11660B5165748780046B1A1 /* EGOCache.m */,
+			);
+			path = EGOCache;
+			sourceTree = "<group>";
+		};
+		C11660BF165748780046B1A1 /* EGOImageView */ = {
+			isa = PBXGroup;
+			children = (
+				C11660DC16574A890046B1A1 /* EGOImageButton.h */,
+				C11660DD16574A890046B1A1 /* EGOImageButton.m */,
+				C11660DE16574A890046B1A1 /* EGOImageLoadConnection.h */,
+				C11660DF16574A890046B1A1 /* EGOImageLoadConnection.m */,
+				C11660E016574A890046B1A1 /* EGOImageLoader.h */,
+				C11660E116574A890046B1A1 /* EGOImageLoader.m */,
+				C11660C0165748780046B1A1 /* EGOImageView.h */,
+				C11660C1165748780046B1A1 /* EGOImageView.m */,
+			);
+			path = EGOImageView;
+			sourceTree = "<group>";
+		};
+		C116610416577D830046B1A1 /* face */ = {
+			isa = PBXGroup;
+			children = (
+				C116610516577D830046B1A1 /* avatar_default_40_40.gif */,
+			);
+			path = face;
+			sourceTree = "<group>";
+		};
+		C11B5F6F1657479100A3765B /* EGO */ = {
+			isa = PBXGroup;
+			children = (
+				C11660B3165748780046B1A1 /* EGOCache */,
+				C11660BF165748780046B1A1 /* EGOImageView */,
+			);
+			path = EGO;
 			sourceTree = "<group>";
 		};
 		C11B7F861638EB590087D5C0 /* Tests */ = {
@@ -3104,6 +3202,8 @@
 				C11FACB2164C066600312A83 /* libBubbleTableView.a */,
 				C17390E3164E4B2500185583 /* libiToast.a */,
 				C10935121650E3FB00B28FB9 /* libSDNestedTable.a */,
+				C11660CD165749850046B1A1 /* libEGOCache.a */,
+				C11660E916574AB60046B1A1 /* libEGOImageView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3165,6 +3265,9 @@
 			children = (
 				C1A32F9D16491C7A00B23798 /* LLAuthenticodeAlertInputView.h */,
 				C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */,
+				C11660FF165757180046B1A1 /* LLQQUserCell.h */,
+				C1166100165757180046B1A1 /* LLQQUserCell.m */,
+				C1166114165791630046B1A1 /* LLQQUserCell.xib */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -3172,6 +3275,7 @@
 		C1A906AA1646978D001D5720 /* QQImages */ = {
 			isa = PBXGroup;
 			children = (
+				C116610416577D830046B1A1 /* face */,
 				C1A908261646978D001D5720 /* logo */,
 				C1A908291646978D001D5720 /* menu */,
 			);
@@ -3243,6 +3347,7 @@
 		C1C4A98716418CFD00CFF0DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C11B5F6F1657479100A3765B /* EGO */,
 				C10934F91650E36D00B28FB9 /* ios-SDNestedTable */,
 				C17390D9164E4AFD00185583 /* toast-notifications-ios */,
 				C11FAC86164C033F00312A83 /* UIBubbleTableView */,
@@ -3510,6 +3615,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C11660CB165749850046B1A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C11660E716574AB60046B1A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C11D616B16465129003BF26B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3591,6 +3710,40 @@
 			name = SDNestedTable;
 			productName = SDNestedTable;
 			productReference = C10935121650E3FB00B28FB9 /* libSDNestedTable.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C11660CC165749850046B1A1 /* EGOCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C11660D5165749850046B1A1 /* Build configuration list for PBXNativeTarget "EGOCache" */;
+			buildPhases = (
+				C11660C9165749850046B1A1 /* Sources */,
+				C11660CA165749850046B1A1 /* Frameworks */,
+				C11660CB165749850046B1A1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EGOCache;
+			productName = EGOCache;
+			productReference = C11660CD165749850046B1A1 /* libEGOCache.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C11660E816574AB60046B1A1 /* EGOImageView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C11660F116574AB60046B1A1 /* Build configuration list for PBXNativeTarget "EGOImageView" */;
+			buildPhases = (
+				C11660E516574AB60046B1A1 /* Sources */,
+				C11660E616574AB60046B1A1 /* Frameworks */,
+				C11660E716574AB60046B1A1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EGOImageView;
+			productName = EGOImageView;
+			productReference = C11660E916574AB60046B1A1 /* libEGOImageView.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		C11D616C16465129003BF26B /* QuickDialog */ = {
@@ -3757,6 +3910,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				C11660FD16574B430046B1A1 /* PBXTargetDependency */,
+				C11660DA165749BE0046B1A1 /* PBXTargetDependency */,
 				C10935291650E44D00B28FB9 /* PBXTargetDependency */,
 				C17390EF164E4B4E00185583 /* PBXTargetDependency */,
 				C11FACC9164C078100312A83 /* PBXTargetDependency */,
@@ -3807,6 +3962,8 @@
 				C11FACB1164C066600312A83 /* BubbleTableView */,
 				C17390E2164E4B2500185583 /* iToast */,
 				C10935111650E3FB00B28FB9 /* SDNestedTable */,
+				C11660CC165749850046B1A1 /* EGOCache */,
+				C11660E816574AB60046B1A1 /* EGOImageView */,
 			);
 		};
 /* End PBXProject section */
@@ -4484,7 +4641,8 @@
 				C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */,
 				C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */,
 				C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */,
-				C109350C1650E36D00B28FB9 /* SDSubCell.xib in Resources */,
+				C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */,
+				C1166115165791630046B1A1 /* LLQQUserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4499,6 +4657,25 @@
 				C10935221650E43100B28FB9 /* SDNestedTableViewController.m in Sources */,
 				C10935241650E43100B28FB9 /* SDSelectableCell.m in Sources */,
 				C10935261650E43100B28FB9 /* SDSubCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C11660C9165749850046B1A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C11660D8165749B00046B1A1 /* EGOCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C11660E516574AB60046B1A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C11660F516574AC20046B1A1 /* EGOImageButton.m in Sources */,
+				C11660F716574AC20046B1A1 /* EGOImageLoadConnection.m in Sources */,
+				C11660F916574AC20046B1A1 /* EGOImageLoader.m in Sources */,
+				C11660FB16574AC20046B1A1 /* EGOImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4707,6 +4884,7 @@
 				C16930001655FAD3001A1DD1 /* LLQQUserStatus.m in Sources */,
 				C16930051655FAEE001A1DD1 /* LLModelObject.m in Sources */,
 				C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */,
+				C1166101165757180046B1A1 /* LLQQUserCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4717,6 +4895,16 @@
 			isa = PBXTargetDependency;
 			target = C10935111650E3FB00B28FB9 /* SDNestedTable */;
 			targetProxy = C10935281650E44D00B28FB9 /* PBXContainerItemProxy */;
+		};
+		C11660DA165749BE0046B1A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C11660CC165749850046B1A1 /* EGOCache */;
+			targetProxy = C11660D9165749BE0046B1A1 /* PBXContainerItemProxy */;
+		};
+		C11660FD16574B430046B1A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C11660E816574AB60046B1A1 /* EGOImageView */;
+			targetProxy = C11660FC16574B430046B1A1 /* PBXContainerItemProxy */;
 		};
 		C11D61F4164652D9003BF26B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4801,6 +4989,56 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /tmp/SDNestedTable.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C11660D6165749850046B1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/EGOCache.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C11660D7165749850046B1A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/EGOCache.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C11660F216574AB60046B1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/EGOImageView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C11660F316574AB60046B1A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/EGOImageView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				OTHER_LDFLAGS = "-ObjC";
@@ -5118,6 +5356,8 @@
 					"Libs/UIBubbleTableView/src/**",
 					"Libs/toast-notifications-ios/**",
 					"Libs/ios-SDNestedTable/**",
+					"Libs/EGO/EGOCache/**",
+					"Libs/EGO/EGOImageView/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = (
@@ -5147,6 +5387,8 @@
 					"Libs/UIBubbleTableView/src/**",
 					"Libs/toast-notifications-ios/**",
 					"Libs/ios-SDNestedTable/**",
+					"Libs/EGO/EGOCache/**",
+					"Libs/EGO/EGOImageView/**",
 				);
 				INFOPLIST_FILE = "LeQQ/LeQQ-Info.plist";
 				OTHER_LDFLAGS = (
@@ -5167,6 +5409,24 @@
 			buildConfigurations = (
 				C109351B1650E3FB00B28FB9 /* Debug */,
 				C109351C1650E3FB00B28FB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C11660D5165749850046B1A1 /* Build configuration list for PBXNativeTarget "EGOCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C11660D6165749850046B1A1 /* Debug */,
+				C11660D7165749850046B1A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C11660F116574AB60046B1A1 /* Build configuration list for PBXNativeTarget "EGOImageView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C11660F216574AB60046B1A1 /* Debug */,
+				C11660F316574AB60046B1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

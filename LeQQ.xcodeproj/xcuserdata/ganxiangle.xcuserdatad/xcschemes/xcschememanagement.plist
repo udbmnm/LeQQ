@@ -9,6 +9,16 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>EGOCache.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>EGOImageView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>KissXML.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -63,6 +73,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>C10935111650E3FB00B28FB9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C11660CC165749850046B1A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C11660E816574AB60046B1A1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

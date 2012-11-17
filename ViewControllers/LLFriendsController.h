@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LLQQCommonRequest.h"
+#import "LLQQUserCell.h"
 
-@interface LLFriendsController : UIViewController <LLQQCommonRequestDelegate>
+@interface LLFriendsController : SDNestedTableViewController <LLQQCommonRequestDelegate>
 {
     UISegmentedControl *_segment;
     LLQQCommonRequest *_request;

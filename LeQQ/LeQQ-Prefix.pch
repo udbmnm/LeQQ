@@ -21,6 +21,8 @@
     #import <UIBubbleTableView.h>   
     #import <iToast.h>
     #import <SDNestedTableViewController.h>
+    #import <EGOCache.h>
+    #import <EGOImageView.h>
     #import "LLQQModel.h"
     #import "LLQQHelper.h"
     #import "LLDebug.h"

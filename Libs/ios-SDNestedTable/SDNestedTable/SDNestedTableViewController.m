@@ -81,7 +81,8 @@
 	mainCellExpandedDic = [[NSMutableDictionary alloc] init];
     
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //self.tableView.separatorColor = [UIColor grayColor];
 }
 
 #pragma mark - TableView delegation
@@ -130,7 +131,7 @@
     if(isExpanded)
     {
         /* when expanded the subcell's height includes the height of all sub cells */
-        return [SDGroupCell getHeight] + [SDGroupCell getSubCellHeight]*amt + 1;
+        return [SDGroupCell getHeight] + [SDGroupCell getSubCellHeight]*amt + 0;
     }
     return [SDGroupCell getHeight];
 }
@@ -142,8 +143,9 @@
     BOOL isExpanded = [[mainCellExpandedDic objectForKey:indexPath] boolValue];
 	[mainCellExpandedDic setObject:[NSNumber numberWithBool:!isExpanded] forKey:indexPath];
     
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+    //[self.tableView beginUpdates];
+    //[self.tableView endUpdates];
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     [self mainTable:self.tableView 
                item:(SDGroupCell *)[self.tableView cellForRowAtIndexPath:indexPath] 
