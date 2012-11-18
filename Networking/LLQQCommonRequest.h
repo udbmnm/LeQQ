@@ -19,7 +19,9 @@ typedef enum
     kQQRequestGetFaceOfUser = 107,         /* - (void)getFaceOfUser:(long)uin; */
     kQQRequestGetAllOnlineFriends = 108,   /* - (void)getAllOnlineFriends; */
     kQQRequestGetRecentFriends = 109,      /* - (void)getRecentFriends; */
-    kQQRequestGetGroupInfoAndMembers = 110
+    kQQRequestGetGroupInfoAndMembers = 110, 
+    kQQRequestSendMsgTo = 111,
+    kQQRequestSendPoll = 112
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -87,8 +89,6 @@ typedef enum
  */
 - (void)getQQLevel:(long)uin;
 
-//- (long)getQQNumber:(long)uin;
-
 /*
  * change the login status:
  * "online", "away" ... 
@@ -124,8 +124,16 @@ typedef enum
  */
 - (void)getGroupInfoAndMembers:(long)gcode;
 
+/*
+ * no data return, just return YES/NO
+ */
+- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs;
+
+
+- (void)poll;
 //- (UIImage *)getGroupLogo:(long)code;
 
+//- (long)getQQNumber:(long)uin;
 
 //- (long)getGroupNumber:(long)code;
 

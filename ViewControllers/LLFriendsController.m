@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad
 {
-    _segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群", @"最近联系", nil]];
+    _segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群/讨论组", @"最近联系", nil]];
     [_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
     [_segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
     _segment.selectedSegmentIndex = 0;

@@ -599,7 +599,7 @@
     
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    [request addRequestHeader:@"Referer" value:@"/http://s.web2.qq.com/"];
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/"];
     
     [request setFailedBlock:^(void) {
         [_delegate LLQQCommonRequestNotify:kQQRequestGetGroupInfoAndMembers isOK:NO info:[request error]];
@@ -678,6 +678,96 @@
     [request startAsynchronous];    
 }
 
+- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs
+{
+    static NSString *urlString = @"http://d.web2.qq.com/channel/send_buddy_msg2";
+    
+    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+    [json setObject:[NSNumber numberWithLong:uin] forKey:@"to"];
+    [json setObject:[NSNumber numberWithLong:0] forKey:@"face"];
+    [json setObject:[LLQQParameterGenerator msgId] forKey:@"msg_id"];
+    [json setObject:_box.clientid forKey:@"clientid"];
+    [json setObject:_box.psessionid forKey:@"psessionid"];
+    NSArray *fontJson = [@"[\"font\",{\"name\":\"宋体\",\"size\":\"10\",\"style\":[0,0,0],\"color\":\"000000\"}]" JSONValue];
+    [json setObject:[fontJson JSONRepresentation] forKey:@"content"];
+    
+    NSString *postContent = [json JSONRepresentation];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request setPostValue:postContent forKey:@"r"];
+    [request setPostValue:_box.clientid forKey:@"clientid"];
+    [request setPostValue:_box.psessionid forKey:@"psessionid"];
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/"];
+    [request setCompletionBlock:^(void){        
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
+            return ;
+        }        
+        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:YES info:nil];
+        
+    }];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:NO info:[request error]];
+    }];
+    
+    [request startAsynchronous];   
+}
 
+- (void)poll
+{
+    static NSString *urlString = @"http://d.web2.qq.com/channel/poll2";
+    
+    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+    [json setObject:[NSArray array] forKey:@"ids"];
+    [json setObject:[NSNumber numberWithLong:0] forKey:@"key"];
+    [json setObject:_box.clientid forKey:@"clientid"];
+    [json setObject:_box.psessionid forKey:@"psessionid"];
+    
+    NSString *postContent = [json JSONRepresentation];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    [request setPostValue:postContent forKey:@"r"];
+    [request setPostValue:_box.clientid forKey:@"clientid"];
+    [request setPostValue:_box.psessionid forKey:@"psessionid"];
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/"];
+    [request setCompletionBlock:^(void){
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        long retcode = [[resDic objectForKey:@"retcode"] longValue];
+        
+        if (retcode == 102){
+            /* not msg */
+            [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll
+                                          isOK:YES 
+                                          info:nil];
+        }
+        else if (retcode != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
+            return ;
+        }        
+        
+        
+        /* ..... many and many code.... */
+        
+        
+        [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll isOK:YES info:nil];        
+    }];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:NO info:[request error]];
+    }];
+    
+    [request startAsynchronous];   
+
+}
 
 @end

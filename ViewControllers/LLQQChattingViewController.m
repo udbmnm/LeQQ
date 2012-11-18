@@ -46,13 +46,14 @@
 
 - (void)testBubbleRecords
 {
-    NSBubbleData *chatRecord1 = [[NSBubbleData alloc] initWithText:@"hello girl" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:NSBubbleTypingTypeSomebody];
-    NSBubbleData *chatRecord2 = [[NSBubbleData alloc] initWithText:@"hi" date:[NSDate dateWithTimeIntervalSinceNow:-150] type:NSBubbleTypingTypeMe];
-    NSBubbleData *chatRecord3 = [[NSBubbleData alloc] initWithText:@"颠" date:[NSDate dateWithTimeIntervalSinceNow:1] type:NSBubbleTypingTypeSomebody];
+    NSBubbleData *chatRecord1 = [[NSBubbleData alloc] initWithText:@"hello girl" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
+    NSBubbleData *chatRecord2 = [[NSBubbleData alloc] initWithText:@"hi" date:[NSDate dateWithTimeIntervalSinceNow:-150] type:BubbleTypeMine];
+    NSBubbleData *chatRecord3 = [[NSBubbleData alloc] initWithText:@"颠" date:[NSDate dateWithTimeIntervalSinceNow:1] type:BubbleTypeMine];
     
     [_bubbles addObjectsFromArray:[NSArray arrayWithObjects:chatRecord1, chatRecord2, chatRecord3, nil]];  
-    [_bubbleView reloadData];
+    _bubbleView.typingBubble = NSBubbleTypingTypeMe;
 
+    [_bubbleView reloadData];
 }
 
 - (void)viewDidUnload

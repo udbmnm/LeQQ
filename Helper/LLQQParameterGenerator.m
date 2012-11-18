@@ -27,4 +27,9 @@
     return [NSString stringWithFormat:@"%.0f", interval];
 }
 
++ (NSString *)msgId
+{
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+    return [NSString stringWithFormat:@"%.0f", interval/ 1000.0];
+}
 @end

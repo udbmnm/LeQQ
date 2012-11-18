@@ -14,5 +14,5 @@
 + (NSString *)r;
 + (NSString *)clientid;
 + (NSString *)t;
-
++ (NSString *)msgId;
 @end
