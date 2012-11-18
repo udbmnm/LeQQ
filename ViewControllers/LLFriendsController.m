@@ -109,6 +109,7 @@
             break;
     }
     
+    /* 只有完成了所有用户和在线用户信息（不包括签名和头像图片）才加载整个table页面*/
     if (_categoriesDic && _onlineUsersList) {
         _usersTree = [[LLQQUsersTree alloc] initWithCategoriesDic:_categoriesDic
                                                   onlineUsersList:_onlineUsersList];
@@ -127,6 +128,7 @@
     
 }
 
+/* 一层,分组数目*/
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfItemsInSection:(NSInteger)section
 {
     if (section == 0)
@@ -136,12 +138,14 @@
     }
 }
 
+/*二层，各分组内的用户数目*/
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfSubItemsforItem:(SDGroupCell *)item atIndexPath:(NSIndexPath *)indexPath
 {
     LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
     return category.usersMap.count;
 }
 
+/*显示一级元素前设置分组的标题*/
 - (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
@@ -149,15 +153,21 @@
     return item;
 }
 
+/*显示二级元素前,设置用户cell的名字、签名、图片*/
 - (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* 默认头像*/
+    
     LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:item.cellIndexPath.row];
     NSArray *userListInCategory = [_usersTree getUsersListOfCategory:category.index];
     LLQQUser *user = (LLQQUser*)[userListInCategory objectAtIndex:indexPath.row];
     
-    [[(LLQQUserCell *)subItem nameLabel] setText:user.nickname];
+    if (user.markname == nil) {
+        [[(LLQQUserCell *)subItem nameLabel] setText:user.nickname];
+    } else {
+        [[(LLQQUserCell *)subItem nameLabel] setText:[NSString stringWithFormat:@"%@ (%@)", user.markname, user.nickname]];
+    }
     [[(LLQQUserCell *)subItem signatureLabel] setText:user.signature];
+    [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
     return subItem;
 }
 @end

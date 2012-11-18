@@ -58,4 +58,9 @@
 {
     return gender == kGenderMale ? @"male" : (gender == kGenderFemale) ? @"female" : nil;    
 }
+
++ (NSString *)stringWithLong:(long)value
+{
+    return [NSString stringWithFormat:@"%ld", value];
+}
 @end

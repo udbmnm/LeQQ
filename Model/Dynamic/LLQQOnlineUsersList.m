@@ -35,7 +35,7 @@
     NSMutableArray *statusList = [NSMutableArray array];
     
     for (LLQQUserStatus *status in _onlineList) {
-        LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithFormat:@"%ld", status.uin]];
+        LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithLong: status.uin]];
         if (user) {
             [statusList addObject:status];
         }

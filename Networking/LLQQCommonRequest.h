@@ -86,7 +86,13 @@ typedef enum
 /* 
  * return a UIImage of user
  */
-- (void)getFaceOfUser:(long)uin;
+- (void)getFaceOfUser:(long)uin isMe:(BOOL)isMe;
+
+/* 
+ * not download but return a request URL
+ * added for EGOImageView
+ */
+- (NSURL *)getFaceOfUserURL:(long)uin isMe:(BOOL)isMe;
 
 /* 
  * return an Object of LLQQOnlineUsersList

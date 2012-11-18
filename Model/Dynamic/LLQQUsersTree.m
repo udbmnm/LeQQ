@@ -18,6 +18,7 @@
         _categoriesDic = [categoriesDic retain];
         _onlineUsersList = [onlineUsersList retain];
         _usersOfCategoryDic = [[NSMutableDictionary alloc] init];
+        _categoriesArray = nil;
         
         /* loop all categories */
         for (NSString *index in [_categoriesDic allKeys]) {
@@ -47,28 +48,39 @@
             
             [_usersOfCategoryDic setObject:allUsersInCategory 
                                     forKey:[NSString stringWithFormat:index]];
+            
+            _categoriesArray = [[NSMutableArray alloc] initWithArray:[[_categoriesDic allValues] sortedArrayUsingSelector:@selector(compareWithCategory:)]];
         }        
     }
     return self;
 }
 
+-(void)dealloc
+{
+    [_categoriesDic release];
+    [_categoriesArray release];
+    [_onlineUsersList release];
+    [_usersOfCategoryDic release];
+    [super dealloc];
+}
+
 - (NSArray *)getUsersListOfCategory:(long)categoryIndex
 {
-    return [_usersOfCategoryDic objectForKey:[NSString stringWithFormat:@"%ld", categoryIndex]];
+    return [_usersOfCategoryDic objectForKey:[NSString stringWithLong:categoryIndex]];
 }
 
 - (LLQQCategory *)getCategory:(long)categoryIndex
 {
-    return [_categoriesDic objectForKey:[NSString stringWithFormat:@"%ld", categoryIndex]];
+    return [_categoriesDic objectForKey:[NSString stringWithLong:categoryIndex]];
 }
 
 - (long)getCategoriesCount
 {
-    return  [[_categoriesDic allKeys] count];
+    return  [_categoriesArray count];
 }
 
 - (NSArray *)getCategories
 {
-    return [_categoriesDic allValues];
+    return _categoriesArray;
 }
 @end

@@ -15,6 +15,7 @@
     LLQQOnlineUsersList *_onlineUsersList;
     
     NSMutableDictionary *_usersOfCategoryDic;
+    NSMutableArray *_categoriesArray;
 }
 
 /* 

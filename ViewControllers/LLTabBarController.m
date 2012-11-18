@@ -33,6 +33,7 @@
 {
     if (self = [super init]) {
         _viewControllerArray = [[NSMutableArray alloc] init];
+        [self.tabBar setTintColor:[UIColor grayColor]];
         
     }
     return self;

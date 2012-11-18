@@ -67,6 +67,12 @@
             [category release];
         }
         
+        LLQQCategory *defaultCategory = [[LLQQCategory alloc] init];
+        defaultCategory.index = 0;
+        defaultCategory.name = @"我的好友";  
+        [categoriesDic setObject:defaultCategory forKey:@"0"];
+        [defaultCategory release];
+        
         for (NSDictionary *aFriendDic in friends) {
             LLQQUser *user = [[LLQQUser alloc] init];
             user.uin = [[aFriendDic objectForKey:@"uin"] longValue];
@@ -163,7 +169,7 @@
             group.code = [[aGroupDic objectForKey:@"code"] longValue];
             group.name = [aGroupDic objectForKey:@"name"];
             /* the flag ?? */
-            [groups setValue:group forKey:[NSString stringWithFormat:@"%ld", group.gid]];
+            [groups setValue:group forKey:[NSString stringWithLong: group.gid]];
             [group release];
         }
         
@@ -183,7 +189,7 @@
     static NSString *urlPattern = @"http://s.web2.qq.com/api/get_friend_info2?tuin=$(uin)&verifysession=&code=&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
+                                   [NSString stringWithLong: uin], @"$(uin)", 
                                                                 _box.vfwebqq, @"$(vfwebqq)", 
                                                   [LLQQParameterGenerator t], @"$(t)", nil];
     
@@ -196,7 +202,7 @@
         
         long retcode = [[resDic objectForKey:@"retcode"] longValue];
         if (retcode != 0) {
-            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:NO info:[NSString stringWithFormat:@"%ld", retcode]];
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserDetail isOK:NO info:[NSString stringWithLong: retcode]];
             return ;
         }
         
@@ -241,7 +247,7 @@
     static NSString *urlPattern = @"http://s.web2.qq.com/api/get_single_long_nick2?tuin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
+                                   [NSString stringWithLong: uin], @"$(uin)", 
                                    _box.vfwebqq, @"$(vfwebqq)", 
                                    [LLQQParameterGenerator t], @"$(t)", nil];
     
@@ -285,7 +291,7 @@
     static NSString *urlPattern = @"http://s.web2.qq.com/api/get_qq_level2?tuin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%ld", uin], @"$(uin)", 
+                                   [NSString stringWithLong: uin], @"$(uin)", 
                                    _box.vfwebqq, @"$(vfwebqq)", 
                                    [LLQQParameterGenerator t], @"$(t)", nil];
     
@@ -370,16 +376,20 @@
     [request startAsynchronous];
 }
 
-- (void)getFaceOfUser:(long)uin
+- (void)getFaceOfUser:(long)uin isMe:(BOOL)isMe
 {
-    static NSString *urlPattern = @"http://face8.qun.qq.com/cgi/svr/face/getface?cache=1&type=1&fid=0&uin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
+    static NSString *urlPattern = @"http://face8.qun.qq.com/cgi/svr/face/getface?cache=$(cache)&type=1&fid=0&uin=$(uin)&vfwebqq=$(vfwebqq)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSNumber numberWithLong:uin], @"$(uin)", 
+                                   [NSString stringWithLong:uin], @"$(uin)", 
                                    _box.vfwebqq,                  @"$(vfwebqq)", 
-                                   [LLQQParameterGenerator t],    @"$(t)", nil];
+                                   isMe ? @"1": @"0", @"cache", nil];
     
-    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];  
+    if (isMe) {
+        urlString = [urlString stringByAppendingFormat:@"&t=%@", [LLQQParameterGenerator t]];
+    }    
+    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
     [request addRequestHeader:@"Referer" value:@"http://web.qq.com/"];
 
@@ -402,6 +412,22 @@
     }];
     
     [request startAsynchronous];
+}
+
+- (NSURL *)getFaceOfUserURL:(long)uin isMe:(BOOL)isMe
+{
+    static NSString *urlPattern = @"http://face8.qun.qq.com/cgi/svr/face/getface?cache=$(cache)&type=1&fid=0&uin=$(uin)&vfwebqq=$(vfwebqq)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSString stringWithLong:uin], @"$(uin)", 
+                                   _box.vfwebqq,                  @"$(vfwebqq)", 
+                                   isMe ? @"1": @"0", @"$(cache)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];  
+    if (isMe) {
+        urlString = [urlString stringByAppendingFormat:@"&t=%@", [LLQQParameterGenerator t]];
+    }    
+    return [NSURL URLWithString:urlString];
 }
 
 - (void)getAllOnlineFriends
@@ -508,7 +534,7 @@
     static NSString *urlPattern = @"http://s.web2.qq.com/api/get_group_info_ext2?gcode=$(gcode)&vfwebqq=$(vfwebqq)&t=$(t)";
     
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSString stringWithFormat:@"%ld", gcode],@"$(gcode)", 
+                                   [NSString stringWithLong: gcode],@"$(gcode)", 
                                    _box.vfwebqq,                   @"$(vfwebqq)", 
                                    [LLQQParameterGenerator t],     @"$(t)", nil];
     

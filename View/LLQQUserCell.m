@@ -17,7 +17,7 @@
     if(self = [super initWithFrame:frame])
     {        
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-        line.backgroundColor = [UIColor grayColor];
+        line.backgroundColor = [UIColor blackColor];
         [self.contentView addSubview:line];
         [line release];
 
@@ -25,7 +25,7 @@
         [self.faceImgView setFrame:CGRectMake(10, 5, 40, 40)];
         [self.contentView addSubview:self.faceImgView];
 
-        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 110, 20)];
+        self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, 255, 20)];
         [self.nameLabel setBackgroundColor:[UIColor clearColor]];
         self.signatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 255, 20)];
         [self.signatureLabel setBackgroundColor:[UIColor clearColor]];
@@ -35,7 +35,7 @@
     }
     return self;
 }
-
+/*
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if(self = [super initWithCoder:aDecoder])
@@ -45,4 +45,5 @@
     }
     return self;
 }
+ */
 @end

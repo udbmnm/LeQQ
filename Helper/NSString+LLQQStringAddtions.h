@@ -17,4 +17,6 @@
 
 - (LLGender) genderValue;
 + (NSString *)stringFromGenderValue:(LLGender)gender;
+
++ (NSString *)stringWithLong:(long)value;
 @end

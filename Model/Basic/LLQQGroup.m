@@ -46,22 +46,22 @@
 {
    /* NOTE: must first vilidate the user' group */
     
-    LLQQUser* theUser = (LLQQUser*)[self.usersMap objectForKey:[NSString stringWithFormat:@"%ld", user.uin]];
+    LLQQUser* theUser = (LLQQUser*)[self.usersMap objectForKey:[NSString stringWithLong: user.uin]];
     
     if (theUser != nil) {
         theUser = [theUser mergedWith:user];
-        [self.usersMap setObject:user forKey:[NSString stringWithFormat:@"%ld", user.uin]];
+        [self.usersMap setObject:user forKey:[NSString stringWithLong: user.uin]];
         return YES;
     }    
     else {
-        [self.usersMap setObject:user forKey:[NSString stringWithFormat:@"%ld", user.uin]];
+        [self.usersMap setObject:user forKey:[NSString stringWithLong: user.uin]];
         return YES;
     }
 }
 
 - (LLQQUser *)getUser:(long)uin
 {
-    id theUser = [self.usersMap objectForKey:[NSString stringWithFormat:@"%ld", uin]];
+    id theUser = [self.usersMap objectForKey:[NSString stringWithLong: uin]];
     if (theUser == nil) {
         return NO;
     }    

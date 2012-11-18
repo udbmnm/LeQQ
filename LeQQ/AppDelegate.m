@@ -50,7 +50,7 @@
     LLFriendsController *friendsController = [[LLFriendsController alloc] init];
 
     [tabbarController addViewController:[[UINavigationController alloc] initWithRootViewController:friendsController]
-                               tabImage:[UIImage imageNamed:@"Galuca_0156"]
+                               tabImage:[UIImage imageNamed:@"conversations40x40"]
                                   title:@"好友"];
      [friendsController release];
     
