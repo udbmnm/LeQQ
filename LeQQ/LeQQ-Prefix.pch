@@ -15,6 +15,7 @@
     #import <MBProgressHUD.h>
     #import <RegexKitLite.h>
     #import <ASIFormDataRequest.h>
+    #import <ASINetworkQueue.h>
     #import <FMDatabase.h>
     #import <SBJson.h>
     #import <DDXML.h>
@@ -24,6 +25,7 @@
     #import <EGOCache.h>
     #import <EGOImageView.h>
     #import "LLQQModel.h"
+    #import "LLViews.h"
     #import "LLQQHelper.h"
     #import "LLDebug.h"
 

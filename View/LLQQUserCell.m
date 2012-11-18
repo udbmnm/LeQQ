@@ -29,6 +29,8 @@
         [self.nameLabel setBackgroundColor:[UIColor clearColor]];
         self.signatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 255, 20)];
         [self.signatureLabel setBackgroundColor:[UIColor clearColor]];
+        [self.signatureLabel setFont:[UIFont systemFontOfSize:10]];
+        [self.signatureLabel setTextColor:[UIColor brownColor]];
         [self.contentView addSubview:self.nameLabel];
         [self.contentView addSubview:self.signatureLabel];
         

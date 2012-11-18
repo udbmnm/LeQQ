@@ -30,7 +30,8 @@ typedef enum
 @interface LLQQCommonRequest : NSObject
 {
     LLQQMoonBox *_box;
-    id<LLQQCommonRequestDelegate> _delegate;
+    id<LLQQCommonRequestDelegate> _delegate; /*not retain*/
+    ASINetworkQueue *_nicknamgeOperationQueue;
 }
 
 /* the box contains all infomation that used to request Tencent server */
@@ -60,9 +61,21 @@ typedef enum
 
 /*
  * get the sinature of user by uin 
- * return the signature string
+ * the return dictionray:
+ *    KEY: @"signature" VALUE:(NSString*)
+ *    KEY: @"uin"       VALUE:(NSString*)uinString
  */
 - (void)getUserSignature:(long)uin;
+
+/*
+ * get many users' sinatures.
+ * return the signature string many times 
+ * for many users.
+ * the return dictionray:
+ *    KEY: @"signature" VALUE:(NSString*)
+ *    KEY: @"uin"       VALUE:(NSNumber*)uin
+ */
+- (void)getUsersSignatures:(NSArray *)uins;
 
 /* 
  * get a user's qq level info, returns 

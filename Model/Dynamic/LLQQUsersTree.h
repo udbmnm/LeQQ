@@ -37,8 +37,16 @@
  * "tree data".
  */
 - (NSArray *)getUsersListOfCategory:(long)categoryIndex;
-
 - (LLQQCategory *)getCategory:(long)categoryIndex;
+- (LLQQUser*)getUser:(long)uin;
+- (NSIndexPath*)getUserIndexPath:(long)uin;
+
 - (long)getCategoriesCount;
 - (NSArray *)getCategories;
+- (LLQQCategory *)getCategoryAtSection:(long)section;
+
+- (NSInteger)getUsersCountAtSection:(long)section;
+- (NSArray *)getUsersListOfSection:(long)section;
+- (LLQQUser*)getUserAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

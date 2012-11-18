@@ -17,6 +17,7 @@
         NSAssert(_box != nil, @"moon box must not be nil");
 
         _delegate = delegate;
+        _nicknamgeOperationQueue = nil;
     }
     return self;
 }
@@ -24,6 +25,7 @@
 - (void)dealloc
 {
     [_box release];
+    [_nicknamgeOperationQueue release];
     [super dealloc];
 }
 
@@ -253,7 +255,8 @@
     
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
-    
+    [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/"];
+
     [request setFailedBlock:^(void) {
         [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:NO info:[request error]];
     }];
@@ -279,11 +282,67 @@
             }
         }
      
-        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:YES info:signatureString];        
+        NSDictionary *infoToReturn = [NSDictionary dictionaryWithObjectsAndKeys:signatureString, @"signature", [NSNumber numberWithLong:uin], @"uin", nil]; 
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:YES info:infoToReturn];      
     }];
     
         
     [request startAsynchronous];
+}
+
+- (void)getUsersSignatures:(NSArray *)uins
+{        
+    static NSString *urlPattern = @"http://s.web2.qq.com/api/get_single_long_nick2?tuin=$(uin)&vfwebqq=$(vfwebqq)&t=$(t)";
+
+    _nicknamgeOperationQueue = [[ASINetworkQueue alloc] init];
+    [_nicknamgeOperationQueue setMaxConcurrentOperationCount:4];
+    [_nicknamgeOperationQueue setShouldCancelAllRequestsOnFailure:NO];    
+    
+    for (NSNumber *uinNumber in uins) {
+        
+        NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       [NSString stringWithFormat:@"%@",uinNumber], @"$(uin)", 
+                                       _box.vfwebqq, @"$(vfwebqq)", 
+                                       [LLQQParameterGenerator t], @"$(t)", nil];
+        
+        NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+        [request addRequestHeader:@"Referer" value:@"http://s.web2.qq.com/"];
+        request.tag = [uinNumber longValue];
+        
+        [request setFailedBlock:^(void) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:NO info:[request error]];
+        }];
+        
+        [request setCompletionBlock:^(void) {
+            NSString *response = [request responseString];
+            NSDictionary *resDic = [response JSONValue];
+            long uin = request.tag;
+            
+            long retcode = [[resDic objectForKey:@"retcode"] longValue];
+            if (retcode != 0) {
+                [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature 
+                                              isOK:NO 
+                                              info:[NSString stringWithFormat:@"retcode is NOT 0: %ld", retcode]];
+                return ;
+            }
+            NSArray *signatures = [resDic objectForKey:@"result"];
+            
+            NSString *signatureString = nil;
+            for (NSDictionary *signatureDic in signatures) {
+                if ([[signatureDic objectForKey:@"uin"] longValue] == uin) {
+                    signatureString = [signatureDic objectForKey:@"lnick"];
+                    break;
+                }
+            }
+            NSDictionary *infoToReturn = [NSDictionary dictionaryWithObjectsAndKeys:signatureString, @"signature", [NSNumber numberWithLong:uin], @"uin", nil]; 
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetUserSignature isOK:YES info:infoToReturn];        
+        }];        
+        
+        [_nicknamgeOperationQueue addOperation:request];        
+    }
+    
+    [_nicknamgeOperationQueue performSelector:@selector(go) withObject:nil afterDelay:0.5];
 }
 
 - (void)getQQLevel:(long)uin
@@ -383,7 +442,7 @@
     NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
                                    [NSString stringWithLong:uin], @"$(uin)", 
                                    _box.vfwebqq,                  @"$(vfwebqq)", 
-                                   isMe ? @"1": @"0", @"cache", nil];
+                                   isMe ? @"1": @"0", @"$(cache)", nil];
     
     NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];  
     if (isMe) {

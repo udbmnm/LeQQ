@@ -46,7 +46,7 @@
     
     [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"登录"];
-
+    
     LLFriendsController *friendsController = [[LLFriendsController alloc] init];
 
     [tabbarController addViewController:[[UINavigationController alloc] initWithRootViewController:friendsController]

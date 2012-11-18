@@ -74,6 +74,35 @@
     return [_categoriesDic objectForKey:[NSString stringWithLong:categoryIndex]];
 }
 
+- (LLQQUser*)getUser:(long)uin
+{
+    for (LLQQCategory *category in _categoriesArray) {
+        LLQQUser *user = [[category usersMap] objectForKey:[NSString stringWithLong:uin]];
+        if (user) {
+            return user;
+        }
+    }
+    return nil;
+}
+
+- (NSIndexPath*)getUserIndexPath:(long)uin
+{
+    long section = 0;
+    long row = 0;
+    /*复杂度Ne2*/
+    for (LLQQCategory *category in _categoriesArray) {
+        NSArray *users = [self getUsersListOfCategory:category.index];
+        for (LLQQUser *user in users) {
+            if (user.uin == uin) {
+                return [NSIndexPath indexPathForRow:row inSection:section];
+            }
+            row++;
+        }        
+        section++;
+    }    
+    return nil;
+}
+#pragma mark - section operation
 - (long)getCategoriesCount
 {
     return  [_categoriesArray count];
@@ -83,4 +112,30 @@
 {
     return _categoriesArray;
 }
+
+- (LLQQCategory *)getCategoryAtSection:(long)section
+{
+    return [_categoriesArray objectAtIndex:section];
+}
+
+#pragma mark - row operation
+- (NSInteger)getUsersCountAtSection:(long)section
+{
+    return [[self getUsersListOfSection:section] count];
+}
+
+- (NSArray *)getUsersListOfSection:(long)section
+{
+    LLQQCategory *category = [self getCategoryAtSection:section];
+    return [self getUsersListOfCategory:category.index];
+}
+
+- (LLQQUser*)getUserAtIndexPath:(NSIndexPath *)indexPath
+{    
+    NSArray *userListOfCategory = [self getUsersListOfSection:indexPath.section];
+    return [userListOfCategory objectAtIndex:indexPath.row];
+}
+
+
+
 @end

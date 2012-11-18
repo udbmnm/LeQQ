@@ -41,8 +41,6 @@
         isExpanded = NO;
         subTable = nil;
         self.backgroundView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:245/255.0 alpha:1.0];
-        
-
     }
     return self;
 }
@@ -90,6 +88,7 @@
     SDSubCell *cell = (SDSubCell *)[tableView cellForRowAtIndexPath:indexPath];
     if (cell == nil)
     {
+        NSAssert(cell == nil, @"ERROR cell must not be nill");
         cell = (SDSubCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     }
     

@@ -105,6 +105,27 @@
             [[[[iToast makeText:@"online friends loaded"] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
         }
             break;
+        case kQQRequestGetUserSignature:
+        {
+            NSDictionary *signatureDic = (NSDictionary*)info;
+            long uin = [[signatureDic objectForKey:@"uin"] longValue];
+            NSString *signature = [signatureDic objectForKey:@"signature"];
+            [[_usersTree getUser:uin] setSignature:signature];
+            
+            /* 局部刷新*/
+            
+            NSIndexPath *indexPath = [_usersTree getUserIndexPath:uin];            
+            SDGroupCell *groupCell = (SDGroupCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section inSection:0]];            
+            if (groupCell) {
+                SDSubCell *subCell = (SDSubCell *)[groupCell.subTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]];
+                
+                if (subCell) {
+                    [groupCell.subTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                }
+                
+            }            
+        }
+            break;
         default:
             break;
     }
@@ -120,12 +141,26 @@
 #pragma mark - SDNestedTableDelegate
 - (void) mainTable:(UITableView *)mainTable item:(SDGroupCell *)item didExpanded:(BOOL)isExpanded
 {
-    
+    /* load the nickname and face imgs */
+        
+    if (isExpanded == YES) {
+        NSArray *users = [_usersTree getUsersListOfSection:item.cellIndexPath.row];
+        LLQQUser *aUser = [users lastObject];
+        
+        if (aUser.signature == nil) {    
+            NSMutableArray *usersUins = [[NSMutableArray alloc] init];
+            for (LLQQUser *user in users) {
+                [usersUins addObject:[NSNumber numberWithLong:user.uin]];
+            }
+            [_request getUsersSignatures:usersUins];
+        }
+    }
+     
 }
 
 - (void) mainItem:(SDGroupCell *)item subItemDidClicked:(SDSelectableCell *)subItem
 {
-    
+    /* push to the chating view */
 }
 
 /* 一层,分组数目*/
@@ -141,14 +176,13 @@
 /*二层，各分组内的用户数目*/
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfSubItemsforItem:(SDGroupCell *)item atIndexPath:(NSIndexPath *)indexPath
 {
-    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
-    return category.usersMap.count;
+    return [_usersTree getUsersCountAtSection:indexPath.row];
 }
 
 /*显示一级元素前设置分组的标题*/
 - (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:indexPath.row];
+    LLQQCategory *category = [_usersTree getCategoryAtSection:indexPath.row];
     [item.titleLabel setText:category.name];
     return item;
 }
@@ -157,9 +191,8 @@
 - (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    LLQQCategory *category = [[_usersTree getCategories] objectAtIndex:item.cellIndexPath.row];
-    NSArray *userListInCategory = [_usersTree getUsersListOfCategory:category.index];
-    LLQQUser *user = (LLQQUser*)[userListInCategory objectAtIndex:indexPath.row];
+    LLQQUser *user = [_usersTree getUserAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row 
+                                                                       inSection:item.cellIndexPath.row]];
     
     if (user.markname == nil) {
         [[(LLQQUserCell *)subItem nameLabel] setText:user.nickname];
@@ -167,7 +200,11 @@
         [[(LLQQUserCell *)subItem nameLabel] setText:[NSString stringWithFormat:@"%@ (%@)", user.markname, user.nickname]];
     }
     [[(LLQQUserCell *)subItem signatureLabel] setText:user.signature];
-    [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
+    
+    /*added onece*/
+    if ([[(LLQQUserCell*)subItem faceImgView] imageURL] == nil) {
+        [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
+    }
     return subItem;
 }
 @end

@@ -110,13 +110,13 @@
     [cell setSubCellsCount:[subItemsNum intValue]];
     
     BOOL isExpanded = NO;
-    if ([mainCellExpandedDic objectForKey:indexPath] == nil) {
+    if ([mainCellExpandedDic objectForKey:indexPath] != nil) {
         isExpanded = [[mainCellExpandedDic objectForKey:indexPath] boolValue];
     } else {
         isExpanded = NO;
     }
     cell.isExpanded = isExpanded;    
-    [cell.subTable reloadData];
+    //[cell.subTable reloadData];
     
     /* call the delegate to init the main item*/
     cell = [self mainTable:tableView prepareItem:cell forRowAtIndexPath:indexPath];
@@ -141,15 +141,22 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     BOOL isExpanded = [[mainCellExpandedDic objectForKey:indexPath] boolValue];
-	[mainCellExpandedDic setObject:[NSNumber numberWithBool:!isExpanded] forKey:indexPath];
+    isExpanded = !isExpanded;
+	[mainCellExpandedDic setObject:[NSNumber numberWithBool:isExpanded] forKey:indexPath];
     
     //[self.tableView beginUpdates];
     //[self.tableView endUpdates];
     [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
+    SDGroupCell *cell = (SDGroupCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    if (isExpanded) {
+        [cell.subTable reloadData];
+    }
+    
     [self mainTable:self.tableView 
-               item:(SDGroupCell *)[self.tableView cellForRowAtIndexPath:indexPath] 
-        didExpanded:!isExpanded];
+               item:cell
+        didExpanded:isExpanded];
 }
 
 #pragma mark - LLGroupCellDelegate

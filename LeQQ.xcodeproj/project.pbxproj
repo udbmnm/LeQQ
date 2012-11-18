@@ -820,6 +820,7 @@
 		C13978F0164E917300CF10A9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */; };
 		C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */; };
+		C13E8D9B1658BA2700DB873D /* LLAuthenticodeAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E5164FAACB003F3899 /* LLQQLogout.m */; };
 		C15D85F3164FD20C003F3899 /* LLQQCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85F2164FD20C003F3899 /* LLQQCommonRequest.m */; };
@@ -850,7 +851,6 @@
 		C1A2FEE51638CE550003905B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1A2FEE31638CE550003905B /* InfoPlist.strings */; };
 		C1A2FEE71638CE550003905B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEE61638CE550003905B /* main.m */; };
 		C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A2FEEA1638CE550003905B /* AppDelegate.m */; };
-		C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */; };
 		C1A9069916466CE8001D5720 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C11D621E1646590B003BF26B /* RegexKitLite.m */; };
 		C1A906A916468C70001D5720 /* LLQQLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A906A816468C70001D5720 /* LLQQLoginController.m */; };
 		C1A909A81646978D001D5720 /* QQlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A908271646978D001D5720 /* QQlogo.png */; };
@@ -1794,6 +1794,7 @@
 		C123ACD41643983F00E03E6A /* Galuca_0300@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Galuca_0300@2x.png"; sourceTree = "<group>"; };
 		C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		C13E8D9C1658BAA000DB873D /* LLViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLViews.h; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C15D85E4164FAACB003F3899 /* LLQQLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogout.h; sourceTree = "<group>"; };
 		C15D85E5164FAACB003F3899 /* LLQQLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogout.m; sourceTree = "<group>"; };
@@ -3270,6 +3271,7 @@
 				C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */,
 				C11660FF165757180046B1A1 /* LLQQUserCell.h */,
 				C1166100165757180046B1A1 /* LLQQUserCell.m */,
+				C13E8D9C1658BAA000DB873D /* LLViews.h */,
 			);
 			path = View;
 			sourceTree = SOURCE_ROOT;
@@ -4855,6 +4857,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13E8D9B1658BA2700DB873D /* LLAuthenticodeAlertInputView.m in Sources */,
 				C1A2FEE71638CE550003905B /* main.m in Sources */,
 				C1A2FEEB1638CE550003905B /* AppDelegate.m in Sources */,
 				C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */,
@@ -4865,7 +4868,6 @@
 				C11D76441645086B00898942 /* LLGuetGirlsDownloader.m in Sources */,
 				C1A906A916468C70001D5720 /* LLQQLoginController.m in Sources */,
 				C11C098D1646CD3D00846C8E /* LLNotificationCenter.m in Sources */,
-				C1A32F9F16491C7A00B23798 /* LLAuthenticodeAlertInputView.m in Sources */,
 				C11FACCD164C08BE00312A83 /* LLQQChattingViewController.m in Sources */,
 				C17390F7164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m in Sources */,
 				C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */,
