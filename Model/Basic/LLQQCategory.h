@@ -13,7 +13,7 @@
 {
     long index;       /*分组的唯一标识*/
     long sort;        /* ? */
-    NSString *name;  /*分组名称*/
+    NSString *name;   /*分组名称*/
     NSMutableDictionary *usersMap;  /*该组下所有的用户, key是QQ号的字符串形式 */
 }
 

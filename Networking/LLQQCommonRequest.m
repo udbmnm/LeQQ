@@ -678,18 +678,39 @@
     [request startAsynchronous];    
 }
 
-- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs
+- (void)sendMsgTemplate:(long)uin msgs:(NSArray *)msgs type:(LLQQCommonRequestType)requestType
 {
-    static NSString *urlString = @"http://d.web2.qq.com/channel/send_buddy_msg2";
-    
+    NSString *urlString = nil;
+    NSString *uinKeyName = nil;
+    switch (requestType) {
+        case kQQRequestSendMsg:
+            urlString = @"http://d.web2.qq.com/channel/send_buddy_msg2";
+            uinKeyName = @"to";
+            break;
+        case kQQRequestSendGroupMsg:    
+            urlString = @"http://d.web2.qq.com/channel/send_qun_msg2";
+            uinKeyName = @"group_uin";
+            break;
+        case kQQRequestSendDiscusMsg:
+            urlString = @"http://d.web2.qq.com/channel/send_discu_msg2";
+            uinKeyName = @"did";
+            break;
+        default:
+            break;
+    }    
+
     NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
-    [json setObject:[NSNumber numberWithLong:uin] forKey:@"to"];
-    [json setObject:[NSNumber numberWithLong:0] forKey:@"face"];
+    [json setObject:[NSNumber numberWithLong:uin] forKey:uinKeyName];
+    if (requestType == kQQRequestSendMsg) {
+        [json setObject:[NSNumber numberWithLong:0] forKey:@"face"];
+    }
     [json setObject:[LLQQParameterGenerator msgId] forKey:@"msg_id"];
     [json setObject:_box.clientid forKey:@"clientid"];
     [json setObject:_box.psessionid forKey:@"psessionid"];
-    NSArray *fontJson = [@"[\"font\",{\"name\":\"宋体\",\"size\":\"10\",\"style\":[0,0,0],\"color\":\"000000\"}]" JSONValue];
-    [json setObject:[fontJson JSONRepresentation] forKey:@"content"];
+    NSArray *fontArray = [[LLQQParameterGenerator fontJsonStringForMsg] JSONValue];
+    NSMutableArray *contentArray = [NSMutableArray arrayWithArray:msgs];
+    [contentArray addObject:fontArray];
+    [json setObject:[contentArray JSONRepresentation] forKey:@"content"];
     
     NSString *postContent = [json JSONRepresentation];
     
@@ -702,21 +723,36 @@
         NSString *response = [request responseString];
         NSDictionary *resDic = [response JSONValue];
         if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
-            [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo
+            [_delegate LLQQCommonRequestNotify:requestType
                                           isOK:NO 
                                           info:[NSString stringWithFormat:@"retcode is %@", 
                                                 [resDic objectForKey:@"retcode"]]];
             return ;
         }        
-        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:YES info:nil];
+        [_delegate LLQQCommonRequestNotify:requestType isOK:YES info:nil];
         
     }];
     
     [request setFailedBlock:^(void) {
-        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:NO info:[request error]];
+        [_delegate LLQQCommonRequestNotify:requestType isOK:NO info:[request error]];
     }];
     
     [request startAsynchronous];   
+}
+
+- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs
+{
+    [self sendMsgTemplate:uin msgs:msgs type:kQQRequestSendMsg];
+}
+
+- (void)sendDiscusMsgTo:(long)did msgs:(NSArray *)msgs
+{
+    [self sendMsgTemplate:did msgs:msgs type:kQQRequestSendDiscusMsg];       
+}
+
+- (void)sendGroupMsgTo:(long)gid msgs:(NSArray *)msgs
+{
+    [self sendMsgTemplate:gid msgs:msgs type:kQQRequestSendGroupMsg];
 }
 
 - (void)poll
@@ -743,27 +779,60 @@
         
         if (retcode == 102){
             /* not msg */
-            [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll
+            [_delegate LLQQCommonRequestNotify:kQQRequestPoll
                                           isOK:YES 
                                           info:nil];
         }
         else if (retcode != 0) {
-            [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll
+            [_delegate LLQQCommonRequestNotify:kQQRequestPoll
                                           isOK:NO 
                                           info:[NSString stringWithFormat:@"retcode is %@", 
                                                 [resDic objectForKey:@"retcode"]]];
             return ;
         }        
         
+        NSArray *polls = [resDic objectForKey:@"result"];
+        for (NSDictionary *poll in polls) {
+            if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"] ||
+                [[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"] ||
+                [[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"]) {
+                NSDictionary *msgDic = [poll objectForKey:@"value"];
+                LLQQMsg *msg = [[LLQQMsg alloc] init];
+                msg.msgId   = [[msgDic objectForKey:@"msg_id"]   longValue];
+                msg.fromUin = [[msgDic objectForKey:@"from_uin"] longValue];
+                msg.toUin   = [[msgDic objectForKey:@"to_uin"]   longValue];
+                msg.MsgId2  = [[msgDic objectForKey:@"msg_id2"]  longValue];
+                msg.replyIp = [[msgDic objectForKey:@"reply_ip"] longValue];
+                msg.time = [[msgDic objectForKey:@"time"] longValue];
+                msg.content = [[msgDic objectForKey:@"content"] msgContentValue];
+                
+                if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"]) {
+                    msg.type = kQQMsgTypeUser;
+                } else if ([[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"]) {
+                    msg.type = kQQMsgTypeDiscus;
+                    msg.did = [[msgDic objectForKey:@"did"] longValue];
+                    msg.sendUin = [[msgDic objectForKey:@"send_uin"] longValue];
+                    msg.seq = [[msgDic objectForKey:@"seq"] longValue];
+                    msg.infoSeq = [[msgDic objectForKey:@"info_seq"] longValue];
+                } else {
+                    msg.type = kQQMsgTypeGroup;
+                    msg.sendUin = [[msgDic objectForKey:@"send_uin"] longValue];
+                    msg.groupCode = [[msgDic objectForKey:@"group_code"] longValue];
+                    msg.seq = [[msgDic objectForKey:@"seq"] longValue];
+                    msg.infoSeq = [[msgDic objectForKey:@"info_seq"] longValue];
+                }
+                
+                [_delegate LLQQCommonRequestNotify:kQQRequestPoll isOK:YES info:msg]; 
+                [msg release];
+            }
+        }
         
-        /* ..... many and many code.... */
-        
-        
-        [_delegate LLQQCommonRequestNotify:kQQRequestSendPoll isOK:YES info:nil];        
+        /* ..... many and many code.... */        
+        [_delegate LLQQCommonRequestNotify:kQQRequestPoll isOK:YES info:nil];        
     }];
     
     [request setFailedBlock:^(void) {
-        [_delegate LLQQCommonRequestNotify:kQQRequestSendMsgTo isOK:NO info:[request error]];
+        [_delegate LLQQCommonRequestNotify:kQQRequestPoll isOK:NO info:[request error]];
     }];
     
     [request startAsynchronous];   

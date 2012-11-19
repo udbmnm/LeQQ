@@ -19,4 +19,5 @@
 + (NSString *)stringFromGenderValue:(LLGender)gender;
 
 + (NSString *)stringWithLong:(long)value;
+- (LLQQMsgContent *)msgContentValue;
 @end

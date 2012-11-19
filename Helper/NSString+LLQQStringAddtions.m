@@ -7,6 +7,7 @@
 //
 
 #import "NSString+LLQQStringAddtions.h"
+#import "LLQQMsg.h"
 
 @implementation NSString (LLQQStringAddtions)
 
@@ -62,5 +63,33 @@
 + (NSString *)stringWithLong:(long)value
 {
     return [NSString stringWithFormat:@"%ld", value];
+}
+
+- (LLQQMsgContent *)msgContentValue;
+{
+    NSArray *contents = [self JSONValue];
+    LLQQMsgContent *msgContent = [[LLQQMsgContent alloc] init];
+    for (id obj in contents) {
+        if ([obj isKindOfClass:[NSString class]]) {
+            [msgContent addMsgElement:obj];
+            continue;
+        } else if ([obj isKindOfClass:[NSArray class]]) {
+            if ([[obj objectAtIndex:0] isEqualToString:@"font"]) {
+                LLQQMsgFont *font = [[LLQQMsgFont alloc] init];
+                [msgContent addMsgElement:font];
+                [font release];
+            } else if ([[obj objectAtIndex:0] isEqualToString:@"cface"]) {
+                LLQQMsgCface *cface = [[LLQQMsgCface alloc] init];
+                NSDictionary *objDic = [obj objectAtIndex:1];
+                cface.name = [objDic objectForKey:@"name"];
+                cface.fileId = [[objDic objectForKey:@"file_id"] longValue];
+                cface.key = [objDic objectForKey:@"key"];
+                cface.server = [objDic objectForKey:@"server"];
+                [msgContent addMsgElement:cface];
+                [cface release];
+            }
+        }        
+    }
+    return msgContent;
 }
 @end

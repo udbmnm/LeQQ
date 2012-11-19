@@ -15,4 +15,5 @@
 + (NSString *)clientid;
 + (NSString *)t;
 + (NSString *)msgId;
++ (NSString *)fontJsonStringForMsg;
 @end

@@ -32,4 +32,10 @@
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
     return [NSString stringWithFormat:@"%.0f", interval/ 1000.0];
 }
+
++ (NSString *)fontJsonStringForMsg
+{
+    return @"[\"font\",{\"name\":\"宋体\",\"size\":\"10\",\"style\":[0,0,0],\"color\":\"000000\"}]";
+}
+
 @end

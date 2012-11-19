@@ -13,8 +13,10 @@
 #import "LLQQCategory.h"
 #import "LLQQGroup.h"
 #import "LLQQMoonBox.h"
+#import "LLQQMsg.h"
 
 #import "LLQQUserStatus.h"
 #import "LLQQOnlineUsersList.h"
 #import "LLQQOnlineGroupUsersList.h"
 #import "LLQQUsersTree.h"
+

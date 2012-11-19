@@ -20,8 +20,10 @@ typedef enum
     kQQRequestGetAllOnlineFriends = 108,   /* - (void)getAllOnlineFriends; */
     kQQRequestGetRecentFriends = 109,      /* - (void)getRecentFriends; */
     kQQRequestGetGroupInfoAndMembers = 110, 
-    kQQRequestSendMsgTo = 111,
-    kQQRequestSendPoll = 112
+    kQQRequestSendMsg = 111,
+    kQQRequestSendDiscusMsg = 112,
+    kQQRequestSendGroupMsg = 113,
+    kQQRequestPoll = 114
 }LLQQCommonRequestType;
 
 @protocol LLQQCommonRequestDelegate <NSObject>
@@ -128,7 +130,8 @@ typedef enum
  * no data return, just return YES/NO
  */
 - (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs;
-
+- (void)sendDiscusMsgTo:(long)did msgs:(NSArray *)msgs;
+- (void)sendGroupMsgTo:(long)gid msgs:(NSArray *)msgs;
 
 - (void)poll;
 //- (UIImage *)getGroupLogo:(long)code;
