@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LLBomtomCompassMenu.h"
+#import "LLQQCommonRequest.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, LLBomtomCompassMenuDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, 
+LLBomtomCompassMenuDelegate,LLQQCommonRequestDelegate>
 {
     LLBomtomCompassMenu *_menu;
 }

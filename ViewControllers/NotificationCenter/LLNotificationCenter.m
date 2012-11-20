@@ -17,8 +17,8 @@
     static NSString *typeToStringMaps[] = 
     {
         /* 0 */nil, 
-        /* 1 */@"USER LOGIN COMPLETED" /* userinfo: { "MoonBox": (LLQQMoonBox*)object } */
-        /* 2 */
+        /* 1 */@"User login completed", /* userinfo: dictionary: { "value": (LLQQMoonBox*)object } */
+        /* 2 */@"New message comming"   /* userinfo: dictionary: { "value": (LLQQMsg*)object } */
         /* 3 */
         /* 4 */
         /* 5 */
@@ -35,11 +35,11 @@
                                                object:nil];
 }
 
-+ (void)post:(LLNotificationType)type info:(NSDictionary *)info
++ (void)post:(LLNotificationType)type value:value;
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:[LLNotificationCenter notificationTypeToString:type] 
                                                         object:nil 
-                                                      userInfo:info];
+                                                      userInfo:[NSDictionary dictionaryWithObject:value forKey:kNotificationInfoKeyForValue]];
 }
 
 + (void)remove:(id)observer

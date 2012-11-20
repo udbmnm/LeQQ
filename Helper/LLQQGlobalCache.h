@@ -19,4 +19,7 @@
 
 - (void)setQQCategories:(NSArray *)categories;
 - (NSArray *)getQQCategories;
+
+- (void)addPollingTimeoutCountByOne;
+- (long)getPollingTimeoutCount;
 @end

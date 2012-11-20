@@ -18,6 +18,7 @@
 #import "LLQQChattingViewController.h"
 #import "ASIHTTPRequest+ASIQQHelper.h"
 #import "LLFriendsController.h"
+#import "LLNotificationCenter.h"
 
 @implementation AppDelegate
 
@@ -72,9 +73,67 @@
     self.window.hidden = NO;
     
     /* setup ASI */
-    [ASIHTTPRequest setDefaults];    
+    [ASIHTTPRequest setDefaults];   
+    [LLNotificationCenter add:self
+                     selector:@selector(loginNotificationHandler:)
+                                         notificationType:kNotificationTypeLoginSuccess];
     
     return NO;
+}
+
+-(void) loginNotificationHandler:(NSNotification *)nofi
+{
+    LLQQMoonBox *box = [[nofi userInfo] valueForKey:kNotificationInfoKeyForValue];
+    [[LLGlobalCache getGlobalCache] saveMoonBox:box];
+    
+    [self performSelector:@selector(startTimerForPolling) withObject:nil afterDelay:3.0];
+}
+
+-(void)startTimerForPolling
+{
+    NSTimer *pollingTimer = [NSTimer timerWithTimeInterval:1//QQ_REQUEST_POLLING_TIMEOUT
+                                                    target:self
+                                                  selector:@selector(timerHandlerForPollingMsg:) 
+                                                  userInfo:nil 
+                                                   repeats:YES];
+    [pollingTimer fire];
+    
+}
+
+-(void)timerHandlerForPollingMsg:(NSTimer *)theTimer
+{
+    NSLog(@"Hello I'm timer");
+    static LLQQCommonRequest *pollingRequest = nil;
+    if (pollingRequest == nil) {
+        pollingRequest = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] 
+                                                       delegate:self];
+    }
+    [pollingRequest poll];
+}
+
+- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
+{
+    if (success == NO) {
+        NSString *errorMsg = nil;
+        if ([info isKindOfClass:[NSError class]]) {
+            NSError *error = info;
+            if (error.code == 2) {
+                /* when the polling request timeout, count it */
+                [[LLGlobalCache getGlobalCache] addPollingTimeoutCountByOne];
+                return;
+            }
+            errorMsg = [NSString stringWithFormat:@"%@", info];
+        } else {
+            errorMsg = (NSString *)errorMsg;
+        } 
+        [[[[iToast makeText:errorMsg] setGravity:iToastGravityBottom] setDuration:iToastDurationNormal] show];
+        return;
+    }    
+    
+    if (requestType == kQQRequestPoll) {
+        LLQQMsg *msg = (LLQQMsg *)info;
+        [LLNotificationCenter post:kNotificationTypeNewMessage value:msg];        
+    }    
 }
 
 - (LLBomtomCompassMenu*)createBomtomMenuAboveView:(UIView *)view
@@ -116,11 +175,6 @@
     }
     
     selectedIndex = tabBarController.selectedIndex;    
-}
-
-- (void)LLQQLoginProgressNoti:(LLQQLoginProgress)progress failOrSuccess:(BOOL)retcode info:(id)info
-{
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

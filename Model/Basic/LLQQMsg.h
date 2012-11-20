@@ -60,6 +60,7 @@ typedef enum
 @property (nonatomic, retain) NSMutableArray *contentMsgs;
 
 - (void)addMsgElement:(id)element;
+- (NSString *)getString;
 @end
 
 @interface LLQQMsg : LLModelObject

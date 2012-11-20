@@ -10,11 +10,15 @@
 
 @interface LLNotificationCenter : NSObject
 
+#define kNotificationInfoKeyForValue @"value"
+
 typedef enum {
-    kNotificationTypeLoginSuccess = 1
+    kNotificationTypeNull = 0,
+    kNotificationTypeLoginSuccess = 1,
+    kNotificationTypeNewMessage = 2
 }LLNotificationType;
 
 + (void)add:(id)observer selector:(SEL)selector notificationType:(LLNotificationType)type;
-+ (void)post:(LLNotificationType)type info:(NSDictionary *)info;
++ (void)post:(LLNotificationType)type value:value;
 + (void)remove:(id)observer;
 @end

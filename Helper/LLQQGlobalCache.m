@@ -12,6 +12,7 @@
 
 static LLQQMoonBox *_moonBox = nil;
 static NSArray *_qqCategories = nil;
+static long pollingTimeOutCount = 0;
 
 + (LLGlobalCache *)getGlobalCache
 {
@@ -48,5 +49,15 @@ static NSArray *_qqCategories = nil;
 - (NSArray *)getQQCategories
 {
     return _qqCategories;
+}
+
+-(void)addPollingTimeoutCountByOne
+{
+    ++pollingTimeOutCount;
+}
+
+- (long)getPollingTimeoutCount
+{
+    return pollingTimeOutCount;
 }
 @end

@@ -8,6 +8,7 @@
 
 #import "LLFriendsController.h"
 #import "LLQQGlobalCache.h"
+#import "LLNotificationCenter.h"
 
 @interface LLFriendsController ()
 @end
@@ -71,13 +72,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark segment callback
+#pragma mark segment callback -
 - (void)segmentClicked:(id)sender
 {
     NSLog(@"sender's index:%d", [(UISegmentedControl *)sender selectedSegmentIndex]);
 }
 
-#pragma mark  LLQQCommonRequestDelegate
+#pragma mark  LLQQCommonRequestDelegate -
 - (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
 {
     if (success == NO) {
@@ -126,6 +127,13 @@
             }            
         }
             break;
+            
+        case kQQRequestPoll:
+        {
+            LLQQMsg *msg = (LLQQMsg*)info;
+            [LLNotificationCenter post:kNotificationTypeNewMessage value:msg];
+        }
+            break;
         default:
             break;
     }
@@ -138,7 +146,7 @@
     }
 }
 
-#pragma mark - SDNestedTableDelegate
+#pragma mark SDNestedTableDelegate -
 - (void) mainTable:(UITableView *)mainTable item:(SDGroupCell *)item didExpanded:(BOOL)isExpanded
 {
     /* load the nickname and face imgs */

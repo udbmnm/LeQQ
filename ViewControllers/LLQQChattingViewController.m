@@ -7,6 +7,8 @@
 //
 
 #import "LLQQChattingViewController.h"
+#import "LLNotificationCenter.h"
+#import "UIBubbleTableView.h"
 
 @interface LLQQChattingViewController ()
 {
@@ -23,6 +25,9 @@
     if (self) {
         _bubbleView = nil;
         _bubbles = [[NSMutableArray alloc] init];
+        [LLNotificationCenter add:self
+                         selector:@selector(newMsgNotificationHandler:)
+                 notificationType:kNotificationTypeNewMessage];
     }
     return self;
 }
@@ -41,20 +46,61 @@
     [self.view addSubview:_bubbleView];
     [_bubbleView setBubbleDataSource:self];
     
-    [self testBubbleRecords];
 }
 
+- (void)newMsgNotificationHandler:(NSNotification *)nofi
+{
+    LLQQMsg *msg = [[nofi userInfo] objectForKey:kNotificationInfoKeyForValue]; 
+    
+    switch (msg.type) {
+        case kQQMsgTypeUser:
+        {
+            
+        }
+            break;
+        case kQQMsgTypeGroup:
+        {
+            
+        }
+            break;
+        case kQQMsgTypeDiscus:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }    
+    
+    NSBubbleData *chatMsg = [[NSBubbleData alloc] initWithText:[msg.content getString]
+                                                          date:[NSDate date]
+                                                          type:BubbleTypeSomeoneElse];
+    [_bubbles addObject:chatMsg];
+    [chatMsg release];
+    [_bubbleView reloadData];
+    
+}
+
+/*
 - (void)testBubbleRecords
 {
-    NSBubbleData *chatRecord1 = [[NSBubbleData alloc] initWithText:@"hello girl" date:[NSDate dateWithTimeIntervalSinceNow:-300] type:BubbleTypeSomeoneElse];
-    NSBubbleData *chatRecord2 = [[NSBubbleData alloc] initWithText:@"hi" date:[NSDate dateWithTimeIntervalSinceNow:-150] type:BubbleTypeMine];
-    NSBubbleData *chatRecord3 = [[NSBubbleData alloc] initWithText:@"颠" date:[NSDate dateWithTimeIntervalSinceNow:1] type:BubbleTypeMine];
+    NSBubbleData *chatRecord1 = [[NSBubbleData alloc] initWithText:@"hello girl"
+                                                              date:[NSDate dateWithTimeIntervalSinceNow:-300]
+                                                              type:BubbleTypeSomeoneElse];
     
-    [_bubbles addObjectsFromArray:[NSArray arrayWithObjects:chatRecord1, chatRecord2, chatRecord3, nil]];  
+    NSBubbleData *chatRecord2 = [[NSBubbleData alloc] initWithText:@"hi"
+                                                              date:[NSDate dateWithTimeIntervalSinceNow:-150]
+                                                              type:BubbleTypeMine];
+    
+    NSBubbleData *chatRecord3 = [[NSBubbleData alloc] initWithText:@"颠"
+                                                              date:[NSDate dateWithTimeIntervalSinceNow:1]
+                                                              type:BubbleTypeMine];
+    
+    [_bubbles addObjectsFromArray:[NSArray arrayWithObjects:chatRecord1, chatRecord2, chatRecord3, nil]]; 
     _bubbleView.typingBubble = NSBubbleTypingTypeMe;
-
     [_bubbleView reloadData];
 }
+*/
 
 - (void)viewDidUnload
 {
@@ -67,7 +113,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 #pragma mark ----> UIBubbleTableViewDataSource methods
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView

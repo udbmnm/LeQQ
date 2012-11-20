@@ -9,14 +9,11 @@
 #import "LLQQMsg.h"
 
 @implementation LLQQMsgFont 
-
 @end
 
 
 @implementation LLQQMsgCface
-
 @synthesize key,name,fileId,server,localPath;
-
 -(id)init
 {
     if (self = [super init]) {
@@ -41,9 +38,7 @@
 
 
 @implementation LLQQMsgContent
-
 @synthesize contentMsgs;
-
 - (id)init
 {
     if (self = [super init]) {
@@ -74,6 +69,16 @@
     
 }
 
+- (NSString *)getString
+{
+    NSString *retString = @"";
+    for (id msgElement in contentMsgs) {
+        if ([msgElement isKindOfClass:[NSString class]]) {
+            retString = [retString stringByAppendingString:msgElement];
+        }
+    }
+    return retString;
+}
 @end
 
 
@@ -109,6 +114,4 @@ infoSeq, replyIp, sendUin, groupCode;
     self.content = nil;
     [super dealloc];
 }
-
-
 @end

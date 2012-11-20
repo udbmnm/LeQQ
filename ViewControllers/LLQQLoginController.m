@@ -193,8 +193,8 @@
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:  
             _box = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.
-            //[LLNotificationCenter post:kNotificationTypeLoginSuccess 
-            //                      info:[NSDictionary dictionaryWithObject:info forKey:@"MoonBox"]];
+            [LLNotificationCenter post:kNotificationTypeLoginSuccess 
+                                 value:_box];
             
             [[LLGlobalCache getGlobalCache] saveMoonBox:_box];
             

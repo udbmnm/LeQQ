@@ -10,7 +10,7 @@
 
 @implementation LLQQCommonRequest
 
-- (id)initWithBox:(LLQQMoonBox *)box delegate:(id)delegate
+- (id)initWithBox:(LLQQMoonBox *)box delegate:(id<LLQQCommonRequestDelegate>)delegate
 {
     if (self = [super init]) {
         _box = [box retain];
@@ -767,12 +767,14 @@
     
     NSString *postContent = [json JSONRepresentation];
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];    
     [request setPostValue:postContent forKey:@"r"];
     [request setPostValue:_box.clientid forKey:@"clientid"];
     [request setPostValue:_box.psessionid forKey:@"psessionid"];
     [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/"];
+    [request setTimeOutSeconds:QQ_REQUEST_POLLING_TIMEOUT];
     [request setCompletionBlock:^(void){
+        
         NSString *response = [request responseString];
         NSDictionary *resDic = [response JSONValue];
         long retcode = [[resDic objectForKey:@"retcode"] longValue];
@@ -836,7 +838,6 @@
     }];
     
     [request startAsynchronous];   
-
 }
 
 @end
