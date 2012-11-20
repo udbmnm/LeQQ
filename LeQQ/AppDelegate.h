@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "LLBomtomCompassMenu.h"
 #import "LLQQCommonRequest.h"
+#import "LLTabBarController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, 
 LLBomtomCompassMenuDelegate,LLQQCommonRequestDelegate>
 {
     LLBomtomCompassMenu *_menu;
+    LLTabBarController *_tabarController;
 }
 
 @property (strong, nonatomic) UIWindow *window;

@@ -11,7 +11,6 @@
 @implementation LLQQMsgFont 
 @end
 
-
 @implementation LLQQMsgCface
 @synthesize key,name,fileId,server,localPath;
 -(id)init
@@ -42,7 +41,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        contentMsgs = nil;
+        contentMsgs = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -55,10 +54,9 @@
 
 - (void)addMsgElement:(id)element
 {
-    Class classType = [element class];
-    if (classType == [NSString class] ||
-        classType == [LLQQMsgCface class] ||
-        classType == [LLQQMsgFont class] ) {
+    if ([element isKindOfClass:[NSString class]]     ||
+        [element isKindOfClass:[LLQQMsgCface class]] ||
+        [element isKindOfClass:[LLQQMsgFont class]] ) {
         
         [contentMsgs addObject:element];
     } else {

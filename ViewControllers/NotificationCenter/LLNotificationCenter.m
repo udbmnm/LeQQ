@@ -37,6 +37,7 @@
 
 + (void)post:(LLNotificationType)type value:value;
 {
+    NSAssert(value != nil, @"value cannot be nil");
     [[NSNotificationCenter defaultCenter] postNotificationName:[LLNotificationCenter notificationTypeToString:type] 
                                                         object:nil 
                                                       userInfo:[NSDictionary dictionaryWithObject:value forKey:kNotificationInfoKeyForValue]];

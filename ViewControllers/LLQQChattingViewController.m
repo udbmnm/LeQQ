@@ -71,9 +71,9 @@
         default:
             break;
     }    
-    
-    NSBubbleData *chatMsg = [[NSBubbleData alloc] initWithText:[msg.content getString]
-                                                          date:[NSDate date]
+    NSString *msgString = [msg.content getString];
+    NSBubbleData *chatMsg = [[NSBubbleData alloc] initWithText:msgString
+                                                          date:[NSDate dateWithTimeIntervalSince1970:[msg time]]
                                                           type:BubbleTypeSomeoneElse];
     [_bubbles addObject:chatMsg];
     [chatMsg release];

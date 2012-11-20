@@ -839,6 +839,8 @@
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
 		C17390F7164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390F6164E787600185583 /* ASIHTTPRequest+ASIQQHelper.m */; };
 		C1773C35163978D800A2A89A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1773C34163978D800A2A89A /* libsqlite3.dylib */; };
+		C17ADEE3165BDDF8001DB7F3 /* LLChattingToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17ADEE2165BDDF8001DB7F3 /* LLChattingToolbar.xib */; };
+		C17ADEE7165BE0B7001DB7F3 /* LLGroupsAndDiscusController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */; };
 		C17FB9A9165615BD003E5069 /* LLQQOnlineGroupUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */; };
 		C19A8C511659E8FC0008CB7D /* LLQQMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = C19A8C501659E8FC0008CB7D /* LLQQMsg.m */; };
 		C1A05A5616515278006F3942 /* LLFMDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A05A5516515278006F3942 /* LLFMDBHelper.m */; };
@@ -1832,6 +1834,9 @@
 		C1773C3016393C1000A2A89A /* FMDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBHelper.h; sourceTree = "<group>"; };
 		C1773C3116393C1000A2A89A /* FMDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBHelper.m; sourceTree = "<group>"; };
 		C1773C34163978D800A2A89A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C17ADEE2165BDDF8001DB7F3 /* LLChattingToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LLChattingToolbar.xib; sourceTree = "<group>"; };
+		C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLGroupsAndDiscusController.h; sourceTree = "<group>"; };
+		C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLGroupsAndDiscusController.m; sourceTree = "<group>"; };
 		C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQOnlineGroupUsersList.h; sourceTree = "<group>"; };
 		C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQOnlineGroupUsersList.m; sourceTree = "<group>"; };
 		C195A73E163A6568003E3C92 /* LLDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDebug.h; sourceTree = "<group>"; };
@@ -3080,6 +3085,9 @@
 				C1A906A816468C70001D5720 /* LLQQLoginController.m */,
 				C15D85F8164FFFB5003F3899 /* LLFriendsController.h */,
 				C15D85F9164FFFB5003F3899 /* LLFriendsController.m */,
+				C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */,
+				C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */,
+				C17ADEE2165BDDF8001DB7F3 /* LLChattingToolbar.xib */,
 				C11FACCB164C08BE00312A83 /* LLQQChattingViewController.h */,
 				C11FACCC164C08BE00312A83 /* LLQQChattingViewController.m */,
 			);
@@ -4651,6 +4659,7 @@
 				C10935071650E36D00B28FB9 /* SDGroupCell.xib in Resources */,
 				C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */,
 				C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */,
+				C17ADEE3165BDDF8001DB7F3 /* LLChattingToolbar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4895,6 +4904,7 @@
 				C1166101165757180046B1A1 /* LLQQUserCell.m in Sources */,
 				C1ECD2A81657B816005D6CC4 /* LLQQUsersTree.m in Sources */,
 				C19A8C511659E8FC0008CB7D /* LLQQMsg.m in Sources */,
+				C17ADEE7165BE0B7001DB7F3 /* LLGroupsAndDiscusController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

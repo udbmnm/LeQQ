@@ -76,6 +76,7 @@
         } else if ([obj isKindOfClass:[NSArray class]]) {
             if ([[obj objectAtIndex:0] isEqualToString:@"font"]) {
                 LLQQMsgFont *font = [[LLQQMsgFont alloc] init];
+                /* add the interpretation of font */  
                 [msgContent addMsgElement:font];
                 [font release];
             } else if ([[obj objectAtIndex:0] isEqualToString:@"cface"]) {

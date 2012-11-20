@@ -32,44 +32,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //NSString *enPassword = [LLQQEncription hashPasswordForLogin:@"4171739690" v1:@"!AAA" v2:@"\\x00\\x00\\x00\\x00\\x19\\x63\\xfc\\x01"];
-    
-    //LLGuetGirlsDownloader *downloader = [[LLGuetGirlsDownloader alloc] init];
-    //[downloader downloadAllGuetGirls];
-    
-    //LLAuthenticodeAlertInputView *alertView = [[LLAuthenticodeAlertInputView alloc] initWithTitle:@"input secret" AuthenticodeImage:nil delegate:nil cancelButtonTitle:@"cancel" otherButtonTitle:@"done"];
-    //[alertView show];
         
-    LLTabBarController *tabbarController = [[LLTabBarController alloc] init];
-    tabbarController.view.backgroundColor = [UIColor whiteColor];
-
-    
-    
-    [tabbarController addViewController:[[[LLQQLoginController alloc] init] autorelease]
-                               tabImage:[UIImage imageNamed:@"Galuca_0001"] title:@"登录"];
+   _tabarController = [[LLTabBarController alloc] init];
+    _tabarController.view.backgroundColor = [UIColor whiteColor];
     
     LLFriendsController *friendsController = [[LLFriendsController alloc] init];
-
-    [tabbarController addViewController:[[UINavigationController alloc] initWithRootViewController:friendsController]
+    
+    [_tabarController addViewController:[[[UINavigationController alloc] initWithRootViewController:friendsController] autorelease]
                                tabImage:[UIImage imageNamed:@"conversations40x40"]
                                   title:@"好友"];
-     [friendsController release];
     
-    [tabbarController addViewController:[[[LLQQChattingViewController alloc] init] autorelease] 
-                               tabImage:[UIImage imageNamed:@"Galuca_0002"]  title:@"聊天"];
-
-    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
+    [_tabarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0004"] title:@"con4"];
 
-    [tabbarController addViewController:[[[UIViewController alloc] init] autorelease]
+    [_tabarController addViewController:[[[UIViewController alloc] init] autorelease]
                                tabImage:[UIImage imageNamed:@"Galuca_0005"] title:@"con5"];
     
-    [tabbarController setDelegate:self];
+    [_tabarController setDelegate:self];
     
-    _menu = [[self createBomtomMenuAboveView:tabbarController.tabBar] retain];
+    _menu = [[self createBomtomMenuAboveView:_tabarController.tabBar] retain];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    [self.window setRootViewController:tabbarController];
+    [self.window setRootViewController:[[[LLQQLoginController alloc] init] autorelease]];
     self.window.hidden = NO;
     
     /* setup ASI */
@@ -81,28 +65,24 @@
     return NO;
 }
 
--(void) loginNotificationHandler:(NSNotification *)nofi
+-(void)loginNotificationHandler:(NSNotification *)nofi
 {
-    LLQQMoonBox *box = [[nofi userInfo] valueForKey:kNotificationInfoKeyForValue];
-    [[LLGlobalCache getGlobalCache] saveMoonBox:box];
-    
-    [self performSelector:@selector(startTimerForPolling) withObject:nil afterDelay:3.0];
+    [self.window setRootViewController:_tabarController];
+    [self startTimerForPolling];
 }
 
 -(void)startTimerForPolling
 {
-    NSTimer *pollingTimer = [NSTimer timerWithTimeInterval:1//QQ_REQUEST_POLLING_TIMEOUT
+    NSTimer *pollingTimer = [NSTimer timerWithTimeInterval:QQ_REQUEST_POLLING_TIMEOUT
                                                     target:self
                                                   selector:@selector(timerHandlerForPollingMsg:) 
                                                   userInfo:nil 
                                                    repeats:YES];
-    [pollingTimer fire];
-    
+    [[NSRunLoop currentRunLoop] addTimer:pollingTimer forMode:NSDefaultRunLoopMode];
 }
 
 -(void)timerHandlerForPollingMsg:(NSTimer *)theTimer
 {
-    NSLog(@"Hello I'm timer");
     static LLQQCommonRequest *pollingRequest = nil;
     if (pollingRequest == nil) {
         pollingRequest = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] 

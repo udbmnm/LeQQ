@@ -9,6 +9,7 @@
 #import "LLFriendsController.h"
 #import "LLQQGlobalCache.h"
 #import "LLNotificationCenter.h"
+#import "LLQQChattingViewController.h"
 
 @interface LLFriendsController ()
 @end
@@ -127,13 +128,6 @@
             }            
         }
             break;
-            
-        case kQQRequestPoll:
-        {
-            LLQQMsg *msg = (LLQQMsg*)info;
-            [LLNotificationCenter post:kNotificationTypeNewMessage value:msg];
-        }
-            break;
         default:
             break;
     }
@@ -163,12 +157,14 @@
             [_request getUsersSignatures:usersUins];
         }
     }
-     
 }
 
 - (void) mainItem:(SDGroupCell *)item subItemDidClicked:(SDSelectableCell *)subItem
 {
     /* push to the chating view */
+    [[self navigationController] pushViewController:[[[LLQQChattingViewController alloc] init] autorelease] animated:YES];
+    
+    
 }
 
 /* 一层,分组数目*/
@@ -211,7 +207,7 @@
     
     /*added onece*/
     if ([[(LLQQUserCell*)subItem faceImgView] imageURL] == nil) {
-        [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
+        //[[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
     }
     return subItem;
 }

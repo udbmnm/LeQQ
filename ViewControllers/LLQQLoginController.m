@@ -177,8 +177,6 @@
     }
     
     switch (progress) {
-        case LLQQLOGIN_PROGRESS_CHECK_VERIFY_CODE:            
-            break;
         case LLQQLOGIN_PROGRESS_GET_VERIFY_IMAGE:   
         {
             [_hub hide:YES];
@@ -186,10 +184,6 @@
             UIImage *img = (UIImage *)info;
             [self showModelViewForVerifyCodeInput:img];
         }
-            break;
-        case LLQQLOGIN_PROGRESS_LOGIN:            
-            break;
-        case LLQQLOGIN_PROGRESS_SET_STATUS:            
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:  
             _box = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.

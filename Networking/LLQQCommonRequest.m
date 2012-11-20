@@ -781,9 +781,7 @@
         
         if (retcode == 102){
             /* not msg */
-            [_delegate LLQQCommonRequestNotify:kQQRequestPoll
-                                          isOK:YES 
-                                          info:nil];
+            return;
         }
         else if (retcode != 0) {
             [_delegate LLQQCommonRequestNotify:kQQRequestPoll
@@ -806,7 +804,7 @@
                 msg.MsgId2  = [[msgDic objectForKey:@"msg_id2"]  longValue];
                 msg.replyIp = [[msgDic objectForKey:@"reply_ip"] longValue];
                 msg.time = [[msgDic objectForKey:@"time"] longValue];
-                msg.content = [[msgDic objectForKey:@"content"] msgContentValue];
+                msg.content = [[[msgDic objectForKey:@"content"] JSONRepresentation] msgContentValue];
                 
                 if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"]) {
                     msg.type = kQQMsgTypeUser;
@@ -830,7 +828,7 @@
         }
         
         /* ..... many and many code.... */        
-        [_delegate LLQQCommonRequestNotify:kQQRequestPoll isOK:YES info:nil];        
+        //[_delegate LLQQCommonRequestNotify:kQQRequestPoll isOK:YES info:nil];        
     }];
     
     [request setFailedBlock:^(void) {
