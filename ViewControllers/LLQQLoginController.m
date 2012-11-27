@@ -187,10 +187,9 @@
             break;
         case LLQQLOGIN_PROGRESS_COMPLETED:  
             _box = [info retain]; //NOTE: it's not deep copy now, must change it to deep copy later.
-            [LLNotificationCenter post:kNotificationTypeLoginSuccess 
-                                 value:_box];
-            
             [[LLGlobalCache getGlobalCache] saveMoonBox:_box];
+            [LLNotificationCenter post:kNotificationTypeLoginSuccess 
+                                 value:_box];            
             
             _hub.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]] autorelease];
             _hub.mode = MBProgressHUDModeCustomView;

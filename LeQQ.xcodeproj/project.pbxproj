@@ -862,6 +862,7 @@
 		C1A909AB1646978D001D5720 /* conversations40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A9082B1646978D001D5720 /* conversations40x40@2x.png */; };
 		C1A909AC1646978D001D5720 /* Discuss40X40.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A9082C1646978D001D5720 /* Discuss40X40.png */; };
 		C1A909AD1646978D001D5720 /* Discuss40X40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1A9082D1646978D001D5720 /* Discuss40X40@2x.png */; };
+		C1B977EC1664F45D00FEB17C /* pop_up_biaoqinglist.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B977EB1664F45D00FEB17C /* pop_up_biaoqinglist.png */; };
 		C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4A98116415AC600CFF0DC /* LLQQLogin.m */; };
 		C1C4ACC416418CFF00CFF0DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8516418CFE00CFF0DC /* InfoPlist.strings */; };
 		C1C4ACC516418CFF00CFF0DC /* SBJson-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8716418CFE00CFF0DC /* SBJson-Info.plist */; };
@@ -1875,6 +1876,7 @@
 		C1A9082B1646978D001D5720 /* conversations40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "conversations40x40@2x.png"; sourceTree = "<group>"; };
 		C1A9082C1646978D001D5720 /* Discuss40X40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Discuss40X40.png; sourceTree = "<group>"; };
 		C1A9082D1646978D001D5720 /* Discuss40X40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Discuss40X40@2x.png"; sourceTree = "<group>"; };
+		C1B977EB1664F45D00FEB17C /* pop_up_biaoqinglist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pop_up_biaoqinglist.png; sourceTree = "<group>"; };
 		C1C4A98016415AC600CFF0DC /* LLQQLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogin.h; sourceTree = "<group>"; };
 		C1C4A98116415AC600CFF0DC /* LLQQLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogin.m; sourceTree = "<group>"; };
 		C1C4A98E16418CFD00CFF0DC /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -2169,6 +2171,7 @@
 		C116610416577D830046B1A1 /* face */ = {
 			isa = PBXGroup;
 			children = (
+				C1B977EB1664F45D00FEB17C /* pop_up_biaoqinglist.png */,
 				C116610516577D830046B1A1 /* avatar_default_40_40.gif */,
 			);
 			path = face;
@@ -4660,6 +4663,7 @@
 				C10935081650E36D00B28FB9 /* SDNestedTableView.xib in Resources */,
 				C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */,
 				C17ADEE3165BDDF8001DB7F3 /* LLChattingToolbar.xib in Resources */,
+				C1B977EC1664F45D00FEB17C /* pop_up_biaoqinglist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5362,6 +5366,7 @@
 		C1A2FEEF1638CE550003905B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LeQQ/LeQQ-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -5385,6 +5390,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -5393,6 +5399,7 @@
 		C1A2FEF01638CE550003905B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LeQQ/LeQQ-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -5416,6 +5423,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
