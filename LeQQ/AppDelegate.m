@@ -32,29 +32,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        
-   _tabarController = [[LLTabBarController alloc] init];
+    _tabarController = [[LLTabBarController alloc] init];
     _tabarController.view.backgroundColor = [UIColor whiteColor];
     
     LLFriendsController *friendsController = [[LLFriendsController alloc] init];
     
-    [_tabarController addViewController:[[[UINavigationController alloc] initWithRootViewController:friendsController] autorelease]
+    [_tabarController addViewController:[friendsController autorelease]
                                tabImage:[UIImage imageNamed:@"conversations40x40"]
                                   title:@"好友"];
     
     [_tabarController addViewController:[[[UIViewController alloc] init] autorelease]
-                               tabImage:[UIImage imageNamed:@"Galuca_0004"] title:@"con4"];
-
+                               tabImage:[UIImage imageNamed:@"Galuca_0004"] 
+                                  title:@"con4"];
+    
     [_tabarController addViewController:[[[UIViewController alloc] init] autorelease]
-                               tabImage:[UIImage imageNamed:@"Galuca_0005"] title:@"con5"];
+                               tabImage:[UIImage imageNamed:@"Galuca_0005"] 
+                                  title:@"con5"];
     
     [_tabarController setDelegate:self];
+    
+   UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群/讨论组", @"最近联系", nil]];
+    [segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
+    segment.selectedSegmentIndex = 0;
+    _tabarController.navigationItem.titleView = segment;
+    [segment release];   
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_tabarController];    
+
     
     _menu = [[self createBomtomMenuAboveView:_tabarController.tabBar] retain];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    [self.window setRootViewController:[[[LLQQLoginController alloc] init] autorelease]];
+    [self.window setRootViewController:navController];    
     self.window.hidden = NO;
+    [navController presentModalViewController:[[LLQQLoginController alloc] init] animated:NO];
     
     /* setup ASI */
     [ASIHTTPRequest setDefaults];   
@@ -65,14 +77,24 @@
     return NO;
 }
 
--(void)loginNotificationHandler:(NSNotification *)nofi
+#pragma mark segment callback -
+- (void)segmentClicked:(id)sender
 {
-    [self.window setRootViewController:_tabarController];
-    [self startTimerForPolling];
+    NSLog(@"sender's index:%d", [(UISegmentedControl *)sender selectedSegmentIndex]);
 }
 
+#pragma mark login success
+-(void)loginNotificationHandler:(NSNotification *)nofi
+{
+    [self.window.rootViewController dismissModalViewControllerAnimated:YES];
+    //[self startTimerForPolling];
+}
+
+#pragma mark pulling timer
 -(void)startTimerForPolling
 {
+    NSAssert([[LLGlobalCache getGlobalCache] getMoonBox] != nil, @"Not login now");
+    
     NSTimer *pollingTimer = [NSTimer timerWithTimeInterval:QQ_REQUEST_POLLING_TIMEOUT
                                                     target:self
                                                   selector:@selector(timerHandlerForPollingMsg:) 
