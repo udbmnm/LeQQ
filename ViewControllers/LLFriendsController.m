@@ -26,27 +26,37 @@
         _usersTree = nil;
         _categoriesDic = nil;
         _onlineUsersList = nil;
+        
+        [LLNotificationCenter add:self
+                         selector:@selector(loginNotificationHandler:)
+                 notificationType:kNotificationTypeLoginSuccess];
+        
+
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)dealloc
 {
-    _segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群/讨论组", @"最近联系", nil]];
-    [_segment setSegmentedControlStyle:UISegmentedControlStyleBar];
-    [_segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
-    _segment.selectedSegmentIndex = 0;
 
-    self.navigationItem.titleView = _segment;
-    [_segment release];    
+    [super dealloc];
+}
+
+- (void)viewDidLoad
+{        
+    [super viewDidLoad];
+}
+
+
+/* called when login success, gets the all friends info*/
+-(void)loginNotificationHandler:(NSNotification *)nofi
+{
+    DEBUG_LOG_WITH_FORMAT(@"self.navication con %@", self.navigationController);
     
     _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
     [_request getAllFriends];
     [_request getAllOnlineFriends];
-    
-    [super viewDidLoad];
 }
-
 
 - (void)viewDidUnload
 {
@@ -71,12 +81,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark segment callback -
-- (void)segmentClicked:(id)sender
-{
-    NSLog(@"sender's index:%d", [(UISegmentedControl *)sender selectedSegmentIndex]);
 }
 
 #pragma mark  LLQQCommonRequestDelegate -
@@ -163,8 +167,6 @@
 {
     /* push to the chating view */
     [[self navigationController] pushViewController:[[[LLQQChattingViewController alloc] init] autorelease] animated:YES];
-    
-    
 }
 
 /* 一层,分组数目*/

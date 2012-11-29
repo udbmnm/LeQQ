@@ -53,7 +53,7 @@
                                                               image:image tag:0] autorelease];
 
     [_viewControllerArray addObject:viewContrller];
-    self.viewControllers = [[NSArray arrayWithArray:_viewControllerArray] retain];
+    [super setViewControllers:_viewControllerArray];
 }
 
 -(void)setViewControllers:(NSArray *)viewControllers

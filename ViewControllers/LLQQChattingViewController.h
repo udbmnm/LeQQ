@@ -10,4 +10,6 @@
 
 @interface LLQQChattingViewController : UIViewController<UIBubbleTableViewDataSource>
 
+
+- (IBAction)sendMsgBtnClicked:(id)sender;
 @end

@@ -59,9 +59,9 @@
     [segment release];   
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_tabarController];    
-
+    navController.view.backgroundColor = [UIColor clearColor];
     
-    _menu = [[self createBomtomMenuAboveView:_tabarController.tabBar] retain];
+    //_menu = [[self createBomtomMenuAboveView:_tabarController.tabBar] retain];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     [self.window setRootViewController:navController];    
