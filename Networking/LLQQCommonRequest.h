@@ -133,6 +133,10 @@ typedef enum
 - (void)sendDiscusMsgTo:(long)did msgs:(NSArray *)msgs;
 - (void)sendGroupMsgTo:(long)gid msgs:(NSArray *)msgs;
 
+/*
+ * for msg poll, return LLQQMsg
+ * for ...
+ */
 - (void)poll;
 //- (UIImage *)getGroupLogo:(long)code;
 

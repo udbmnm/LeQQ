@@ -81,7 +81,7 @@
 
 
 @implementation LLQQMsg
-@synthesize did, seq, time, type, msgId, toUin, MsgId2, content, fromUin,
+@synthesize did, seq, time, srcType, msgId, toUin, MsgId2, content, fromUin,
 infoSeq, replyIp, sendUin, groupCode;
 
 -(id)init
@@ -93,7 +93,7 @@ infoSeq, replyIp, sendUin, groupCode;
         fromUin = -1;
         sendUin = -1;
         toUin = -1;
-        type = kQQMsgTypeNull;
+        srcType = kQQMsgSourceNull;
         replyIp = -1;
         time = -1;
         content = nil;

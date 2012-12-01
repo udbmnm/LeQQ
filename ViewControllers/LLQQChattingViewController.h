@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface LLQQChattingViewController : UIViewController<UIBubbleTableViewDataSource>
+{
+    long friendUin;
+}
 
-
+@property (nonatomic, assign) long friendUin;
 - (IBAction)sendMsgBtnClicked:(id)sender;
+- (id)initWitFriendUin:(long)uin;
 @end

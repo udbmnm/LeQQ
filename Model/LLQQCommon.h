@@ -6,7 +6,7 @@
 // Copyright (c) 2012年 ganxiangle@gmail.com. All rights reserved.
 //
 
-#define QQ_REQUEST_POLLING_TIMEOUT 15.0
+#define QQ_REQUEST_POLLING_TIMEOUT 2.0
 #define QQ_REQUEST_DEFAULT_TIMEOUT 5.0
 #define QQ_REQUEST_DEFAULT_USER_AGENT @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:16.0) Gecko/20100101 Firefox/16.0"
 

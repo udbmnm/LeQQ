@@ -165,8 +165,13 @@
 
 - (void) mainItem:(SDGroupCell *)item subItemDidClicked:(SDSelectableCell *)subItem
 {
+    LLQQUser *user = [_usersTree getUserAtIndexPath:[NSIndexPath indexPathForRow:subItem.cellIndexPath.row 
+                                                                       inSection:item.cellIndexPath.row]];
+    long friendUin = user.uin;
     /* push to the chating view */
-    [[self navigationController] pushViewController:[[[LLQQChattingViewController alloc] init] autorelease] animated:YES];
+    [[self navigationController] pushViewController:[[[LLQQChattingViewController alloc] 
+                                                      initWitFriendUin:friendUin] autorelease] 
+                                           animated:YES];
 }
 
 /* 一层,分组数目*/
@@ -197,7 +202,7 @@
 - (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    LLQQUser *user = [_usersTree getUserAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row 
+    LLQQUser *user = [_usersTree getUserAtIndexPath:[NSIndexPath indexPathForRow:subItem.cellIndexPath.row 
                                                                        inSection:item.cellIndexPath.row]];
     
     if (user.markname == nil) {

@@ -19,7 +19,7 @@
         /* 0 */nil, 
         /* 1 */@"User login completed", /* userinfo: dictionary: { "value": (LLQQMoonBox*)object } */
         /* 2 */@"New message comming"   /* userinfo: dictionary: { "value": (LLQQMsg*)object } */
-        /* 3 */
+        /* 3 */@"Unread msg from a friend" /* userinfo: dictionary: { "value": (LLQQMsg*)msg  } */
         /* 4 */
         /* 5 */
     };

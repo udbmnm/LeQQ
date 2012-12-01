@@ -821,6 +821,7 @@
 		C13978F9164E9C5300CF10A9 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */; };
 		C13978FA164E9C5300CF10A9 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */; };
 		C13E8D9B1658BA2700DB873D /* LLAuthenticodeAlertInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1A32F9E16491C7A00B23798 /* LLAuthenticodeAlertInputView.m */; };
+		C14204201669FEC4005441FD /* LLQQMsgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C142041F1669FEC4005441FD /* LLQQMsgManager.m */; };
 		C156C987164785F900C0ECD4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C1C4AE3416418F4300CFF0DC /* libicucore.dylib */; };
 		C15D85E6164FAACB003F3899 /* LLQQLogout.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85E5164FAACB003F3899 /* LLQQLogout.m */; };
 		C15D85F3164FD20C003F3899 /* LLQQCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C15D85F2164FD20C003F3899 /* LLQQCommonRequest.m */; };
@@ -834,6 +835,7 @@
 		C1692FFF1655FAD3001A1DD1 /* LLQQOnlineUsersList.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */; };
 		C16930001655FAD3001A1DD1 /* LLQQUserStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = C1692FF91655FAD3001A1DD1 /* LLQQUserStatus.m */; };
 		C16930051655FAEE001A1DD1 /* LLModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C16930031655FAEE001A1DD1 /* LLModelObject.m */; };
+		C16E341B1669F5F400FE2673 /* LLQQMsgHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = C16E341A1669F5F400FE2673 /* LLQQMsgHistory.m */; };
 		C17390E4164E4B2500185583 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C17390F0164E4B5400185583 /* libiToast.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C17390E3164E4B2500185583 /* libiToast.a */; };
 		C17390F1164E4BE900185583 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C17390DB164E4AFD00185583 /* iToast.m */; };
@@ -1799,6 +1801,8 @@
 		C13978F7164E9C5300CF10A9 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		C13978F8164E9C5300CF10A9 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		C13E8D9C1658BAA000DB873D /* LLViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLViews.h; sourceTree = "<group>"; };
+		C142041E1669FEC4005441FD /* LLQQMsgManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQMsgManager.h; sourceTree = "<group>"; };
+		C142041F1669FEC4005441FD /* LLQQMsgManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQMsgManager.m; sourceTree = "<group>"; };
 		C156C982164774B500C0ECD4 /* QuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialog-Prefix.pch"; sourceTree = "<group>"; };
 		C15D85E4164FAACB003F3899 /* LLQQLogout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQLogout.h; sourceTree = "<group>"; };
 		C15D85E5164FAACB003F3899 /* LLQQLogout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQLogout.m; sourceTree = "<group>"; };
@@ -1827,6 +1831,8 @@
 		C16930021655FAEE001A1DD1 /* LLModelObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLModelObject.h; sourceTree = "<group>"; };
 		C16930031655FAEE001A1DD1 /* LLModelObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLModelObject.m; sourceTree = "<group>"; };
 		C16930041655FAEE001A1DD1 /* LLObjectConversionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLObjectConversionProtocol.h; sourceTree = "<group>"; };
+		C16E34191669F5F400FE2673 /* LLQQMsgHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQMsgHistory.h; sourceTree = "<group>"; };
+		C16E341A1669F5F400FE2673 /* LLQQMsgHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQMsgHistory.m; sourceTree = "<group>"; };
 		C17390DA164E4AFD00185583 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		C17390DB164E4AFD00185583 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		C17390E3164E4B2500185583 /* libiToast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiToast.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3134,6 +3140,8 @@
 				C1692FF41655FAD3001A1DD1 /* LLQQUserDetail.m */,
 				C19A8C4F1659E8FC0008CB7D /* LLQQMsg.h */,
 				C19A8C501659E8FC0008CB7D /* LLQQMsg.m */,
+				C16E34191669F5F400FE2673 /* LLQQMsgHistory.h */,
+				C16E341A1669F5F400FE2673 /* LLQQMsgHistory.m */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -3149,6 +3157,8 @@
 				C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */,
 				C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */,
 				C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */,
+				C142041E1669FEC4005441FD /* LLQQMsgManager.h */,
+				C142041F1669FEC4005441FD /* LLQQMsgManager.m */,
 			);
 			path = Dynamic;
 			sourceTree = "<group>";
@@ -4909,6 +4919,8 @@
 				C1ECD2A81657B816005D6CC4 /* LLQQUsersTree.m in Sources */,
 				C19A8C511659E8FC0008CB7D /* LLQQMsg.m in Sources */,
 				C17ADEE7165BE0B7001DB7F3 /* LLGroupsAndDiscusController.m in Sources */,
+				C16E341B1669F5F400FE2673 /* LLQQMsgHistory.m in Sources */,
+				C14204201669FEC4005441FD /* LLQQMsgManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

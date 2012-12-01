@@ -15,7 +15,8 @@
 typedef enum {
     kNotificationTypeNull = 0,
     kNotificationTypeLoginSuccess = 1,
-    kNotificationTypeNewMessage = 2
+    kNotificationTypeNewMessage = 2,               /* for polling msg noti */
+    kNotificationTypeUnreadMessageFromFriend = 3,   /* noti the chatting view*/
 }LLNotificationType;
 
 + (void)add:(id)observer selector:(SEL)selector notificationType:(LLNotificationType)type;

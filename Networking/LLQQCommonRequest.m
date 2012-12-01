@@ -807,15 +807,15 @@
                 msg.content = [[[msgDic objectForKey:@"content"] JSONRepresentation] msgContentValue];
                 
                 if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"]) {
-                    msg.type = kQQMsgTypeUser;
+                    msg.srcType = kQQMsgSourceUser;
                 } else if ([[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"]) {
-                    msg.type = kQQMsgTypeDiscus;
+                    msg.srcType = kQQMsgSourceDiscus;
                     msg.did = [[msgDic objectForKey:@"did"] longValue];
                     msg.sendUin = [[msgDic objectForKey:@"send_uin"] longValue];
                     msg.seq = [[msgDic objectForKey:@"seq"] longValue];
                     msg.infoSeq = [[msgDic objectForKey:@"info_seq"] longValue];
                 } else {
-                    msg.type = kQQMsgTypeGroup;
+                    msg.srcType = kQQMsgSourceGroup;
                     msg.sendUin = [[msgDic objectForKey:@"send_uin"] longValue];
                     msg.groupCode = [[msgDic objectForKey:@"group_code"] longValue];
                     msg.seq = [[msgDic objectForKey:@"seq"] longValue];

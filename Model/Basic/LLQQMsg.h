@@ -11,17 +11,17 @@
 
 typedef enum 
 {
-    kQQMsgTypeNull = 0,
-    kQQMsgTypeUser = 1,
-    kQQMsgTypeGroup = 2,
-    kQQMsgTypeDiscus =3
-}LLQQMsgType;
+    kQQMsgSourceNull   = 0,
+    kQQMsgSourceUser   = 1,
+    kQQMsgSourceGroup  = 2,
+    kQQMsgSourceDiscus = 3
+}LLQQMsgSource;
 
 typedef enum
 {
-    kQQMsgContentTypeNull = 0,
+    kQQMsgContentTypeNull   = 0,
     kQQMstContentTypeString = 1,
-    kQQMsgContentTypeCFace = 2
+    kQQMsgContentTypeCFace  = 2
 }LLQQMsgContentType;
 
 @interface LLQQMsgCface : LLModelObject
@@ -79,7 +79,7 @@ typedef enum
     /* to uin is me*/
     long toUin;
     /* is group/discus/normal message */
-    LLQQMsgType type;
+    LLQQMsgSource srcType;
     /* sender ip ? */
     long replyIp;
     NSTimeInterval time;
@@ -99,7 +99,7 @@ typedef enum
 @property (assign) long fromUin;;
 @property (assign) long sendUin;;
 @property (assign) long toUin;;
-@property (assign) LLQQMsgType type;;
+@property (assign) LLQQMsgSource srcType;
 @property (assign) long replyIp;;
 @property (assign) NSTimeInterval time;;
 @property (assign) LLQQMsgContent *content;;
