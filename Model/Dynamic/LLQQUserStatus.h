@@ -10,12 +10,12 @@
 
 @interface LLQQUserStatus : NSObject
 {
-    long uin;
+    unsigned long uin;
     LLQQUserStatusType status;
     LLQQClientType clientType;
 }
 
-@property (nonatomic, assign) long uin;
+@property (nonatomic, assign) unsigned long uin;
 @property (nonatomic, assign) LLQQUserStatusType status;
 @property (nonatomic, assign) LLQQClientType clientType;
 

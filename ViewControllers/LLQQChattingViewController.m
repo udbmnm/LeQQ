@@ -15,6 +15,7 @@
     UIBubbleTableView *_bubbleView;
     UIToolbar *_toolbar;
     NSMutableArray *_bubbles;
+    NSArray *_msgsBeingSent;
 }
 @end
 
@@ -27,6 +28,8 @@
     if (self) {
         _bubbleView = nil;
         _bubbles = [[NSMutableArray alloc] init];
+        _toolbar = nil;
+        _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
         self.friendUin = uin;
         
         [LLNotificationCenter add:self
@@ -52,6 +55,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];  
     [_bubbleView release];
     [_bubbles release];
+    [_toolbar release];
     [super dealloc];
 }
 
@@ -68,11 +72,12 @@
     tapRecognizer.numberOfTapsRequired = 1;    
     tapRecognizer.numberOfTouchesRequired = 1;
     [_bubbleView addGestureRecognizer:[tapRecognizer autorelease]];  
+    [_bubbleView setSnapInterval:60];
     [_bubbleView setBackgroundColor:[UIColor clearColor]];
     [_bubbleView setBubbleDataSource:self];
     
     NSArray *objs = [[NSBundle mainBundle] loadNibNamed:@"LLChattingToolbar" owner:self options:nil];
-    _toolbar = [objs objectAtIndex:0];
+    _toolbar = [[objs objectAtIndex:0] retain];
     _toolbar.frame = CGRectMake(0,
                                frame.size.height,
                                _toolbar.frame.size.width, 
@@ -91,12 +96,27 @@
 {
     [_bubbleView release];
     _bubbleView = nil;
+    [_toolbar release];
+    _toolbar = nil;
     [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark -get the textfield for input msg
+- (UITextField *)inputTextField
+{    
+    for (UIView *subView in [_toolbar subviews]) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            UITextField *textField = (UITextField *)subView;
+            return textField;
+        }
+    }
+    
+    return nil;
 }
 
 #pragma mark -get unread msgs and update the user interface
@@ -106,12 +126,8 @@
     if (msgs == nil) return;
     
     for (LLQQMsg *msg in msgs) {
-        NSString *msgString = [msg.content getString];
-        NSBubbleData *chatMsg = [[NSBubbleData alloc] initWithText:msgString
-                                                              date:[NSDate dateWithTimeIntervalSince1970:[msg time]]
-                                                              type:BubbleTypeSomeoneElse];
-        [_bubbles addObject:chatMsg];
-        [chatMsg release];
+        NSBubbleData *aBubble = [msg toBubbleData:BubbleTypeSomeoneElse];
+        [_bubbles addObject:aBubble];
     }
     [_bubbleView reloadData]; 
 }
@@ -132,7 +148,7 @@
     [self updateWithNewMsg];
 }
 
-#pragma mark ----> UIBubbleTableViewDataSource methods
+#pragma mark -UIBubbleTableViewDataSource methods
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
 {
     return [_bubbles count];
@@ -146,14 +162,39 @@
 #pragma mark -"send" button callback
 - (IBAction)sendMsgBtnClicked:(id)sender
 {
-    for (UIView *subView in [_toolbar subviews]) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            [(UITextField *)subView resignFirstResponder];
-        }
+    [self.inputTextField resignFirstResponder];       
+    /* send msg ..... */
+    _msgsBeingSent = [[NSArray arrayWithObject:[(UITextField*)self.inputTextField text]] retain];
+    [_request sendMsgTo:self.friendUin msgs:_msgsBeingSent];    
+}
+
+#pragma mark -send msg, callback
+- (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
+{
+    if (success == NO) {
+        [[[[iToast makeText:@"消息发送失败，请检查您的网络连接"] setGravity:iToastGravityTop] setDuration:iToastDurationNormal] show];
+        return;
     }
     
-    /* send msg ..... */
-    /** add code here **/
+    if (requestType == kQQRequestSendMsg) {
+        DEBUG_LOG_WITH_FORMAT(@"MSG send to %ld success", self.friendUin);
+        [(UITextField*)self.inputTextField setText:@""];
+        
+        /* put my sent msg to bubble view */
+        for (id msg in _msgsBeingSent) {
+            
+            if ([msg isKindOfClass:[NSString class]]) {
+                NSBubbleData *aBubble = [[NSBubbleData alloc] initWithText:(NSString*)msg
+                                                                  date:[NSDate date]
+                                                                  type:BubbleTypeMine];
+                [_bubbles addObject:aBubble];
+            }
+        }
+        [_msgsBeingSent release];
+        _msgsBeingSent = nil;
+        
+        [_bubbleView reloadData];
+    }    
 }
 
 #pragma mark -keyboard frame changed noti callback
@@ -166,12 +207,7 @@
     CGRect endFrame = [endFrameValue CGRectValue];
     beginFrame = [self.view convertRect:beginFrame fromView:nil];
     endFrame = [self.view convertRect:endFrame fromView:nil];
-    
-    /*
-     NSLog(@"begin frame :%f, %f, %f, %f", beginFrame.origin.x, beginFrame.origin.y, beginFrame.size.width, beginFrame.size.height);
-     NSLog(@"end frame :%f, %f, %f, %f", endFrame.origin.x, endFrame.origin.y, endFrame.size.width, 
-     endFrame.size.height);
-     */
+
     NSNumber *duration = [[notification userInfo] 
                           objectForKey:UIKeyboardAnimationDurationUserInfoKey];    
     
@@ -196,10 +232,6 @@
 #pragma mark -single tap recognizer
 - (void)tagGestureCallback:(id)sender
 {
-    for (UIView *subView in [_toolbar subviews]) {
-        if ([subView isKindOfClass:[UITextField class]]) {
-            [(UITextField *)subView resignFirstResponder];
-        }
-    }   
+    [self.inputTextField resignFirstResponder];
 }
 @end

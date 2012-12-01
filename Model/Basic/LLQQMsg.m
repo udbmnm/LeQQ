@@ -112,4 +112,13 @@ infoSeq, replyIp, sendUin, groupCode;
     self.content = nil;
     [super dealloc];
 }
+
+- (NSBubbleData *)toBubbleData:(NSBubbleType)meOrSomeoneElse
+{
+    NSString *msgString = [self.content getString];
+    NSBubbleData *chatMsg = [[NSBubbleData alloc] initWithText:msgString
+                                                          date:[NSDate dateWithTimeIntervalSince1970:self.time]
+                                                          type:meOrSomeoneElse];
+    return [chatMsg autorelease];
+}
 @end

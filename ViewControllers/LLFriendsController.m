@@ -114,7 +114,7 @@
         case kQQRequestGetUserSignature:
         {
             NSDictionary *signatureDic = (NSDictionary*)info;
-            long uin = [[signatureDic objectForKey:@"uin"] longValue];
+            unsigned long uin = [[signatureDic objectForKey:@"uin"] longValue];
             NSString *signature = [signatureDic objectForKey:@"signature"];
             [[_usersTree getUser:uin] setSignature:signature];
             

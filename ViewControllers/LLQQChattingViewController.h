@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LLQQCommonRequest.h"
 
-@interface LLQQChattingViewController : UIViewController<UIBubbleTableViewDataSource>
+@interface LLQQChattingViewController : UIViewController<UIBubbleTableViewDataSource, LLQQCommonRequestDelegate>
 {
     long friendUin;
+    LLQQCommonRequest *_request;
 }
 
 @property (nonatomic, assign) long friendUin;

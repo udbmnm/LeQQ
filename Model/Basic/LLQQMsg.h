@@ -108,4 +108,5 @@ typedef enum
 @property (assign) long seq;  
 @property (assign) long infoSeq;
 
+- (NSBubbleData *)toBubbleData:(NSBubbleType)meOrSomeoneElse;
 @end

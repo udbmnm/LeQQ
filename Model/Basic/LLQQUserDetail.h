@@ -11,7 +11,7 @@
 
 @interface LLQQUserDetail : LLModelObject
 {
-    long uin;
+    unsigned long uin;
     
     NSString *birthDay;             /* 1988-11-06 式的字符串 */
     NSString *occupation;           /* 职业 */
@@ -37,7 +37,7 @@
     
 }
 
-@property (nonatomic, assign) long uin;
+@property (nonatomic, assign) unsigned long uin;
 @property (nonatomic, copy)  NSString *birthDay;
 @property (nonatomic, copy)  NSString *occupation; 
 @property (nonatomic, copy)  NSString *phone; 

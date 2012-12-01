@@ -129,9 +129,9 @@ typedef enum
 /*
  * no data return, just return YES/NO
  */
-- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs;
-- (void)sendDiscusMsgTo:(long)did msgs:(NSArray *)msgs;
-- (void)sendGroupMsgTo:(long)gid msgs:(NSArray *)msgs;
+- (void)sendMsgTo:(unsigned long)uin msgs:(NSArray *)msgs;
+- (void)sendDiscusMsgTo:(unsigned long)did msgs:(NSArray *)msgs;
+- (void)sendGroupMsgTo:(unsigned long)gid msgs:(NSArray *)msgs;
 
 /*
  * for msg poll, return LLQQMsg

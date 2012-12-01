@@ -11,8 +11,8 @@
 
 @interface LLQQUser : LLModelObject
 {
-    long uin;                 /*唯一标识*/
-    long qqNum;               /*QQ号*/
+    unsigned long uin;                 /*唯一标识*/
+    unsigned long qqNum;               /*QQ号*/
     long categoryIndex;        /*所属分组的唯一标识*/
     NSString *nickname;       /*昵称，用户设置的名称*/
     NSString *markname;       /*备注名称*/
@@ -29,8 +29,8 @@
     LLQQUserDetail *userDetail;
 }
 
-@property (nonatomic, assign) long uin;  
-@property (nonatomic, assign) long qqNum;  
+@property (nonatomic, assign) unsigned long uin;  
+@property (nonatomic, assign) unsigned long qqNum;  
 @property (nonatomic, assign) long categoryIndex;
 @property (nonatomic, copy)  NSString *nickname; 
 @property (nonatomic, copy)  NSString *markname; 

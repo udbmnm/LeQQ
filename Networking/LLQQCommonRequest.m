@@ -86,7 +86,7 @@
         }
         
         for (NSDictionary *aInfoDic in info) {
-            long uin = [[aInfoDic objectForKey:@"uin"] longValue];
+            unsigned long uin = [[aInfoDic objectForKey:@"uin"] longValue];
             
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
@@ -100,7 +100,7 @@
         }
         
         for (NSDictionary *aVipInfoDic in vipinfo) {
-            long uin = [[aVipInfoDic objectForKey:@"u"] longValue];
+            unsigned long uin = [[aVipInfoDic objectForKey:@"u"] longValue];
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
                 LLQQUser *user = [category getUser:uin];
@@ -113,7 +113,7 @@
         }
         
         for (NSDictionary *marknameDic in marknames) {
-            long uin = [[marknameDic objectForKey:@"uin"] longValue];
+            unsigned long uin = [[marknameDic objectForKey:@"uin"] longValue];
             /* 复杂度为 O(N) */
             for (LLQQCategory *category in [categoriesDic allValues]) {
                 LLQQUser *user = [category getUser:uin];
@@ -317,7 +317,7 @@
         [request setCompletionBlock:^(void) {
             NSString *response = [request responseString];
             NSDictionary *resDic = [response JSONValue];
-            long uin = request.tag;
+            unsigned long uin = request.tag;
             
             long retcode = [[resDic objectForKey:@"retcode"] longValue];
             if (retcode != 0) {
@@ -577,7 +577,7 @@
         for (NSDictionary *dic in recentsArray) {
             /* what the type value means ?  0:user, 1:group 2:discus group*/
             //long type = [[dic objectForKey:@"type"] longValue]; /*何用？*/
-            long uin = [[dic objectForKey:@"uin"] longValue];
+            unsigned long uin = [[dic objectForKey:@"uin"] longValue];
             [recentUins addObject:[NSNumber numberWithLong:uin]];            
         } 
         
@@ -638,7 +638,7 @@
         
         NSArray *vipinfoArray = [resDic objectForKey:@"vipinfo"];
         for (NSDictionary *vipinfoDic in vipinfoArray) {
-            long uin = [[vipinfoDic objectForKey:@"u"] longValue];
+            unsigned long uin = [[vipinfoDic objectForKey:@"u"] longValue];
             LLQQUser *user = [group getUser:uin];
             if (user) {
                 user.vipLevel = [[vipinfoDic objectForKey:@"vip_level"] longValue];
@@ -648,7 +648,7 @@
         
         NSArray *minfoArray = [resDic objectForKey:@"minfo"];
         for (NSDictionary *minfoDic in minfoArray) {
-            long uin = [[minfoDic objectForKey:@"uin"] longValue];
+            unsigned long uin = [[minfoDic objectForKey:@"uin"] longValue];
             LLQQUser *user = [group getUser:uin];
             if (user) {
                 user.nickname = [minfoDic objectForKey:@"nick"];
@@ -678,7 +678,7 @@
     [request startAsynchronous];    
 }
 
-- (void)sendMsgTemplate:(long)uin msgs:(NSArray *)msgs type:(LLQQCommonRequestType)requestType
+- (void)sendMsgTemplate:(unsigned long)uin msgs:(NSArray *)msgs type:(LLQQCommonRequestType)requestType
 {
     NSString *urlString = nil;
     NSString *uinKeyName = nil;
@@ -700,7 +700,7 @@
     }    
 
     NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
-    [json setObject:[NSNumber numberWithLong:uin] forKey:uinKeyName];
+    [json setObject:[NSNumber numberWithUnsignedLong:(unsigned long)uin] forKey:uinKeyName];
     if (requestType == kQQRequestSendMsg) {
         [json setObject:[NSNumber numberWithLong:0] forKey:@"face"];
     }
@@ -713,6 +713,7 @@
     [json setObject:[contentArray JSONRepresentation] forKey:@"content"];
     
     NSString *postContent = [json JSONRepresentation];
+    DEBUG_LOG_WITH_FORMAT(@"post content for msg is %@", postContent);
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURLString:urlString];
     [request setPostValue:postContent forKey:@"r"];
@@ -740,17 +741,17 @@
     [request startAsynchronous];   
 }
 
-- (void)sendMsgTo:(long)uin msgs:(NSArray *)msgs
+- (void)sendMsgTo:(unsigned long)uin msgs:(NSArray *)msgs
 {
     [self sendMsgTemplate:uin msgs:msgs type:kQQRequestSendMsg];
 }
 
-- (void)sendDiscusMsgTo:(long)did msgs:(NSArray *)msgs
+- (void)sendDiscusMsgTo:(unsigned long)did msgs:(NSArray *)msgs
 {
     [self sendMsgTemplate:did msgs:msgs type:kQQRequestSendDiscusMsg];       
 }
 
-- (void)sendGroupMsgTo:(long)gid msgs:(NSArray *)msgs
+- (void)sendGroupMsgTo:(unsigned long)gid msgs:(NSArray *)msgs
 {
     [self sendMsgTemplate:gid msgs:msgs type:kQQRequestSendGroupMsg];
 }
@@ -793,6 +794,7 @@
         
         NSArray *polls = [resDic objectForKey:@"result"];
         for (NSDictionary *poll in polls) {
+            
             if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"] ||
                 [[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"] ||
                 [[poll objectForKey:@"poll_type"] isEqualToString:@"discu_message"]) {
@@ -803,7 +805,9 @@
                 msg.toUin   = [[msgDic objectForKey:@"to_uin"]   longValue];
                 msg.MsgId2  = [[msgDic objectForKey:@"msg_id2"]  longValue];
                 msg.replyIp = [[msgDic objectForKey:@"reply_ip"] longValue];
-                msg.time = [[msgDic objectForKey:@"time"] longValue];
+                /* use the time base on local time */
+                //msg.time = [[msgDic objectForKey:@"time"] longValue];
+                msg.time = [[NSDate date] timeIntervalSince1970];
                 msg.content = [[[msgDic objectForKey:@"content"] JSONRepresentation] msgContentValue];
                 
                 if ([[poll objectForKey:@"poll_type"] isEqualToString:@"message"]) {

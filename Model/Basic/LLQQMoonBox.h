@@ -11,7 +11,7 @@
 
 @interface LLQQMoonBox : LLModelObject
 {
-    long uin;
+    unsigned long uin;
     long cip; 
     long index;
     long port;
@@ -27,7 +27,7 @@
     NSString *vfwebqq;
 }
 
-@property (nonatomic, assign) long uin;
+@property (nonatomic, assign) unsigned long uin;
 @property (nonatomic, assign) long cip;
 @property (nonatomic, assign) long index;
 @property (nonatomic, assign) long port;

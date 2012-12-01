@@ -12,7 +12,7 @@
 @interface LLQQGroup : LLModelObject
 {
     NSString *name;                     /* name of the QQ group */
-    long gid;
+    unsigned long gid;
     long code;
     long groupNum;                      /*群号*/
     
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) long gid;
+@property (nonatomic, assign) unsigned long gid;
 @property (nonatomic, assign) long code;
 @property (nonatomic, assign) long groupNum;
 @property (nonatomic, retain) UIImage *face;
