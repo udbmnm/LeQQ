@@ -49,7 +49,8 @@
             [_usersOfCategoryDic setObject:allUsersInCategory 
                                     forKey:[NSString stringWithFormat:index]];
             
-            _categoriesArray = [[NSMutableArray alloc] initWithArray:[[_categoriesDic allValues] sortedArrayUsingSelector:@selector(compareWithCategory:)]];
+            _categoriesArray = [[NSMutableArray alloc] initWithArray:[[_categoriesDic allValues]
+                                                                      sortedArrayUsingSelector:@selector(compareWithCategory:)]];
         }        
     }
     return self;
@@ -97,7 +98,8 @@
                 return [NSIndexPath indexPathForRow:row inSection:section];
             }
             row++;
-        }        
+        }       
+        row = 0;
         section++;
     }    
     return nil;

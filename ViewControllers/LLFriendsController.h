@@ -19,4 +19,10 @@
     LLQQOnlineUsersList *_onlineUsersList;
 }
 
+/*
+ * 0 for friends
+ * 1 for groups and dicus 
+ * 2 for recent friends
+ */
+- (void)reloadWithType:(long)type;
 @end

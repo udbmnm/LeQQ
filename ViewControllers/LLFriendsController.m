@@ -42,21 +42,16 @@
     [super dealloc];
 }
 
+- (void)reloadWithType:(long)type
+{
+    
+}
+
 - (void)viewDidLoad
 {        
     [super viewDidLoad];
 }
 
-
-/* called when login success, gets the all friends info*/
--(void)loginNotificationHandler:(NSNotification *)nofi
-{
-    DEBUG_LOG_WITH_FORMAT(@"self.navication con %@", self.navigationController);
-    
-    _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
-    [_request getAllFriends];
-    [_request getAllOnlineFriends];
-}
 
 - (void)viewDidUnload
 {
@@ -83,7 +78,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark  LLQQCommonRequestDelegate -
+
+#pragma mark -login callback
+/* called when login success, gets the all friends info*/
+-(void)loginNotificationHandler:(NSNotification *)nofi
+{
+    DEBUG_LOG_WITH_FORMAT(@"self.navication con %@", self.navigationController);
+    
+    _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
+    [_request getAllFriends];
+    [_request getAllOnlineFriends];
+}
+
+#pragma mark  LLQQCommonRequestDelegate
 - (void)LLQQCommonRequestNotify:(LLQQCommonRequestType)requestType isOK:(BOOL)success info:(id)info
 {
     if (success == NO) {
@@ -120,13 +127,16 @@
             
             /* 局部刷新*/
             
-            NSIndexPath *indexPath = [_usersTree getUserIndexPath:uin];            
+            NSIndexPath *indexPath = [_usersTree getUserIndexPath:uin];   
+            NSLog(@"indexPath %@, (%d, %d)", indexPath, indexPath.section, indexPath.row);
             SDGroupCell *groupCell = (SDGroupCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.section inSection:0]];            
             if (groupCell) {
                 SDSubCell *subCell = (SDSubCell *)[groupCell.subTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0]];
                 
                 if (subCell) {
                     [groupCell.subTable reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                } else {
+                    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.section inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
                 }
                 
             }            
@@ -144,7 +154,7 @@
     }
 }
 
-#pragma mark SDNestedTableDelegate -
+#pragma mark SDNestedTableDelegate
 - (void) mainTable:(UITableView *)mainTable item:(SDGroupCell *)item didExpanded:(BOOL)isExpanded
 {
     /* load the nickname and face imgs */
@@ -158,7 +168,7 @@
             for (LLQQUser *user in users) {
                 [usersUins addObject:[NSNumber numberWithLong:user.uin]];
             }
-            [_request getUsersSignatures:usersUins];
+            [_request getUsersSignatures:usersUins];            
         }
     }
 }
@@ -194,7 +204,7 @@
 - (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LLQQCategory *category = [_usersTree getCategoryAtSection:indexPath.row];
-    [item.titleLabel setText:category.name];
+    [item.titleLabel setText:[NSString stringWithFormat:@"%@ [%ld/%ld]", category.name, 0, [_usersTree getUsersCountAtSection:indexPath.row]]];
     return item;
 }
 
@@ -214,7 +224,7 @@
     
     /*added onece*/
     if ([[(LLQQUserCell*)subItem faceImgView] imageURL] == nil) {
-        //[[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
+        [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
     }
     return subItem;
 }

@@ -3094,11 +3094,11 @@
 				C1A906A816468C70001D5720 /* LLQQLoginController.m */,
 				C15D85F8164FFFB5003F3899 /* LLFriendsController.h */,
 				C15D85F9164FFFB5003F3899 /* LLFriendsController.m */,
-				C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */,
-				C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */,
 				C17ADEE2165BDDF8001DB7F3 /* LLChattingToolbar.xib */,
 				C11FACCB164C08BE00312A83 /* LLQQChattingViewController.h */,
 				C11FACCC164C08BE00312A83 /* LLQQChattingViewController.m */,
+				C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */,
+				C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;

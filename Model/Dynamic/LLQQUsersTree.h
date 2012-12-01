@@ -39,6 +39,8 @@
 - (NSArray *)getUsersListOfCategory:(long)categoryIndex;
 - (LLQQCategory *)getCategory:(long)categoryIndex;
 - (LLQQUser*)getUser:(long)uin;
+
+/* interface for friends view controller */
 - (NSIndexPath*)getUserIndexPath:(long)uin;
 
 - (long)getCategoriesCount;
