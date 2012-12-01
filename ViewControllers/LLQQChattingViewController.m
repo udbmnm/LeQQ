@@ -8,7 +8,6 @@
 
 #import "LLQQChattingViewController.h"
 #import "LLNotificationCenter.h"
-#import "UIBubbleTableView.h"
 
 @interface LLQQChattingViewController ()
 {
@@ -16,11 +15,11 @@
     UIToolbar *_toolbar;
     NSMutableArray *_bubbles;
     NSArray *_msgsBeingSent;
+    LLQQCommonRequest *_request;
 }
 @end
 
 @implementation LLQQChattingViewController
-@synthesize friendUin;
 
 - (id)initWitFriendUin:(long)uin
 {
@@ -30,7 +29,7 @@
         _bubbles = [[NSMutableArray alloc] init];
         _toolbar = nil;
         _request = [[LLQQCommonRequest alloc] initWithBox:[[LLGlobalCache getGlobalCache] getMoonBox] delegate:self];
-        self.friendUin = uin;
+        _friendUin = uin;
         
         [LLNotificationCenter add:self
                          selector:@selector(newMsgNotificationHandler:)
@@ -64,7 +63,13 @@
     [super viewDidLoad];
     
     CGRect frame = self.view.frame;
-    frame.size.height -= 44;
+    frame.origin.y = 0;
+    /*the bottom bar*/
+    frame.size.height = frame.size.height - 44;
+    /* the navigation bar*/
+    if (self.navigationController) {
+        frame.size.height -= 44;
+    }
     _bubbleView = [[UIBubbleTableView alloc] initWithFrame:frame];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self 
@@ -79,9 +84,11 @@
     NSArray *objs = [[NSBundle mainBundle] loadNibNamed:@"LLChattingToolbar" owner:self options:nil];
     _toolbar = [[objs objectAtIndex:0] retain];
     _toolbar.frame = CGRectMake(0,
-                               frame.size.height,
-                               _toolbar.frame.size.width, 
-                               _toolbar.frame.size.height);
+                               460-44,
+                               320, 
+                               44);
+    
+    NSLog(@"frame of bubbleView is %f, %f, %f, %f \n", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_bubbleView];
@@ -118,11 +125,20 @@
     
     return nil;
 }
+#pragma mark -srcoll bubbleView 
+- (void)scrollBubbleViewToBottom
+{
+    
+    /* scroll to bottom */
+    if (_bubbleView.contentSize.height > _bubbleView.frame.size.height) {
+        [_bubbleView setContentOffset:CGPointMake(0, _bubbleView.contentSize.height - _bubbleView.frame.size.height)];
+    }
+}
 
 #pragma mark -get unread msgs and update the user interface
 - (void)updateWithNewMsg
 {
-    NSArray *msgs = [[LLQQMsgManager getShareManager] getUnreadMsgsFromFriend:self.friendUin];
+    NSArray *msgs = [[LLQQMsgManager getShareManager] getUnreadMsgsFromFriend:_friendUin];
     if (msgs == nil) return;
     
     for (LLQQMsg *msg in msgs) {
@@ -130,14 +146,15 @@
         [_bubbles addObject:aBubble];
     }
     [_bubbleView reloadData]; 
+    [self scrollBubbleViewToBottom];
 }
 
 #pragma mark -callback of polling Msg noti
 - (void)newMsgNotificationHandler:(NSNotification *)nofi
 {
     LLQQMsg *msg = [[nofi userInfo] objectForKey:kNotificationInfoKeyForValue]; 
-    if (msg.fromUin != self.friendUin) {
-        DEBUG_LOG_WITH_FORMAT(@"Not this friend %ld's msg(from %ld)", self.friendUin, msg.fromUin);
+    if (msg.fromUin != _friendUin) {
+        DEBUG_LOG_WITH_FORMAT(@"Not this friend %ld's msg(from %ld)", _friendUin, msg.fromUin);
         return;
     }
     
@@ -165,7 +182,7 @@
     [self.inputTextField resignFirstResponder];       
     /* send msg ..... */
     _msgsBeingSent = [[NSArray arrayWithObject:[(UITextField*)self.inputTextField text]] retain];
-    [_request sendMsgTo:self.friendUin msgs:_msgsBeingSent];    
+    [_request sendMsgTo:_friendUin msgs:_msgsBeingSent];    
 }
 
 #pragma mark -send msg, callback
@@ -177,7 +194,7 @@
     }
     
     if (requestType == kQQRequestSendMsg) {
-        DEBUG_LOG_WITH_FORMAT(@"MSG send to %ld success", self.friendUin);
+        DEBUG_LOG_WITH_FORMAT(@"MSG send to %ld success", _friendUin);
         [(UITextField*)self.inputTextField setText:@""];
         
         /* put my sent msg to bubble view */
@@ -194,6 +211,7 @@
         _msgsBeingSent = nil;
         
         [_bubbleView reloadData];
+        [self scrollBubbleViewToBottom];
     }    
 }
 
@@ -225,7 +243,7 @@
         W = _bubbleView.frame.size.width;
         H = _bubbleView.frame.size.height;
         
-        [_bubbleView setFrame:CGRectMake(X, endFrame.origin.y - H, W, H)];        
+        [_bubbleView setFrame:CGRectMake(X, endFrame.origin.y - H - 44, W, H)];        
     }];
 }
 

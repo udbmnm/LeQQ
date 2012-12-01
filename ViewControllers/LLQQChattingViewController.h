@@ -11,11 +11,9 @@
 
 @interface LLQQChattingViewController : UIViewController<UIBubbleTableViewDataSource, LLQQCommonRequestDelegate>
 {
-    long friendUin;
-    LLQQCommonRequest *_request;
+    unsigned long _friendUin;
 }
 
-@property (nonatomic, assign) long friendUin;
 - (IBAction)sendMsgBtnClicked:(id)sender;
 - (id)initWitFriendUin:(long)uin;
 @end

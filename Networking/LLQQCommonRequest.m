@@ -743,7 +743,9 @@
 
 - (void)sendMsgTo:(unsigned long)uin msgs:(NSArray *)msgs
 {
-    [self sendMsgTemplate:uin msgs:msgs type:kQQRequestSendMsg];
+    NSMutableArray *msgsToSend = [NSMutableArray arrayWithArray:msgs];
+    //[msgsToSend addObject:@"\n\n【来自 LeQQ for iPhone(https://github.com/lemacs/LeQQ)】"];
+    [self sendMsgTemplate:uin msgs:msgsToSend type:kQQRequestSendMsg];
 }
 
 - (void)sendDiscusMsgTo:(unsigned long)did msgs:(NSArray *)msgs
