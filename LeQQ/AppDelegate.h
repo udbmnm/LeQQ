@@ -18,6 +18,8 @@ LLBomtomCompassMenuDelegate,LLQQCommonRequestDelegate>
     LLBomtomCompassMenu *_menu;
     LLTabBarController *_tabarController;
     LLQQLoginController *_loginController;
+    UIViewController *_firstRootViewCon;
+    UIViewController *_currentChildViewConInFirstTAB;
 }
 
 @property (strong, nonatomic) UIWindow *window;

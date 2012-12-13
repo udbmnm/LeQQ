@@ -19,6 +19,7 @@
 #import "ASIHTTPRequest+ASIQQHelper.h"
 #import "LLFriendsController.h"
 #import "LLNotificationCenter.h"
+#import "LLGroupsAndDiscusController.h"
 
 @implementation AppDelegate
 
@@ -35,9 +36,31 @@
     _tabarController = [[LLTabBarController alloc] init];
     _tabarController.view.backgroundColor = [UIColor whiteColor];
     
-    LLFriendsController *friendsController = [[LLFriendsController alloc] init];
+    /* friends, groups, recentlist view controller, in first TAB*/
+    LLFriendsController *friendsController = [[[LLFriendsController alloc] init] autorelease];
+    LLGroupsAndDiscusController *groupAndDicusController = [[[LLGroupsAndDiscusController alloc] init] autorelease];
     
-    [_tabarController addViewController:[friendsController autorelease]
+    /* first TAB view controller */
+    _firstRootViewCon = [[UIViewController alloc] init];
+    [_firstRootViewCon addChildViewController:friendsController];
+    [_firstRootViewCon addChildViewController:groupAndDicusController];
+    [_firstRootViewCon.view addSubview:friendsController.view];
+    _currentChildViewConInFirstTAB = friendsController;
+        
+    /* the segment to switch view controller in three cons at first TAB */
+    UISegmentedControl *segment = [[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群/讨论组", @"最近联系", nil]] autorelease];
+    [segment setSegmentedControlStyle:UISegmentedControlStyleBar];
+    [segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
+    segment.selectedSegmentIndex = 0;
+    _firstRootViewCon.navigationItem.titleView = segment;
+    [segment release];  
+    
+    /* wrap the first TAB root view controller with navigation controller */
+    UINavigationController *firstNavController = [[[UINavigationController alloc] initWithRootViewController:_firstRootViewCon] autorelease];    
+    firstNavController.view.backgroundColor = [UIColor clearColor];
+    
+    /* add TABs */
+    [_tabarController addViewController:firstNavController
                                tabImage:[UIImage imageNamed:@"conversations40x40"]
                                   title:@"好友"];
     
@@ -51,22 +74,10 @@
     
     [_tabarController setDelegate:self];
     
-   UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"好友", @"群/讨论组", @"最近联系", nil]];
-    [segment setSegmentedControlStyle:UISegmentedControlStyleBar];
-    [segment addTarget:self action:@selector(segmentClicked:) forControlEvents:UIControlEventValueChanged];
-    segment.selectedSegmentIndex = 0;
-    _tabarController.navigationItem.titleView = segment;
-    [segment release];   
-    
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:_tabarController];    
-    navController.view.backgroundColor = [UIColor clearColor];
-    
-    //_menu = [[self createBomtomMenuAboveView:_tabarController.tabBar] retain];
-    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    [self.window setRootViewController:navController];    
+    [self.window setRootViewController:_tabarController];    
     self.window.hidden = NO;
-    [navController presentModalViewController:[[LLQQLoginController alloc] init] animated:NO];
+    [self.window.rootViewController presentModalViewController:[[[LLQQLoginController alloc] init] autorelease] animated:NO];
     
     /* setup ASI */
     [ASIHTTPRequest setDefaults];   
@@ -107,7 +118,12 @@
 #pragma mark -segment controll callback
 - (void)segmentClicked:(id)sender
 {
-    NSLog(@"sender's index:%d", [(UISegmentedControl *)sender selectedSegmentIndex]);
+    int index = [(UISegmentedControl *)sender selectedSegmentIndex];
+    NSLog(@"segment's index:%d", [(UISegmentedControl *)sender selectedSegmentIndex]);    
+    
+    [_currentChildViewConInFirstTAB.view removeFromSuperview];
+    [_firstRootViewCon.view addSubview:[[[_firstRootViewCon childViewControllers] objectAtIndex:index] view]];
+    
 }
 
 #pragma mark -login success callback

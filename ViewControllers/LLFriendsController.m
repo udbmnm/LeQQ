@@ -42,16 +42,10 @@
     [super dealloc];
 }
 
-- (void)reloadWithType:(long)type
-{
-    
-}
-
 - (void)viewDidLoad
 {        
     [super viewDidLoad];
 }
-
 
 - (void)viewDidUnload
 {
