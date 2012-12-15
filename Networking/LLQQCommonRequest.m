@@ -7,6 +7,7 @@
 //
 
 #import "LLQQCommonRequest.h"
+#import "LLQQModel.h"
 
 @implementation LLQQCommonRequest
 
@@ -184,6 +185,55 @@
     }];
     
     [request startAsynchronous];    
+}
+
+- (void)getAllDiscus
+{
+    static NSString *urlPattern = @"http://d.web2.qq.com/channel/get_discu_list_new2?clientid=$(clientid)&psessionid=$(psessionid)&vfwebqq=$(vfwebqq)&t=$(t)";
+    
+    NSDictionary *keysAndValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   _box.clientid,   @"$(clientid)", 
+                                   _box.psessionid, @"$(psessionid)", 
+                                   _box.vfwebqq,    @"$(vfwebqq)",
+                                   [LLQQParameterGenerator t], @"$(t)", nil];
+    
+    NSString *urlString = [urlPattern stringByReplacingOccurrencesOfKeysWithValues:keysAndValues];    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURLString:urlString];
+    
+    [request addRequestHeader:@"Referer" value:@"http://d.web2.qq.com/proxy.html?v=20110331002&callback=1&id=3"];    
+    [request setCompletionBlock:^(void){
+        
+        NSString *response = [request responseString];
+        NSDictionary *resDic = [response JSONValue];
+        
+        if ([[resDic objectForKey:@"retcode"] longValue] != 0) {
+            [_delegate LLQQCommonRequestNotify:kQQRequestGetAllDiscus
+                                          isOK:NO 
+                                          info:[NSString stringWithFormat:@"retcode is %@", 
+                                                [resDic objectForKey:@"retcode"]]];
+            return ;
+        }
+           
+        NSMutableDictionary *discusesDic = [[NSMutableDictionary alloc] init];
+        resDic = [resDic objectForKey:@"result"];
+        /* ... there is dmarklist, also, but not resolve now */
+        NSArray *discuses = [resDic objectForKey:@"dnamelist"];
+        for (NSDictionary *aDiscusDic in discuses) {
+            LLQQDiscus *discus = [[LLQQDiscus alloc] init];
+            discus.did = [[aDiscusDic objectForKey:@"did"] longValue];
+            discus.name = [aDiscusDic objectForKey:@"name"];
+            [discusesDic setValue:discus forKey:[NSString stringWithLong:discus.did]];            
+        }
+        
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllDiscus isOK:YES info:[discusesDic autorelease]];        
+        
+    }];
+    
+    [request setFailedBlock:^(void) {
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroups isOK:NO info:[request error]];
+    }];
+    
+    [request startAsynchronous];        
 }
 
 - (void)getUserDetail:(long)uin

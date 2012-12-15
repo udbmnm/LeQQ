@@ -868,6 +868,8 @@
 		C1C4A98216415AC600CFF0DC /* LLQQLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4A98116415AC600CFF0DC /* LLQQLogin.m */; };
 		C1C4ACC416418CFF00CFF0DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8516418CFE00CFF0DC /* InfoPlist.strings */; };
 		C1C4ACC516418CFF00CFF0DC /* SBJson-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1C4AA8716418CFE00CFF0DC /* SBJson-Info.plist */; };
+		C1E777E5167C2391004F308C /* LLQQGroupsAndDiscusTree.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E777E4167C2391004F308C /* LLQQGroupsAndDiscusTree.m */; };
+		C1E777E9167C2C68004F308C /* LLQQDiscus.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E777E8167C2C68004F308C /* LLQQDiscus.m */; };
 		C1ECD2A81657B816005D6CC4 /* LLQQUsersTree.m in Sources */ = {isa = PBXBuildFile; fileRef = C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */; };
 /* End PBXBuildFile section */
 
@@ -1988,6 +1990,10 @@
 		C1C4AC0616418CFE00CFF0DC /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		C1C4AC0816418CFE00CFF0DC /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		C1C4AE3416418F4300CFF0DC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		C1E777E3167C2391004F308C /* LLQQGroupsAndDiscusTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQGroupsAndDiscusTree.h; sourceTree = "<group>"; };
+		C1E777E4167C2391004F308C /* LLQQGroupsAndDiscusTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQGroupsAndDiscusTree.m; sourceTree = "<group>"; };
+		C1E777E7167C2C68004F308C /* LLQQDiscus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQDiscus.h; sourceTree = "<group>"; };
+		C1E777E8167C2C68004F308C /* LLQQDiscus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQDiscus.m; sourceTree = "<group>"; };
 		C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLQQUsersTree.h; sourceTree = "<group>"; };
 		C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLQQUsersTree.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3132,6 +3138,8 @@
 				C1692FEC1655FAD3001A1DD1 /* LLQQCategory.m */,
 				C1692FED1655FAD3001A1DD1 /* LLQQGroup.h */,
 				C1692FEE1655FAD3001A1DD1 /* LLQQGroup.m */,
+				C1E777E7167C2C68004F308C /* LLQQDiscus.h */,
+				C1E777E8167C2C68004F308C /* LLQQDiscus.m */,
 				C1692FEF1655FAD3001A1DD1 /* LLQQMoonBox.h */,
 				C1692FF01655FAD3001A1DD1 /* LLQQMoonBox.m */,
 				C1692FF11655FAD3001A1DD1 /* LLQQUser.h */,
@@ -3155,10 +3163,12 @@
 				C1692FF71655FAD3001A1DD1 /* LLQQOnlineUsersList.m */,
 				C17FB9A7165615BD003E5069 /* LLQQOnlineGroupUsersList.h */,
 				C17FB9A8165615BD003E5069 /* LLQQOnlineGroupUsersList.m */,
-				C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */,
-				C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */,
 				C142041E1669FEC4005441FD /* LLQQMsgManager.h */,
 				C142041F1669FEC4005441FD /* LLQQMsgManager.m */,
+				C1ECD2A61657B816005D6CC4 /* LLQQUsersTree.h */,
+				C1ECD2A71657B816005D6CC4 /* LLQQUsersTree.m */,
+				C1E777E3167C2391004F308C /* LLQQGroupsAndDiscusTree.h */,
+				C1E777E4167C2391004F308C /* LLQQGroupsAndDiscusTree.m */,
 			);
 			path = Dynamic;
 			sourceTree = "<group>";
@@ -4921,6 +4931,8 @@
 				C17ADEE7165BE0B7001DB7F3 /* LLGroupsAndDiscusController.m in Sources */,
 				C16E341B1669F5F400FE2673 /* LLQQMsgHistory.m in Sources */,
 				C14204201669FEC4005441FD /* LLQQMsgManager.m in Sources */,
+				C1E777E5167C2391004F308C /* LLQQGroupsAndDiscusTree.m in Sources */,
+				C1E777E9167C2C68004F308C /* LLQQDiscus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

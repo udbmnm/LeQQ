@@ -12,6 +12,7 @@ typedef enum
 {
     kQQRequestGetAllFriends = 101,         /* - (void)getAllFriends; */
     kQQRequestGetAllGroups  = 102,         /* - (void)getALLGroup;  */
+    kQQRequestGetAllDiscus = 115,
     kQQRequestGetUserDetail = 103,         /* - (void)getUserDetail:(long)qqNum; */
     kQQRequestGetUserSignature = 104,      /* - (void)getUserSinature:(long)qqNum; */
     kQQRequestGetQQLevel = 105,            /* - (void)getQQLevel:(long)uin; */
@@ -56,6 +57,12 @@ typedef enum
  *     VALUE: (LLQQGroup*)group
  */
 - (void)getAllGroups;
+
+
+
+
+
+- (void)getAllDiscus;
 
 /* 
  * get user detail info by uin 

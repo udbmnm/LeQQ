@@ -12,6 +12,7 @@
 #import "LLQQUserDetail.h"
 #import "LLQQCategory.h"
 #import "LLQQGroup.h"
+#import "LLQQDiscus.h"
 #import "LLQQMoonBox.h"
 #import "LLQQMsg.h"
 #import "LLQQMsgHistory.h"
@@ -21,4 +22,5 @@
 #import "LLQQOnlineGroupUsersList.h"
 #import "LLQQUsersTree.h"
 #import "LLQQMsgManager.h"
+#import "LLQQGroupsAndDiscusTree.h"
 

@@ -68,4 +68,15 @@
     
     return (LLQQUser *)theUser;
 }
+
+- (NSComparisonResult)compareWithGroup:(LLQQGroup *)anotherGroup
+{
+    if (self.gid > anotherGroup.gid) {
+        return NSOrderedDescending;
+    } else if (self.gid < anotherGroup.gid) {
+        return NSOrderedAscending;
+    } else {
+        return NSOrderedSame;
+    }   
+}
 @end

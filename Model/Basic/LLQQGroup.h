@@ -41,4 +41,5 @@
 
 - (BOOL)addUser:(LLQQUser *)user;
 - (LLQQUser *)getUser:(long)uin;
+- (NSComparisonResult)compareWithGroup:(LLQQGroup *)anotherGroup;
 @end

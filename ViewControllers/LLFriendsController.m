@@ -23,7 +23,7 @@
         // Custom initialization
         _segment = nil;
         _request = nil;
-        _usersTree = nil;
+        _usersTree = [[LLGlobalCache getGlobalCache] getTreeOfUsers];
         _categoriesDic = nil;
         _onlineUsersList = nil;
         
@@ -56,7 +56,6 @@
     _request = nil;
     
     [_usersTree release];
-    _usersTree = nil;
     
     [_categoriesDic release];
     _categoriesDic = nil;
@@ -144,6 +143,8 @@
     if (_categoriesDic && _onlineUsersList) {
         _usersTree = [[LLQQUsersTree alloc] initWithCategoriesDic:_categoriesDic
                                                   onlineUsersList:_onlineUsersList];
+        
+        [[LLGlobalCache getGlobalCache] saveTreeOfUsers:_usersTree];
         [self.tableView reloadData];
     }
 }

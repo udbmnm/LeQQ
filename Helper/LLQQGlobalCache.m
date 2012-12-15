@@ -12,6 +12,8 @@
 
 static LLQQMoonBox *_moonBox = nil;
 static NSArray *_qqCategories = nil;
+static LLQQUsersTree *_dataTreeOfUsers = nil;
+static LLQQGroupsAndDiscusTree *_dataTreeOfGroupsAndDiscus = nil;
 static long pollingTimeOutCount = 0;
 
 + (LLGlobalCache *)getGlobalCache
@@ -49,6 +51,26 @@ static long pollingTimeOutCount = 0;
 - (NSArray *)getQQCategories
 {
     return _qqCategories;
+}
+
+- (void)saveTreeOfUsers:(LLQQUsersTree *)dataTree
+{
+    _dataTreeOfUsers = [dataTree retain];
+}
+
+- (LLQQUsersTree *)getTreeOfUsers
+{
+    return _dataTreeOfUsers;
+}
+
+- (void)saveTreeOfGroupsAndDiscus:(LLQQGroupsAndDiscusTree*)dataTree;
+{
+    _dataTreeOfGroupsAndDiscus = [dataTree retain];
+}
+
+- (LLQQGroupsAndDiscusTree *)getTreeOfGroupsAndDiscus
+{
+    return _dataTreeOfGroupsAndDiscus;
 }
 
 -(void)addPollingTimeoutCountByOne

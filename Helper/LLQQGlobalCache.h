@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LLQQMoonBox.h"
+#import "LLQQModel.h"
 
 @interface LLGlobalCache : NSObject
 
@@ -19,6 +20,12 @@
 
 - (void)setQQCategories:(NSArray *)categories;
 - (NSArray *)getQQCategories;
+
+- (void)saveTreeOfUsers:(LLQQUsersTree *)dataTree;
+- (LLQQUsersTree *)getTreeOfUsers;
+
+- (void)saveTreeOfGroupsAndDiscus:(LLQQGroupsAndDiscusTree*)dataTree;
+- (LLQQGroupsAndDiscusTree *)getTreeOfGroupsAndDiscus;
 
 - (void)addPollingTimeoutCountByOne;
 - (long)getPollingTimeoutCount;

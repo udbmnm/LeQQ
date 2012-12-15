@@ -7,7 +7,16 @@
 //
 
 #import "SDNestedTableViewController.h"
+#import "LLQQCommonRequest.h"
+#import "LLQQModel.h"
 
-@interface LLGroupsAndDiscusController : SDNestedTableViewController
-
+@interface LLGroupsAndDiscusController : SDNestedTableViewController<LLQQCommonRequestDelegate>
+{
+    LLQQCommonRequest *_request;
+    
+    NSDictionary *_groupsDic;
+    NSDictionary *_discusDic;
+    
+    LLQQGroupsAndDiscusTree *_dataTree;
+}
 @end

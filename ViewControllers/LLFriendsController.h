@@ -14,9 +14,11 @@
 {
     UISegmentedControl *_segment;
     LLQQCommonRequest *_request;
-    LLQQUsersTree *_usersTree;
+    
     NSDictionary *_categoriesDic;
     LLQQOnlineUsersList *_onlineUsersList;
+    
+    LLQQUsersTree *_usersTree;
 }
 
 @end
