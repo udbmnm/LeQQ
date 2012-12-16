@@ -21,7 +21,8 @@
         [self.contentView addSubview:line];
         [line release];
 
-        self.faceImgView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"avatar_default_40_40.gif"]];        
+        self.faceImgView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"avatar_default_40_40.gif"]];  
+        //self.faceImgView = [[EGOImageView alloc] initWithPlaceholderImage:nil];
         [self.faceImgView setFrame:CGRectMake(10, 5, 40, 40)];
         [self.contentView addSubview:self.faceImgView];
 

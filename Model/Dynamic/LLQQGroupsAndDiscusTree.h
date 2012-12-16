@@ -26,6 +26,7 @@
 /* interface for groups and discus view controller */
 - (long)getSectionCount;
 - (NSInteger)getMembersCountAtSection:(long)section;
+- (NSString *)getTitleForSection:(long)section;
 
 - (NSArray *)getListOfSection:(long)section;
 - (id)getMemberAtIndexPath:(NSIndexPath *)indexPath;

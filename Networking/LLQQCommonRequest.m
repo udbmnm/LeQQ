@@ -230,7 +230,7 @@
     }];
     
     [request setFailedBlock:^(void) {
-        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllGroups isOK:NO info:[request error]];
+        [_delegate LLQQCommonRequestNotify:kQQRequestGetAllDiscus isOK:NO info:[request error]];
     }];
     
     [request startAsynchronous];        

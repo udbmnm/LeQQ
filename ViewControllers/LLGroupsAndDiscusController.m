@@ -70,6 +70,7 @@
     if (_groupsDic != nil && _discusDic != nil) {
         _dataTree = [[LLQQGroupsAndDiscusTree alloc] initWithGroupsDic:_groupsDic discusDic:_discusDic];
         [[LLGlobalCache getGlobalCache] saveTreeOfGroupsAndDiscus:_dataTree];
+        [self.tableView reloadData];
     }
     
     
@@ -88,21 +89,39 @@
 
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfItemsInSection:(NSInteger)section
 {
- 
+    if (section != 0 || _dataTree == nil) return 0;
+        
+    return [_dataTree getSectionCount];
 }
 
 - (NSInteger) mainTable:(UITableView *)mainTable numberOfSubItemsforItem:(SDGroupCell *)item atIndexPath:(NSIndexPath *)indexPath
 {
-    return 1;
+    if (_dataTree == nil) return 0;
+    NSLog(@"count:%d", [_dataTree getMembersCountAtSection:item.cellIndexPath.row]);
+    
+    return [_dataTree getMembersCountAtSection:item.cellIndexPath.row];
 }
 
 - (SDGroupCell *) mainTable:(UITableView *)mainTable prepareItem:(SDGroupCell *)item forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [item.titleLabel setText:[_dataTree getTitleForSection:item.cellIndexPath.row]];
+    return item;
 }
 
 - (SDSubCell *) mainItem:(SDGroupCell *)item prepareSubItem:(SDSubCell *)subItem forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *members = [_dataTree getListOfSection:item.cellIndexPath.row];
+    id member = [members objectAtIndex:subItem.cellIndexPath.row];
+    
+    if ([member isKindOfClass:[LLQQGroup class]]) {
+        [[(LLQQUserCell *)subItem nameLabel] setText:[(LLQQGroup *)member name]];
+        [[(LLQQUserCell *)subItem faceImgView] setImage:[UIImage imageNamed:@"Group40X40"]];
+    } else {
+        [[(LLQQUserCell *)subItem nameLabel] setText:[(LLQQDiscus *)member name]];
+        [[(LLQQUserCell *)subItem faceImgView] setImage:[UIImage imageNamed:@"Discuss40X40"]];
+    }
+    
+    return subItem;
     
 }
 

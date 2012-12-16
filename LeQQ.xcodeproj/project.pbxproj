@@ -15,6 +15,8 @@
 		C10935241650E43100B28FB9 /* SDSelectableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935021650E36D00B28FB9 /* SDSelectableCell.m */; };
 		C10935261650E43100B28FB9 /* SDSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C10935041650E36D00B28FB9 /* SDSubCell.m */; };
 		C109352A1650E45300B28FB9 /* libSDNestedTable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C10935121650E3FB00B28FB9 /* libSDNestedTable.a */; };
+		C1156085167D7BAA00BB63D7 /* Discuss40X40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1156083167D7BAA00BB63D7 /* Discuss40X40@2x.png */; };
+		C1156086167D7BAA00BB63D7 /* Group40X40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1156084167D7BAA00BB63D7 /* Group40X40@2x.png */; };
 		C11660CE165749850046B1A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A2FEDC1638CE550003905B /* Foundation.framework */; };
 		C11660D8165749B00046B1A1 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C11660B5165748780046B1A1 /* EGOCache.m */; };
 		C11660DB165749C50046B1A1 /* libEGOCache.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11660CD165749850046B1A1 /* libEGOCache.a */; };
@@ -972,6 +974,8 @@
 		C10935031650E36D00B28FB9 /* SDSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDSubCell.h; sourceTree = "<group>"; };
 		C10935041650E36D00B28FB9 /* SDSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDSubCell.m; sourceTree = "<group>"; };
 		C10935121650E3FB00B28FB9 /* libSDNestedTable.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDNestedTable.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1156083167D7BAA00BB63D7 /* Discuss40X40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Discuss40X40@2x.png"; sourceTree = "<group>"; };
+		C1156084167D7BAA00BB63D7 /* Group40X40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group40X40@2x.png"; sourceTree = "<group>"; };
 		C11660B4165748780046B1A1 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		C11660B5165748780046B1A1 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		C11660C0165748780046B1A1 /* EGOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOImageView.h; sourceTree = "<group>"; };
@@ -2183,6 +2187,8 @@
 		C116610416577D830046B1A1 /* face */ = {
 			isa = PBXGroup;
 			children = (
+				C1156083167D7BAA00BB63D7 /* Discuss40X40@2x.png */,
+				C1156084167D7BAA00BB63D7 /* Group40X40@2x.png */,
 				C1B977EB1664F45D00FEB17C /* pop_up_biaoqinglist.png */,
 				C116610516577D830046B1A1 /* avatar_default_40_40.gif */,
 			);
@@ -3100,11 +3106,11 @@
 				C1A906A816468C70001D5720 /* LLQQLoginController.m */,
 				C15D85F8164FFFB5003F3899 /* LLFriendsController.h */,
 				C15D85F9164FFFB5003F3899 /* LLFriendsController.m */,
+				C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */,
+				C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */,
 				C17ADEE2165BDDF8001DB7F3 /* LLChattingToolbar.xib */,
 				C11FACCB164C08BE00312A83 /* LLQQChattingViewController.h */,
 				C11FACCC164C08BE00312A83 /* LLQQChattingViewController.m */,
-				C17ADEE5165BE0B6001DB7F3 /* LLGroupsAndDiscusController.h */,
-				C17ADEE6165BE0B6001DB7F3 /* LLGroupsAndDiscusController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = SOURCE_ROOT;
@@ -4684,6 +4690,8 @@
 				C116610616577D830046B1A1 /* avatar_default_40_40.gif in Resources */,
 				C17ADEE3165BDDF8001DB7F3 /* LLChattingToolbar.xib in Resources */,
 				C1B977EC1664F45D00FEB17C /* pop_up_biaoqinglist.png in Resources */,
+				C1156085167D7BAA00BB63D7 /* Discuss40X40@2x.png in Resources */,
+				C1156086167D7BAA00BB63D7 /* Group40X40@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

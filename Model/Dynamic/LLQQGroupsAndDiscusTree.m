@@ -55,13 +55,18 @@
     return 0;
 }
 
+- (NSString *)getTitleForSection:(long)section
+{
+    return section == 0 ? @"组" : @"讨论组";
+}
+
 - (NSArray *)getListOfSection:(long)section
 {
     switch (section) {
-        case 1:
+        case 0:
             return _groupsList;
             break;
-        case 2:
+        case 1:
             return _discusList;
         default:
             break;
