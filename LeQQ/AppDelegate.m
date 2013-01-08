@@ -77,7 +77,8 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     [self.window setRootViewController:_tabarController];    
     self.window.hidden = NO;
-    [self.window.rootViewController presentModalViewController:[[[LLQQLoginController alloc] init] autorelease] animated:NO];
+    [self.window.rootViewController presentModalViewController:[[[LLQQLoginController alloc] init] autorelease] 
+                                                      animated:NO];
     
     /* setup ASI */
     [ASIHTTPRequest setDefaults];   

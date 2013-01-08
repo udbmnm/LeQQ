@@ -219,7 +219,7 @@
     
     /*added onece*/
     if ([[(LLQQUserCell*)subItem faceImgView] imageURL] == nil) {
-        [[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
+        //[[(LLQQUserCell *)subItem faceImgView] setImageURL:[_request getFaceOfUserURL:user.uin isMe:NO]];
     }
     return subItem;
 }

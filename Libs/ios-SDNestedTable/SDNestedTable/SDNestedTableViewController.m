@@ -101,7 +101,7 @@
         NSArray *items = [[NSBundle mainBundle] loadNibNamed:@"SDGroupCell" owner:self options:nil];
         cell = [items objectAtIndex:0];
     }
-    
+    [cell.backgroundView setBackgroundColor:indexPath.row % 2 == 0 ? [UIColor lightGrayColor] : [UIColor colorWithRed:235/255.0 green:235/255.0 blue:245/255.0 alpha:1.0]];
     [cell setParentNestedTableController: self];
     [cell setCellIndexPath:indexPath];
     
@@ -116,7 +116,6 @@
         isExpanded = NO;
     }
     cell.isExpanded = isExpanded;    
-    //[cell.subTable reloadData];
     
     /* call the delegate to init the main item*/
     cell = [self mainTable:tableView prepareItem:cell forRowAtIndexPath:indexPath];
@@ -138,7 +137,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	//[tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
     
     BOOL isExpanded = [[mainCellExpandedDic objectForKey:indexPath] boolValue];
     isExpanded = !isExpanded;

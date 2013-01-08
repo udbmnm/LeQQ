@@ -14,7 +14,7 @@
 
 @implementation SDGroupCell
 
-@synthesize isExpanded, subTable, subCellsCount, headView, titleLabel;
+@synthesize isExpanded, subTable, subCellsCount, titleLabel;
 
 + (int) getHeight
 {
@@ -40,7 +40,8 @@
     {
         isExpanded = NO;
         subTable = nil;
-        self.backgroundView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:245/255.0 alpha:1.0];
+        self.backgroundView.backgroundColor = [UIColor redColor];
+        //self.backgroundView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:245/255.0 alpha:1.0];
     }
     return self;
 }

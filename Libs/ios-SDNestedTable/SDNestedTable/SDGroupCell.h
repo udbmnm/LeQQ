@@ -28,7 +28,6 @@ static const int subCellHeight = 50;
 @property (nonatomic) int subCellsCount;
 @property (assign) BOOL isExpanded;
 @property (assign) IBOutlet UITableView *subTable;
-@property (assign) IBOutlet UIView *headView;
 @property (assign) IBOutlet UILabel *titleLabel;
 
 + (int) getHeight;

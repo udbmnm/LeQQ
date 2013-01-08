@@ -16,8 +16,8 @@
 {
     if(self = [super initWithFrame:frame])
     {        
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-        line.backgroundColor = [UIColor blackColor];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 49, 320, 1)];
+        line.backgroundColor = [UIColor lightGrayColor];
         [self.contentView addSubview:line];
         [line release];
 
@@ -38,15 +38,4 @@
     }
     return self;
 }
-/*
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if(self = [super initWithCoder:aDecoder])
-    {        
-
-        [self.faceImgView setPlaceholderImage:[UIImage imageNamed:@"avatar_default_40_40.gif"]];
-    }
-    return self;
-}
- */
 @end
